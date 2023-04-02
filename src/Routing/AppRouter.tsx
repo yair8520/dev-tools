@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
 import { AppLayout } from '../Layout';
-import { ExamplePage } from '../Pages';
+import { Formatter } from '../Pages';
 
 export const AppRouter = createBrowserRouter([
   {
@@ -9,7 +8,7 @@ export const AppRouter = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <App />,
+        element: <Formatter />,
       },
     ],
   },

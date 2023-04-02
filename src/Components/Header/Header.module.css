@@ -1,0 +1,10 @@
+.container {
+  flex-direction: row;
+  width: 100%;
+
+  justify-content: space-around;
+  height: 50px;
+}
+.link {
+  color: black;
+}

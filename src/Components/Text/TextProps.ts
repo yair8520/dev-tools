@@ -1,4 +1,5 @@
-export interface TextProps {
+import { TypographyProps } from '@mui/material';
+
+export interface TextProps extends TypographyProps {
   [key: string]: any;
-  text: string;
 }
