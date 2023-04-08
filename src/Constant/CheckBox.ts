@@ -4,7 +4,7 @@ export const editorOptions: ICheckBox[] = [
   {
     id: 1,
     label: 'Dark theme',
-    state: false,
+    state: true,
   },
   {
     id: 2,

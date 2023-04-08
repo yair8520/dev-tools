@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './DropZone.css';
 import { DropZoneProps } from './DropZoneProps';
 
-export const DropZone = ({ onChange }: DropZoneProps) => {
+export const DropZone = ({
+  onChange,
+  fileName,
+  setFileName,
+}: DropZoneProps) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [name, setName] = useState('');
 
   const handleDragEnter = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ export const DropZone = ({ onChange }: DropZoneProps) => {
     setIsDragging(false);
 
     const file = e.dataTransfer.files[0];
-    setName(file.name);
+    setFileName(file.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -44,7 +47,7 @@ export const DropZone = ({ onChange }: DropZoneProps) => {
 
   const handleFileChange = (e: { target: { files: any } }) => {
     const file = e.target.files[0];
-    setName(file.name);
+    setFileName(file.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -65,13 +68,13 @@ export const DropZone = ({ onChange }: DropZoneProps) => {
         onDrop={handleDrop}
         className={isDragging ? 'dragging' : ''}
       >
-        {!name ? (
+        {!fileName ? (
           <div>
-            <p>Drag and drop your file here or</p>
-            <button className="upload-button">Upload a file</button>
+            <p>Drag and drop your file here</p>
+            <p>or click for file explorer </p>
           </div>
         ) : (
-          <p>{name}</p>
+          <p>{fileName}</p>
         )}
       </label>
       <input type="file" id="input-file-upload" onChange={handleFileChange} />

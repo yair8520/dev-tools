@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useRef, useState } from 'react';
-import { ExpandableSection } from '../../Components/ExpandableSection';
+import { useState } from 'react';
 import { ErrorContainer } from './ErrorContainer';
 import styles from './Formatter.module.css';
 import { FormatterBody } from './FormatterBody';

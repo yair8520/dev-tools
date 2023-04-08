@@ -1,19 +1,25 @@
 import React from 'react';
 import { AppBar, Toolbar } from '@mui/material';
-import {} from 'react-router-dom';
 import styles from './Header.module.css';
-import { Text } from '../Text';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ padding: 0 }}>
       <Toolbar className={styles.container}>
-        <Text className={styles.link} variant="h6">
-          {'Dev-Tools'}
-        </Text>
-        <Text className={styles.link} variant="h6">
-          {'Link'}
-        </Text>
+        <div className={styles.logo}>
+          <Link to={'/'} className={styles.link}>
+            {'Dev-Tools'}
+          </Link>
+        </div>
+        <div className={styles.links}>
+          <Link to={'/json-formatter'} className={styles.link}>
+            {'Json Formatter'}
+          </Link>
+          <Link to={'/diff-checker'} className={styles.link}>
+            {'Diff Checker'}
+          </Link>
+        </div>
       </Toolbar>
     </AppBar>
   );

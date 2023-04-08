@@ -37,3 +37,10 @@ button {
 .button {
   width: 100%;
 }
+.reset {
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  display: flex;
+  padding-top: 10px;
+}

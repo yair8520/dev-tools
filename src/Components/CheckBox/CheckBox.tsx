@@ -7,7 +7,10 @@ export const CheckBox = ({ options, setOptions, style }: CheckBoxProps) => {
     <FormGroup style={{ flexDirection: 'row' }} className={style}>
       {options.map((c) => (
         <FormControlLabel
-          control={<Checkbox onClick={() => setOptions(c.id)} />}
+          key={c.id}
+          control={
+            <Checkbox checked={c.state} onClick={() => setOptions(c.id)} />
+          }
           label={c.label}
         />
       ))}

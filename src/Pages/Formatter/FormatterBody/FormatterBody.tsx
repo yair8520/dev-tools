@@ -7,14 +7,20 @@ import styles from './FormatterBody.module.css';
 import { FormatterBodyProps } from './FormatterBodyProps';
 
 export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
-  const [raw, setRaw] = useState<string>('');
+  const [raw, setRaw] = useState<string>(JSON.stringify(jsonExample));
+  const [fileName, setFileName] = useState<string>('');
+  const resetFields = () => {
+    setRaw('');
+    setFileName('');
+    setError('');
+    setRes('');
+  };
   const setExample = () => {
     setRaw(JSON.stringify(jsonExample));
   };
   const formatCode = () => {
     try {
-      const parsedData = JSON.parse(raw);
-      const formattedData = JSON.stringify(parsedData, null, 2);
+      const formattedData = JSON.stringify(JSON.parse(raw), null, 2);
       setRes(JSON.parse(formattedData));
       setError('');
     } catch (error: any) {
@@ -27,8 +33,23 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
         <MultiLineInput id="resInput" onChange={setRaw} value={raw} />
       </div>
       <div className={styles.buttonContainer}>
-        <DropZone onChange={setRaw} />
-        <Button onClick={setExample}>Example Json</Button>
+        <DropZone
+          fileName={fileName}
+          setFileName={setFileName}
+          onChange={setRaw}
+        />
+        <div className={styles.reset}>
+          <Button
+            style={{ width: '50%' }}
+            color={'error'}
+            onClick={resetFields}
+          >
+            Reset
+          </Button>
+          <Button style={{ width: '50%' }} onClick={setExample}>
+            Example
+          </Button>
+        </div>
         <Button
           className={styles.button}
           variant="contained"
