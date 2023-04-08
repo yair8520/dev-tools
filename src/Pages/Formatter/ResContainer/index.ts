@@ -1,0 +1,1 @@
+export { ResContainer } from './ResContainer';

@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './MultiLineInput.module.css';
 import { MultiLineInputProps } from './MultiLineInputProps';
-import { TextField } from '@mui/material';
 
-export const MultiLineInput = ({ value, onChange }: MultiLineInputProps) => {
+export const MultiLineInput = ({
+  value,
+  onChange,
+  ...rest
+}: MultiLineInputProps) => {
   return (
-    <TextField
-      className={styles.container}
-      onChange={onChange}
+    <textarea
+      {...rest}
       value={value}
-      label="Multiline Input"
-      multiline
-      rows={4}
-      variant="outlined"
+      onChange={(e) => onChange(e.target.value)}
+      className={styles.text}
     />
   );
 };
