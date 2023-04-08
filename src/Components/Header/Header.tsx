@@ -6,7 +6,7 @@ import { Text } from '../Text';
 
 export const Header = () => {
   return (
-    <AppBar position="absolute">
+    <AppBar position="static">
       <Toolbar className={styles.container}>
         <Text className={styles.link} variant="h6">
           {'Dev-Tools'}

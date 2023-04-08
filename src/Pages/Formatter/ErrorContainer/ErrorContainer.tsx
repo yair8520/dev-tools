@@ -7,9 +7,11 @@ export const ErrorContainer = ({ error }: ErrorContainerProps) => {
   return (
     <div className={styles.container}>
       <ExpandableSection expend={!!error}>
-        <div className={styles.info}>
-          <h1>Please Fix the Errors below </h1>
-          <p>{error} </p>
+        <div className={styles.border}>
+          <div className={styles.info}>
+            <h1>Please Fix the Errors below </h1>
+            <p>{error} </p>
+          </div>
         </div>
       </ExpandableSection>
     </div>

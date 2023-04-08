@@ -8,7 +8,6 @@ export const ResContainer = ({ data }: ResContainerProps) => {
   useEffect(() => {
     scrollTo({ id: document.getElementById('result') });
   });
-  console.log(typeof data);
   return (
     <div id="result" className={styles.container}>
       {typeof data === 'object' && <JsonTree data={data !== '' && data} />}
