@@ -11,7 +11,7 @@ import { DiffChecker } from './Components/DiffChecker';
 function App() {
   return (
     <>
-      <Router>
+      <Router basename="/dev-tools">
         <Header />
         <Layout>
           <Routes>
