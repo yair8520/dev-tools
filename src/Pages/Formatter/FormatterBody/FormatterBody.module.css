@@ -2,8 +2,10 @@
   justify-content: center;
   display: flex;
   align-self: center;
-  width: 100%;
-  background-color: aqua;
+  width: 90%;
+  padding: 10px;
+  border: solid black 2px;
+  border-radius: 15px;
 }
 .buttonContainer {
   padding-left: 15px;
@@ -31,4 +33,7 @@ button {
   align-items: center;
   justify-content: center;
   flex: 1;
+}
+.button {
+  width: 100%;
 }

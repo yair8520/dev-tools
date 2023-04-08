@@ -1,0 +1,22 @@
+.section-title {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+.container {
+  align-self: center;
+  width: 100%;
+}
+.section-title.expanded {
+  color: #ff6600;
+}
+
+.section-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+.section-content.expanded {
+  height: auto;
+  overflow: visible;
+}

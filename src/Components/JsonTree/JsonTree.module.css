@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  width: 90%;
+  min-height: 400px;
+  align-self: center;
+  flex-direction: column;
+}
+.checkboxs {
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  display: flex;
+}
