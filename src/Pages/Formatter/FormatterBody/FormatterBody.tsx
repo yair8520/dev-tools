@@ -20,8 +20,9 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
   };
   const formatCode = () => {
     try {
-      const formattedData = JSON.stringify(JSON.parse(raw), null, 2);
+      const formattedData = JSON.stringify(JSON.parse(raw), null, 5);
       setRes(JSON.parse(formattedData));
+      setRaw(formattedData);
       setError('');
     } catch (error: any) {
       setError(error.message);
