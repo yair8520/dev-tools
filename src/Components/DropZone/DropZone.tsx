@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './DropZone.css';
 import { DropZoneProps } from './DropZoneProps';
 
@@ -6,19 +6,8 @@ export const DropZone = ({
   onChange,
   fileName,
   setFileName,
+  setError,
 }: DropZoneProps) => {
-  const [isDragging, setIsDragging] = useState(false);
-
-  const handleDragEnter = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setIsDragging(false);
-  };
-
   const handleDragOver = (e: {
     preventDefault: () => void;
     stopPropagation: () => void;
@@ -32,17 +21,20 @@ export const DropZone = ({
     dataTransfer: { files: any };
   }) => {
     e.preventDefault();
-    setIsDragging(false);
 
     const file = e.dataTransfer.files[0];
-    setFileName(file.name);
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const content = e.target?.result;
-      onChange(content);
-    };
-    reader.readAsText(file);
+    if (file.type === 'application/json' || file.type === 'text/plain') {
+      setError('');
+      setFileName(file.name);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target?.result;
+        onChange(content);
+      };
+      reader.readAsText(file);
+    } else {
+      setError('Invalid file type. Only JSON and TXT files are supported.');
+    }
   };
 
   const handleFileChange = (e: { target: { files: any } }) => {
@@ -62,11 +54,8 @@ export const DropZone = ({
       <label
         id="label-file-upload"
         htmlFor="input-file-upload"
-        onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={isDragging ? 'dragging' : ''}
       >
         {!fileName ? (
           <div>

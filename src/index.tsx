@@ -8,6 +8,7 @@ import i18n from './I18n';
 import 'react-toastify/dist/ReactToastify.css';
 import { I18nextProvider } from 'react-i18next';
 import App from './App';
+import { ModalProvider } from './Components/ModalContext/ModalContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <I18nextProvider i18n={i18n}>
     <ThemeProvider theme={MuiTheme}>
-      <App />
+      <ModalProvider>
+        <App />
+      </ModalProvider>
       <ToastContainer position="top-center" />
     </ThemeProvider>
   </I18nextProvider>

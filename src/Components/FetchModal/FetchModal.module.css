@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  width: 100%;
+}
+.button {
+  width: 70%;
+}
+.buttonContainer {
+  padding-top: 15px;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

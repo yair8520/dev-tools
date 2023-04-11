@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,9 +8,14 @@ import {
 import { Formatter } from './Pages';
 import { Header, Layout } from './Components';
 import { DiffChecker } from './Components/DiffChecker';
+import { ModalContext } from './Components/ModalContext/ModalContext';
+import { Modal } from './Components/Modal';
 function App() {
+  const { modal } = useContext(ModalContext);
+
   return (
     <>
+      {modal ? <Modal /> : null}
       <Router basename="/dev-tools">
         <Header />
         <Layout>

@@ -10,10 +10,10 @@
   border-color: #ccc;
 } */
 .text {
-  resize: vertical;
-  height: 100px;
+  /* resize: vertical;
+  height: 100px; */
 
   min-height: 316px;
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }

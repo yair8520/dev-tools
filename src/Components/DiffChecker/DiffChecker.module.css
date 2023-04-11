@@ -1,7 +1,12 @@
 .container {
   width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 .text {
+  font-weight: 900;
+  padding: 15px;
+  display: flex;
   align-self: center;
 }
 .inputs {

@@ -9,12 +9,26 @@ export const DiffChecker = () => {
   const [changed, setChanged] = useState<string>('');
   return (
     <div className={styles.container}>
-      <Text className={styles.text}> Diff Checker</Text>
+      <Text variant="h4" className={styles.text}>
+        Diff Checker
+      </Text>
       <div className={styles.inputs}>
-        <MultiLineInput value={original} onChange={setOriginal} />
-        <MultiLineInput value={changed} onChange={setChanged} />
+        <MultiLineInput
+          minRows={15}
+          maxRows={20}
+          placeholder={'Original'}
+          value={original}
+          onChange={setOriginal}
+        />
+        <MultiLineInput
+          minRows={15}
+          maxRows={20}
+          placeholder={'Changed'}
+          value={changed}
+          onChange={setChanged}
+        />
       </div>
-      <DiffContainer changed={changed} original={original} />
+      <DiffContainer original={original} changed={changed} />
     </div>
   );
 };

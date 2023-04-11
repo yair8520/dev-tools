@@ -25,6 +25,7 @@ button {
   width: 100%;
 }
 .input {
+  display: flex;
   flex: 4;
 }
 .info {
@@ -39,7 +40,6 @@ button {
 }
 .reset {
   width: 100%;
-  justify-content: space-between;
   flex-direction: row;
   padding-top: 10px;
 }

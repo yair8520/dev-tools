@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './DiffContainer.module.css';
 import { DiffContainerProps } from './DiffContainerProps';
 import ReactDiffViewer from 'react-diff-viewer';
@@ -6,8 +6,8 @@ import ReactDiffViewer from 'react-diff-viewer';
 export const DiffContainer = ({ original, changed }: DiffContainerProps) => {
   return (
     <ReactDiffViewer
-      leftTitle={'Changed'}
-      rightTitle={'Original'}
+      rightTitle={'Changed'}
+      leftTitle={'Original'}
       oldValue={original}
       newValue={changed}
       splitView={true}
