@@ -6,6 +6,7 @@
   padding: 10px;
   border: solid black 2px;
   border-radius: 15px;
+  flex-direction: row;
 }
 .buttonContainer {
   padding-left: 15px;
@@ -42,4 +43,10 @@ button {
   width: 100%;
   flex-direction: row;
   padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .inputs {
+    flex-direction: column;
+  }
 }

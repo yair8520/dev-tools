@@ -10,14 +10,13 @@ import styles from './FetchModal.module.css';
 import { FetchModalProps } from './FetchModalProps';
 import { FileCopy } from '@material-ui/icons';
 import { useFetch } from '../../Hooks/useFetch/';
+import { handlePaste } from '../../Helpers/Clipboard';
 export const FetchModal = ({ onChange }: FetchModalProps) => {
   const [value, setValue] = useState<string>(
     'https://jsonplaceholder.typicode.com/todos'
   );
   const { error, isLoading, fetchData } = useFetch();
-  const handlePaste = () => {
-    navigator.clipboard.readText().then((text) => setValue(text));
-  };
+
   console.log(error);
   const loadData = () => {
     fetchData({ url: value })
@@ -41,7 +40,7 @@ export const FetchModal = ({ onChange }: FetchModalProps) => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton onClick={handlePaste}>
+              <IconButton onClick={() => handlePaste(setValue)}>
                 <FileCopy />
               </IconButton>
             </InputAdornment>

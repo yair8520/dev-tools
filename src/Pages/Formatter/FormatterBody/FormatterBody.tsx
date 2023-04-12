@@ -5,6 +5,7 @@ import { DropZone } from '../../../Components/DropZone';
 import { FetchModal } from '../../../Components/FetchModal';
 import { ModalContext } from '../../../Components/ModalContext/ModalContext';
 import { jsonExample } from '../../../Constant/DropDown';
+import { prettifyJSON } from '../../../Helpers/Json';
 import styles from './FormatterBody.module.css';
 import { FormatterBodyProps } from './FormatterBodyProps';
 
@@ -28,6 +29,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
       setRaw(formattedData);
       setError('');
     } catch (error: any) {
+      setRaw(prettifyJSON(raw));
       setError(error.message);
     }
   };

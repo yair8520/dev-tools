@@ -10,12 +10,12 @@ export const MultiLineInput = ({
 }: MultiLineInputProps) => {
   return (
     <TextField
-      {...rest}
       multiline
       maxRows={20}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={styles.text}
+      {...rest}
     />
   );
 };
