@@ -1,16 +1,23 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Box, Modal as MuiModaL } from '@mui/material';
 import { ModalContext } from '../ModalContext/ModalContext';
 
 export const Modal = () => {
-  const { modal, handleModal, modalContent, callBack } =
-    useContext(ModalContext);
-  useEffect(() => {
-    console.log(callBack);
-  }, [callBack]);
+  const { modal, handleModal, modalContent } = useContext(ModalContext);
+  const contentProps = {
+    ...(typeof modalContent === 'string' ? {} : { handleModal }),
+  };
+
   return (
     <MuiModaL onClose={() => handleModal()} open={modal}>
-      <Box sx={style}>{modalContent}</Box>
+      <Box sx={style}>
+        {React.isValidElement(modalContent)
+          ? React.cloneElement(modalContent, {
+              ...modalContent.props,
+              ...contentProps,
+            })
+          : modalContent}
+      </Box>
     </MuiModaL>
   );
 };
@@ -20,7 +27,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  minWidth: '50vw',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,

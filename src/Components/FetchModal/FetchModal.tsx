@@ -11,21 +11,23 @@ import { FetchModalProps } from './FetchModalProps';
 import { FileCopy } from '@material-ui/icons';
 import { useFetch } from '../../Hooks/useFetch/';
 import { handlePaste } from '../../Helpers/Clipboard';
-export const FetchModal = ({ onChange }: FetchModalProps) => {
+export const FetchModal = ({ onChange, handleModal }: FetchModalProps) => {
   const [value, setValue] = useState<string>(
     'https://jsonplaceholder.typicode.com/todos'
   );
-  const { error, isLoading, fetchData } = useFetch();
+  const { error, isLoading, fetchData, setError } = useFetch();
 
-  console.log(error);
   const loadData = () => {
-    fetchData({ url: value })
-      .then((data: any) => {
-        onChange(JSON.stringify(data, null, 5));
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    setError('');
+    fetchData({ url: value }).then((data: any) => {
+      onChange(JSON.stringify(data, null, 5));
+      handleModal();
+    });
+  };
+  const handleChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setValue(e.target.value);
   };
   return (
     <div className={styles.container}>
@@ -35,7 +37,7 @@ export const FetchModal = ({ onChange }: FetchModalProps) => {
         helperText={error}
         variant="outlined"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
         className={styles.input}
         InputProps={{
           endAdornment: (
@@ -61,7 +63,7 @@ export const FetchModal = ({ onChange }: FetchModalProps) => {
               size={24}
             />
           ) : (
-            'Load JSON data	'
+            'Load'
           )}
         </Button>
       </div>

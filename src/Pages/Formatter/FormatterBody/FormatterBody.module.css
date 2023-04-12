@@ -49,4 +49,8 @@ button {
   .inputs {
     flex-direction: column;
   }
+  .buttonContainer {
+    padding-left: 0px;
+    padding-top: 15px;
+  }
 }

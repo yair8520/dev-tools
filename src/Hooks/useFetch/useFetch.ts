@@ -9,7 +9,7 @@ export const useFetch = (): FetchState => {
   const fetchData = ({ url }: FetchProps): Promise<any> => {
     return new Promise((resolve, reject) => {
       if (!isUrlValid(url)) {
-        reject({ message: '' });
+        setError('Invalid Url');
         return;
       }
       setLoading(true);
@@ -20,7 +20,6 @@ export const useFetch = (): FetchState => {
         })
         .catch((error) => {
           setError(error.message);
-          reject(error.message);
         })
         .finally(() => setLoading(false));
     });
@@ -29,6 +28,7 @@ export const useFetch = (): FetchState => {
   return {
     error,
     isLoading,
+    setError,
     fetchData,
   };
 };

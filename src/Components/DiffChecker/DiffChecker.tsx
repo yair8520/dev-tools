@@ -14,40 +14,44 @@ export const DiffChecker = () => {
         Diff Checker
       </Text>
       <div className={styles.inputs}>
-        <MultiLineInput
-          className={styles.input}
-          minRows={15}
-          maxRows={20}
-          placeholder={'Original'}
-          value={original}
-          onChange={setOriginal}
-          InputProps={{
-            endAdornment: (
-              <InputButtons
-                type={'Original'}
-                value={original}
-                onChange={setOriginal}
-              />
-            ),
-          }}
-        />
-        <MultiLineInput
-          className={styles.input}
-          minRows={15}
-          maxRows={20}
-          placeholder={'Changed'}
-          value={changed}
-          onChange={setChanged}
-          InputProps={{
-            endAdornment: (
-              <InputButtons
-                type={'Changed'}
-                value={changed}
-                onChange={setChanged}
-              />
-            ),
-          }}
-        />
+        <div className={styles.inputContainer}>
+          <MultiLineInput
+            className={styles.input}
+            minRows={15}
+            maxRows={20}
+            placeholder={'Original'}
+            value={original}
+            onChange={setOriginal}
+            InputProps={{
+              endAdornment: (
+                <InputButtons
+                  type={'Original'}
+                  value={original}
+                  onChange={setOriginal}
+                />
+              ),
+            }}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <MultiLineInput
+            className={styles.input}
+            minRows={15}
+            maxRows={20}
+            placeholder={'Changed'}
+            value={changed}
+            onChange={setChanged}
+            InputProps={{
+              endAdornment: (
+                <InputButtons
+                  type={'Changed'}
+                  value={changed}
+                  onChange={setChanged}
+                />
+              ),
+            }}
+          />
+        </div>
       </div>
       <DiffContainer original={original} changed={changed} />
     </div>

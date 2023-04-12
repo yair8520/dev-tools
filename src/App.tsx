@@ -20,8 +20,8 @@ function App() {
         <Header />
         <Layout>
           <Routes>
-            <Route path="/" element={<Navigate to="/json-formatter" />} />
-            <Route index path="/json-formatter" element={<Formatter />} />
+            <Route path="*" index element={<Navigate to="/json-formatter" />} />
+            <Route path="/json-formatter" element={<Formatter />} />
             <Route path="/diff-checker" element={<DiffChecker />} />
           </Routes>
         </Layout>

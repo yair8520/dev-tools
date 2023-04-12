@@ -2,6 +2,7 @@
   width: 90%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
 }
 .text {
   font-weight: 900;
@@ -15,19 +16,24 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  padding-bottom: 20px;
 }
 
 .input {
   align-self: center;
   display: flex;
-  width: 49%;
+  width: 100%;
   padding-bottom: 15px;
+}
+.inputContainer {
+  padding-top: 15px;
+  width: 49%;
 }
 @media (max-width: 600px) {
   .inputs {
     flex-direction: column;
   }
-  .input {
+  .inputContainer {
     width: 100%;
   }
 }

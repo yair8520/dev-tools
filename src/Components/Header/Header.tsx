@@ -1,26 +1,29 @@
 import React from 'react';
-import { AppBar, Toolbar } from '@mui/material';
-import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
+import './Header.css';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 export const Header = () => {
   return (
-    <AppBar position="static" style={{ padding: 0 }}>
-      <Toolbar className={styles.container}>
-        <div className={styles.logo}>
-          <Link to={'/'} className={styles.link}>
-            {'Dev-Tools'}
-          </Link>
-        </div>
-        <div className={styles.links}>
-          <Link to={'/json-formatter'} className={styles.link}>
-            {'Json Formatter'}
-          </Link>
-          <Link to={'/diff-checker'} className={styles.link}>
-            {'Diff Checker'}
-          </Link>
-        </div>
-      </Toolbar>
-    </AppBar>
+    <nav className="nav">
+      <Link to="/" className="site-title">
+        Dev Tools
+      </Link>
+      <ul>
+        <CustomLink to="/json-formatter">JSON</CustomLink>
+        <CustomLink to="/diff-checker">Diff</CustomLink>
+      </ul>
+    </nav>
   );
 };
+function CustomLink({ to, children, ...props }: any) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
+  return (
+    <li className={isActive ? 'active' : ''}>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
+    </li>
+  );
+}

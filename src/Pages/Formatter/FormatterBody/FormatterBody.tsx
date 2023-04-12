@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { MultiLineInput } from '../../../Components';
 import { DropZone } from '../../../Components/DropZone';
 import { FetchModal } from '../../../Components/FetchModal';
@@ -13,6 +13,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
   const [raw, setRaw] = useState<string>(JSON.stringify(jsonExample));
   const [fileName, setFileName] = useState<string>('');
   const { handleModal } = useContext(ModalContext);
+  const countRef = useRef<number>(0);
   const resetFields = () => {
     setRaw('');
     setFileName('');
@@ -29,7 +30,10 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
       setRaw(formattedData);
       setError('');
     } catch (error: any) {
-      setRaw(prettifyJSON(raw));
+      if (countRef.current === 0) {
+        countRef.current++;
+        setRaw(prettifyJSON(raw));
+      }
       setError(error.message);
     }
   };

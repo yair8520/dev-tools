@@ -16,14 +16,13 @@ export const handleFile = (
   onChange: (t: any) => void
 ) => {
   const file = e.target.files?.[0];
-  console.log(file);
-  if (!file) {
-    console.error('No file selected');
+
+  if (file.type !== 'application/json' || file.type !== 'text/plain') {
+    alert('Invalid file type. Only JSON and TXT files are supported.');
     return;
   }
 
   const reader = new FileReader();
-  console.log(file.name);
   reader.onload = (e) => {
     const content = e.target?.result;
     onChange(content);
