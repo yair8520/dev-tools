@@ -19,8 +19,10 @@ export const DropDown = ({
           handleChange(e.target.value);
         }}
       >
-        {options.map((item) => (
-          <MenuItem value={item.value}>{item.label}</MenuItem>
+        {options.map((item: string) => (
+          <MenuItem key={item} value={item}>
+            {item}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

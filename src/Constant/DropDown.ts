@@ -1,4 +1,12 @@
-import { IJsonSpace } from './Types';
+import {
+  alignContentValues,
+  alignItemsValues,
+  flexDirections,
+  flexWraps,
+  IFlexOptions,
+  IJsonSpace,
+  justifyContentValues,
+} from './Types';
 
 export const jsonSpace: IJsonSpace[] = [
   {
@@ -16,6 +24,28 @@ export const jsonSpace: IJsonSpace[] = [
   {
     label: '1 Space Tab',
     value: 1,
+  },
+];
+export const flexOptions: IFlexOptions[] = [
+  {
+    options: flexDirections,
+    type: 'flexDirection',
+  },
+  {
+    options: flexWraps,
+    type: 'flexWrap',
+  },
+  {
+    options: justifyContentValues,
+    type: 'justifyContent',
+  },
+  {
+    options: alignItemsValues,
+    type: 'alignItems',
+  },
+  {
+    options: alignContentValues,
+    type: 'alignContent',
   },
 ];
 

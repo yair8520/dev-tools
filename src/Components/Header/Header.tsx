@@ -11,6 +11,7 @@ export const Header = () => {
       <ul>
         <CustomLink to="/json-formatter">JSON</CustomLink>
         <CustomLink to="/diff-checker">Diff</CustomLink>
+        <CustomLink to="/flex-play">Flex</CustomLink>
       </ul>
     </nav>
   );
