@@ -5,16 +5,16 @@ import styles from './FlexPage.module.css';
 import {
   IContainerStyle,
   InitialStyle,
-  flexItems,
+  ItemsStyle,
   flexItemsInitial,
 } from './FlexPageProps';
+import { Mutable } from '../../Constant/DropDown';
 
 export const FlexPage = () => {
-  const [items, setItems] = useState<flexItems[]>(flexItemsInitial);
+  const [items, setItems] = useState<Mutable<ItemsStyle>[]>(flexItemsInitial);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
   const [containerStyle, setContainerStyle] =
-    useState<IContainerStyle>(InitialStyle);
+    useState<Mutable<IContainerStyle>>(InitialStyle);
   return (
     <div className={styles.container}>
       <div className={styles.options}>

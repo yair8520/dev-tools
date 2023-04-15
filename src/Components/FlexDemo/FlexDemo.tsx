@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import styles from './FlexDemo.module.css';
 import { FlexDemoProps } from './FlexDemoProps';
-import { flexItems } from '../../Pages/FlexPage/FlexPageProps';
+import { ItemsStyle } from '../../Pages/FlexPage/FlexPageProps';
 
 export const FlexDemo = ({
   items,
@@ -14,19 +14,18 @@ export const FlexDemo = ({
     },
     [setSelectedIndex]
   );
-
   return (
     <>
-      {items.map((a: flexItems, number) => (
+      {items.map((a: ItemsStyle, index: number) => (
         <div
-          key={`${a}${number}`}
-          style={a.style}
-          onClick={() => onPress(number)}
+          key={`${a}${index}`}
+          style={a}
+          onClick={() => onPress(index)}
           className={`${styles.container} ${
-            number === selectedIndex ? styles.selected : ''
+            index === selectedIndex ? styles.selected : ''
           }`}
         >
-          <p>{a.value}</p>
+          <p>{index + 1}</p>
         </div>
       ))}
     </>

@@ -3,9 +3,12 @@ import React from 'react';
 import styles from './Text.module.css';
 import { TextProps } from './TextProps';
 
-export const Text = ({ children, className, ...rest }: TextProps) => {
+export const Text = ({ children, className, bold, ...rest }: TextProps) => {
   return (
-    <Typography {...rest} className={(styles.container, `${className}`)}>
+    <Typography
+      {...rest}
+      className={(styles.container, `${className}`, bold && `${styles.bold}`)}
+    >
       {children}
     </Typography>
   );

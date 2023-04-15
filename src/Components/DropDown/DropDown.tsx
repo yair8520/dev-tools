@@ -3,6 +3,9 @@ import React from 'react';
 import { Text } from '../Text';
 import styles from './DropDown.module.css';
 import { DropDownProps } from './DropDownProps';
+import { HelpOutline } from '@material-ui/icons';
+import { Description } from '../Description';
+import { flexDescription } from '../../Constant/Description';
 
 export const DropDown = ({
   value,
@@ -12,7 +15,12 @@ export const DropDown = ({
 }: DropDownProps) => {
   return (
     <FormControl fullWidth>
-      <Text>{title}</Text>
+      <div className={styles.header}>
+        <Text>{title}</Text>
+        <Description text={flexDescription[title as keyof object] ?? ''}>
+          <HelpOutline />
+        </Description>
+      </div>
       <Select
         value={value}
         onChange={(e) => {

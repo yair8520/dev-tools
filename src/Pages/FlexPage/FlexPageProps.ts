@@ -41,76 +41,19 @@ export const itemsInitialStyle: ItemsStyle = {
   flexShrink: 0,
   order: 0,
 };
-export const flexItemsInitial: flexItems[] = [
+export const flexItemsInitial: ItemsStyle[] = [
   {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 1,
-      flexShrink: 1,
-      order: 1,
-    },
-    value: '1',
+    ...itemsInitialStyle,
   },
   {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 2,
-      flexShrink: 2,
-      order: 2,
-    },
-    value: '2',
+    ...itemsInitialStyle,
   },
+
   {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 3,
-      flexShrink: 3,
-      order: 3,
-    },
-    value: '3',
+    ...itemsInitialStyle,
   },
+
   {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 4,
-      flexShrink: 4,
-      order: 4,
-    },
-    value: '4',
-  },
-  {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 0,
-      flexShrink: 0,
-      order: 0,
-    },
-    value: '5',
-  },
-  {
-    selected: false,
-    style: {
-      alignSelf: 'auto',
-      flexBasis: 'auto',
-      flexGrow: 0,
-      flexShrink: 0,
-      order: 0,
-    },
-    value: '6',
+    ...itemsInitialStyle,
   },
 ];
-export interface flexItems {
-  value: string;
-  selected: boolean;
-  style: ItemsStyle;
-}

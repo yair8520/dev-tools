@@ -56,3 +56,8 @@ body {
 .nav li:not(.active):hover {
   transform: scale(1.2);
 }
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 20px;
+  }
+}

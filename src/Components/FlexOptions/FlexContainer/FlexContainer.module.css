@@ -1,2 +1,6 @@
-.container {
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }

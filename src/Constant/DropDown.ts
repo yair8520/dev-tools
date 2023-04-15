@@ -50,6 +50,9 @@ export const flexOptions: IFlexOptions[] = [
     type: 'flexWrap',
   },
 ];
+export type Mutable<Type> = {
+  -readonly [Key in keyof Type]: Type[Key];
+};
 export const flexItemOptions: IFlexOptions[] = [
   {
     type: 'order',

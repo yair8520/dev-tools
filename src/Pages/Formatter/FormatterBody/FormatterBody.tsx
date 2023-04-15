@@ -10,7 +10,7 @@ import styles from './FormatterBody.module.css';
 import { FormatterBodyProps } from './FormatterBodyProps';
 
 export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
-  const [raw, setRaw] = useState<string>(JSON.stringify(jsonExample));
+  const [raw, setRaw] = useState<string>('');
   const [fileName, setFileName] = useState<string>('');
   const { handleModal } = useContext(ModalContext);
   const countRef = useRef<number>(0);

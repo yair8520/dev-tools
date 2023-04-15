@@ -1,2 +1,7 @@
-.container {
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 20px 0 8px 0;
 }

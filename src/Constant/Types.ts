@@ -9,7 +9,7 @@ export type ICheckBox = {
 };
 export type IFlexOptions = {
   type: string;
-  options?: Readonly<Array<string>>;
+  options?: any;
   range?: boolean;
 };
 export const alignSelfs = [

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './FlexOptions.module.css';
 import { FlexOptionsProps } from './FlexOptionsProps';
 import { FlexContainer } from './FlexContainer';
@@ -11,7 +11,7 @@ export const FlexOptions = ({
   selectedIndex,
   items,
 }: FlexOptionsProps) => {
-  const [side, setSide] = useState(false);
+  const [side, setSide] = useState(true);
 
   return (
     <div className={styles.container}>
