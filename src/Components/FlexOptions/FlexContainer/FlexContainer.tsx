@@ -28,7 +28,7 @@ export const FlexContainer = ({
   return (
     <>
       <div className={styles.header}>
-        <Text variant="h5"> container options</Text>
+        <Text variant="h5"> Container options</Text>
         <IconButton onClick={reset}>
           <RemoveCircleOutline />
         </IconButton>

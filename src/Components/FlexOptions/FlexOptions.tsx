@@ -3,6 +3,7 @@ import styles from './FlexOptions.module.css';
 import { FlexOptionsProps } from './FlexOptionsProps';
 import { FlexContainer } from './FlexContainer';
 import { FlexChildrens } from './FlexChildrens';
+import { SplitButton } from '../SplitButton';
 
 export const FlexOptions = ({
   containerStyle,
@@ -15,28 +16,7 @@ export const FlexOptions = ({
 
   return (
     <div className={styles.container}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginBottom: '20px',
-        }}
-      >
-        <button
-          className={`${styles.button} ${side ? styles.buttonOne : ''}`}
-          disabled={side}
-          onClick={() => setSide(true)}
-        >
-          Container
-        </button>
-        <button
-          className={`${styles.button} ${!side ? styles.buttonTwo : ''}`}
-          disabled={!side}
-          onClick={() => setSide(false)}
-        >
-          Children
-        </button>
-      </div>
+      <SplitButton side={side} setSide={setSide} />
       {side ? (
         <div className={styles.flexContainer}>
           <FlexContainer
