@@ -1,38 +1,58 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './FlexOptions.module.css';
 import { FlexOptionsProps } from './FlexOptionsProps';
-import { DropDown } from '../DropDown';
-import { flexOptions } from '../../Constant/DropDown';
-import { IFlexOptions } from '../../Constant/Types';
+import { FlexContainer } from './FlexContainer';
+import { FlexChildrens } from './FlexChildrens';
 
 export const FlexOptions = ({
   containerStyle,
   setContainerStyle,
+  setItems,
+  selectedIndex,
+  items,
 }: FlexOptionsProps) => {
-  const handleChange = useCallback(
-    (type: string, val: string) => {
-      setContainerStyle((p: any) => {
-        return { ...p, [type]: val };
-      });
-    },
-    [setContainerStyle]
-  );
+  const [side, setSide] = useState(false);
+
   return (
     <div className={styles.container}>
-      <h1>FlexOptionsPage component</h1>
-      <div className={styles.flexContainer}>
-        {flexOptions.map((option: IFlexOptions, i) => {
-          return (
-            <DropDown
-              key={option.type}
-              handleChange={(e: string) => handleChange(option.type, e)}
-              value={containerStyle?.[option.type! as keyof object] ?? 0}
-              options={option.options}
-              title={option.type}
-            />
-          );
-        })}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <button
+          className={`${styles.button} ${side ? styles.buttonOne : ''}`}
+          disabled={side}
+          onClick={() => setSide(true)}
+        >
+          Container
+        </button>
+        <button
+          className={`${styles.button} ${!side ? styles.buttonTwo : ''}`}
+          disabled={!side}
+          onClick={() => setSide(false)}
+        >
+          Children
+        </button>
       </div>
+      {side ? (
+        <div className={styles.flexContainer}>
+          <FlexContainer
+            setContainerStyle={setContainerStyle}
+            containerStyle={containerStyle}
+          />
+        </div>
+      ) : (
+        <div className={styles.flexChildrens}>
+          <FlexChildrens
+            setItems={setItems}
+            child={items[selectedIndex]}
+            selectedIndex={selectedIndex}
+          />
+        </div>
+      )}
     </div>
   );
 };

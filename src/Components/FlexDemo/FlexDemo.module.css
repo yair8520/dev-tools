@@ -1,3 +1,17 @@
 .container {
+  width: 50px;
   display: flex;
+  border: solid 2px red;
+  justify-content: center;
+  height: 50px;
+  cursor: pointer;
+}
+.container.selected {
+  background-color: pink;
+  color: white;
+  border: 1px solid red;
+  pointer-events: none;
+}
+.container:not(.selected):hover {
+  transform: scale(1.1);
 }

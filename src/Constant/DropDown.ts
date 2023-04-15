@@ -1,6 +1,8 @@
 import {
   alignContentValues,
   alignItemsValues,
+  alignSelfs,
+  flexBasis,
   flexDirections,
   flexWraps,
   IFlexOptions,
@@ -32,10 +34,6 @@ export const flexOptions: IFlexOptions[] = [
     type: 'flexDirection',
   },
   {
-    options: flexWraps,
-    type: 'flexWrap',
-  },
-  {
     options: justifyContentValues,
     type: 'justifyContent',
   },
@@ -46,6 +44,32 @@ export const flexOptions: IFlexOptions[] = [
   {
     options: alignContentValues,
     type: 'alignContent',
+  },
+  {
+    options: flexWraps,
+    type: 'flexWrap',
+  },
+];
+export const flexItemOptions: IFlexOptions[] = [
+  {
+    type: 'order',
+    range: true,
+  },
+  {
+    type: 'flexGrow',
+    range: true,
+  },
+  {
+    type: 'flexShrink',
+    range: true,
+  },
+  {
+    type: 'flexBasis',
+    options: flexBasis,
+  },
+  {
+    type: 'alignSelf',
+    options: alignSelfs,
   },
 ];
 

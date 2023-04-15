@@ -9,8 +9,18 @@ export type ICheckBox = {
 };
 export type IFlexOptions = {
   type: string;
-  options: Readonly<Array<string>>;
+  options?: Readonly<Array<string>>;
+  range?: boolean;
 };
+export const alignSelfs = [
+  'flex-start',
+  'flex-end',
+  'center',
+  'space-between',
+  'space-around',
+  'stretch',
+  'auto',
+] as const;
 export const flexDirections = [
   'row',
   'column',
@@ -39,4 +49,14 @@ export const alignContentValues = [
   'space-between',
   'space-around',
   'stretch',
+] as const;
+export const flexBasis = [
+  'auto',
+  'content',
+  'fit-content',
+  'max-content',
+  'min-content',
+  'none',
+  'initial',
+  'inherit',
 ] as const;
