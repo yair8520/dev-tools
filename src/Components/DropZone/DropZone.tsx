@@ -6,7 +6,6 @@ export const DropZone = ({
   onChange,
   fileName,
   setFileName,
-  setError,
 }: DropZoneProps) => {
   const handleDragOver = (e: {
     preventDefault: () => void;
@@ -24,7 +23,6 @@ export const DropZone = ({
 
     const file = e.dataTransfer.files[0];
     if (file.type === 'application/json' || file.type === 'text/plain') {
-      setError('');
       setFileName(file.name);
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -33,20 +31,24 @@ export const DropZone = ({
       };
       reader.readAsText(file);
     } else {
-      setError('Invalid file type. Only JSON and TXT files are supported.');
+      alert('Invalid file type. Only JSON and TXT files are supported.');
     }
   };
 
   const handleFileChange = (e: { target: { files: any } }) => {
     const file = e.target.files[0];
-    setFileName(file.name);
+    if (file.type === 'application/json' || file.type === 'text/plain') {
+      setFileName(file.name);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const content = e.target?.result;
-      onChange(content);
-    };
-    reader.readAsText(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target?.result;
+        onChange(content);
+      };
+      reader.readAsText(file);
+    } else {
+      alert('Invalid file type. Only JSON and TXT files are supported.');
+    }
   };
 
   return (
