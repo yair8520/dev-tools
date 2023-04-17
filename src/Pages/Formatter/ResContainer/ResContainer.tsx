@@ -11,7 +11,7 @@ export const ResContainer = ({ data }: ResContainerProps) => {
   }, [data]);
   return (
     <div id="result" className={styles.container}>
-      {typeof data === 'object' && <JsonTree data={data !== '' && data} />}
+      {data.res !== '' && <JsonTree data={data.res !== '' && data.res} />}
     </div>
   );
 };

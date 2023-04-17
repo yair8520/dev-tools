@@ -27,7 +27,7 @@ button {
 }
 .input {
   display: flex;
-  flex: 4;
+  flex: 3;
 }
 .info {
   display: flex;
@@ -44,7 +44,10 @@ button {
   flex-direction: row;
   padding-top: 10px;
 }
-
+.checkBox {
+  display: flex;
+  align-self: center;
+}
 @media (max-width: 600px) {
   .inputs {
     flex-direction: column;
