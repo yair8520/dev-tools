@@ -52,3 +52,33 @@ export function prettifyJSON(jsonStr: string | any[]) {
 
   return prettyJson;
 }
+export function generateInterfaceFromJson(json: string): string {
+  const parsedJson = JSON.parse(json);
+  const rootInterfaceName = 'Root';
+
+  function getInterfaceFromObject(obj: any, name: string): string {
+    const keys = Object.keys(obj);
+    let interfaceString = `interface ${name} {\n`;
+
+    keys.forEach((key) => {
+      const value = obj[key];
+      if (Array.isArray(value)) {
+        const arrayInterfaceName = `${name}_${key}_Item`;
+        interfaceString += `  ${key}: ${arrayInterfaceName}[];\n`;
+        interfaceString += getInterfaceFromObject(value[0], arrayInterfaceName);
+      } else if (typeof value === 'object') {
+        const objectInterfaceName = `${key}`;
+        interfaceString += `  ${key}: ${objectInterfaceName};\n`;
+        interfaceString += getInterfaceFromObject(value, objectInterfaceName);
+      } else {
+        interfaceString += `  ${key}: ${typeof value};\n`;
+      }
+    });
+
+    interfaceString += '}\n';
+    return interfaceString;
+  }
+
+  const interfaceString = getInterfaceFromObject(parsedJson, rootInterfaceName);
+  return interfaceString;
+}
