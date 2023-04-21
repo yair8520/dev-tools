@@ -6,8 +6,8 @@ import { flexOptions } from '../../../Constant/DropDown';
 import { DropDown } from '../../DropDown';
 import { Text } from '../../Text';
 import { RemoveCircleOutline } from '@material-ui/icons';
-import { IconButton } from '@mui/material';
 import { InitialStyle } from '../../../Pages/FlexPage/FlexPageProps';
+import { CIconButton } from '../../CIconButton';
 
 export const FlexContainer = ({
   setContainerStyle,
@@ -29,9 +29,9 @@ export const FlexContainer = ({
     <>
       <div className={styles.header}>
         <Text variant="h5"> Container options</Text>
-        <IconButton onClick={reset}>
+        <CIconButton title={'Reset All'} onClick={reset}>
           <RemoveCircleOutline />
-        </IconButton>
+        </CIconButton>
       </div>
       {flexOptions.map((option: IFlexOptions, i) => {
         return (

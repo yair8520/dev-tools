@@ -18,6 +18,7 @@ import { IconButton } from '@mui/material';
 import { flexItemsInitial } from '../../../Pages/FlexPage/FlexPageProps';
 import { Description } from '../../Description';
 import { flexDescription } from '../../../Constant/Description';
+import { CIconButton } from '../../CIconButton';
 
 export const FlexChildrens = ({
   child,
@@ -51,22 +52,24 @@ export const FlexChildrens = ({
       <div className={styles.header}>
         <Text variant="h5"> {`Childrens options `} </Text>
         <div>
-          <IconButton onClick={reset}>
+          <CIconButton title={'Reset All'} onClick={reset}>
             <RemoveCircleOutline />
-          </IconButton>
-          <IconButton onClick={addCell}>
+          </CIconButton>
+          <CIconButton title={'Add One'} onClick={addCell}>
             <AddCircleOutline />
-          </IconButton>
+          </CIconButton>
         </div>
       </div>
-      <Text bold> {`Item ${selectedIndex + 1}`} </Text>
+      <Text bold variant="h6">
+        {`Selected Item { ${selectedIndex + 1} }`}
+      </Text>
       {child &&
         flexItemOptions.map((item) =>
           item.range ? (
             <div key={`${item.type}-input `}>
-              <div className={styles.header}>
-                <Text>{item.type}</Text>
-                <Description text={flexDescription[item.type as keyof object]}>
+              <div className={styles.item}>
+                <Text bold>{item.type}</Text>
+                <Description title={flexDescription[item.type as keyof object]}>
                   <HelpOutline />
                 </Description>
               </div>

@@ -1,4 +1,6 @@
-export interface DescriptionProps {
+import { TooltipProps } from '@mui/material';
+
+export interface DescriptionProps extends TooltipProps {
   [key: string]: any;
-  text: string;
+  title: string;
 }

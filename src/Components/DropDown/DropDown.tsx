@@ -16,8 +16,8 @@ export const DropDown = ({
   return (
     <FormControl fullWidth>
       <div className={styles.header}>
-        <Text>{title}</Text>
-        <Description text={flexDescription[title as keyof object] ?? ''}>
+        <Text bold>{title}</Text>
+        <Description title={flexDescription[title as keyof object] ?? ''}>
           <HelpOutline />
         </Description>
       </div>

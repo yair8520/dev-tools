@@ -7,7 +7,8 @@ export const Text = ({ children, className, bold, ...rest }: TextProps) => {
   return (
     <Typography
       {...rest}
-      className={(styles.container, `${className}`, bold && `${styles.bold}`)}
+      className={(styles.container, `${className}`)}
+      fontWeight={bold && 900}
     >
       {children}
     </Typography>

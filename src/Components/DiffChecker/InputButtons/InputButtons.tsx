@@ -12,15 +12,24 @@ import {
   handleFile,
   handlePaste,
 } from '../../../Helpers/Clipboard';
+import { CIconButton } from '../../CIconButton';
 export const InputButtons = ({ onChange, value, type }: InputButtonsProps) => {
   return (
     <InputAdornment className={styles.container} position="end">
-      <IconButton onClick={() => handleCopy(value)}>
+      <CIconButton
+        placement="right"
+        title={'Copy'}
+        onClick={() => handleCopy(value)}
+      >
         <CallMadeSharp />
-      </IconButton>
-      <IconButton onClick={() => handlePaste(onChange)}>
+      </CIconButton>
+      <CIconButton
+        placement="left"
+        title={'Paste'}
+        onClick={() => handlePaste(onChange)}
+      >
         <CallReceivedSharp />
-      </IconButton>
+      </CIconButton>
       <IconButton onClick={() => {}}>
         <input
           type="file"

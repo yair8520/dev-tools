@@ -27,6 +27,9 @@ export const JsonTree = ({ data }: JsonTreeProps) => {
       <ReactJson
         style={{ width: '100%' }}
         src={data}
+        indentWidth={10}
+        onEdit={() => {}}
+        iconStyle={'circle'}
         theme={options[0].state ? 'chalk' : undefined}
         displayDataTypes={options[1].state}
         collapsed={options[2].state ? 2 : undefined}

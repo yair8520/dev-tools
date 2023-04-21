@@ -1,34 +1,20 @@
 import React, { useContext } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from 'react-router-dom';
-import { Formatter } from './Pages';
-import { Header, Layout } from './Components';
-import { DiffChecker } from './Components/DiffChecker';
-import { ModalContext } from './Components/ModalContext/ModalContext';
-import { Modal } from './Components/Modal';
-import { FlexPage } from './Pages/FlexPage';
+import { ThemeProvider } from '@emotion/react';
+import { ModalProvider } from './Components/ModalContext/ModalContext';
+import { CssBaseline } from '@mui/material';
+import { darkTheme, lightTheme } from './Theme';
+import { AppRouter } from './Routing';
+import { AppContext } from './Components/ThemeContext/ThemeContext';
 function App() {
-  const { modal } = useContext(ModalContext);
+  const { isDark } = useContext(AppContext);
 
   return (
-    <>
-      {modal ? <Modal /> : null}
-      <Router basename="/dev-tools">
-        <Header />
-        <Layout>
-          <Routes>
-            <Route path="*" index element={<Navigate to="/json-formatter" />} />
-            <Route path="/json-formatter" element={<Formatter />} />
-            <Route path="/diff-checker" element={<DiffChecker />} />
-            <Route path="/flex-play" element={<FlexPage />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <ModalProvider>
+        <CssBaseline />
+        <AppRouter />
+      </ModalProvider>
+    </ThemeProvider>
   );
 }
 

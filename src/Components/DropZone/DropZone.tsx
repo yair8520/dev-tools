@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './DropZone.css';
 import { DropZoneProps } from './DropZoneProps';
+import { Text } from '../Text';
+import { AppContext } from '../ThemeContext/ThemeContext';
 
 export const DropZone = ({
   onChange,
   fileName,
   setFileName,
 }: DropZoneProps) => {
+  const { isDark } = useContext(AppContext);
+
   const handleDragOver = (e: {
     preventDefault: () => void;
     stopPropagation: () => void;
@@ -58,11 +62,11 @@ export const DropZone = ({
         htmlFor="input-file-upload"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        className={isDark ? 'dark' : ''}
       >
         {!fileName ? (
           <div>
-            <p>Drag and drop your file here</p>
-            <p>or click for file explorer </p>
+            <Text>Drag and drop your file here or click for file explorer</Text>
           </div>
         ) : (
           <p>{fileName}</p>

@@ -4,7 +4,6 @@ import styles from './Formatter.module.css';
 import { FormatterBody } from './FormatterBody';
 import { ResContainer } from './ResContainer';
 import { ResInitState, ResState } from './FormatterProps';
-import { InterfaceContainer } from '../../Components/InterfaceContainer';
 
 export const Formatter = () => {
   const [res, setRes] = useState<ResState>(ResInitState);

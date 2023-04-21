@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ExpandableSection } from '../../../Components/ExpandableSection';
 import styles from './ErrorContainer.module.css';
 import { ErrorContainerProps } from './ErrorContainerProps';
+import { scrollTo } from '../../../Helpers/Scroll';
 
 export const ErrorContainer = ({ error }: ErrorContainerProps) => {
+  useEffect(() => {
+    if (error !== '') scrollTo({ id: document.getElementById('Error') });
+  }, [error]);
+
   return (
-    <div className={styles.container}>
+    <div id="Error" className={styles.container}>
       <ExpandableSection expend={!!error}>
         <div className={styles.border}>
           <div className={styles.info}>

@@ -10,17 +10,17 @@ body {
   margin: 1rem;
   text-align: center;
 }
-
+.theme_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .nav {
-  background-color: #2b76d0;
   height: 60px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 2rem;
-  padding: 0 1rem;
-  padding-right: 30px;
 }
 
 .site-title {

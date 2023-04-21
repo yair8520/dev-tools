@@ -1,4 +1,5 @@
-import { Button, Checkbox, FormControlLabel } from '@mui/material';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Button } from '@mui/material';
 import React, { useContext, useState, useRef } from 'react';
 import { MultiLineInput } from '../../../Components';
 import { DropZone } from '../../../Components/DropZone';
@@ -19,7 +20,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
     setRaw('');
     setFileName('');
     setError('');
-    setWithInterface(false);
+    // setWithInterface(false);
     setRes({ json: false, res: '' });
   };
   const setExample = () => {
@@ -43,7 +44,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
     <div className={styles.inputs}>
       <div className={styles.input}>
         <MultiLineInput
-          minRows={15}
+          minRows={25}
           placeholder={'{ Paste / Write Your json here... }'}
           id="resInput"
           onChange={setRaw}
@@ -76,7 +77,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
             Load From Url
           </Button>
           <div className={styles.checkBox}>
-            <FormControlLabel
+            {/* <FormControlLabel
               control={
                 <Checkbox
                   checked={withInterface}
@@ -84,7 +85,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
                 />
               }
               label={'With Ts interfaces'}
-            />
+            /> */}
           </div>
           <Button
             className={styles.button}

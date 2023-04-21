@@ -14,7 +14,7 @@
   background-color: #fff;
   color: #000;
   width: 50%;
-  font-size: 25px;
+  font-size: min(5vw, 25px);
   border-radius: 15px 15px 0 0;
   border: #3776ce solid 2px;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FlexDemo } from '../../Components/FlexDemo';
 import { FlexOptions } from '../../Components/FlexOptions';
 import styles from './FlexPage.module.css';
@@ -9,8 +9,11 @@ import {
   flexItemsInitial,
 } from './FlexPageProps';
 import { Mutable } from '../../Constant/DropDown';
+import { Layout } from '../../Components';
+import { AppContext } from '../../Components/ThemeContext/ThemeContext';
 
 export const FlexPage = () => {
+  const { isDark } = useContext(AppContext);
   const [items, setItems] = useState<Mutable<ItemsStyle>[]>(flexItemsInitial);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [containerStyle, setContainerStyle] =
@@ -26,7 +29,13 @@ export const FlexPage = () => {
           setContainerStyle={setContainerStyle}
         />
       </div>
-      <div style={containerStyle} className={styles.demo}>
+      <div
+        style={{
+          ...containerStyle,
+          backgroundColor: !isDark ? '#f3f4f6' : '#a6a8ad',
+        }}
+        className={styles.demo}
+      >
         <FlexDemo
           items={items}
           selectedIndex={selectedIndex}
