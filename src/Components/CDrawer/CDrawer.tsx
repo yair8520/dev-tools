@@ -48,11 +48,7 @@ export const CDrawer = () => {
                 setIsDark(!isDark);
               }}
             >
-              {!isDark ? (
-                <DarkModeIcon htmlColor={isSmallScreen ? 'white' : 'black'} />
-              ) : (
-                <LightModeIcon />
-              )}
+              {!isDark ? <DarkModeIcon /> : <LightModeIcon />}
             </CIconButton>
           </ul>
         </div>
