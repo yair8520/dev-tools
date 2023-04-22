@@ -26,7 +26,7 @@ export const DropZone = ({
     e.preventDefault();
 
     const file = e.dataTransfer.files[0];
-    if (file.type === 'application/json' || file.type === 'text/plain') {
+    if (file?.type === 'application/json' || file?.type === 'text/plain') {
       setFileName(file.name);
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -41,7 +41,7 @@ export const DropZone = ({
 
   const handleFileChange = (e: { target: { files: any } }) => {
     const file = e.target.files[0];
-    if (file.type === 'application/json' || file.type === 'text/plain') {
+    if (file?.type === 'application/json' || file?.type === 'text/plain') {
       setFileName(file.name);
 
       const reader = new FileReader();
@@ -58,18 +58,17 @@ export const DropZone = ({
   return (
     <form id="form-file-upload">
       <label
-        id="label-file-upload"
+        id={isDark ? 'dark-label-file-upload' : 'label-file-upload'}
         htmlFor="input-file-upload"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        className={isDark ? 'dark' : ''}
       >
         {!fileName ? (
           <div>
             <Text>Drag and drop your file here or click for file explorer</Text>
           </div>
         ) : (
-          <p>{fileName}</p>
+          <Text>{fileName}</Text>
         )}
       </label>
       <input type="file" id="input-file-upload" onChange={handleFileChange} />

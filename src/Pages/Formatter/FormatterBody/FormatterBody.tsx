@@ -9,10 +9,10 @@ import { jsonExample } from '../../../Constant/DropDown';
 import { prettifyJSON } from '../../../Helpers/Json';
 import styles from './FormatterBody.module.css';
 import { FormatterBodyProps } from './FormatterBodyProps';
+import { InputButtons } from '../../../Components/DiffChecker/InputButtons';
 
 export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
   const [raw, setRaw] = useState<string>('');
-  const [withInterface, setWithInterface] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>('');
   const { handleModal } = useContext(ModalContext);
   const countRef = useRef<number>(0);
@@ -20,7 +20,6 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
     setRaw('');
     setFileName('');
     setError('');
-    // setWithInterface(false);
     setRes({ json: false, res: '' });
   };
   const setExample = () => {
@@ -29,7 +28,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
   const formatCode = () => {
     try {
       const formattedData = JSON.stringify(JSON.parse(raw), null, 5);
-      setRes({ json: withInterface, res: JSON.parse(formattedData) });
+      setRes({ json: true, res: JSON.parse(formattedData) });
       setRaw(formattedData);
       setError('');
     } catch (error: any) {
@@ -49,6 +48,16 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
           id="resInput"
           onChange={setRaw}
           value={raw}
+          InputProps={{
+            endAdornment: (
+              <InputButtons
+                withFile={false}
+                type={'Changed'}
+                value={raw}
+                onChange={setRaw}
+              />
+            ),
+          }}
         />
       </div>
       <div className={styles.buttonContainer}>
@@ -76,17 +85,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
           >
             Load From Url
           </Button>
-          <div className={styles.checkBox}>
-            {/* <FormControlLabel
-              control={
-                <Checkbox
-                  checked={withInterface}
-                  onClick={() => setWithInterface(!withInterface)}
-                />
-              }
-              label={'With Ts interfaces'}
-            /> */}
-          </div>
+          <div className={styles.checkBox}></div>
           <Button
             className={styles.button}
             variant="contained"

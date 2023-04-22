@@ -14,4 +14,6 @@ export interface CIconButtonProps {
     | 'top-end'
     | 'top-start'
     | undefined;
+  onClick?: any;
+  title?: any;
 }

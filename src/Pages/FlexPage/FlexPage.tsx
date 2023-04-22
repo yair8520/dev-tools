@@ -32,7 +32,7 @@ export const FlexPage = () => {
       <div
         style={{
           ...containerStyle,
-          backgroundColor: !isDark ? '#f3f4f6' : '#a6a8ad',
+          backgroundColor: !isDark ? '#f3f4f6' : '#333',
         }}
         className={styles.demo}
       >

@@ -12,8 +12,15 @@ import {
   handleFile,
   handlePaste,
 } from '../../../Helpers/Clipboard';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import { CIconButton } from '../../CIconButton';
-export const InputButtons = ({ onChange, value, type }: InputButtonsProps) => {
+export const InputButtons = ({
+  onChange,
+  value,
+  type,
+  withFile = true,
+}: InputButtonsProps) => {
   return (
     <InputAdornment className={styles.container} position="end">
       <CIconButton
@@ -30,17 +37,26 @@ export const InputButtons = ({ onChange, value, type }: InputButtonsProps) => {
       >
         <CallReceivedSharp />
       </CIconButton>
-      <IconButton onClick={() => {}}>
-        <input
-          type="file"
-          id={`fileInput${type}`}
-          onChange={(e) => handleFile(e, onChange)}
-          style={{ display: 'none' }}
-        />
-        <label htmlFor={`fileInput${type}`}>
-          <Description />
-        </label>
-      </IconButton>
+      <CIconButton
+        placement="right"
+        title={'Delete'}
+        onClick={() => onChange('')}
+      >
+        <DeleteIcon />
+      </CIconButton>
+      {withFile && (
+        <IconButton onClick={() => {}}>
+          <input
+            type="file"
+            id={`fileInput${type}`}
+            onChange={(e) => handleFile(e, onChange)}
+            style={{ display: 'none' }}
+          />
+          <label htmlFor={`fileInput${type}`}>
+            <Description />
+          </label>
+        </IconButton>
+      )}
     </InputAdornment>
   );
 };

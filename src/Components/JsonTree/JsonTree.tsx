@@ -25,7 +25,10 @@ export const JsonTree = ({ data }: JsonTreeProps) => {
         setOptions={handleChange}
       />
       <ReactJson
-        style={{ width: '100%' }}
+        style={{
+          width: '100%',
+          backgroundColor: !options[0].state ? 'white' : 'black',
+        }}
         src={data}
         indentWidth={10}
         onEdit={() => {}}
