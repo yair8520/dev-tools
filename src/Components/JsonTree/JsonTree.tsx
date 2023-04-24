@@ -8,10 +8,10 @@ import { ICheckBox } from '../../Constant/Types';
 import { AppContext } from '../ThemeContext/ThemeContext';
 
 export const JsonTree = ({ data }: JsonTreeProps) => {
-  const { isDark } = useContext(AppContext);
-  useEffect(() => {
-    handleChange(1);
-  }, [isDark]);
+  // const { isDark } = useContext(AppContext);
+  // useEffect(() => {
+  //   handleChange(1);
+  // }, [isDark]);
   const [options, setOptions] = useState<ICheckBox[]>(editorOptions);
   const handleChange = (id: number) => {
     const changedIndex: number = options.find((i) => i.id === id)?.id! - 1;
