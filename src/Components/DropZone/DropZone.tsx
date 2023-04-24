@@ -71,7 +71,7 @@ export const DropZone = ({
           <Text>{fileName}</Text>
         )}
       </label>
-      <input type="file" id="input-file-upload" onChange={handleFileChange} />
+      <input accept=".txt,.json" type="file" id="input-file-upload" onChange={handleFileChange} />
     </form>
   );
 };

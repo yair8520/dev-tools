@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './JsonTree.module.css';
 import { JsonTreeProps } from './JsonTreeProps';
 import ReactJson from 'react-json-view';
 import { editorOptions } from '../../Constant/CheckBox';
 import { CheckBox } from '../CheckBox';
 import { ICheckBox } from '../../Constant/Types';
+import { AppContext } from '../ThemeContext/ThemeContext';
 
 export const JsonTree = ({ data }: JsonTreeProps) => {
+  const { isDark } = useContext(AppContext);
+  useEffect(() => {
+    handleChange(0);
+  }, [isDark]);
   const [options, setOptions] = useState<ICheckBox[]>(editorOptions);
   const handleChange = (id: number) => {
     const changedIndex: number = options.find((i) => i.id === id)?.id! - 1;

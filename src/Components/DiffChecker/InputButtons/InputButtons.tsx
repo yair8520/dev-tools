@@ -48,6 +48,7 @@ export const InputButtons = ({
         <IconButton onClick={() => {}}>
           <input
             type="file"
+            accept=".txt,.json"
             id={`fileInput${type}`}
             onChange={(e) => handleFile(e, onChange)}
             style={{ display: 'none' }}
