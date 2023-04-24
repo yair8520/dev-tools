@@ -10,7 +10,7 @@ import { AppContext } from '../ThemeContext/ThemeContext';
 export const JsonTree = ({ data }: JsonTreeProps) => {
   const { isDark } = useContext(AppContext);
   useEffect(() => {
-    handleChange(0);
+    handleChange(1);
   }, [isDark]);
   const [options, setOptions] = useState<ICheckBox[]>(editorOptions);
   const handleChange = (id: number) => {
