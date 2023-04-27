@@ -39,7 +39,15 @@ export const CDrawer = () => {
                 style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
                 variant="subtitle1"
               >
-                {'Flex'}{' '}
+                {'Flex'}
+              </Text>
+            </CustomLink>
+            <CustomLink to="/custom-hooks">
+              <Text
+                style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
+                variant="subtitle1"
+              >
+                {'Hooks'}
               </Text>
             </CustomLink>
             <CIconButton
