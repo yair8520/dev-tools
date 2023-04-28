@@ -11,10 +11,16 @@ import {
   Collapse,
   styled,
 } from '@mui/material';
+import StayPrimaryPortraitIcon from '@mui/icons-material/StayPrimaryPortrait';
+import LaunchIcon from '@mui/icons-material/Launch';
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AppContext } from '../../ThemeContext/ThemeContext';
+import { CIconButton } from '../../CIconButton';
+import { Text } from '../../Text';
+import { createReactTypeScriptSandbox } from '../../../Helpers/SandBox';
 
 export const HookListItem = ({ item }: HookListItemProps) => {
   const { isDark } = useContext(AppContext);
@@ -39,9 +45,26 @@ export const HookListItem = ({ item }: HookListItemProps) => {
         <CardActions disableSpacing>
           <CardHeader
             disableTypography
-            title={item.title}
+            title={
+              <Text variant="h6" bold>
+                {item.title}
+              </Text>
+            }
             sx={{ flexGrow: 1, textAlign: 'left' }}
           />
+          {/* {item.launch && (
+            <CIconButton
+              onClick={() => createReactTypeScriptSandbox(item.code)}
+              title={'Try'}
+            >
+              <LaunchIcon />
+            </CIconButton>
+          )} */}
+          {item.native && (
+            <CIconButton title={'Only For React Native'}>
+              <StayPrimaryPortraitIcon />
+            </CIconButton>
+          )}
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

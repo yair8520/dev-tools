@@ -7,15 +7,15 @@ export const useModal = () => {
     React.useState<React.ReactNode | null>(null);
 
   const handleModal = (
-    c?: React.ReactNode | null,
-    cb?: (() => void) | null
+    component?: React.ReactNode | null,
+    callbackFunc?: (() => void) | null
   ) => {
     setModal(!modal);
-    if (c) {
-      setModalContent(c);
+    if (component) {
+      setModalContent(component);
     }
-    if (cb) {
-      setCallBack(() => cb);
+    if (callbackFunc) {
+      setCallBack(() => callbackFunc);
     }
   };
 
