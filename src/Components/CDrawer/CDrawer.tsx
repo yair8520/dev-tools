@@ -9,6 +9,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import { pages } from '../../Constant/Pages';
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
   const isSmallScreen = useMediaQuery('(max-width: 500px)');
@@ -18,38 +19,19 @@ export const CDrawer = () => {
       <WithDrawer>
         <div className="nav">
           <ul>
-            <CustomLink to="/json-formatter">
-              <Text
-                style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
-                variant="subtitle1"
-              >
-                {'JSON'}
-              </Text>
-            </CustomLink>
-            <CustomLink to="/diff-checker">
-              <Text
-                style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
-                variant="subtitle1"
-              >
-                {'Diff'}
-              </Text>
-            </CustomLink>
-            <CustomLink to="/flex-play">
-              <Text
-                style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
-                variant="subtitle1"
-              >
-                {'Flex'}
-              </Text>
-            </CustomLink>
-            <CustomLink to="/custom-hooks">
-              <Text
-                style={{ color: !isDark && isSmallScreen ? 'black' : 'white' }}
-                variant="subtitle1"
-              >
-                {'Hooks'}
-              </Text>
-            </CustomLink>
+            {pages.map((item, i) => (
+              <CustomLink key={item.href} to={item.href}>
+                <Text
+                  style={{
+                    color: !isDark && isSmallScreen ? 'black' : 'white',
+                  }}
+                  variant="subtitle1"
+                >
+                  {item.title}
+                </Text>
+              </CustomLink>
+            ))}
+
             <CIconButton
               title={!isDark ? 'Dark' : 'Light'}
               onClick={() => {

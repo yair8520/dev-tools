@@ -14,7 +14,13 @@ export const Header = () => {
           onClick={() => navigate('/')}
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1 }}
+          sx={{
+            flexGrow: 1,
+            '&:hover': {
+              textDecoration: 'underline',
+              cursor: 'pointer',
+            },
+          }}
         >
           Dev-Tools
         </Text>
