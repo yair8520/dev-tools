@@ -11,3 +11,10 @@
   flex-direction: row;
   display: flex;
 }
+.slider {
+  padding-top: 15px;
+  width: 20%;
+  align-self: center;
+  margin-left: 25px;
+  justify-content: center;
+}

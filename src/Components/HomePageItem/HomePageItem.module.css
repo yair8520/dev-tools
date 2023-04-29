@@ -3,10 +3,14 @@
   margin: 25px;
   transition: all 0.6s ease-in-out;
 }
-.container:hover {
+
+.container:hover,
+.container:active,
+.container:focus {
   transform: scale(1.1);
   cursor: pointer;
 }
+
 .content {
   padding: 20px;
   width: 100%;

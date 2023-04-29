@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import styles from './JsonTree.module.css';
 import { JsonTreeProps } from './JsonTreeProps';
 import ReactJson from 'react-json-view';
@@ -6,13 +6,16 @@ import { editorOptions } from '../../Constant/CheckBox';
 import { CheckBox } from '../CheckBox';
 import { ICheckBox } from '../../Constant/Types';
 import { AppContext } from '../ThemeContext/ThemeContext';
+import { useMediaQuery } from '../../Hooks/useMediaQuery';
+import { Slider } from '@mui/material';
+import { Text } from '../Text';
 
 export const JsonTree = ({ data }: JsonTreeProps) => {
-  // const { isDark } = useContext(AppContext);
-  // useEffect(() => {
-  //   handleChange(1);
-  // }, [isDark]);
+  const isSmallScreen = useMediaQuery('(max-width: 500px)');
+  const { isDark } = useContext(AppContext);
+
   const [options, setOptions] = useState<ICheckBox[]>(editorOptions);
+  const [space, setSpace] = useState<number>(!isSmallScreen ? 10 : 4);
   const handleChange = (id: number) => {
     const changedIndex: number = options.find((i) => i.id === id)?.id! - 1;
     const modifiedArray = [...options];
@@ -24,21 +27,34 @@ export const JsonTree = ({ data }: JsonTreeProps) => {
   };
   return (
     <div className={styles.container}>
-      <CheckBox
-        style={styles.checkboxs}
-        options={options}
-        setOptions={handleChange}
-      />
+      <div style={{ flexDirection: 'row', display: 'flex' }}>
+        <CheckBox
+          style={styles.checkboxs}
+          options={options}
+          setOptions={handleChange}
+        />
+        <div className={styles.slider}>
+          <Text>Space:</Text>
+          <Slider
+            onChange={(e: any) => setSpace(e.target.value)}
+            min={0}
+            max={15}
+            value={space}
+            valueLabelDisplay="auto"
+            disableSwap
+          />
+        </div>
+      </div>
       <ReactJson
         style={{
           width: '100%',
-          backgroundColor: !options[0].state ? 'white' : 'black',
+          backgroundColor: options[0].state || isDark ? 'black' : 'white',
         }}
         src={data}
-        indentWidth={10}
+        indentWidth={space}
         onEdit={() => {}}
         iconStyle={'circle'}
-        theme={options[0].state ? 'chalk' : undefined}
+        theme={options[0].state || isDark ? 'chalk' : undefined}
         displayDataTypes={options[1].state}
         collapsed={options[2].state ? 2 : undefined}
         sortKeys={options[3].state}

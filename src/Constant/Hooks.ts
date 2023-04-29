@@ -28,6 +28,30 @@ export const HooksDescription: IHooksDescription[] = [
   }`,
   },
   {
+    title: 'useInternetConnection',
+    native: true,
+    desc: `This hook uses the NetInfo module to check the device's internet connectivity status. It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook. When the connectivity status changes, it updates the state accordingly.`,
+    code: `
+    import { useState, useEffect } from 'react';
+    import NetInfo from '@react-native-community/netinfo';
+    
+    export function useInternetConnection() {
+      const [isConnected, setIsConnected] = useState(true);
+    
+      useEffect(() => {
+        const unsubscribe = NetInfo.addEventListener(state => {
+          setIsConnected(state.isConnected);
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
+      return isConnected;
+    }`,
+  },
+  {
     title: 'useMediaQuery',
     desc: 'This is a custom React hook called "useMediaQuery" that takes in a query string and returns a boolean indicating whether the current viewport matches the specified media query. The hook uses the useState and useEffect hooks to update the matches state and register a listener for changes in viewport size.',
     code: `import { useState, useEffect } from 'react';
@@ -268,6 +292,35 @@ export const HooksDescription: IHooksDescription[] = [
     
     export default useDarkModeListener;
     `,
+  },
+  {
+    title: 'useOrientation',
+    native: true,
+    desc: `This hook uses the Dimensions module to get the window dimensions and determine the current orientation. It sets the initial orientation based on the window dimensions, and then listens for changes in the window dimensions using the useEffect hook. When the dimensions change, it updates the orientation accordingly.`,
+    code: `import { useState, useEffect } from 'react';
+    import { Dimensions } from 'react-native';
+    
+    export function useOrientation() {
+      const [orientation, setOrientation] = useState(
+        Dimensions.get('window').width > Dimensions.get('window').height ? 'landscape' : 'portrait'
+      );
+    
+      useEffect(() => {
+        const updateOrientation = () => {
+          setOrientation(
+            Dimensions.get('window').width > Dimensions.get('window').height ? 'landscape' : 'portrait'
+          );
+        };
+    
+        Dimensions.addEventListener('change', updateOrientation);
+    
+        return () => {
+          Dimensions.removeEventListener('change', updateOrientation);
+        };
+      }, []);
+    
+      return orientation;
+    }`,
   },
 ];
 export interface IHooksDescription {

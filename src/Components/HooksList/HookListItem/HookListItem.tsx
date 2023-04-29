@@ -12,15 +12,12 @@ import {
   styled,
 } from '@mui/material';
 import StayPrimaryPortraitIcon from '@mui/icons-material/StayPrimaryPortrait';
-import LaunchIcon from '@mui/icons-material/Launch';
-
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AppContext } from '../../ThemeContext/ThemeContext';
 import { CIconButton } from '../../CIconButton';
 import { Text } from '../../Text';
-import { createReactTypeScriptSandbox } from '../../../Helpers/SandBox';
 
 export const HookListItem = ({ item }: HookListItemProps) => {
   const { isDark } = useContext(AppContext);
@@ -41,7 +38,7 @@ export const HookListItem = ({ item }: HookListItemProps) => {
   }));
   return (
     <div className={styles.container}>
-      <Card sx={{ width: '100%' }}>
+      <Card onClick={handleExpandClick} sx={{ width: '100%' }}>
         <CardActions disableSpacing>
           <CardHeader
             disableTypography
@@ -67,7 +64,6 @@ export const HookListItem = ({ item }: HookListItemProps) => {
           )}
           <ExpandMore
             expand={expanded}
-            onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
           >
@@ -77,7 +73,6 @@ export const HookListItem = ({ item }: HookListItemProps) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>{item.desc}</Typography>
-
             <SyntaxHighlighter
               style={isDark ? dracula : undefined}
               showLineNumbers={true}
