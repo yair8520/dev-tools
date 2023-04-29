@@ -52,74 +52,138 @@ export const HooksDescription: IHooksDescription[] = [
     }`,
   },
   {
-    title: 'useMediaQuery',
-    desc: 'This is a custom React hook called "useMediaQuery" that takes in a query string and returns a boolean indicating whether the current viewport matches the specified media query. The hook uses the useState and useEffect hooks to update the matches state and register a listener for changes in viewport size.',
-    code: `import { useState, useEffect } from 'react';
+    title: 'useDebouncedEffect',
+    launch: true,
+    desc: `The useDebouncedEffect hook is a custom hook that allows you to create an effect that is debounced. This means that the effect will only run after a certain delay has passed since the last update to its dependencies.`,
+    code: `import { useEffect, useState } from "react";
 
-  export const useMediaQuery = (query: string) => {
-    const [matches, setMatches] = useState(false);
-  
-    useEffect(() => {
-      const media = window.matchMedia(query);
-      if (media.matches !== matches) {
-        setMatches(media.matches);
-      }
-      const listener = () => setMatches(media.matches);
-      window.addEventListener('resize', listener);
-      return () => window.removeEventListener('resize', listener);
-    }, [matches, query]);
-  
-    return matches;
-  };
+    export const useDebouncedEffect = (
+      effect: () => void,
+      deps: any,
+      delay: number
+    ) => {
+      useEffect(() => {
+        const handler = setTimeout(() => effect(), delay);
+        return () => clearTimeout(handler);
+      }, [...(deps || []), delay]);
+    };
+    
+    function App() {
+      const [searchTerm, setSearchTerm] = useState("");
+    
+      useDebouncedEffect(
+        () => {
+          // Make an API call with the debounced search term
+          console.log("Search:", searchTerm);
+        },
+        [searchTerm],
+        5000 // Debounce delay of 5000ms
+      );
+    
+      return (
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      );
+    }
+    
+    export default App;
+    
   `,
   },
   {
+    title: 'useMediaQuery',
+    launch: true,
+    desc: 'This is a custom React hook called "useMediaQuery" that takes in a query string and returns a boolean indicating whether the current viewport matches the specified media query. The hook uses the useState and useEffect hooks to update the matches state and register a listener for changes in viewport size.',
+    code: `import { useState, useEffect } from "react";
+
+    export const useMediaQuery = (query: string) => {
+      const [matches, setMatches] = useState(false);
+    
+      useEffect(() => {
+        const media = window.matchMedia(query);
+        if (media.matches !== matches) {
+          setMatches(media.matches);
+        }
+        const listener = () => setMatches(media.matches);
+        window.addEventListener("resize", listener);
+        return () => window.removeEventListener("resize", listener);
+      }, [matches, query]);
+    
+      return matches;
+    };
+    function App() {
+      const isSmallScreen:boolean = useMediaQuery("(max-width: 500px)");
+    
+      return <p>{isSmallScreen.toString()}</p>;
+    }
+    
+    export default App;
+    `,
+  },
+  {
     title: 'useToggle',
+    launch: true,
     desc: `This is a custom React hook called "useToggle" that takes in an optional boolean initial state and returns a tuple with the current boolean state and a function to toggle the state. The hook uses the useState hook to initialize and update the state, and the useCallback hook to memoize the toggle function to prevent unnecessary re-renders. In the example usage, the hook is used to toggle a boolean value with a button click.`,
     code: `import { useCallback, useState } from 'react';
-  // Usage
-  function App() {
-      // Call the hook which returns, current value and the toggler function
-      const [isTextChanged, setIsTextChanged] = useToggle();
-      return (
-          <button onClick={setIsTextChanged}>{isTextChanged ? 'Toggled' : 'Click to Toggle'}</button>
-      );
-  }
+  
   // Hook
   // Parameter is the boolean, with default "false" value
   const useToggle = (initialState: boolean = false): [boolean, any] => {
-      // Initialize the state
       const [state, setState] = useState<boolean>(initialState);
       // Define and memorize toggler function in case we pass down the comopnent,
       // This function change the boolean value to it's opposite value
       const toggle = useCallback((): void => setState(state => !state), []);
       return [state, toggle]
-  }`,
+  }
+  function App() {
+    // Call the hook which returns, current value and the toggler function
+    const [isTextChanged, setIsTextChanged] = useToggle();
+    return (
+        <button onClick={setIsTextChanged}>{isTextChanged ? 'Toggled' : 'Click to Toggle'}</button>
+    );
+}
+export default App`,
   },
   {
     title: 'useLocalStorage',
+    launch: true,
     desc: `This hook takes in a key and initial value and returns an array with two values: the current value stored in local storage and a function to update the value. The hook uses the useState and useEffect hooks to get and set the value in local storage.`,
-    code: `import { useState, useEffect } from 'react';
+    code: `import { useState, useEffect } from "react";
 
-  const useLocalStorage = (key: string, initialValue: any) => {
-    const [value, setValue] = useState(() => {
-      const storedValue = localStorage.getItem(key);
-      return storedValue !== null ? JSON.parse(storedValue) : initialValue;
-    });
-  
-    useEffect(() => {
-      localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-  
-    return [value, setValue];
-  };
-  
-  export default useLocalStorage;
+    export const useLocalStorage = <T extends unknown>(
+      key: string,
+      initialValue: T
+    ): [T, React.Dispatch<React.SetStateAction<T>>] => {
+      const [value, setValue] = useState<T>(() => {
+        const storedValue = localStorage.getItem(key);
+        return storedValue !== null ? JSON.parse(storedValue) : initialValue;
+      });
+    
+      useEffect(() => {
+        localStorage.setItem(key, JSON.stringify(value));
+      }, [key, value]);
+    
+      return [value, setValue];
+    };
+    
+    function App() {
+      const [value, setValue] = useLocalStorage<string>("key", "value");
+    
+      return <p onClick={() => setValue("new value")}>{value}</p>;
+    }
+    
+    export default App;
+    
   `,
   },
   {
     title: 'useCopyToClipboard',
-    desc: `The useCopyToClipboard hook can be used in any React functional component to enable copying text to the clipboard and displaying the result of the copy operation to the user.`,
+    launch: true,
+    desc: `The useCopyToClipboard hook can be used in any React functional component to enable copying text to the clipboard and displaying the result of the copy operation to the user.
+    *The navigator.clipboard.writeText method is only available over HTTPS or localhost.`,
     code: `import { useState } from 'react'
 
     type CopiedValue = string | null
@@ -149,44 +213,49 @@ export const HooksDescription: IHooksDescription[] = [
       return [copiedText, copy]
     }
     
-    export default useCopyToClipboard
-    
+    function App() {
+      const [copiedText, copy] = useCopyToClipboard();
+      return (
+        <>
+          <p onClick={(e) => copy("copyText")}>Click For Copy</p>
+          <p>{copiedText}</p>
+        </>
+      );
+    }
+    export default App; 
   `,
   },
   {
     title: 'usePrevious',
+    launch: true,
     desc: `This hook can be useful when you need to compare the previous value of a prop or state variable with the current value to trigger some action or effect. By storing the previous value in a ref, you can compare it to the current value in a subsequent render cycle of the component. `,
-    code: `import { useEffect, useRef } from 'react';
+    code: `import { useEffect, useRef, useState } from 'react';
 
-  export const usePrevious = <K = any>(value: K) => {
-    const ref = useRef<K>();
-  
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-  
-    return ref.current;
-  };`,
+    export const usePrevious = <K = any>(value: K) => {
+      const ref = useRef<K>();
+    
+      useEffect(() => {
+        ref.current = value;
+      }, [value]);
+    
+      return ref.current;
+    };
+    function App() {
+      const [count, setCount] = useState(0);
+      const prevCount = usePrevious(count);
+    
+      return (
+        <div>
+          <p>Current count: {count}</p>
+          <p>Previous count: {prevCount}</p>
+          <button onClick={() => setCount(count + 1)}>Increment</button>
+        </div>
+      );
+    }
+    
+    export default App;`,
   },
-  {
-    title: 'useDebouncedEffect',
-    desc: `The useDebouncedEffect hook is a custom hook that allows you to create an effect that is debounced. This means that the effect will only run after a certain delay has passed since the last update to its dependencies.`,
-    code: `import { useEffect } from 'react';
 
-  export const useDebouncedEffect = (
-    effect: () => void,
-    deps: any,
-    delay: number
-  ) => {
-    useEffect(() => {
-      const handler = setTimeout(() => effect(), delay);
-  
-      return () => clearTimeout(handler);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [...(deps || []), delay]);
-  };
-  `,
-  },
   {
     title: 'useIsForeground',
     native: true,
@@ -330,3 +399,15 @@ export interface IHooksDescription {
   native?: boolean;
   launch?: boolean;
 }
+
+export const indexFile = `
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./src/App";
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(<App />);
+
+`;

@@ -11,13 +11,17 @@ import {
   Collapse,
   styled,
 } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import WebIcon from '@mui/icons-material/Web';
 import StayPrimaryPortraitIcon from '@mui/icons-material/StayPrimaryPortrait';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LaunchIcon from '@mui/icons-material/Launch';
 import { AppContext } from '../../ThemeContext/ThemeContext';
 import { CIconButton } from '../../CIconButton';
 import { Text } from '../../Text';
+import { createReactTypeScriptSandbox } from '../../../Helpers/SandBox';
 
 export const HookListItem = ({ item }: HookListItemProps) => {
   const { isDark } = useContext(AppContext);
@@ -38,9 +42,10 @@ export const HookListItem = ({ item }: HookListItemProps) => {
   }));
   return (
     <div className={styles.container}>
-      <Card onClick={handleExpandClick} sx={{ width: '100%' }}>
+      <Card sx={{ width: '100%' }}>
         <CardActions disableSpacing>
           <CardHeader
+            onClick={handleExpandClick}
             disableTypography
             title={
               <Text variant="h6" bold>
@@ -49,20 +54,25 @@ export const HookListItem = ({ item }: HookListItemProps) => {
             }
             sx={{ flexGrow: 1, textAlign: 'left' }}
           />
-          {/* {item.launch && (
+          {item.launch && (
             <CIconButton
               onClick={() => createReactTypeScriptSandbox(item.code)}
               title={'Try'}
             >
               <LaunchIcon />
             </CIconButton>
-          )} */}
-          {item.native && (
-            <CIconButton title={'Only For React Native'}>
+          )}
+          {item.native ? (
+            <CIconButton title={'Mobile'}>
               <StayPrimaryPortraitIcon />
+            </CIconButton>
+          ) : (
+            <CIconButton title={'Web'}>
+              <WebIcon />
             </CIconButton>
           )}
           <ExpandMore
+            onClick={handleExpandClick}
             expand={expanded}
             aria-expanded={expanded}
             aria-label="show more"
@@ -70,16 +80,25 @@ export const HookListItem = ({ item }: HookListItemProps) => {
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse in={expanded} timeout="auto">
           <CardContent>
             <Typography paragraph>{item.desc}</Typography>
-            <SyntaxHighlighter
-              style={isDark ? dracula : undefined}
-              showLineNumbers={true}
-              language="javascript"
-            >
-              {item.code}
-            </SyntaxHighlighter>
+            <div>
+              {/* <div className={styles.copyIcon}>
+                {expanded && (
+                  <CIconButton title={'Copy'}>
+                    <ContentCopyIcon />
+                  </CIconButton>
+                )}
+              </div> */}
+              <SyntaxHighlighter
+                style={isDark ? dracula : undefined}
+                showLineNumbers={true}
+                language="javascript"
+              >
+                {item.code}
+              </SyntaxHighlighter>
+            </div>
           </CardContent>
         </Collapse>
       </Card>

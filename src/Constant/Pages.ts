@@ -3,7 +3,8 @@ export const pages: IPages[] = [
     href: '/custom-hooks',
     title: 'Hooks',
     headline: 'Custom Hooks',
-    description: 'Find and share custom React hooks for common use cases.',
+    description:
+      'Find and share custom React hooks for common use cases live With CodeSandBox.',
   },
   {
     href: '/flex-playGround',

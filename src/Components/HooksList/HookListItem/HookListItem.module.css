@@ -11,3 +11,7 @@
   width: 90%;
   align-self: center;
 }
+.copyIcon {
+  position: absolute;
+  right: 10%;
+}
