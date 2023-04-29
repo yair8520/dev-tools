@@ -1,14 +1,19 @@
 .container {
   width: 100%;
   margin: 25px;
-  transition: all 0.2s ease-in-out;
+  transition: all 5s ease-in-out;
 }
 
 .container:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
+@media (max-width: 600px) {
+  .container:hover {
+    transform: none;
+  }
+}
 .content {
   padding: 20px;
   width: 100%;
