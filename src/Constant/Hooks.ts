@@ -2,9 +2,9 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useNetworkStatus',
     launch: true,
-    desc: `A piece of state that tracks whether the network is online.\n
+    desc: `A piece of state that tracks whether the network is online.
     An Effect that subscribes to the global online and offline events, and updates that state.
-    This will keep your component synchronized with the network status.\n You might start with something like this:`,
+    This will keep your component synchronized with the network status.`,
     code: `import { useState, useEffect } from 'react';
 
   export default function StatusBar() {
@@ -30,7 +30,8 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useInternetConnection',
     native: true,
-    desc: `This hook uses the NetInfo module to check the device's internet connectivity status. It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook. When the connectivity status changes, it updates the state accordingly.`,
+    desc: `This hook uses the NetInfo module to check the device's internet connectivity status,It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook.
+    When the connectivity status changes, it updates the state accordingly.`,
     code: `
     import { useState, useEffect } from 'react';
     import NetInfo from '@react-native-community/netinfo';
@@ -54,7 +55,7 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useDebouncedEffect',
     launch: true,
-    desc: `The useDebouncedEffect hook is a custom hook that allows you to create an effect that is debounced. This means that the effect will only run after a certain delay has passed since the last update to its dependencies.`,
+    desc: `The useDebouncedEffect hook is a custom hook that allows you to create an effect that is debounced, this means that the effect will only run after a certain delay has passed since the last update to its dependencies.`,
     code: `import { useEffect, useState } from "react";
 
     export const useDebouncedEffect = (
@@ -183,7 +184,7 @@ export default App`,
     title: 'useCopyToClipboard',
     launch: true,
     desc: `The useCopyToClipboard hook can be used in any React functional component to enable copying text to the clipboard and displaying the result of the copy operation to the user.
-    *The navigator.clipboard.writeText method is only available over HTTPS or localhost.`,
+    *The "navigator.clipboard.writeText" method is only available over HTTPS or localhost.`,
     code: `import { useState } from 'react'
 
     type CopiedValue = string | null
@@ -286,7 +287,6 @@ export default App`,
     title: `useKeyBoardStatus`,
     native: true,
     desc: `The useKeyBoardStatus hook is a custom hook that is used in a React Native application to detect the status of the keyboard. It uses the Keyboard module from react-native to listen for events when the keyboard is shown or hidden.
-
   The hook returns an object with a boolean value called keyboardStatus, which is true if the keyboard is currently shown and false if it is hidden.`,
     code: `import { useEffect, useState } from 'react';
     import { Keyboard } from 'react-native';

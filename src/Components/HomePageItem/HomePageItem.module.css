@@ -4,9 +4,13 @@
   transition: all 5s ease-in-out;
 }
 
-.container:hover {
+.container:not(.disabled):hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.disabled {
+  cursor: default;
 }
 
 @media (max-width: 600px) {

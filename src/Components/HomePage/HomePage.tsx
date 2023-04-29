@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './HomePage.module.css';
-import { pages } from '../../Constant/Pages';
+import { moreToCome, pages } from '../../Constant/Pages';
 import { HomePageItem } from '../HomePageItem';
 
 export const HomePage = () => {
@@ -9,6 +9,7 @@ export const HomePage = () => {
       {pages.map((item) => (
         <HomePageItem key={item.href} item={item} />
       ))}
+      <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
     </div>
   );
 };

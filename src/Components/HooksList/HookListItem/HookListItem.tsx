@@ -82,7 +82,9 @@ export const HookListItem = ({ item }: HookListItemProps) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto">
           <CardContent>
-            <Typography paragraph>{item.desc}</Typography>
+            <Typography style={{ whiteSpace: 'pre-line' }} variant="body1">
+              {item.desc}
+            </Typography>
             <div>
               {/* <div className={styles.copyIcon}>
                 {expanded && (
