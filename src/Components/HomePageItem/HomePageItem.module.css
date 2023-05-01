@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 600px) {
-  .container:hover {
+  .container:not(.disabled):hover {
     transform: none;
   }
 }
