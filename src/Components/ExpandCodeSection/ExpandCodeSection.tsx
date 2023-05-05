@@ -19,13 +19,6 @@ export const ExpandCodeSection = ({
           {item.desc}
         </Typography>
         <div>
-          {/* <div className={styles.copyIcon}>
-          {expanded && (
-            <CIconButton title={'Copy'}>
-              <ContentCopyIcon />
-            </CIconButton>
-          )}
-        </div> */}
           <SyntaxHighlighter
             style={isDark ? dracula : github}
             showLineNumbers={true}

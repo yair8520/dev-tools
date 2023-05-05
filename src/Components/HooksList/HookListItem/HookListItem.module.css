@@ -4,6 +4,7 @@
   padding-bottom: 20px;
   margin: 0;
 }
+
 .header {
   flex-direction: row;
   display: flex;
@@ -12,10 +13,12 @@
   width: 90%;
   align-self: center;
 }
+
 .copyIcon {
   position: absolute;
   right: 10%;
 }
+
 /* Keyframe animation for list item entering */
 @keyframes enter {
   0% {
@@ -27,8 +30,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-.highlighted {
-  background-color: yellow;
-  transition: background-color 0.5s ease;
 }
