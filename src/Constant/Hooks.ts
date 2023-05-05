@@ -5,53 +5,34 @@ export const HooksDescription: IHooksDescription[] = [
     desc: `A piece of state that tracks whether the network is online.
     An Effect that subscribes to the global online and offline events, and updates that state.
     This will keep your component synchronized with the network status.`,
-    code: `import { useState, useEffect } from 'react';
+    code: `import { useState, useEffect } from "react";
 
-  export default function StatusBar() {
-    const [isOnline, setIsOnline] = useState(true);
-    useEffect(() => {
-      function handleOnline() {
-        setIsOnline(true);
-      }
-      function handleOffline() {
-        setIsOnline(false);
-      }
-      window.addEventListener('online', handleOnline);
-      window.addEventListener('offline', handleOffline);
-      return () => {
-        window.removeEventListener('online', handleOnline);
-        window.removeEventListener('offline', handleOffline);
-      };
-    }, []);
-  
-    return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
-  }`,
-  },
-  {
-    title: 'useInternetConnection',
-    native: true,
-    desc: `This hook uses the NetInfo module to check the device's internet connectivity status,It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook.
-    When the connectivity status changes, it updates the state accordingly.`,
-    code: `
-    import { useState, useEffect } from 'react';
-    import NetInfo from '@react-native-community/netinfo';
-    
-    export function useInternetConnection() {
-      const [isConnected, setIsConnected] = useState(true);
-    
+    export function useNetworkStatus(): boolean {
+      const [isOnline, setIsOnline] = useState<boolean>(true);
       useEffect(() => {
-        const unsubscribe = NetInfo.addEventListener(state => {
-          setIsConnected(state.isConnected);
-        });
-    
+        function handleOnline() {
+          setIsOnline(true);
+        }
+        function handleOffline() {
+          setIsOnline(false);
+        }
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
         return () => {
-          unsubscribe();
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
         };
       }, []);
     
-      return isConnected;
-    }`,
+      return isOnline;
+    }
+    function App() {
+      const isOnline = useNetworkStatus();
+      return <h1>{isOnline ? "✅ Online" : "❌ Disconnected"}</h1>;
+    }
+    export default App;`,
   },
+
   {
     title: 'useDebouncedEffect',
     launch: true,
@@ -255,6 +236,33 @@ export default App`,
     }
     
     export default App;`,
+  },
+];
+export const nativeHooksDescription: IHooksDescription[] = [
+  {
+    title: 'useInternetConnection',
+    native: true,
+    desc: `This hook uses the NetInfo module to check the device's internet connectivity status,It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook.
+    When the connectivity status changes, it updates the state accordingly.`,
+    code: `
+    import { useState, useEffect } from 'react';
+    import NetInfo from '@react-native-community/netinfo';
+    
+    export function useInternetConnection() {
+      const [isConnected, setIsConnected] = useState(true);
+    
+      useEffect(() => {
+        const unsubscribe = NetInfo.addEventListener(state => {
+          setIsConnected(state.isConnected);
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
+      return isConnected;
+    }`,
   },
 
   {

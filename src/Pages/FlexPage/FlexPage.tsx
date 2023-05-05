@@ -9,7 +9,6 @@ import {
   flexItemsInitial,
 } from './FlexPageProps';
 import { Mutable } from '../../Constant/DropDown';
-import { Layout } from '../../Components';
 import { AppContext } from '../../Components/ThemeContext/ThemeContext';
 
 export const FlexPage = () => {

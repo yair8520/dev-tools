@@ -11,7 +11,13 @@ export const CIconButton = ({
 }: CIconButtonProps) => {
   return (
     <Description placement={placement} title={title}>
-      <IconButton onClick={onClick}>{children}</IconButton>
+      <IconButton
+        style={!onClick ? { cursor: 'default' } : {}}
+        disableRipple={!onClick}
+        onClick={onClick}
+      >
+        {children}
+      </IconButton>
     </Description>
   );
 };

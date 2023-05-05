@@ -6,6 +6,7 @@
   height: 50px;
   cursor: pointer;
   align-items: center;
+  animation: enter 0.3s ease-in-out;
 }
 .container.selected {
   background-color: #3776ce;
@@ -15,4 +16,15 @@
 }
 .container:not(.selected):hover {
   background-color: cadetblue;
+}
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

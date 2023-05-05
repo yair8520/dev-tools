@@ -1,6 +1,8 @@
 .container {
   width: 100%;
+  align-self: center;
   display: flex;
+  animation: enter 0.9s ease-in-out;
   padding-bottom: 20px;
 }
 .header {
@@ -14,4 +16,16 @@
 .copyIcon {
   position: absolute;
   right: 10%;
+}
+/* Keyframe animation for list item entering */
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

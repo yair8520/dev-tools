@@ -2,6 +2,7 @@
   width: 100%;
   margin: 25px;
   transition: all 5s ease-in-out;
+  animation: enter 0.9s ease-in-out;
 }
 
 .container:not(.disabled):hover {
@@ -25,4 +26,15 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+}
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -8,14 +8,16 @@ export const DiffContainer = ({ original, changed }: DiffContainerProps) => {
   const { isDark } = useContext(AppContext);
 
   return (
-    <ReactDiffViewer
-      useDarkTheme={isDark}
-      rightTitle={'Changed'}
-      leftTitle={'Original'}
-      oldValue={original}
-      newValue={changed}
-      splitView={true}
-      showDiffOnly={false}
-    />
+    <div style={{ maxWidth: '100vw', overflow: 'auto' }}>
+      <ReactDiffViewer
+        useDarkTheme={isDark}
+        rightTitle={'Changed'}
+        leftTitle={'Original'}
+        oldValue={original}
+        newValue={changed}
+        splitView={true}
+        showDiffOnly={false}
+      />
+    </div>
   );
 };

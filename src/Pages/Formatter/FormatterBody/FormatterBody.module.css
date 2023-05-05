@@ -27,7 +27,7 @@ button {
 }
 .input {
   display: flex;
-  flex: 3;
+  flex: 4;
 }
 .info {
   display: flex;
