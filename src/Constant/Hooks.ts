@@ -2,6 +2,7 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useNetworkStatus',
     launch: true,
+    type: 'web',
     desc: `A piece of state that tracks whether the network is online.
     An Effect that subscribes to the global online and offline events, and updates that state.
     This will keep your component synchronized with the network status.`,
@@ -36,6 +37,7 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useDebouncedEffect',
     launch: true,
+    type: 'web',
     desc: `The useDebouncedEffect hook is a custom hook that allows you to create an effect that is debounced, this means that the effect will only run after a certain delay has passed since the last update to its dependencies.`,
     code: `import { useEffect, useState } from "react";
 
@@ -78,6 +80,7 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useMediaQuery',
     launch: true,
+    type: 'web',
     desc: 'This is a custom React hook called "useMediaQuery" that takes in a query string and returns a boolean indicating whether the current viewport matches the specified media query. The hook uses the useState and useEffect hooks to update the matches state and register a listener for changes in viewport size.',
     code: `import { useState, useEffect } from "react";
 
@@ -108,6 +111,7 @@ export const HooksDescription: IHooksDescription[] = [
   {
     title: 'useToggle',
     launch: true,
+    type: 'web',
     desc: `This is a custom React hook called "useToggle" that takes in an optional boolean initial state and returns a tuple with the current boolean state and a function to toggle the state. The hook uses the useState hook to initialize and update the state, and the useCallback hook to memoize the toggle function to prevent unnecessary re-renders. In the example usage, the hook is used to toggle a boolean value with a button click.`,
     code: `import { useCallback, useState } from 'react';
   
@@ -132,6 +136,7 @@ export default App`,
   {
     title: 'useLocalStorage',
     launch: true,
+    type: 'web',
     desc: `This hook takes in a key and initial value and returns an array with two values: the current value stored in local storage and a function to update the value. The hook uses the useState and useEffect hooks to get and set the value in local storage.`,
     code: `import { useState, useEffect } from "react";
 
@@ -164,6 +169,7 @@ export default App`,
   {
     title: 'useCopyToClipboard',
     launch: true,
+    type: 'web',
     desc: `The useCopyToClipboard hook can be used in any React functional component to enable copying text to the clipboard and displaying the result of the copy operation to the user.
     *The "navigator.clipboard.writeText" method is only available over HTTPS or localhost.`,
     code: `import { useState } from 'react'
@@ -210,6 +216,7 @@ export default App`,
   {
     title: 'usePrevious',
     launch: true,
+    type: 'web',
     desc: `This hook can be useful when you need to compare the previous value of a prop or state variable with the current value to trigger some action or effect. By storing the previous value in a ref, you can compare it to the current value in a subsequent render cycle of the component. `,
     code: `import { useEffect, useRef, useState } from 'react';
 
@@ -241,7 +248,7 @@ export default App`,
 export const nativeHooksDescription: IHooksDescription[] = [
   {
     title: 'useInternetConnection',
-    native: true,
+    type: 'native',
     desc: `This hook uses the NetInfo module to check the device's internet connectivity status,It sets the initial state to true, and then listens for changes in the connectivity status using the useEffect hook.
     When the connectivity status changes, it updates the state accordingly.`,
     code: `
@@ -267,7 +274,7 @@ export const nativeHooksDescription: IHooksDescription[] = [
 
   {
     title: 'useIsForeground',
-    native: true,
+    type: 'native',
     desc: `The useIsForeground hook is a custom hook that is used in a React Native application to detect if the app is currently in the foreground or not. It uses the AppState module from react-native to listen for changes in the app state and updates its own state accordingly.
 
     The hook returns a boolean value indicating whether the app is currently in the foreground or not. `,
@@ -293,7 +300,7 @@ export const nativeHooksDescription: IHooksDescription[] = [
   },
   {
     title: `useKeyBoardStatus`,
-    native: true,
+    type: 'native',
     desc: `The useKeyBoardStatus hook is a custom hook that is used in a React Native application to detect the status of the keyboard. It uses the Keyboard module from react-native to listen for events when the keyboard is shown or hidden.
   The hook returns an object with a boolean value called keyboardStatus, which is true if the keyboard is currently shown and false if it is hidden.`,
     code: `import { useEffect, useState } from 'react';
@@ -321,7 +328,7 @@ export const nativeHooksDescription: IHooksDescription[] = [
   },
   {
     title: 'useBackButton',
-    native: true,
+    type: 'native',
     desc: `This code defines a custom hook useBackButton that allows a developer to define a callback function that will be executed when the Android device's back button is pressed. The hook uses the useNavigation hook from the @react-navigation/native library to determine if the current screen is focused. If it is, the callback function is called and true is returned to indicate that the back button press has been handled. If the screen is not focused, false is returned to allow the default back button behavior to occur.`,
     code: `import React from 'react';
   import { useNavigation } from '@react-navigation/native';
@@ -350,7 +357,7 @@ export const nativeHooksDescription: IHooksDescription[] = [
   },
   {
     title: 'useDarkModeListener',
-    native: true,
+    type: 'native',
     desc: `This code exports a custom hook called useDarkModeListener that takes an optional callback function. The hook uses the useEffect hook to listen for changes in the appearance mode (light or dark) of the app using the Appearance API provided by react-native. When the appearance mode changes, the callback function is called with a boolean value indicating whether the new mode is dark or not.`,
     code: `import { useEffect } from 'react';
     import { Appearance } from 'react-native';
@@ -372,7 +379,7 @@ export const nativeHooksDescription: IHooksDescription[] = [
   },
   {
     title: 'useOrientation',
-    native: true,
+    type: 'native',
     desc: `This hook uses the Dimensions module to get the window dimensions and determine the current orientation. It sets the initial orientation based on the window dimensions, and then listens for changes in the window dimensions using the useEffect hook. When the dimensions change, it updates the orientation accordingly.`,
     code: `import { useState, useEffect } from 'react';
     import { Dimensions } from 'react-native';
@@ -404,7 +411,7 @@ export interface IHooksDescription {
   title: string;
   desc: string;
   code: string;
-  native?: boolean;
+  type?: 'web' | 'native';
   launch?: boolean;
 }
 

@@ -5,6 +5,6 @@ export const scrollTo = ({
   behavior = 'smooth',
   block = 'start',
 }: IScrollTo) => {
-  console.log({ id });
-  id && id.scrollIntoView({ behavior, block });
+  const element = document.getElementById(id);
+  element && element.scrollIntoView({ behavior, block });
 };

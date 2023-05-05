@@ -1,9 +1,8 @@
 .container {
-  width: 100%;
-  align-self: center;
   display: flex;
-  animation: enter 0.9s ease-in-out;
+  /* animation: enter 0.9s ease-in; */
   padding-bottom: 20px;
+  margin: 0;
 }
 .header {
   flex-direction: row;
@@ -28,4 +27,8 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+.highlighted {
+  background-color: yellow;
+  transition: background-color 0.5s ease;
 }

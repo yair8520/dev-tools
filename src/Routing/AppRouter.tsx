@@ -13,6 +13,7 @@ import { FlexPage } from '../Pages/FlexPage';
 import { Modal } from '../Components/Modal';
 import { CustomHooks } from '../Components/CustomHooks';
 import { HomePage } from '../Components/HomePage';
+import { TypeScriptUtils } from '../Components/TypeScriptUtils';
 
 export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
@@ -28,6 +29,7 @@ export const AppRouter = () => {
           <Route path="/diff-checker" element={<DiffChecker />} />
           <Route path="/flex-playGround" element={<FlexPage />} />
           <Route path="/custom-hooks" element={<CustomHooks />} />
+          <Route path="/TS-utils" element={<TypeScriptUtils />} />
         </Routes>
       </Layout>
     </Router>

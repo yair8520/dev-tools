@@ -7,6 +7,12 @@ export const pages: IPages[] = [
       'Find and share custom React hooks for common use cases live With CodeSandBox.',
   },
   {
+    href: '/TS-utils',
+    headline: 'TypeScript Utils',
+    title: 'TypeScript',
+    description: 'Learn about different TypeScript Utils. ',
+  },
+  {
     href: '/flex-playGround',
     headline: 'Flex Playground',
     title: 'Flex',

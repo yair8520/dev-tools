@@ -6,7 +6,7 @@ import { ResContainerProps } from './ResContainerProps';
 
 export const ResContainer = ({ data }: ResContainerProps) => {
   useEffect(() => {
-    if (data.res !== '') scrollTo({ id: document.getElementById('result') });
+    if (data.res !== '') scrollTo({ id: 'result' });
   }, [data.res]);
   return (
     <div id="result" className={styles.container}>

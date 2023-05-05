@@ -6,7 +6,7 @@ import { scrollTo } from '../../../Helpers/Scroll';
 
 export const ErrorContainer = ({ error }: ErrorContainerProps) => {
   useEffect(() => {
-    if (error !== '') scrollTo({ id: document.getElementById('Error') });
+    if (error !== '') scrollTo({ id: 'Error' });
   }, [error]);
 
   return (

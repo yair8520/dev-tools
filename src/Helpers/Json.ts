@@ -1,3 +1,5 @@
+import { IHooksDescription } from '../Constant/Hooks';
+
 export function prettifyJSON(jsonStr: string | any[]) {
   if (!jsonStr || typeof jsonStr !== 'string') {
     return 'Invalid JSON';
@@ -82,3 +84,6 @@ export function generateInterfaceFromJson(json: string): string {
   const interfaceString = getInterfaceFromObject(parsedJson, rootInterfaceName);
   return interfaceString;
 }
+export const extractTitles = (array: IHooksDescription[]) => {
+  return array.map((item, i) => item.title);
+};

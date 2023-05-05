@@ -33,7 +33,7 @@ export const HookListItem = ({ item }: HookListItemProps) => {
     }),
   }));
   return (
-    <div className={styles.container}>
+    <div id={item.title} className={styles.container}>
       <Card sx={{ width: '100%' }}>
         <CardActions disableSpacing>
           <CardHeader
@@ -54,15 +54,15 @@ export const HookListItem = ({ item }: HookListItemProps) => {
               <LaunchIcon />
             </CIconButton>
           )}
-          {item.native ? (
+          {item.type === 'native' ? (
             <CIconButton title={'Mobile'}>
               <StayPrimaryPortraitIcon />
             </CIconButton>
-          ) : (
+          ) : item.type === 'web' ? (
             <CIconButton title={'Web'}>
               <WebIcon />
             </CIconButton>
-          )}
+          ) : null}
           <ExpandMore
             onClick={handleExpandClick}
             expand={expanded}
