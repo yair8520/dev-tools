@@ -4,10 +4,11 @@ import { CDrawer } from '../CDrawer';
 import { useNavigate } from 'react-router-dom';
 import { Text } from '../Text';
 import styles from './Header.module.css';
+import { useSendLogsPerRoute } from '../../Hooks/useSendLogsPerRoute';
 
 export const Header = () => {
   const navigate = useNavigate();
-
+  useSendLogsPerRoute()
   return (
     <AppBar style={{ height: '60px' }} position="static">
       <Toolbar>
