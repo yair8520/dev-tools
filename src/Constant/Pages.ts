@@ -8,8 +8,8 @@ export const pages: IPages[] = [
   },
   {
     href: '/TS-utils',
-    headline: 'TypeScript Utils',
-    title: 'TypeScript',
+    headline: 'TypeScript Utility Types',
+    title: 'TS',
     description: 'Learn about different TypeScript Utils. ',
   },
   {

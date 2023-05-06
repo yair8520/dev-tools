@@ -9,11 +9,13 @@ body {
 .container {
   text-align: center;
 }
+
 .theme_icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .nav {
   color: white;
   display: flex;
@@ -59,10 +61,14 @@ body {
 
 .nav li {
   position: relative;
-
+  width: 50px;
+  display: flex;
   text-align: center;
+  justify-content: center;
   border-bottom: none;
+
 }
+
 .nav li::after {
   content: '';
   position: absolute;
@@ -82,18 +88,21 @@ body {
   .site-title {
     font-size: 20px;
   }
+
   .nav ul {
     display: flex;
     width: 100%;
     align-self: center;
     flex-direction: column;
   }
+
   .nav li {
     align-self: center;
     display: flex;
     align-items: center;
     width: 100%;
   }
+
   .nav {
     align-self: center;
   }

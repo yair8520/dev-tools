@@ -34,7 +34,7 @@ export const HookListItem = ({ item }: HookListItemProps) => {
   }));
   return (
     <div className={styles.container}>
-      <Card id={item.title} sx={{ width: '100%' }}>
+      <Card id={item.title} className={styles.card}>
         <CardActions disableSpacing>
           <CardHeader
             onClick={handleExpandClick}

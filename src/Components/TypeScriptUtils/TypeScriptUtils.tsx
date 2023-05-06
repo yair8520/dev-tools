@@ -14,7 +14,7 @@ export const TypeScriptUtils = () => {
         Left={() => (
           <>
             <Text style={{ alignSelf: 'center' }} padding={'25px'} variant="h6">
-              Utils Types
+              Utility Types
               <div className={styles.separator} />
             </Text>
             {utilsExamples.map((val) => (
