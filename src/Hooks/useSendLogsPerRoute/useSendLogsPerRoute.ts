@@ -8,7 +8,6 @@ export const useSendLogsPerRoute = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname)
     const analytics = getAnalytics(firebaseReference);
     logEvent(analytics, location.pathname, {
       page_path: location.pathname,
