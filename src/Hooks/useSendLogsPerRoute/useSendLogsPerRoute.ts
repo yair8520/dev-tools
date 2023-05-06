@@ -6,11 +6,12 @@ import firebaseReference from "../../Config/Firebase";
 
 export const useSendLogsPerRoute = () => {
   const location = useLocation();
+  const analytics = getAnalytics(firebaseReference);
 
   useEffect(() => {
-    const analytics = getAnalytics(firebaseReference);
+    console.log(location.pathname)
     logEvent(analytics, location.pathname, {
       page_path: location.pathname,
     });
-  }, [location]);
+  }, [location, analytics]);
 };
