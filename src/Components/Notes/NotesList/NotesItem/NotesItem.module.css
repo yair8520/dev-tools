@@ -1,0 +1,49 @@
+.container {
+  margin: 25px;
+  padding: 20px;
+  border-radius: 15px;
+  border: solid 2px black;
+  height: 150px;
+  transition: all 0.7s ease-in-out;
+  position: relative;
+
+}
+
+.removeItem {
+  display: none;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+}
+
+.container:hover {
+  transform: scale(1.1);
+  transition: 0.7s;
+}
+
+.container:hover .removeItem {
+  display: block;
+}
+
+.input {
+  min-height: 50px;
+}
+
+.text {
+  word-break: break-all;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .removeItem {
+    display: block;
+  }
+
+  .container:hover {
+    transform: none;
+  }
+}

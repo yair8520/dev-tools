@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropDown {
+  width: 50%;
+}
+
+.dropDownContainer {
+  margin-right: 5%;
+  width: 40%;
+  align-self: center;
+}
+
+.textField {
+  margin-right: 5%;
+  width: 100% !important;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .dropDownContainer,
+  .textField {
+    width: 100%;
+    margin-right: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}

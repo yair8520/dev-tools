@@ -1,0 +1,23 @@
+.container {
+    height: 100%;
+    width: 100%;
+    transition: all 0.7s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.container:hover {
+    transform: scale(1.1);
+    transition: 0.7s;
+}
+
+
+@media (max-width: 600px) {
+
+    .container:hover {
+        transform: none;
+    }
+}

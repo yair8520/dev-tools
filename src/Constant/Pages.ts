@@ -32,6 +32,12 @@ export const pages: IPages[] = [
     description:
       'Compare two pieces of text/files and highlight the differences.',
   },
+  {
+    href: '/notes',
+    title: 'Notes',
+    headline: 'Notes',
+    description: 'Notes',
+  },
 ];
 
 export const moreToCome: IPages = {

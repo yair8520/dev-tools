@@ -11,7 +11,12 @@ export const SideMenu = ({ items }: SideMenuProps) => {
       <Text variant="h6"> On This Page</Text>
       {items.map((item, i) => (
         <div key={item + i} className={styles.item}>
-          <Link className={styles.link} onClick={() => scrollTo({ id: item })}>{item}</Link>
+          <Link
+            className={styles.link}
+            onClick={() => scrollTo({ id: item, withHighlight: true })}
+          >
+            {item}
+          </Link>
         </div>
       ))}
     </div>

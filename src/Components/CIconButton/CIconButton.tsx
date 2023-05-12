@@ -6,8 +6,8 @@ import { Description } from '../Description';
 export const CIconButton = ({
   children,
   onClick = undefined,
-  title,
-  placement,
+  title ,
+  placement ,
 }: CIconButtonProps) => {
   return (
     <Description placement={placement} title={title}>

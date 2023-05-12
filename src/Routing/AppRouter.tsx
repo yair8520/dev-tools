@@ -1,10 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Layout } from '../Components';
 import { DiffChecker } from '../Components/DiffChecker';
 import { ModalContext } from '../Components/ModalContext/ModalContext';
@@ -14,14 +9,15 @@ import { Modal } from '../Components/Modal';
 import { CustomHooks } from '../Components/CustomHooks';
 import { HomePage } from '../Components/HomePage';
 import { TypeScriptUtils } from '../Components/TypeScriptUtils';
+import { Notes } from '../Components/Notes';
 
-export const AppRouter = () => {
+export const AppRouter = ({ numOfUsers }: any) => {
   const { modal } = useContext(ModalContext);
 
   return (
     <Router basename="/dev-tools">
       {modal ? <Modal /> : null}
-      <Header />
+      <Header numOfUsers={numOfUsers} />
       <Layout>
         <Routes>
           <Route path="*" index element={<HomePage />} />
@@ -30,6 +26,7 @@ export const AppRouter = () => {
           <Route path="/flex-playGround" element={<FlexPage />} />
           <Route path="/custom-hooks" element={<CustomHooks />} />
           <Route path="/TS-utils" element={<TypeScriptUtils />} />
+          <Route path="/notes" element={<Notes />} />
         </Routes>
       </Layout>
     </Router>

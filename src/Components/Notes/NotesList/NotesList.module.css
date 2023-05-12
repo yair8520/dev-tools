@@ -1,0 +1,21 @@
+.container {
+  width: 20%;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-self: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .list {
+    flex-direction: column;
+  }
+
+  .container {
+    width: 100%;
+  }
+}

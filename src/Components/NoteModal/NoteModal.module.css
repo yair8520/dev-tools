@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  width: 100%;
+  align-self: center;
+  flex-direction: column;
+  padding: 25px;
+  padding-top: 35px;
+  border-radius: 25px;
+}
+
+.input {
+  min-height: 50px;
+  width: 100%;
+}
+
+.input textarea::-webkit-scrollbar {
+  width: 0.4em;
+  border-radius: 25px;
+}
+
+.input textarea::-webkit-scrollbar-thumb {
+  background-color: #1976d2;
+}
+
+.buttons {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}

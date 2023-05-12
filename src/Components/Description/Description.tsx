@@ -15,7 +15,7 @@ export const Description = ({
       arrow={true}
       placement={placement}
       className={styles.container}
-      title={<Text variant="body2">{title}</Text>}
+      title={title && <Text variant="body2">{title}</Text>}
     >
       {children}
     </Tooltip>
