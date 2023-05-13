@@ -3,7 +3,7 @@ import styles from './Seperator.module.css';
 import { SeperatorProps } from './SeperatorProps';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { CIconButton } from '../CIconButton';
-import { TextField } from '@mui/material';
+import { TextField, useTheme } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -12,6 +12,8 @@ export const Seperator = ({
   changeSectionTitle,
   deleteSection,
 }: SeperatorProps) => {
+  const theme = useTheme();
+
   const [text, setText] = useState<string>(title);
   const [disabled, setDisabled] = useState<boolean>(true);
   return (
@@ -24,7 +26,8 @@ export const Seperator = ({
         sx={{
           '& .MuiInputBase-input.Mui-disabled': {
             opacity: 1,
-            WebkitTextFillColor: 'rgba(0, 0, 0, 1)',
+            WebkitTextFillColor:
+              theme.palette.mode === 'dark' ? 'white' : 'rgba(0, 0, 0, 1)',
             border: 'none',
           },
           '& .MuiInputBase-root.Mui-disabled': {

@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
-
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyAf8kJbl-sU74haSt0ENQyEQ4FSnD1lG_M',
   authDomain: 'dev-tools-dbbae.firebaseapp.com',
@@ -10,5 +11,8 @@ const firebaseConfig = {
   measurementId: 'G-WTVR1E4N9F',
 };
 const firebaseReference = firebase.initializeApp(firebaseConfig);
+const auth = firebaseReference.auth();
+const currentUser = firebaseReference.auth().currentUser;
+const db = firebaseReference.firestore();
 
-export default firebaseReference;
+export { auth, firebaseReference, db, currentUser };

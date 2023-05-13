@@ -6,16 +6,13 @@ import { Text } from '../Text';
 import styles from './Header.module.css';
 import { useSendLogsPerRoute } from '../../Hooks/useSendLogsPerRoute';
 
-export const Header = ({ numOfUsers }: any) => {
+export const Header = () => {
   const navigate = useNavigate();
   useSendLogsPerRoute();
   return (
     <AppBar style={{ height: '60px' }} position="static">
       <Toolbar>
-        <div
-          onDoubleClick={() => alert(numOfUsers)}
-          className={styles.siteTitle}
-        >
+        <div className={styles.siteTitle}>
           <Text
             onClick={() => navigate('/')}
             variant="h6"

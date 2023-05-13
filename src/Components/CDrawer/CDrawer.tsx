@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { IconButton, Drawer } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
+import { IconButton, Drawer, Avatar } from '@mui/material';
 import { Menu } from '@material-ui/icons';
 import './CDrawer.css';
 import { Text } from '../Text';
@@ -10,10 +10,30 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { pages } from '../../Constant/Pages';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { handleGoogleLogin } from '../../Helpers/Firebase';
+import { UserContext } from '../../Context/UserContext';
+
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
   const isSmallScreen = useMediaQuery('(max-width: 500px)');
+  const { user, saveUser }: any = useContext(UserContext);
+  const [loginInfo, setLoginInfo] = useState(user);
 
+  useEffect(() => {
+    setLoginInfo(user);
+  }, [user]);
+
+  function onLogin() {
+    handleGoogleLogin()
+      .then((user) => {
+        saveUser(user);
+        setLoginInfo(user);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
   return (
     <>
       <WithDrawer>
@@ -31,7 +51,6 @@ export const CDrawer = () => {
                 </Text>
               </CustomLink>
             ))}
-
             <CIconButton
               title={!isDark ? 'Dark' : 'Light'}
               onClick={() => {
@@ -40,6 +59,15 @@ export const CDrawer = () => {
             >
               {!isDark ? <DarkModeIcon /> : <LightModeIcon />}
             </CIconButton>
+            {!loginInfo ? (
+              <CIconButton onClick={() => onLogin()}>
+                <AccountCircleIcon />
+              </CIconButton>
+            ) : (
+              <CIconButton title={loginInfo.email}>
+                <Avatar alt="Remy Sharp" src={loginInfo?.photoURL} />
+              </CIconButton>
+            )}
           </ul>
         </div>
       </WithDrawer>

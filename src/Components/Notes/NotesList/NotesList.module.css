@@ -10,6 +10,14 @@
   flex-wrap: wrap;
 }
 
+.fab {
+  margin-top: 15px;
+  position: sticky;
+  top: 30%;
+  bottom: 4vh;
+  width: 25px;
+}
+
 @media (max-width: 600px) {
   .list {
     flex-direction: column;

@@ -15,5 +15,7 @@ export const scrollTo = ({
         element && element.classList.remove('custom-highlighted-class');
       }, 3000);
     }
+  } else {
+    console.log('ASdasd', element);
   }
 };

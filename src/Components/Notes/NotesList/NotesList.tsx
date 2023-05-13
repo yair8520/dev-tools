@@ -8,10 +8,21 @@ import { NoteModal } from '../../NoteModal';
 import { ISection } from './helper';
 import { AddItem } from '../../AddItem';
 import { v4 as uuid } from 'uuid';
-import { getTime } from '../../../Helpers/Time';
+import { getTime, getTimeStamp } from '../../../Helpers/Time';
+import { Fab } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { scrollTo } from '../../../Helpers/Scroll';
+import { Description } from '../../Description';
+import { addNote, addSection, editNote, removeNote, removeSection, renameSection } from '../../../Helpers/Firebase';
 
-export const NotesList = ({ list, setList }: NotesListProps) => {
+export const NotesList = ({ list, setList, user }: NotesListProps) => {
   const { handleModal } = useContext(ModalContext);
+
+  // const functionMiddlware = (next:any) => {
+
+  // }
+
+
   const updateNoteText = useCallback(
     (sectionIndex: string, noteIndex: string, newText: string) => {
       setList((prev: ISection) => {
@@ -38,16 +49,22 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
     ({ noteId, sectionId }: any) => {
       handleModal(
         <NoteModal
-          onChange={(newText: string) =>
+          onChange={(newText: string) => {
             updateNoteText(sectionId, noteId, newText)
+            editNote(user, sectionId, noteId, newText);
+          }
           }
           value={list[sectionId].notes[noteId].text}
         />
       );
     },
-    [handleModal, list, updateNoteText]
+    [handleModal, list, updateNoteText, user]
   );
   const deleteSection = (sectionId: string) => {
+    if (user) {
+
+      removeSection(user, sectionId)
+    }
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       delete updatedList[sectionId];
@@ -55,14 +72,20 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
     });
   };
   const deleteItem = (sectionId: string, noteIndex: string) => {
+    if (user) {
+      removeNote(user, sectionId, noteIndex)
+    }
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       delete updatedList[sectionId].notes[noteIndex];
       return updatedList;
     });
   };
-  const changeSectionTitle = useCallback(
+  const changeSectionTitle =
     (sectionId: string, newTitle: string) => {
+      if (user) {
+        renameSection(user, newTitle, sectionId)
+      }
       setList((prev: ISection) => {
         const updatedSection = {
           ...prev[sectionId],
@@ -73,22 +96,56 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
           [sectionId]: updatedSection,
         };
       });
-    },
-    [setList]
-  );
+    }
+
+
   const onAddItem = (sectionId: string) => {
+    const noteId = uuid()
+    if (user) {
+      addNote(user, sectionId, {
+        [noteId]: {
+          pinned: false,
+          text: '',
+          date: getTime(),
+          timeStamp: getTimeStamp(),
+        },
+      });
+    }
     setList((prev: ISection) => {
       const updatedList = { ...prev };
-      updatedList[sectionId].notes[uuid()] = { pinned: false, text: '', timeStamp: getTime() };
+      updatedList[sectionId].notes[noteId] = {
+        pinned: false,
+        text: '',
+        date: getTime(),
+        timeStamp: getTimeStamp(),
+      };
       return updatedList;
     });
   };
-
+  const onAddSection = () => {
+    const id = uuid();
+    if (user) {
+      addSection(user, 'Click For Edit  ->', id);
+    }
+    setList((prev: ISection) => {
+      const updatedList = {
+        ...prev,
+        [id]: {
+          subject: 'Click For Edit  -> ',
+          notes: {},
+        },
+      };
+      return updatedList;
+    });
+    setTimeout(() => {
+      scrollTo({ id });
+    }, 100);
+  };
   return (
-    <>
+    <div className={styles.listContainer}>
       {Object.entries(list).map((section, i) => {
         return (
-          <div key={section[0]} style={{ width: '100%' }}>
+          <div id={section[0]} key={section[0]} style={{ width: '100%' }}>
             <Seperator
               deleteSection={() => deleteSection(section[0])}
               changeSectionTitle={(str: string) =>
@@ -97,7 +154,7 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
               title={section[1].subject}
             />
             <div className={styles.list}>
-              {Object.entries(section[1].notes).map((note) =>
+              {Object.entries(section[1].notes).map((note) => (
                 <div
                   key={note[0]}
                   onClick={() =>
@@ -105,9 +162,12 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
                   }
                   className={styles.container}
                 >
-                  <NotesItem deleteItem={() => deleteItem(section[0], note[0])} item={note[1]} />
+                  <NotesItem
+                    deleteItem={() => deleteItem(section[0], note[0])}
+                    item={note[1]}
+                  />
                 </div>
-              )}
+              ))}
               <div className={styles.container}>
                 <AddItem onAddItem={() => onAddItem(section[0])} />
               </div>
@@ -115,6 +175,13 @@ export const NotesList = ({ list, setList }: NotesListProps) => {
           </div>
         );
       })}
-    </>
+      <div className={styles.fab}>
+        <Fab color="primary" aria-label="add" onClick={onAddSection}>
+          <Description placement={'top'} title={'Add section'}>
+            <AddIcon />
+          </Description>
+        </Fab>
+      </div>
+    </div>
   );
 };

@@ -11,13 +11,13 @@ import { HomePage } from '../Components/HomePage';
 import { TypeScriptUtils } from '../Components/TypeScriptUtils';
 import { Notes } from '../Components/Notes';
 
-export const AppRouter = ({ numOfUsers }: any) => {
+export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
 
   return (
     <Router basename="/dev-tools">
       {modal ? <Modal /> : null}
-      <Header numOfUsers={numOfUsers} />
+      <Header />
       <Layout>
         <Routes>
           <Route path="*" index element={<HomePage />} />

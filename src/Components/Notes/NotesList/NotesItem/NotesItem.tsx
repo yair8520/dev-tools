@@ -15,14 +15,21 @@ export const NotesItem = ({ item, deleteItem }: NotesItemProps) => {
             placement="top"
             title={'Delete'}
             onClick={(e: any) => {
-              e.stopPropagation()
-              deleteItem()
+              e.stopPropagation();
+              deleteItem();
             }}
           >
             <CancelIcon color="error" />
           </CIconButton>
         </div>
-        <Text className={styles.text}>{item.text}</Text>
+        <div className={styles.textContainer}>
+          <Text className={styles.text}>{item.text}</Text>
+        </div>
+        <div className={styles.date}>
+          <Text flexWrap={'wrap'} variant="caption">
+            {item.date}
+          </Text>
+        </div>
       </Card>
     </div>
   );
