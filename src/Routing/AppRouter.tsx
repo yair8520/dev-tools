@@ -9,7 +9,7 @@ export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
 
   return (
-    <Router basename="/dev-tools">
+    <Router >
       {modal ? <Modal /> : null}
       <Header />
       <Layout>
