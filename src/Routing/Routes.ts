@@ -10,31 +10,31 @@ import { Formatter } from '../Pages';
 // Define your route configuration array
 const routes = [
     {
-        path: '/dev-tools',
+        path: '/',
         element: HomePage
     },
     {
-        path: '/dev-tools/json-formatter',
+        path: '/json-formatter',
         element: Formatter
     },
     {
-        path: '/dev-tools/diff-checker',
+        path: '/diff-checker',
         element: DiffChecker
     },
     {
-        path: '/dev-tools/flex-playGround',
+        path: '/flex-playGround',
         element: FlexPage
     },
     {
-        path: '/dev-tools/custom-hooks',
+        path: '/custom-hooks',
         element: CustomHooks
     },
     {
-        path: '/dev-tools/TS-utils',
+        path: '/TS-utils',
         element: TypeScriptUtils
     },
     {
-        path: '/dev-tools/notes',
+        path: '/notes',
         element: Notes
     },
     {

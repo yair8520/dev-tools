@@ -9,13 +9,13 @@ export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
 
   return (
-    <Router >
+    <Router basename="/dev-tools">
       {modal ? <Modal /> : null}
       <Header />
       <Layout>
         <Routes>
           {routes.map((route, index) =>
-            <Route key={index} path={route.path} index Component={route.element} />
+            <Route key={index} path={route.path} Component={route.element} />
           )}
         </Routes>
       </Layout>
