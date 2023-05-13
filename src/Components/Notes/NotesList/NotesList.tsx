@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import styles from './NotesList.module.css';
 import { NotesListProps } from './NotesListProps';
 import { NotesItem } from './NotesItem';
@@ -17,12 +17,7 @@ import { addNote, addSection, editNote, removeNote, removeSection, renameSection
 
 export const NotesList = ({ list, setList, user }: NotesListProps) => {
   const { handleModal } = useContext(ModalContext);
-
-  // const functionMiddlware = (next:any) => {
-
-  // }
-
-
+  const newSectionCount = useRef(1)
   const updateNoteText = useCallback(
     (sectionIndex: string, noteIndex: string, newText: string) => {
       setList((prev: ISection) => {
@@ -125,13 +120,13 @@ export const NotesList = ({ list, setList, user }: NotesListProps) => {
   const onAddSection = () => {
     const id = uuid();
     if (user) {
-      addSection(user, 'Click For Edit  ->', id);
+      addSection(user, `Section ${newSectionCount.current}`, id);
     }
     setList((prev: ISection) => {
       const updatedList = {
         ...prev,
         [id]: {
-          subject: 'Click For Edit  -> ',
+          subject: `Section ${newSectionCount.current}`,
           notes: {},
         },
       };
@@ -140,6 +135,7 @@ export const NotesList = ({ list, setList, user }: NotesListProps) => {
     setTimeout(() => {
       scrollTo({ id });
     }, 100);
+    newSectionCount.current++
   };
   return (
     <div className={styles.listContainer}>

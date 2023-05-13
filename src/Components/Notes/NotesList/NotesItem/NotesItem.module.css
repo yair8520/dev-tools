@@ -42,7 +42,7 @@
   overflow: hidden;
   white-space: break-spaces;
   text-overflow: ellipsis;
-  height: 80%;
+  height: 90%;
 }
 
 @media (max-width: 600px) {

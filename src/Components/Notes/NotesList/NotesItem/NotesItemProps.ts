@@ -1,4 +1,3 @@
-import { Inote } from '../helper';
 
 export interface NotesItemProps {
   [key: string]: any;

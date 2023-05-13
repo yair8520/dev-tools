@@ -34,6 +34,8 @@ export const Notes = () => {
     [list]
   );
   const filterSections = (str: string) => {
+    if (str === "All")
+      return setFilteredList(list)
     setFilteredList(filterListBySections(list, str));
   };
   const filterByTime = (dir: 'descending' | 'ascending') => {

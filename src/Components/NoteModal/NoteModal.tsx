@@ -5,6 +5,7 @@ import { MultiLineInput } from '../MultiLineInput';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { CIconButton } from '../CIconButton';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { InputButtons } from '../DiffChecker/InputButtons';
 
 export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
   const [text, setText] = useState<string>(value);
@@ -35,10 +36,20 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
       </div>
       <div className={styles.container}>
         <MultiLineInput
+          minRows={7}
           onKeyDown={handleKeyDown}
           className={styles.input}
           value={text}
           onChange={(e) => setText(e)}
+          InputProps={{
+            endAdornment: (
+              <InputButtons
+                withFile={false}
+                value={text}
+                onChange={setText}
+              />
+            ),
+          }}
         />
       </div>
     </>

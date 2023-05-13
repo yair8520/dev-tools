@@ -3,6 +3,7 @@ import styles from './SearchBar.module.css';
 import { SearchBarProps } from './SearchBarProps';
 import { MenuItem, Select, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
 
 export const SearchBar = ({
   value,
@@ -23,7 +24,8 @@ export const SearchBar = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         InputProps={{
-          endAdornment: <SearchIcon />,
+          startAdornment: <SearchIcon />,
+          endAdornment: value && <div onClick={() => onChange("")}> <ClearIcon /></div>
         }}
       />
       <div className={styles.dropDownContainer}>
@@ -46,6 +48,7 @@ export const SearchBar = ({
           value={dir}
           onChange={(e) => {
             setDir(e.target.value);
+            setFilter('All')
             filterByTime(e.target.value);
           }}
         >
