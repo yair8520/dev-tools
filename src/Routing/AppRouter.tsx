@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Layout } from '../Components';
 import { ModalContext } from '../Components/ModalContext/ModalContext';
 import { Modal } from '../Components/Modal';
@@ -9,7 +9,7 @@ export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
 
   return (
-    <Router basename="/dev-tools">
+    <Router >
       {modal ? <Modal /> : null}
       <Header />
       <Layout>

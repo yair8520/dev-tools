@@ -36,7 +36,7 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
       </div>
       <div className={styles.container}>
         <MultiLineInput
-          minRows={7}
+          minRows={15}
           onKeyDown={handleKeyDown}
           className={styles.input}
           value={text}
