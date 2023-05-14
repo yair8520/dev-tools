@@ -6,8 +6,7 @@ import { NotesList } from './NotesList';
 import { ISection } from './NotesList/helper';
 import {
   filterListByQuary,
-  filterListBySections,
-  filterListByTime,
+  filterListByTimeAndSection,
 } from './helper';
 import { UserContext } from '../../Context/UserContext';
 import { getUserSections } from '../../Helpers/Firebase';
@@ -33,14 +32,12 @@ export const Notes = () => {
     () => Object.entries(list).map((item) => item[1].subject),
     [list]
   );
-  const filterSections = (str: string) => {
-    if (str === "All")
+  const filterByTimeAndSection = (dir: 'descending' | 'ascending', sectionName: string) => {
+    if (sectionName === "All")
       return setFilteredList(list)
-    setFilteredList(filterListBySections(list, str));
+    setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
   };
-  const filterByTime = (dir: 'descending' | 'ascending') => {
-    setFilteredList(filterListByTime(list, dir));
-  };
+
   const filterByQuary = (str: string) => {
     setQuary(str);
     setFilteredList(filterListByQuary(list, str));
@@ -58,8 +55,8 @@ export const Notes = () => {
           value={quary}
           onChange={filterByQuary}
           options={sectionArray}
-          filterSections={filterSections}
-          filterByTime={filterByTime}
+          filterByTimeAndSection={filterByTimeAndSection}
+
         />
         <NotesList user={user?.email} list={filteredList} setList={setFilteredList} />
       </div>

@@ -1,14 +1,6 @@
 import { ISection, Inote } from './NotesList/helper';
 import moment from 'moment';
 
-export const filterListBySections = (list: ISection, str: string) => {
-  for (const key in list) {
-    if (list[key].subject === str) {
-      return { [key]: list[key] };
-    }
-  }
-  return list;
-};
 export const filterListByQuary = (list: ISection, query: string): ISection => {
   const filteredList: ISection = {};
 
@@ -69,4 +61,25 @@ export const filterListByTime = (list: ISection, str: string): ISection => {
   }
 
   return filteredList;
+};
+
+export const filterListBySections = (list: ISection, str: string) => {
+  for (const key in list) {
+    if (list[key].subject === str) {
+      return { [key]: list[key] };
+    }
+  }
+  return list;
+};
+
+export const filterListByTimeAndSection = (
+  list: ISection,
+  dir: 'descending' | 'ascending',
+  sectionName: string
+): ISection => {
+  const filteredList = filterListByTime(list, dir);
+  console.log(filteredList)
+  const finalList = filterListBySections(filteredList, sectionName);
+
+  return finalList;
 };

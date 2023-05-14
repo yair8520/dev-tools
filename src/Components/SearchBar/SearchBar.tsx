@@ -9,8 +9,7 @@ export const SearchBar = ({
   value,
   onChange,
   options,
-  filterSections,
-  filterByTime,
+  filterByTimeAndSection,
 }: SearchBarProps) => {
   const [filter, setFilter] = useState<string>('All');
   const [dir, setDir] = useState<string>('Descending');
@@ -34,7 +33,7 @@ export const SearchBar = ({
           value={filter}
           onChange={(e) => {
             setFilter(e.target.value);
-            filterSections(e.target.value);
+            filterByTimeAndSection(dir, e.target.value,);
           }}
         >
           {['All', ...options].map((item: string, i: number) => (
@@ -48,8 +47,7 @@ export const SearchBar = ({
           value={dir}
           onChange={(e) => {
             setDir(e.target.value);
-            setFilter('All')
-            filterByTime(e.target.value);
+            filterByTimeAndSection(e.target.value, filter);
           }}
         >
           {['Descending', 'Ascending'].map((item: string) => (
