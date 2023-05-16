@@ -45,11 +45,15 @@ export const Notes = () => {
   return (
     <div className={styles.container}>
       <div>
-        <Text style={{ alignSelf: 'center' }} padding={'25px'} variant="h6">
+        <Text style={{ alignSelf: 'center', textAlign: 'center' }} padding={'25px'} variant="h6">
           Notes
           <div className={styles.separator} />
         </Text>
+
       </div>
+      <Text style={{ alignSelf: 'center', textAlign: 'center', paddingBottom: 25 }} variant="subtitle2">
+        {!user?.email ? "Log In with your Google Account to save your progress" : `Logged in as ${user?.email}`}
+      </Text>
       <div className={styles.content}>
         <SearchBar
           value={quary}
