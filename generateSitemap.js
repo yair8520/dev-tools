@@ -5,27 +5,27 @@ const routes = [
      
   },
   {
-      path: '/json-formatter',
+      path: '#/json-formatter',
      
   },
   {
-      path: '/diff-checker',
+      path: '#/diff-checker',
      
   },
   {
-      path: '/flex-playGround',
+      path: '#/flex-playGround',
       
   },
   {
-      path: '/custom-hooks',
+      path: '#/custom-hooks',
      
   },
   {
-      path: '/TS-utils',
+      path: '#/TS-utils',
       
   },
   {
-      path: '/notes',
+      path: '#/notes',
     
   },
   {
