@@ -42,7 +42,7 @@ export const pages: IPages[] = [
 ];
 
 export const moreToCome: IPages = {
-  description: '...',
+  description: "",
   title: '',
   href: '',
   headline: 'More tools under development...',
