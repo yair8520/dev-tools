@@ -9,7 +9,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import { ModalContext } from '../../Components/ModalContext/ModalContext';
 import { HistoryModal } from '../../Components/HistoryModal';
 
-export const Formatter = () => {
+const Formatter = () => {
   const { handleModal } = useContext(ModalContext);
   const [raw, setRaw] = useState<string>('');
 
@@ -44,3 +44,4 @@ export const Formatter = () => {
     </div>
   );
 };
+export default Formatter

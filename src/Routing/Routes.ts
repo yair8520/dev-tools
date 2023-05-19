@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { HomePage } from '../Components/HomePage';
 
-const Formatter = lazy(() => import( /* webpackChunkName: "formatter" */'../Pages/FlexPage/FlexPage'));
+const Formatter = lazy(() => import( /* webpackChunkName: "formatter" */'../Pages/Formatter/Formatter'));
 const DiffChecker = lazy(() => import( /* webpackChunkName: "DiffChecker" */'../Components/DiffChecker/DiffChecker'));
 const FlexPage = lazy(() => import( /* webpackChunkName: "FlexPage" */'../Pages/FlexPage/FlexPage'));
 const CustomHooks = lazy(() => import( /* webpackChunkName: "CustomHooks" */'../Components/CustomHooks/CustomHooks'));
