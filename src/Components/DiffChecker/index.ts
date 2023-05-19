@@ -1,1 +1,0 @@
-export { DiffChecker } from './DiffChecker';

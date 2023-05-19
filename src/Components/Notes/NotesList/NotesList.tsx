@@ -13,15 +13,27 @@ import { Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { scrollTo } from '../../../Helpers/Scroll';
 import { Description } from '../../Description';
-import { addNote, addSection, editNote, removeNote, removeSection, renameSection } from '../../../Helpers/Firebase';
+import {
+  addNote,
+  addSection,
+  editNote,
+  removeNote,
+  removeSection,
+  renameSection,
+} from '../../../Helpers/Firebase';
 
-export const NotesList = ({ list, setList, user, setFilteredList }: NotesListProps) => {
+export const NotesList = ({
+  list,
+  setList,
+  user,
+  setFilteredList,
+}: NotesListProps) => {
   const { handleModal } = useContext(ModalContext);
-  const listAsArray = Object.entries(list)
-  const newSectionCount = useRef(listAsArray.length)
+  const listAsArray = Object.entries(list);
+  const newSectionCount = useRef(listAsArray.length);
   useEffect(() => {
-    newSectionCount.current = listAsArray.length + 1
-  }, [list])
+    newSectionCount.current = listAsArray.length + 1;
+  }, [list]);
   const updateNoteText = useCallback(
     (sectionIndex: string, noteIndex: string, newText: string) => {
       setList((prev: ISection) => {
@@ -49,10 +61,9 @@ export const NotesList = ({ list, setList, user, setFilteredList }: NotesListPro
       handleModal(
         <NoteModal
           onChange={(newText: string) => {
-            updateNoteText(sectionId, noteId, newText)
+            updateNoteText(sectionId, noteId, newText);
             editNote(user, sectionId, noteId, newText);
-          }
-          }
+          }}
           value={list[sectionId].notes[noteId].text}
         />
       );
@@ -61,8 +72,7 @@ export const NotesList = ({ list, setList, user, setFilteredList }: NotesListPro
   );
   const deleteSection = (sectionId: string) => {
     if (user) {
-
-      removeSection(user, sectionId)
+      removeSection(user, sectionId);
     }
     setList((prev: ISection) => {
       const updatedList = { ...prev };
@@ -72,7 +82,7 @@ export const NotesList = ({ list, setList, user, setFilteredList }: NotesListPro
   };
   const deleteItem = (sectionId: string, noteIndex: string) => {
     if (user) {
-      removeNote(user, sectionId, noteIndex)
+      removeNote(user, sectionId, noteIndex);
     }
     setList((prev: ISection) => {
       const updatedList = { ...prev };
@@ -80,26 +90,24 @@ export const NotesList = ({ list, setList, user, setFilteredList }: NotesListPro
       return updatedList;
     });
   };
-  const changeSectionTitle =
-    (sectionId: string, newTitle: string) => {
-      if (user) {
-        renameSection(user, newTitle, sectionId)
-      }
-      setList((prev: ISection) => {
-        const updatedSection = {
-          ...prev[sectionId],
-          subject: newTitle,
-        };
-        return {
-          ...prev,
-          [sectionId]: updatedSection,
-        };
-      });
+  const changeSectionTitle = (sectionId: string, newTitle: string) => {
+    if (user) {
+      renameSection(user, newTitle, sectionId);
     }
-
+    setList((prev: ISection) => {
+      const updatedSection = {
+        ...prev[sectionId],
+        subject: newTitle,
+      };
+      return {
+        ...prev,
+        [sectionId]: updatedSection,
+      };
+    });
+  };
 
   const onAddItem = (sectionId: string) => {
-    const noteId = uuid()
+    const noteId = uuid();
     if (user) {
       addNote(user, sectionId, {
         [noteId]: {
@@ -139,7 +147,7 @@ export const NotesList = ({ list, setList, user, setFilteredList }: NotesListPro
     setTimeout(() => {
       scrollTo({ id });
     }, 100);
-    newSectionCount.current++
+    newSectionCount.current++;
   };
   return (
     <div className={styles.listContainer}>

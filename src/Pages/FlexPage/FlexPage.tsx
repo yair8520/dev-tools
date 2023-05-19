@@ -11,7 +11,7 @@ import {
 import { Mutable } from '../../Constant/DropDown';
 import { AppContext } from '../../Components/ThemeContext/ThemeContext';
 
-export const FlexPage = () => {
+const FlexPage = () => {
   const { isDark } = useContext(AppContext);
   const [items, setItems] = useState<Mutable<ItemsStyle>[]>(flexItemsInitial);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -44,3 +44,4 @@ export const FlexPage = () => {
     </div>
   );
 };
+export default FlexPage

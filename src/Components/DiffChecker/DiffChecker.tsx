@@ -5,7 +5,7 @@ import { MultiLineInput } from '../MultiLineInput';
 import { Text } from '../Text';
 import { InputButtons } from './InputButtons';
 
-export const DiffChecker = () => {
+const DiffChecker = () => {
   const [original, setOriginal] = useState<string>('');
   const [changed, setChanged] = useState<string>('');
   return (
@@ -57,3 +57,4 @@ export const DiffChecker = () => {
     </div>
   );
 };
+export default DiffChecker

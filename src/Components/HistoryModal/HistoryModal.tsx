@@ -9,24 +9,28 @@ export const HistoryModal = ({ onClick, handleModal }: HistoryModalProps) => {
   const [searches, setSearches] = useLocalStorage<any>('searches', []);
 
   const onItemPressed = (e: any) => {
-    onClick(e.target.innerText)
-    handleModal()
-  }
+    onClick(e.target.innerText);
+    handleModal();
+  };
   return (
     <div className={styles.container}>
-      <Text variant='h6'> Recent</Text>
-      {searches.map((s: string, i: number) =>
-        <ButtonBase key={i} onClick={onItemPressed} >
-          <Text sx={{
-            display: '-webkit-box',
-            overflow: 'hidden',
-            WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 1,
-          }}
-            variant="body1"> {s.toString()}
+      <Text variant="h6"> Recent</Text>
+      {searches.map((s: string, i: number) => (
+        <ButtonBase key={i} onClick={onItemPressed}>
+          <Text
+            sx={{
+              display: '-webkit-box',
+              overflow: 'hidden',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 1,
+            }}
+            variant="body1"
+          >
+            {' '}
+            {s.toString()}
           </Text>
         </ButtonBase>
-      )}
+      ))}
     </div>
   );
 };

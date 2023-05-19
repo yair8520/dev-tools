@@ -7,7 +7,7 @@ import { SideMenu } from '../SideMenu';
 import { LayoutWithSideMenu } from '../LayoutWithSideMenu';
 import { extractTitles } from '../../Helpers/Json';
 
-export const TypeScriptUtils = () => {
+const TypeScriptUtils = () => {
   return (
     <div className={styles.container}>
       <LayoutWithSideMenu
@@ -27,3 +27,4 @@ export const TypeScriptUtils = () => {
     </div>
   );
 };
+export default TypeScriptUtils

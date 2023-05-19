@@ -1,4 +1,3 @@
-
 export interface NotesItemProps {
   [key: string]: any;
   item: {

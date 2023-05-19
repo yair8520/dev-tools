@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Suspense, useContext } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Layout } from '../Components';
 import { ModalContext } from '../Components/ModalContext/ModalContext';
@@ -9,15 +9,19 @@ export const AppRouter = () => {
   const { modal } = useContext(ModalContext);
 
   return (
-    <Router >
+    <Router>
       {modal ? <Modal /> : null}
       <Header />
       <Layout>
-        <Routes>
-          {routes.map((route, index) =>
-            <Route key={index} path={route.path} Component={route.element} />
-          )}
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={<Suspense>
+                <route.element />
+              </Suspense>} />
+            ))}
+          </Routes>
+        </Suspense>
       </Layout>
     </Router>
   );

@@ -1,1 +1,1 @@
-export { TypeScriptUtils } from './TypeScriptUtils';
+export * from './TypeScriptUtils';

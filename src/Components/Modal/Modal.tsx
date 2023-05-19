@@ -13,9 +13,9 @@ export const Modal = () => {
       <Box sx={style}>
         {React.isValidElement(modalContent)
           ? React.cloneElement(modalContent, {
-            ...modalContent.props,
-            ...contentProps,
-          })
+              ...modalContent.props,
+              ...contentProps,
+            })
           : modalContent}
       </Box>
     </MuiModaL>

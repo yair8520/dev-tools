@@ -33,10 +33,14 @@ export const Formatter = () => {
           </CIconButton>
         </div>
       </div>
-      <FormatterBody raw={raw} setRaw={setRaw} setRes={setRes} error={error} setError={setError} />
-      {!error && (
-        <ResContainer data={res} />
-      )}
+      <FormatterBody
+        raw={raw}
+        setRaw={setRaw}
+        setRes={setRes}
+        error={error}
+        setError={setError}
+      />
+      {!error && <ResContainer data={res} />}
     </div>
   );
 };

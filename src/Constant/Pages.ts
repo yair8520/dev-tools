@@ -3,7 +3,8 @@ export const pages: IPages[] = [
     href: '/notes',
     title: 'Notes',
     headline: 'Notes',
-    description: 'Manage and organize your personal notes with Firebase integration.',
+    description:
+      'Manage and organize your personal notes with Firebase integration.',
   },
   {
     href: '/custom-hooks',
@@ -38,7 +39,6 @@ export const pages: IPages[] = [
     description:
       'Compare two pieces of text/files and highlight the differences.',
   },
- 
 ];
 
 export const moreToCome: IPages = {

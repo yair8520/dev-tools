@@ -1,1 +1,1 @@
-export { FlexPage } from './FlexPage';
+export * from './FlexPage';

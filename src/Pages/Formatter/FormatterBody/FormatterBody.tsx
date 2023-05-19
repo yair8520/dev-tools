@@ -12,7 +12,13 @@ import { FormatterBodyProps } from './FormatterBodyProps';
 import { InputButtons } from '../../../Components/DiffChecker/InputButtons';
 import { useLocalStorage } from '../../../Hooks/useLocalStorage';
 
-export const FormatterBody = ({ setRes, setError, error, raw, setRaw }: FormatterBodyProps) => {
+export const FormatterBody = ({
+  setRes,
+  setError,
+  error,
+  raw,
+  setRaw,
+}: FormatterBodyProps) => {
   const [fileName, setFileName] = useState<string>('');
   const { handleModal } = useContext(ModalContext);
   const countRef = useRef<number>(0);
@@ -38,7 +44,7 @@ export const FormatterBody = ({ setRes, setError, error, raw, setRaw }: Formatte
       setRes({ json: true, res: JSON.parse(formattedData) });
       setRaw(formattedData);
       setError('');
-      handleSaveSearch(formattedData)
+      handleSaveSearch(formattedData);
     } catch (error: any) {
       if (countRef.current === 0) {
         countRef.current++;

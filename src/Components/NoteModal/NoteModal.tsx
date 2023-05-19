@@ -43,11 +43,7 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
           onChange={(e) => setText(e)}
           InputProps={{
             endAdornment: (
-              <InputButtons
-                withFile={false}
-                value={text}
-                onChange={setText}
-              />
+              <InputButtons withFile={false} value={text} onChange={setText} />
             ),
           }}
         />

@@ -24,7 +24,12 @@ export const SearchBar = ({
         onChange={(e) => onChange(e.target.value)}
         InputProps={{
           startAdornment: <SearchIcon />,
-          endAdornment: value && <div onClick={() => onChange("")}> <ClearIcon /></div>
+          endAdornment: value && (
+            <div onClick={() => onChange('')}>
+              {' '}
+              <ClearIcon />
+            </div>
+          ),
         }}
       />
       <div className={styles.dropDownContainer}>
@@ -33,7 +38,7 @@ export const SearchBar = ({
           value={filter}
           onChange={(e) => {
             setFilter(e.target.value);
-            filterByTimeAndSection(dir, e.target.value,);
+            filterByTimeAndSection(dir, e.target.value);
           }}
         >
           {['All', ...options].map((item: string, i: number) => (
