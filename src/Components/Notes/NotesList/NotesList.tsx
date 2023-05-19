@@ -26,7 +26,7 @@ export const NotesList = ({
   list,
   setList,
   user,
-  setFilteredList,
+  setOriginalList
 }: NotesListProps) => {
   const { handleModal } = useContext(ModalContext);
   const listAsArray = Object.entries(list);
@@ -77,6 +77,7 @@ export const NotesList = ({
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       delete updatedList[sectionId];
+      setOriginalList(updatedList)
       return updatedList;
     });
   };
@@ -87,6 +88,7 @@ export const NotesList = ({
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       delete updatedList[sectionId].notes[noteIndex];
+      setOriginalList(updatedList)
       return updatedList;
     });
   };
@@ -126,6 +128,7 @@ export const NotesList = ({
         date: getTime(),
         timeStamp: getTimeStamp(),
       };
+      setOriginalList(updatedList)
       return updatedList;
     });
   };
@@ -142,6 +145,7 @@ export const NotesList = ({
           notes: {},
         },
       };
+      setOriginalList(updatedList)
       return updatedList;
     });
     setTimeout(() => {

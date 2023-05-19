@@ -13,7 +13,6 @@ const Notes = () => {
   const [quary, setQuary] = useState<string>('');
   const [list, setList] = useState<ISection>({});
   const [filteredList, setFilteredList] = useState<ISection>({});
-
   useEffect(() => {
     if (user?.email) {
       getUserSections(user.email)
@@ -26,15 +25,15 @@ const Notes = () => {
   }, [user]);
 
   const sectionArray = useMemo(
-    () => Object.entries(filteredList).map((item) => item[1].subject),
-    [filteredList]
+    () => Object.entries(list).map((item) => item[1].subject),
+    [list]
   );
   const filterByTimeAndSection = (
     dir: 'descending' | 'ascending',
     sectionName: string
   ) => {
-    if (sectionName === 'All') return setFilteredList(list);
-    setFilteredList(filterListByTimeAndSection(filteredList, dir, sectionName));
+    if (sectionName === 'All') return setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
+    setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
   };
 
   const filterByQuary = (str: string) => {
@@ -75,6 +74,7 @@ const Notes = () => {
           user={user?.email}
           list={filteredList}
           setList={setFilteredList}
+          setOriginalList={setList}
         />
       </div>
     </div>

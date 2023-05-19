@@ -1,6 +1,17 @@
 .items {
   flex: 1;
 }
+
 .siteTitle {
   flex: 8;
+
+}
+
+.title {
+
+  width: 120px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

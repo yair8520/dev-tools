@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Text } from '../Text';
 import styles from './Header.module.css';
 import { useSendLogsPerRoute } from '../../Hooks/useSendLogsPerRoute';
-
+import HandymanIcon from '@mui/icons-material/Handyman';
 export const Header = () => {
   const navigate = useNavigate();
   useSendLogsPerRoute();
@@ -16,15 +16,15 @@ export const Header = () => {
           <Text
             onClick={() => navigate('/')}
             variant="h6"
-            component="div"
             sx={{
-              width: '150px',
               '&:hover': {
                 textDecoration: 'underline',
                 cursor: 'pointer',
               },
             }}
+            className={styles.title}
           >
+            <HandymanIcon />
             Dev-Tools
           </Text>
         </div>

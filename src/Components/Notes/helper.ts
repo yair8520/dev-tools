@@ -78,7 +78,6 @@ export const filterListByTimeAndSection = (
   sectionName: string
 ): ISection => {
   const filteredList = filterListByTime(list, dir);
-  console.log(filteredList);
   const finalList = filterListBySections(filteredList, sectionName);
 
   return finalList;
