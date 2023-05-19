@@ -8,6 +8,7 @@
   min-height: 200px;
   position: sticky;
   top: 5%;
+  overflow-y: auto;
 }
 
 .item {

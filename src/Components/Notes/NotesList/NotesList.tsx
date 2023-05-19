@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import styles from './NotesList.module.css';
 import { NotesListProps } from './NotesListProps';
 import { NotesItem } from './NotesItem';
@@ -15,9 +15,13 @@ import { scrollTo } from '../../../Helpers/Scroll';
 import { Description } from '../../Description';
 import { addNote, addSection, editNote, removeNote, removeSection, renameSection } from '../../../Helpers/Firebase';
 
-export const NotesList = ({ list, setList, user }: NotesListProps) => {
+export const NotesList = ({ list, setList, user, setFilteredList }: NotesListProps) => {
   const { handleModal } = useContext(ModalContext);
-  const newSectionCount = useRef(1)
+  const listAsArray = Object.entries(list)
+  const newSectionCount = useRef(listAsArray.length)
+  useEffect(() => {
+    newSectionCount.current = listAsArray.length + 1
+  }, [list])
   const updateNoteText = useCallback(
     (sectionIndex: string, noteIndex: string, newText: string) => {
       setList((prev: ISection) => {
@@ -139,7 +143,7 @@ export const NotesList = ({ list, setList, user }: NotesListProps) => {
   };
   return (
     <div className={styles.listContainer}>
-      {Object.entries(list).map((section, i) => {
+      {listAsArray.map((section, i) => {
         return (
           <div id={section[0]} key={section[0]} style={{ width: '100%' }}>
             <Seperator

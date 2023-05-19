@@ -10,9 +10,9 @@ import { prettifyJSON } from '../../../Helpers/Json';
 import styles from './FormatterBody.module.css';
 import { FormatterBodyProps } from './FormatterBodyProps';
 import { InputButtons } from '../../../Components/DiffChecker/InputButtons';
+import { useLocalStorage } from '../../../Hooks/useLocalStorage';
 
-export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
-  const [raw, setRaw] = useState<string>('');
+export const FormatterBody = ({ setRes, setError, error, raw, setRaw }: FormatterBodyProps) => {
   const [fileName, setFileName] = useState<string>('');
   const { handleModal } = useContext(ModalContext);
   const countRef = useRef<number>(0);
@@ -21,6 +21,13 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
     setFileName('');
     setError('');
     setRes({ json: false, res: '' });
+  };
+  const [searches, setSearches] = useLocalStorage<any>('searches', []);
+  const handleSaveSearch = (search: string) => {
+    if (!searches.includes(search)) {
+      const updatedSearches = [...searches, search];
+      setSearches(updatedSearches);
+    }
   };
   const setExample = () => {
     setRaw(JSON.stringify(jsonExample));
@@ -31,6 +38,7 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
       setRes({ json: true, res: JSON.parse(formattedData) });
       setRaw(formattedData);
       setError('');
+      handleSaveSearch(formattedData)
     } catch (error: any) {
       if (countRef.current === 0) {
         countRef.current++;
@@ -48,6 +56,8 @@ export const FormatterBody = ({ setRes, setError }: FormatterBodyProps) => {
           id="resInput"
           onChange={setRaw}
           value={raw}
+          helperText={error}
+          error={!!error}
           InputProps={{
             endAdornment: (
               <InputButtons

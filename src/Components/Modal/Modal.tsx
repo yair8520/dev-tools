@@ -13,9 +13,9 @@ export const Modal = () => {
       <Box sx={style}>
         {React.isValidElement(modalContent)
           ? React.cloneElement(modalContent, {
-              ...modalContent.props,
-              ...contentProps,
-            })
+            ...modalContent.props,
+            ...contentProps,
+          })
           : modalContent}
       </Box>
     </MuiModaL>
@@ -31,6 +31,7 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
+  borderRadius: 8,
   p: 4,
   '@media (max-width: 600px)': {
     minWidth: '90vw',

@@ -29,18 +29,21 @@ export const Notes = () => {
   }, [user]);
 
   const sectionArray = useMemo(
-    () => Object.entries(list).map((item) => item[1].subject),
-    [list]
+    () => Object.entries(filteredList).map((item) => item[1].subject),
+    [filteredList]
   );
   const filterByTimeAndSection = (dir: 'descending' | 'ascending', sectionName: string) => {
     if (sectionName === "All")
       return setFilteredList(list)
-    setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
+    setFilteredList(filterListByTimeAndSection(filteredList, dir, sectionName));
   };
 
   const filterByQuary = (str: string) => {
     setQuary(str);
-    setFilteredList(filterListByQuary(list, str));
+    if (!str) {
+      return setFilteredList(list)
+    }
+    setFilteredList(filterListByQuary(filteredList, str));
   };
   return (
     <div className={styles.container}>
@@ -60,7 +63,6 @@ export const Notes = () => {
           onChange={filterByQuary}
           options={sectionArray}
           filterByTimeAndSection={filterByTimeAndSection}
-
         />
         <NotesList user={user?.email} list={filteredList} setList={setFilteredList} />
       </div>
