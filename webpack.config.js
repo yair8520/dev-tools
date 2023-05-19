@@ -4,6 +4,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: "/dev-tools/",
     filename: '[name].js', // Use [name].js as the filename
   },
   mode: 'production',

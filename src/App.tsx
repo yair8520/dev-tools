@@ -5,8 +5,6 @@ import { CssBaseline } from '@mui/material';
 import { darkTheme, lightTheme } from './Theme';
 import { AppRouter } from './Routing';
 import { AppContext } from './Components/ThemeContext/ThemeContext';
-import 'firebase/compat/firestore';
-import 'firebase/compat/auth';
 import { UserProvider } from './Context/UserContext';
 
 function App() {
