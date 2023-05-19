@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/dev-tools/static/css/main.e59f2f01.css",
-    "main.js": "/dev-tools/static/js/main.e2a01737.js",
+    "main.css": "/dev-tools/static/css/main.639f4f86.css",
+    "main.js": "/dev-tools/static/js/main.19272918.js",
     "formatter.css": "/dev-tools/static/css/formatter.6d0c233d.chunk.css",
-    "formatter.js": "/dev-tools/static/js/formatter.b8dbbd41.chunk.js",
+    "formatter.js": "/dev-tools/static/js/formatter.6217eea1.chunk.js",
     "DiffChecker.css": "/dev-tools/static/css/DiffChecker.dc714438.chunk.css",
     "DiffChecker.js": "/dev-tools/static/js/DiffChecker.4ccf1a58.chunk.js",
     "FlexPage.css": "/dev-tools/static/css/FlexPage.9af11cad.chunk.css",
@@ -12,18 +12,18 @@
     "CustomHooks.js": "/dev-tools/static/js/CustomHooks.85b349d1.chunk.js",
     "TypeScriptUtils.css": "/dev-tools/static/css/TypeScriptUtils.377a73d4.chunk.css",
     "TypeScriptUtils.js": "/dev-tools/static/js/TypeScriptUtils.b8fe4bdd.chunk.js",
-    "Notes.css": "/dev-tools/static/css/Notes.afa3218f.chunk.css",
-    "Notes.js": "/dev-tools/static/js/Notes.38b68990.chunk.js",
+    "Notes.css": "/dev-tools/static/css/Notes.088a8255.chunk.css",
+    "Notes.js": "/dev-tools/static/js/Notes.ad6ef4bd.chunk.js",
     "static/js/116.d3b686db.chunk.js": "/dev-tools/static/js/116.d3b686db.chunk.js",
     "static/js/520.80fa76c1.chunk.js": "/dev-tools/static/js/520.80fa76c1.chunk.js",
     "static/js/318.74073cbd.chunk.js": "/dev-tools/static/js/318.74073cbd.chunk.js",
     "static/js/950.a8f4e9bd.chunk.js": "/dev-tools/static/js/950.a8f4e9bd.chunk.js",
     "static/js/890.3ae833c2.chunk.js": "/dev-tools/static/js/890.3ae833c2.chunk.js",
     "index.html": "/dev-tools/index.html",
-    "main.e59f2f01.css.map": "/dev-tools/static/css/main.e59f2f01.css.map",
-    "main.e2a01737.js.map": "/dev-tools/static/js/main.e2a01737.js.map",
+    "main.639f4f86.css.map": "/dev-tools/static/css/main.639f4f86.css.map",
+    "main.19272918.js.map": "/dev-tools/static/js/main.19272918.js.map",
     "formatter.6d0c233d.chunk.css.map": "/dev-tools/static/css/formatter.6d0c233d.chunk.css.map",
-    "formatter.b8dbbd41.chunk.js.map": "/dev-tools/static/js/formatter.b8dbbd41.chunk.js.map",
+    "formatter.6217eea1.chunk.js.map": "/dev-tools/static/js/formatter.6217eea1.chunk.js.map",
     "DiffChecker.dc714438.chunk.css.map": "/dev-tools/static/css/DiffChecker.dc714438.chunk.css.map",
     "DiffChecker.4ccf1a58.chunk.js.map": "/dev-tools/static/js/DiffChecker.4ccf1a58.chunk.js.map",
     "FlexPage.9af11cad.chunk.css.map": "/dev-tools/static/css/FlexPage.9af11cad.chunk.css.map",
@@ -32,8 +32,8 @@
     "CustomHooks.85b349d1.chunk.js.map": "/dev-tools/static/js/CustomHooks.85b349d1.chunk.js.map",
     "TypeScriptUtils.377a73d4.chunk.css.map": "/dev-tools/static/css/TypeScriptUtils.377a73d4.chunk.css.map",
     "TypeScriptUtils.b8fe4bdd.chunk.js.map": "/dev-tools/static/js/TypeScriptUtils.b8fe4bdd.chunk.js.map",
-    "Notes.afa3218f.chunk.css.map": "/dev-tools/static/css/Notes.afa3218f.chunk.css.map",
-    "Notes.38b68990.chunk.js.map": "/dev-tools/static/js/Notes.38b68990.chunk.js.map",
+    "Notes.088a8255.chunk.css.map": "/dev-tools/static/css/Notes.088a8255.chunk.css.map",
+    "Notes.ad6ef4bd.chunk.js.map": "/dev-tools/static/js/Notes.ad6ef4bd.chunk.js.map",
     "116.d3b686db.chunk.js.map": "/dev-tools/static/js/116.d3b686db.chunk.js.map",
     "520.80fa76c1.chunk.js.map": "/dev-tools/static/js/520.80fa76c1.chunk.js.map",
     "318.74073cbd.chunk.js.map": "/dev-tools/static/js/318.74073cbd.chunk.js.map",
@@ -41,7 +41,7 @@
     "890.3ae833c2.chunk.js.map": "/dev-tools/static/js/890.3ae833c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e59f2f01.css",
-    "static/js/main.e2a01737.js"
+    "static/css/main.639f4f86.css",
+    "static/js/main.19272918.js"
   ]
 }
