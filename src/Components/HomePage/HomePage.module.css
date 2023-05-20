@@ -18,11 +18,17 @@
   width: 100%;
 }
 
+.madeBy {
+  margin: 25px
+}
+
 @media (max-width: 600px) {
   .gridContainer {
     width: 90%;
   }
-
+  .madeBy {
+    margin: 0
+  }
   .welcome {
     width: 90%;
   }

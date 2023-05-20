@@ -9,17 +9,16 @@ import BugReportIcon from '@mui/icons-material/BugReport';
 export const About = ({ }: AboutProps) => {
   return (
     <div className={styles.container}>
-      <Text>Created By Yair Gabay </Text>
       <div className={styles.iconContainer}>
         {socialLinks.map((link) => (
           <CIconButton
-            placement="top"
+            placement="right"
             title={link.desc}
             key={link.href}
             onClick={() => { }}
           >
             <Link style={{ color: link.color }} to={link.href} target="_blank">
-              <link.icon />
+              <link.icon className={styles.icons} />
             </Link>
           </CIconButton>
         ))}
@@ -29,7 +28,7 @@ export const About = ({ }: AboutProps) => {
           onClick={() => { }}
         >
           <Link style={{ color: "inherit" }} to={mailtoHref}>
-            <BugReportIcon />
+            <BugReportIcon className={styles.icons} />
           </Link>
         </CIconButton>
       </div>

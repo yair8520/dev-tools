@@ -24,6 +24,7 @@ export const HomePage = () => {
         <HomePageItem key={item.href} item={item} />
       ))}
       <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
+      <Text className={styles.madeBy}>Created By Yair Gabay </Text>
       <About />
     </div>
   );
