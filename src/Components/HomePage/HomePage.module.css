@@ -23,7 +23,7 @@
   position: relative;
   display: inline-block;
   font-size: 24px;
-  padding: 10px;
+
 }
 
 .madeBy::before {
