@@ -20,15 +20,36 @@
 
 .madeBy {
   margin: 25px !important;
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.madeBy::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1976d2;
+  transition: width 0.3s ease-in-out;
+}
+
+.madeBy:hover::before {
+  width: 100%;
 }
 
 @media (max-width: 600px) {
   .gridContainer {
     width: 90%;
   }
+
   .madeBy {
     margin: 0
   }
+
   .welcome {
     width: 90%;
   }
