@@ -27,7 +27,7 @@ export const About = ({ }: AboutProps) => {
           title={"Report a Bug"}
           onClick={() => { }}
         >
-          <Link style={{ color: "inherit" }} to={mailtoHref}>
+          <Link style={{ color: "red" }} to={mailtoHref}>
             <BugReportIcon className={styles.icons} />
           </Link>
         </CIconButton>

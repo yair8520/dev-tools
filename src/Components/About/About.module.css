@@ -7,10 +7,12 @@
   left: 0;
   top: 20%;
 }
-.icons{
-  height: 40px;
-  width: 40px;
+
+.icons {
+  height: 40px !important;
+  width: 40px !important;
 }
+
 .iconContainer {
   width: 100%;
   display: flex;
@@ -21,11 +23,16 @@
 
 @media (max-width: 600px) {
   .container {
-    margin:10px;
+    margin: 10px;
     margin-bottom: 25px;
     position: unset;
 
   }
+  .icons {
+    height: 25px !important;
+    width: 25px !important;
+  }
+  
   .iconContainer {
     flex-direction: row;
   }
