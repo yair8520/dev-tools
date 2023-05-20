@@ -19,7 +19,7 @@
 }
 
 .madeBy {
-  margin: 25px
+  margin: 25px !important;
 }
 
 @media (max-width: 600px) {

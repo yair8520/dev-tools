@@ -17,7 +17,6 @@ export const HomePage = () => {
         <div className={styles.separator} />
       </Text>
       <Text className={styles.welcome} variant="body1">
-        {' '}
         {welcomeMessage}
       </Text>
       {pages.map((item) => (

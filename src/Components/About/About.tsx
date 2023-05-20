@@ -2,10 +2,13 @@ import React from 'react';
 import styles from './About.module.css';
 import { AboutProps } from './AboutProps';
 import { Text } from '../Text';
-import { mailtoHref, socialLinks } from './helpers';
+import { handleShareButton, mailtoHref, socialLinks } from './helpers';
 import { CIconButton } from '../CIconButton';
 import { Link } from 'react-router-dom';
 import BugReportIcon from '@mui/icons-material/BugReport';
+import ShareIcon from '@mui/icons-material/Share';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+
 export const About = ({ }: AboutProps) => {
   return (
     <div className={styles.container}>
@@ -30,6 +33,13 @@ export const About = ({ }: AboutProps) => {
           <Link style={{ color: "red" }} to={mailtoHref}>
             <BugReportIcon className={styles.icons} />
           </Link>
+        </CIconButton>
+        <CIconButton
+          placement="right"
+          title={"Share"}
+          onClick={handleShareButton}
+        >
+          <ShareIcon className={styles.icons} />
         </CIconButton>
       </div>
     </div>

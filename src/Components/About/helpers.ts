@@ -25,3 +25,20 @@ const recipient = 'yair.gabay11@gmail.com';
 const subject = 'dev-tools Bug Report';
 
 export const mailtoHref = `mailto:${recipient}?subject=${encodeURIComponent(subject)}`;
+
+export const handleShareButton = () => {
+    if (navigator.share) {
+        navigator
+            .share({
+                title: "Dev-Tools",
+                text: `Check out this site`,
+                url: document.location.href,
+            })
+            .then(() => {
+                console.log('Successfully shared');
+            })
+            .catch(error => {
+                console.error('Something went wrong sharing the blog', error);
+            });
+    }
+};
