@@ -16,9 +16,15 @@ export const AppRouter = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             {routes.map((route, index) => (
-              <Route key={index} path={route.path} element={<Suspense>
-                <route.element />
-              </Suspense>} />
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Suspense>
+                    <route.element />
+                  </Suspense>
+                }
+              />
             ))}
           </Routes>
         </Suspense>

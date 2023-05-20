@@ -6,8 +6,24 @@
   justify-content: space-between;
   width: 70%;
 }
+
+.welcome {
+  white-space: pre-line;
+  text-align: center;
+  width: 60%;
+}
+
+.separator {
+  border: 2px solid #f0f0f0;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .gridContainer {
+    width: 90%;
+  }
+
+  .welcome {
     width: 90%;
   }
 }

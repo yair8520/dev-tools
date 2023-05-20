@@ -44,4 +44,4 @@ const Formatter = () => {
     </div>
   );
 };
-export default Formatter
+export default Formatter;

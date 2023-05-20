@@ -1,42 +1,34 @@
 const Sitemap = require('react-router-sitemap').default;
 const routes = [
   {
-      path: '/',
-     
+    path: '/',
   },
   {
-      path: '#/json-formatter',
-     
+    path: '#/json-formatter',
   },
   {
-      path: '#/diff-checker',
-     
+    path: '#/diff-checker',
   },
   {
-      path: '#/flex-playGround',
-      
+    path: '#/flex-playGround',
   },
   {
-      path: '#/custom-hooks',
-     
+    path: '#/custom-hooks',
   },
   {
-      path: '#/TS-utils',
-      
+    path: '#/TS-utils',
   },
   {
-      path: '#/notes',
-    
+    path: '#/notes',
   },
   {
-      path: '*',
-      
-  }
+    path: '*',
+  },
 ];
 
 function generateSitemap() {
   return new Sitemap(routes)
-    .build('https://yair8520.github.io/dev-tools/') 
+    .build('https://yair8520.github.io/dev-tools/')
     .save('./public/sitemap.xml');
 }
 

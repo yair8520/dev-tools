@@ -10,9 +10,15 @@ const DiffChecker = () => {
   const [changed, setChanged] = useState<string>('');
   return (
     <div className={styles.container}>
-      <Text variant="h4" className={styles.text}>
+      <Text
+        style={{ alignSelf: 'center', textAlign: 'center' }}
+        padding={'25px'}
+        variant="h6"
+      >
         Diff Checker
+        <div className={styles.separator} />
       </Text>
+
       <div className={styles.inputs}>
         <div className={styles.inputContainer}>
           <MultiLineInput
@@ -57,4 +63,4 @@ const DiffChecker = () => {
     </div>
   );
 };
-export default DiffChecker
+export default DiffChecker;

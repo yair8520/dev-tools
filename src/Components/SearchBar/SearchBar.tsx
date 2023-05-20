@@ -40,7 +40,6 @@ export const SearchBar = ({
             setFilter(e.target.value);
             filterByTimeAndSection(dir, e.target.value);
           }}
-
         >
           {['All', ...options].map((item: string, i: number) => (
             <MenuItem key={item + i} value={item}>

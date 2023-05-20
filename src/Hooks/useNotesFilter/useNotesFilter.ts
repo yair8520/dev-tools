@@ -28,4 +28,4 @@
 //   }, [notes, searchQuery, type, filterDir]);
 //   return notesFiltered;
 // };
-export { }
+export {};

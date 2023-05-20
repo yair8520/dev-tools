@@ -18,7 +18,10 @@
   flex-direction: row;
   padding-bottom: 20px;
 }
-
+.separator {
+  border: 2px solid #f0f0f0;
+  width: 100%;
+}
 .input {
   align-self: center;
   display: flex;

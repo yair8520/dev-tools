@@ -4,11 +4,9 @@
 
 .siteTitle {
   flex: 8;
-
 }
 
 .title {
-
   width: 120px;
   flex-direction: row;
   display: flex;

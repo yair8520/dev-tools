@@ -1,20 +1,27 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import NextWeekIcon from '@mui/icons-material/NextWeek';
+import BugReportIcon from '@mui/icons-material/BugReport';
 
-export const links = [
+export const socialLinks = [
     {
         icon: GitHubIcon,
-        href: 'https://github.com/yair8520'
+        href: 'https://github.com/yair8520',
+        color: 'inherit',
     },
     {
         icon: LinkedInIcon,
-        href: 'https://www.linkedin.com/in/yair-gabay-aba1b8207/'
+        href: 'https://www.linkedin.com/in/yair-gabay-aba1b8207/',
+        color: '#0966c2',
     },
     {
-        desc: "Protfolio",
+        desc: 'Protfolio',
         icon: NextWeekIcon,
-        href: 'https://yair8520.github.io/MyPortfolio/'
+        href: 'https://yair8520.github.io/MyPortfolio/',
+        color: 'inherit',
     },
+];
+const recipient = 'yair.gabay11@gmail.com';
+const subject = 'dev-tools Bug Report';
 
-]
+export const mailtoHref = `mailto:${recipient}?subject=${encodeURIComponent(subject)}`;

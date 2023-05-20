@@ -15,21 +15,25 @@ export const HistoryModal = ({ onClick, handleModal }: HistoryModalProps) => {
   return (
     <div className={styles.container}>
       <Text variant="h6"> Recent</Text>
-      {searches?searches.map((s: string, i: number) => (
-        <ButtonBase key={i} onClick={onItemPressed}>
-          <Text
-            sx={{
-              display: '-webkit-box',
-              overflow: 'hidden',
-              WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: 1,
-            }}
-            variant="body1"
-          >
-            {s.toString()}
-          </Text>
-        </ButtonBase>
-      )):<Text>There is no recent Data</Text>}
+      {searches ? (
+        searches.map((s: string, i: number) => (
+          <ButtonBase key={i} onClick={onItemPressed}>
+            <Text
+              sx={{
+                display: '-webkit-box',
+                overflow: 'hidden',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 1,
+              }}
+              variant="body1"
+            >
+              {s.toString()}
+            </Text>
+          </ButtonBase>
+        ))
+      ) : (
+        <Text>There is no recent Data</Text>
+      )}
     </div>
   );
 };

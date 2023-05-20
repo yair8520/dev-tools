@@ -9,4 +9,4 @@ const CustomHooks = () => {
     </div>
   );
 };
-export default CustomHooks
+export default CustomHooks;

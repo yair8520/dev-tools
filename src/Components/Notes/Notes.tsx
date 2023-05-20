@@ -32,7 +32,10 @@ const Notes = () => {
     dir: 'descending' | 'ascending',
     sectionName: string
   ) => {
-    if (sectionName === 'All') return setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
+    if (sectionName === 'All')
+      return setFilteredList(
+        filterListByTimeAndSection(list, dir, sectionName)
+      );
     setFilteredList(filterListByTimeAndSection(list, dir, sectionName));
   };
 
@@ -80,4 +83,4 @@ const Notes = () => {
     </div>
   );
 };
-export default Notes
+export default Notes;

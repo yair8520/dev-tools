@@ -17,15 +17,15 @@ export const handleFile = (
 ) => {
   const file = e.target.files?.[0];
 
-  if (file.type !== 'application/json' || file.type !== 'text/plain') {
+  if (file.type === 'application/json' || file.type === 'text/plain') {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target?.result;
+      onChange(content);
+    };
+    reader.readAsText(file);
+  } else {
     alert('Invalid file type. Only JSON and TXT files are supported.');
     return;
   }
-
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const content = e.target?.result;
-    onChange(content);
-  };
-  reader.readAsText(file);
 };

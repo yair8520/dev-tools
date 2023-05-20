@@ -44,4 +44,4 @@ const FlexPage = () => {
     </div>
   );
 };
-export default FlexPage
+export default FlexPage;

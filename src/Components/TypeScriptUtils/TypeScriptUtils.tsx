@@ -27,4 +27,4 @@ const TypeScriptUtils = () => {
     </div>
   );
 };
-export default TypeScriptUtils
+export default TypeScriptUtils;

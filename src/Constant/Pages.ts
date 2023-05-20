@@ -42,7 +42,7 @@ export const pages: IPages[] = [
 ];
 
 export const moreToCome: IPages = {
-  description: "",
+  description: '',
   title: '',
   href: '',
   headline: 'More tools under development...',
@@ -53,3 +53,6 @@ export interface IPages {
   headline: string;
   description: string;
 }
+export const welcomeMessage = `Access popular tools quickly on my site.
+ Manage notes, find custom React hooks, explore TypeScript utility types, experiment with flexbox, format JSON, and compare text. Enhance your workflow here. 
+Happy coding!`;

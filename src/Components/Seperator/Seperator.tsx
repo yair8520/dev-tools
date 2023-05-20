@@ -20,7 +20,6 @@ export const Seperator = ({
     <div className={styles.container}>
       <div className={styles.separator}></div>
       <TextField
-        onBlur={() => setDisabled(true)}
         variant="standard"
         value={text}
         sx={{
@@ -44,16 +43,13 @@ export const Seperator = ({
         disabled={disabled}
       />
       {disabled ? (
-        <CIconButton
-          placement="left"
-          title={'Rename'}
-          onClick={() => setDisabled(!disabled)}
-        >
+        <CIconButton placement="left" onClick={() => setDisabled(!disabled)}>
           <DriveFileRenameOutlineIcon />
         </CIconButton>
       ) : (
         <CIconButton
           onClick={() => {
+            console.log(text);
             changeSectionTitle(text);
             setDisabled(!disabled);
           }}
