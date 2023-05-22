@@ -1,26 +1,73 @@
-.container {
+:root {
+  --borderColor: #03A9F3;
+}
+
+.border {
+  position: relative;
   width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
   margin: 25px;
-  transition: all 0.7s ease-in-out;
-  animation: enter 0.9s ease-in-out;
+
+  &:not(.disabled)::before,
+  &:not(.disabled)::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: .3s ease-in-out;
+  }
+
+  &:not(.disabled)::before {
+    top: -5px;
+    left: -5px;
+    border-top: 3px solid var(--borderColor);
+    border-left: 3px solid var(--borderColor);
+  }
+
+  &:not(.disabled)::after {
+    right: -5px;
+    bottom: -5px;
+    border-bottom: 3px solid var(--borderColor);
+    border-right: 3px solid var(--borderColor);
+  }
+
+  &:not(.disabled):hover::before,
+  &:not(.disabled):hover::after {
+    width: calc(100% + 9px);
+    height: calc(100% + 9px);
+  }
 }
 
-.disabled {
-  cursor: default;
-}
-
-.container:not(.disabled):hover {
-  transform: scale(1.1);
+.border:not(.disabled):hover {
+  transform: scale(1.05);
   transition: 0.7s;
   cursor: pointer;
 }
 
 @media (max-width: 600px) {
-  .container:not(.disabled):hover {
+
+  .border:not(.disabled):hover::before,
+  .border:not(.disabled):hover::after {
+    width: 20px;
+    height: 20px;
+  }
+
+  .border:not(.disabled):hover {
     transform: none;
+    transition: none;
   }
 }
 
+.container {
+  width: 100%;
+  transition: all 0.7s ease-in-out;
+  /* animation: enter 0.9s ease-in-out; */
+}
+.disabled {
+  cursor: default;
+}
 .content {
   padding: 20px;
   width: 100%;

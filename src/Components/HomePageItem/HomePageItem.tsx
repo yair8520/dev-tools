@@ -9,21 +9,25 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
   const navigate = useNavigate();
 
   return (
-    <Card
+    <div
       onClick={() => !disabled && navigate(item.href)}
-      className={`${styles.container} ${disabled ? styles.disabled : ''}`}
+      className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
-      <div className={styles.content}>
-        <div>
-          <Text variant="h5" component="h2">
-            {item.headline}
-          </Text>
-          <Text sx={{ mt: 1 }} color="text.secondary">
-            {item.description}
-          </Text>
+      <Card
+        className={styles.container}
+      >
+        <div className={styles.content}>
+          <div>
+            <Text variant="h5" component="h2">
+              {item.headline}
+            </Text>
+            <Text sx={{ mt: 1 }} color="text.secondary">
+              {item.description}
+            </Text>
+          </div>
+          {!disabled && <LaunchIcon />}
         </div>
-        {!disabled && <LaunchIcon />}
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
