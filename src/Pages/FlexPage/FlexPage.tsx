@@ -10,6 +10,7 @@ import {
 } from './FlexPageProps';
 import { Mutable } from '../../Constant/DropDown';
 import { AppContext } from '../../Components/ThemeContext/ThemeContext';
+import { Axis } from '../../Components/Axis';
 
 const FlexPage = () => {
   const { isDark } = useContext(AppContext);
@@ -35,6 +36,7 @@ const FlexPage = () => {
         }}
         className={styles.demo}
       >
+        <Axis dir={containerStyle.flexDirection} />
         <FlexDemo
           items={items}
           selectedIndex={selectedIndex}
