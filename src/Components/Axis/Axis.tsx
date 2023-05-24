@@ -15,12 +15,11 @@ const dirIcon = {
 
 export const Axis = ({ dir }: AxisProps) => {
   const Icon = dirIcon[dir as keyof typeof dirIcon];
-  console.log(Icon);
   return (
     <div className={styles.container}>
       <div className={styles.rightLine} />
       <Text className={styles.text}>Main Axis</Text>
-      {Icon && <Icon />} {/* Render the component as JSX */}
+      {Icon && <Icon />}
     </div>
   );
 };
