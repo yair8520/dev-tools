@@ -1,11 +1,11 @@
-import { ITodoList } from './Todo';
+import { ITodoList, TodoItem } from './Todo';
 
 export interface ToDoPageProps {
   [key: string]: any;
 }
 
-export const mockData: ITodoList = {
-  list: [
+export const mockData: TodoItem[] =
+  [
     {
       id: '1',
       dir: 'Work',
@@ -24,11 +24,123 @@ export const mockData: ITodoList = {
     },
     {
       id: '3',
-      dir: 'Work',
+      dir: 'test',
       desc: 'Schedule meeting',
       date: '2023-05-26',
       completed: true,
       favorite: true,
     },
-  ],
-};
+    {
+      id: '4',
+      dir: 'Work',
+      desc: 'Prepare presentation',
+      date: '2023-05-27',
+      completed: false,
+      favorite: true,
+    },
+    {
+      id: '5',
+      dir: 'Home',
+      desc: 'Clean the house',
+      date: '2023-05-28',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '6',
+      dir: 'Personal',
+      desc: 'Go for a run',
+      date: '2023-05-29',
+      completed: false,
+      favorite: true,
+    },
+    {
+      id: '7',
+      dir: 'Work',
+      desc: 'Attend team meeting',
+      date: '2023-05-30',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '8',
+      dir: 'Home',
+      desc: 'Pay bills',
+      date: '2023-05-31',
+      completed: false,
+      favorite: true,
+    },
+    {
+      id: '10',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '11',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '12',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '13',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '14',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '15',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '16',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '17',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+    {
+      id: '18',
+      dir: 'Work',
+      desc: 'Read a book',
+      date: '2023-06-01',
+      completed: false,
+      favorite: false,
+    },
+  ]
+

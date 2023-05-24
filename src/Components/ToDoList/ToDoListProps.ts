@@ -1,6 +1,6 @@
-import { ITodoList } from '../../Pages/ToDoPage/Todo';
+import { TodoItem } from '../../Pages/ToDoPage/Todo';
 
 export interface ToDoListProps {
   [key: string]: any;
-  list: ITodoList;
+  list: TodoItem[];
 }

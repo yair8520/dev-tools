@@ -1,4 +1,9 @@
 .container {
   width: 20%;
-  margin-top: 60px;
+  margin-top: 15px;
+  overflow: hidden;
+  position: sticky;
+  top: 0%;
 }
+
+.drawer {}

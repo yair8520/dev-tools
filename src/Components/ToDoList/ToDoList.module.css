@@ -1,4 +1,29 @@
 .container {
   width: 80%;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e2e8f0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 }
+
+
+.grid {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 25px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+}
+

@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './ToDoListItem.module.css';
 import { ToDoListItemProps } from './ToDoListItemProps';
+import { Card } from '@mui/material';
 
-export const ToDoListItem = ({}: ToDoListItemProps) => {
+export const ToDoListItem = ({ item, onItemClick }: ToDoListItemProps) => {
   return (
-    <div className={styles.container}>
-      <h1>ToDoListItemPage component</h1>
-    </div>
+    <Card sx={{ boxShadow: 5 }} className={styles.container} onClick={onItemClick}>
+
+    </Card>
   );
 };

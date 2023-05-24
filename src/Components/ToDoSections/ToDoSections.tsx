@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styles from './ToDoSections.module.css';
 import { ToDoSectionsProps } from './ToDoSectionsProps';
-import { Drawer } from '@mui/material';
+import { Drawer, List } from '@mui/material';
+import { DirItem } from './DirItem';
 
-export const ToDoSections = ({}: ToDoSectionsProps) => {
+export const ToDoSections = ({ list, selectedDir, setSelectedDir }: ToDoSectionsProps) => {
+  const dirs: Array<string> = useMemo(() => Array.from(new Set(list.map((item) => item.dir))), [list])
+  const onItemClick = useCallback((dir: string) => {
+    setSelectedDir(dir)
+  }, [])
   return (
     <div className={styles.container}>
       <Drawer
+        className={styles.drawer}
         anchor="left"
         variant="permanent"
         sx={{
@@ -15,7 +21,13 @@ export const ToDoSections = ({}: ToDoSectionsProps) => {
           },
         }}
       >
-        <div>asdasd</div>
+        <List>
+          {dirs.map((dir) =>
+          (<DirItem
+            selectedDir={selectedDir === dir}
+            onItemClick={onItemClick} key={dir} title={dir}
+          />))}
+        </List>
       </Drawer>
     </div>
   );

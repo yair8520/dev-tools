@@ -1,2 +1,12 @@
 .container {
+    height:300px;
+    width: 31%;
+  
+    border-radius: 30px !important;
 }
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+  
+  }
