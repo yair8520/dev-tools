@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './DirItem.module.css';
 import { DirItemProps } from './DirItemProps';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { text } from 'stream/consumers';
+import {
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
 
 export const DirItem = ({ title, onItemClick, selectedDir }: DirItemProps) => {
   return (

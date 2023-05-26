@@ -24,6 +24,8 @@
     flex-direction: column;
     flex-wrap: wrap;
   }
-
+  .container{
+    width: 100%;
+  }
 }
 

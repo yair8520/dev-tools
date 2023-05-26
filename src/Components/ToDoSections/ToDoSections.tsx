@@ -1,32 +1,37 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import styles from './ToDoSections.module.css';
-import { ToDoSectionsProps } from './ToDoSectionsProps';
-import { Drawer, List } from '@mui/material';
+import { drawerProps, mobileDrawerProps } from './ToDoSectionsProps';
+import { Drawer, List, useMediaQuery } from '@mui/material';
 import { DirItem } from './DirItem';
-
-export const ToDoSections = ({ list, selectedDir, setSelectedDir }: ToDoSectionsProps) => {
-  const dirs: Array<string> = useMemo(() => Array.from(new Set(list.map((item) => item.dir))), [list])
+import { TodoContext } from '../../Context/TodoContext';
+export const ToDoSections = ({
+  isSmallScreen,
+  setMobileOpen,
+  mobileOpen,
+}: any) => {
+  const { selectedDir, setSelectedDir, list, listOfDirs } =
+    useContext(TodoContext);
   const onItemClick = useCallback((dir: string) => {
-    setSelectedDir(dir)
-  }, [])
+    setSelectedDir(dir);
+  }, []);
+  const props = isSmallScreen ? mobileDrawerProps : drawerProps;
   return (
     <div className={styles.container}>
       <Drawer
+        onClose={() => setMobileOpen(!mobileOpen)}
+        open={mobileOpen}
         className={styles.drawer}
-        anchor="left"
-        variant="permanent"
-        sx={{
-          '& .MuiDrawer-paper': {
-            position: 'unset',
-          },
-        }}
+        {...props}
       >
         <List>
-          {dirs.map((dir) =>
-          (<DirItem
-            selectedDir={selectedDir === dir}
-            onItemClick={onItemClick} key={dir} title={dir}
-          />))}
+          {listOfDirs.map((dir) => (
+            <DirItem
+              selectedDir={selectedDir === dir}
+              onItemClick={onItemClick}
+              key={dir}
+              title={dir}
+            />
+          ))}
         </List>
       </Drawer>
     </div>

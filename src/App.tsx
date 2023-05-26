@@ -7,6 +7,9 @@ import { AppRouter } from './Routing';
 import { AppContext } from './Components/ThemeContext/ThemeContext';
 import { UserProvider } from './Context/UserContext';
 import './GlobalStyle.module.css';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
 function App() {
   const { isDark } = useContext(AppContext);
 
@@ -15,7 +18,9 @@ function App() {
       <ModalProvider>
         <CssBaseline />
         <UserProvider>
-          <AppRouter />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <AppRouter />
+          </LocalizationProvider>
         </UserProvider>
       </ModalProvider>
     </ThemeProvider>

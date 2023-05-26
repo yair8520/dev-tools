@@ -9,7 +9,7 @@ import BugReportIcon from '@mui/icons-material/BugReport';
 import ShareIcon from '@mui/icons-material/Share';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 
-export const About = ({ }: AboutProps) => {
+export const About = ({}: AboutProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.iconContainer}>
@@ -18,7 +18,7 @@ export const About = ({ }: AboutProps) => {
             placement="right"
             title={link.desc}
             key={link.href}
-            onClick={() => { }}
+            onClick={() => {}}
           >
             <Link style={{ color: link.color }} to={link.href} target="_blank">
               <link.icon className={styles.icons} />
@@ -27,16 +27,16 @@ export const About = ({ }: AboutProps) => {
         ))}
         <CIconButton
           placement="right"
-          title={"Report a Bug"}
-          onClick={() => { }}
+          title={'Report a Bug'}
+          onClick={() => {}}
         >
-          <Link style={{ color: "red" }} to={mailtoHref}>
+          <Link style={{ color: 'red' }} to={mailtoHref}>
             <BugReportIcon className={styles.icons} />
           </Link>
         </CIconButton>
         <CIconButton
           placement="right"
-          title={"Share"}
+          title={'Share'}
           onClick={handleShareButton}
         >
           <ShareIcon className={styles.icons} />

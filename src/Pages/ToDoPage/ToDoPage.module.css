@@ -4,3 +4,8 @@
   flex: 100%;
 }
 
+.menuButton {
+  position: absolute;
+  bottom: 4%;
+  right: 12%;
+}
