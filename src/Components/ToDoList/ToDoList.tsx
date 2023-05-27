@@ -5,17 +5,21 @@ import { ToDoListItem } from './ToDoListItem';
 import { TodoContext } from '../../Context/TodoContext/TodoContext';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { TodoModal } from '../TodoModal';
+import { getFilterFunction } from '../../Helpers/Todo';
 
 export const ToDoList = () => {
   const {
-    selectedDir: filter,
     list,
-    filterList,
     onDelete,
     onFavorite,
     onComplete,
+    selectedDir,
   } = useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
+
+  const todoList = useMemo(() => {
+    return getFilterFunction(selectedDir, list);
+  }, [selectedDir, list]);
 
   const onItemClick = useCallback(
     (id: string) => {
@@ -28,7 +32,7 @@ export const ToDoList = () => {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        {filterList.map((item) => (
+        {todoList.map((item) => (
           <ToDoListItem
             key={item.id}
             onItemClick={() => onItemClick(item.id)}

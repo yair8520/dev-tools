@@ -8,7 +8,7 @@ export const Layout = ({ children, color = undefined }: LayoutProps) => {
     <Container
       style={{ backgroundColor: color }}
       maxWidth={false}
-      sx={{ width: '100vw', alignSelf: 'center', display: 'flex', padding: 0 }}
+      sx={{ width: '100%', alignSelf: 'center', display: 'flex' }}
       className={styles.container}
     >
       {children}

@@ -17,14 +17,13 @@ export const TodoContext = createContext<TodoContextType>(TodoInitial);
 
 export const TodoProvider = ({ children }: any) => {
   const [list, setList] = useState<TodoItem[]>(mockData);
-  const [selectedDir, setSelectedDir] = useState<string>('Home');
+  const [selectedDir, setSelectedDir] = useState<string>('All');
   const listOfDirs: Array<string> = useMemo(
     () => Array.from(new Set(list.map((item) => item.dir))),
     [list]
   );
   const [dirs, setDirs] = useState<Array<string>>(listOfDirs);
-  const [filterList, setFilterList] = useState<TodoItem[]>([]);
-
+  const [filterBy, setFilterBy] = useState<any>();
   const addTodo = (newTodoItem: TodoItem) => {
     newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
     if (existItem(list, newTodoItem.id)) {
@@ -38,11 +37,6 @@ export const TodoProvider = ({ children }: any) => {
       setList((prevList) => [...prevList, newTodoItem]);
     }
   };
-
-  useEffect(() => {
-    setFilterList(list.filter((item) => item.dir === selectedDir));
-  }, [list, selectedDir]);
-
   const onDelete = useCallback((id: string) => {
     setList((prevList) => prevList.filter((item) => item.id !== id));
   }, []);
@@ -80,8 +74,8 @@ export const TodoProvider = ({ children }: any) => {
         addTodo,
         setDirs,
         dirs,
-        filterList,
-        setFilterList,
+        filterBy,
+        setFilterBy,
       }}
     >
       {children}

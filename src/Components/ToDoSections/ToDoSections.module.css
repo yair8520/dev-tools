@@ -10,6 +10,12 @@
   width: 0;
 }
 
+.addSection {
+  width: 90%;
+  align-self: center;
+  text-transform: none;
+}
+
 .drawer {}
 
 @media (max-width: 600px) {

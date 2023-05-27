@@ -20,4 +20,10 @@ export const drawerProps: DrawerProps = {
 export const mobileDrawerProps: DrawerProps = {
   anchor: 'left',
   variant: 'temporary',
+  sx: {
+    '& .MuiDrawer-paper': {
+      padding: '25px',
+      height: '100%'
+    }
+  },
 };

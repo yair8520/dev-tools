@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import styles from './ToDoSections.module.css';
 import { drawerProps, mobileDrawerProps } from './ToDoSectionsProps';
 import {
+  Button,
   Collapse,
   Drawer,
   List,
@@ -14,23 +15,23 @@ import { TodoContext } from '../../Context/TodoContext/TodoContext';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import FolderIcon from '@mui/icons-material/Folder';
 import { defualtFolders } from './helper';
+import { ModalContext } from '../ModalContext/ModalContext';
+import { DirModal } from '../DirModal';
 export const ToDoSections = ({
   isSmallScreen,
   setMobileOpen,
   mobileOpen,
 }: any) => {
-  const { selectedDir, setSelectedDir, dirs, setFilterList, list } =
-    useContext(TodoContext);
-  const [open, setOpen] = React.useState(true);
-  const onItemClick = useCallback(({ dir, name = '' }: any) => {
-    if (typeof dir === 'function') {
-      return setFilterList(list.filter(dir));
-    }
-    return setSelectedDir(dir);
-  }, []);
-
   const props = isSmallScreen ? mobileDrawerProps : drawerProps;
-
+  const { selectedDir, dirs, setSelectedDir } = useContext(TodoContext);
+  const { handleModal } = useContext(ModalContext);
+  const [open, setOpen] = React.useState(true);
+  const onItemClick = (dir: string) => {
+    setSelectedDir(dir);
+  };
+  const openEditModal = () => {
+    handleModal(<DirModal />);
+  };
   return (
     <div className={styles.container}>
       <Drawer
@@ -39,14 +40,19 @@ export const ToDoSections = ({
         className={styles.drawer}
         {...props}
       >
+        <Button
+          variant="contained"
+          className={styles.addSection}
+          onClick={openEditModal}
+        >
+          Add Directory +
+        </Button>
         <List>
           {defualtFolders.map((dir) => (
             <DirItem
               Icon={dir.icon}
               selectedDir={selectedDir === dir.title}
-              onItemClick={() =>
-                onItemClick({ dir: dir.filterBy, name: dir.title })
-              }
+              onItemClick={() => onItemClick(dir.title)}
               key={dir.title}
               title={dir.title}
             />
@@ -62,7 +68,7 @@ export const ToDoSections = ({
             {dirs.map((dir) => (
               <DirItem
                 selectedDir={selectedDir === dir}
-                onItemClick={() => onItemClick({ dir })}
+                onItemClick={() => onItemClick(dir)}
                 key={dir}
                 title={dir}
               />
