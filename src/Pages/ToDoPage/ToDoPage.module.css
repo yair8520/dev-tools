@@ -5,7 +5,7 @@
 }
 
 .menuButton {
-  position: absolute;
+  position: absolute !important;
   bottom: 4%;
   right: 12%;
 }

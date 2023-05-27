@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './ToDoPage.module.css';
 import { ToDoSections } from '../../Components/ToDoSections';
 import { ToDoList } from '../../Components/ToDoList';
-import { TodoProvider } from '../../Context/TodoContext';
+import { TodoProvider } from '../../Context/TodoContext/TodoContext';
 import { Fab, useMediaQuery } from '@mui/material';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
@@ -25,7 +25,6 @@ export const ToDoPage = () => {
           setMobileOpen={setMobileOpen}
           isSmallScreen={isSmallScreen}
         />
-
         <ToDoList />
       </div>
     </TodoProvider>

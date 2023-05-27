@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ToDoListItem.module.css';
 import { ToDoListItemProps } from './ToDoListItemProps';
-import { Card } from '@mui/material';
+import { Card, Paper } from '@mui/material';
 import { Text } from '../../Text';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -9,17 +9,20 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { CIconButton } from '../../CIconButton';
 
-export const ToDoListItem = ({ item, onItemClick }: ToDoListItemProps) => {
+export const ToDoListItem = ({
+  item,
+  onItemClick,
+  rowsFullWidth,
+}: ToDoListItemProps) => {
   const onItemPresssed = (func: Function) => (e: Event) => {
     e.stopPropagation();
     func();
   };
   return (
-    <Card
-      raised={true}
-      sx={{ boxShadow: 5 }}
+    <Paper
       className={styles.container}
       onClick={onItemClick}
+      // style={rowsFullWidth ? { width: '90%' } : {}}
     >
       <div className={styles.subContainer}>
         <div className={styles.content}>
@@ -55,6 +58,6 @@ export const ToDoListItem = ({ item, onItemClick }: ToDoListItemProps) => {
           </div>
         </div>
       </div>
-    </Card>
+    </Paper>
   );
 };

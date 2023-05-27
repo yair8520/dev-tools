@@ -1,21 +1,14 @@
 import React, { useContext, useMemo, useState } from 'react';
 import styles from './TodoModal.module.css';
 import { TodoModalProps } from './TodoModalProps';
-import { TodoContext } from '../../Context/TodoContext';
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from '@mui/material';
+import { TodoContext } from '../../Context/TodoContext/TodoContext';
+import { Button, InputLabel, MenuItem, Select } from '@mui/material';
 import { MultiLineInput } from '../MultiLineInput';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
-  const { addTodo, listOfDirs } = useContext(TodoContext);
+  const { addTodo, dirs } = useContext(TodoContext);
   const [formValues, setFormValues] = useState({
     title: item.title || '',
     desc: item.desc || '',
@@ -26,8 +19,8 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
   const onChange = (val: any, key: string) => {
     setFormValues({ ...formValues, [key]: val });
   };
-  const onclick = () => {
-    console.log('onclick');
+  const onclick = (e: any) => {
+    e.preventDefault();
   };
   return (
     <form onSubmit={onclick}>
@@ -42,17 +35,13 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
             className={styles.titleInput}
           />
           <div className={styles.bottomContainer}>
-            <InputLabel className={styles.label} id="label">
-              Task Date
-            </InputLabel>
+            <InputLabel className={styles.label}>Task Date</InputLabel>
             <DatePicker
               value={date}
               onChange={(a) => onChange(a, 'date')}
               className={styles.datePicker}
             />
-            <InputLabel className={styles.label} id="label">
-              Select Directory
-            </InputLabel>
+            <InputLabel className={styles.label}>Select Directory</InputLabel>
             <Select
               required={true}
               value={dir}
@@ -61,7 +50,7 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
               }}
               className={styles.dropDown}
             >
-              {listOfDirs.map((item: string) => (
+              {dirs.map((item: string) => (
                 <MenuItem key={item} value={item}>
                   {item}
                 </MenuItem>

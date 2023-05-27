@@ -1,16 +1,27 @@
 import React, { useCallback, useContext, useState } from 'react';
 import styles from './ToDoSections.module.css';
 import { drawerProps, mobileDrawerProps } from './ToDoSectionsProps';
-import { Drawer, List, useMediaQuery } from '@mui/material';
+import {
+  Collapse,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
 import { DirItem } from './DirItem';
-import { TodoContext } from '../../Context/TodoContext';
+import { TodoContext } from '../../Context/TodoContext/TodoContext';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import FolderIcon from '@mui/icons-material/Folder';
+import { defualtFolders } from './helper';
 export const ToDoSections = ({
   isSmallScreen,
   setMobileOpen,
   mobileOpen,
 }: any) => {
-  const { selectedDir, setSelectedDir, list, listOfDirs } =
-    useContext(TodoContext);
+  const { selectedDir, setSelectedDir, dirs } = useContext(TodoContext);
+  const [open, setOpen] = React.useState(true);
+
   const onItemClick = useCallback((dir: string) => {
     setSelectedDir(dir);
   }, []);
@@ -24,14 +35,31 @@ export const ToDoSections = ({
         {...props}
       >
         <List>
-          {listOfDirs.map((dir) => (
+          {defualtFolders.map((dir) => (
             <DirItem
-              selectedDir={selectedDir === dir}
+              selectedDir={selectedDir === dir.title}
               onItemClick={onItemClick}
-              key={dir}
-              title={dir}
+              key={dir.title}
+              title={dir.title}
             />
           ))}
+          <ListItemButton onClick={() => setOpen(!open)}>
+            <ListItemIcon>
+              <FolderIcon />
+            </ListItemIcon>
+            <ListItemText primary="Directories" />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            {dirs.map((dir) => (
+              <DirItem
+                selectedDir={selectedDir === dir}
+                onItemClick={onItemClick}
+                key={dir}
+                title={dir}
+              />
+            ))}
+          </Collapse>
         </List>
       </Drawer>
     </div>

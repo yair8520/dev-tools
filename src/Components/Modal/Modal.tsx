@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Box, Modal as MuiModaL } from '@mui/material';
 import { ModalContext } from '../ModalContext/ModalContext';
-import { TodoProvider } from '../../Context/TodoContext';
+import { TodoProvider } from '../../Context/TodoContext/TodoContext';
 
 export const Modal = () => {
   const { modal, handleModal, modalContent } = useContext(ModalContext);

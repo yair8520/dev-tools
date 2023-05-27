@@ -24,8 +24,8 @@
     flex-direction: column;
     flex-wrap: wrap;
   }
-  .container{
+
+  .container {
     width: 100%;
   }
 }
-
