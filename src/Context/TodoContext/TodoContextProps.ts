@@ -1,5 +1,5 @@
-import { TodoItem } from "../../Pages/ToDoPage/Todo";
 import { v4 as uuid } from 'uuid';
+import { TodoItem } from '../../Pages/ToDoPage/Todo';
 
 export type TodoContextType = {
     list: TodoItem[];
@@ -8,9 +8,10 @@ export type TodoContextType = {
     setSelectedDir: React.Dispatch<React.SetStateAction<string>>;
     selectedDir: string;
     addTodo: Function;
-    ModifayTodo: Function;
     setFilterList: Function;
-    deleteTodo: Function;
+    onDelete: Function;
+    onComplete: Function;
+    onFavorite: Function;
     setDirs: Function;
     dirs: Array<string>;
 
@@ -21,10 +22,11 @@ export const TodoInitial = {
     dirs: [],
     setList: () => { },
     setDirs: () => { },
+    onDelete: () => { },
+    onComplete: () => { },
+    onFavorite: () => { },
     setFilterList: () => { },
     addTodo: () => { },
-    ModifayTodo: () => { },
-    deleteTodo: () => { },
     setSelectedDir: () => { },
     selectedDir: '',
 }
@@ -38,4 +40,14 @@ export function setDefaultTodo(dir: string): TodoItem {
         completed: false,
         favorite: false,
     };
+}
+export function getdefualtArgs() {
+    return {
+        id: uuid(),
+        completed: false,
+        favorite: false,
+    };
+}
+export function existItem(list: TodoItem[], id: string): boolean {
+    return list.find((l) => l.id === id) !== undefined;
 }

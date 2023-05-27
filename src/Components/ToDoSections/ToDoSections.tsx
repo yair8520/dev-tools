@@ -22,7 +22,7 @@ export const ToDoSections = ({
   const { selectedDir, setSelectedDir, dirs, setFilterList, list } =
     useContext(TodoContext);
   const [open, setOpen] = React.useState(true);
-  const onItemClick = useCallback((dir: any) => {
+  const onItemClick = useCallback(({ dir, name = '' }: any) => {
     if (typeof dir === 'function') {
       return setFilterList(list.filter(dir));
     }
@@ -44,7 +44,9 @@ export const ToDoSections = ({
             <DirItem
               Icon={dir.icon}
               selectedDir={selectedDir === dir.title}
-              onItemClick={() => onItemClick(dir.filterBy)}
+              onItemClick={() =>
+                onItemClick({ dir: dir.filterBy, name: dir.title })
+              }
               key={dir.title}
               title={dir.title}
             />
@@ -60,7 +62,7 @@ export const ToDoSections = ({
             {dirs.map((dir) => (
               <DirItem
                 selectedDir={selectedDir === dir}
-                onItemClick={onItemClick}
+                onItemClick={() => onItemClick({ dir })}
                 key={dir}
                 title={dir}
               />

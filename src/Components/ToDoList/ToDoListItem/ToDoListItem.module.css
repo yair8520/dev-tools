@@ -1,12 +1,11 @@
 .container {
     height: 300px;
-    width: 31%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 30px !important;
     transition: all 0.7s ease-in-out;
-
 }
 
 .container:hover {

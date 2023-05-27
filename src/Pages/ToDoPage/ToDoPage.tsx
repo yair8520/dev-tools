@@ -10,23 +10,21 @@ export const ToDoPage = () => {
   const isSmallScreen = useMediaQuery('(max-width: 600px)');
   const [mobileOpen, setMobileOpen] = useState<boolean>(!isSmallScreen);
   return (
-    <TodoProvider>
-      <div className={styles.container}>
-        {isSmallScreen && (
-          <Fab
-            className={styles.menuButton}
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            <MenuOpenIcon />
-          </Fab>
-        )}
-        <ToDoSections
-          mobileOpen={mobileOpen}
-          setMobileOpen={setMobileOpen}
-          isSmallScreen={isSmallScreen}
-        />
-        <ToDoList />
-      </div>
-    </TodoProvider>
+    <div className={styles.container}>
+      {isSmallScreen && (
+        <Fab
+          className={styles.menuButton}
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          <MenuOpenIcon />
+        </Fab>
+      )}
+      <ToDoSections
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+        isSmallScreen={isSmallScreen}
+      />
+      <ToDoList />
+    </div>
   );
 };

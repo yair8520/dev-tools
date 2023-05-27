@@ -5,36 +5,42 @@ import { ToDoListItem } from './ToDoListItem';
 import { TodoContext } from '../../Context/TodoContext/TodoContext';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { TodoModal } from '../TodoModal';
-import { TodoHeader } from '../TodoHeader';
 
 export const ToDoList = () => {
   const {
     selectedDir: filter,
     list,
-    addTodo,
     filterList,
+    onDelete,
+    onFavorite,
+    onComplete,
   } = useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
-  const [rowsFullWidth, setRowsFullWidth] = useState<boolean>(true);
-  const onItemClick = useCallback((id: string) => {
-    const item = list.filter((i) => i.id === id)[0];
-    handleModal(<TodoModal item={item} />);
-  }, []);
+
+  const onItemClick = useCallback(
+    (id: string) => {
+      const item = list.filter((i) => i.id === id)[0];
+      handleModal(<TodoModal item={item} />);
+    },
+    [list, handleModal]
+  );
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.grid}
-        // style={{ flexDirection: rowsFullWidth ? 'row' : 'column' }}
-      >
+      <div className={styles.grid}>
         {filterList.map((item) => (
           <ToDoListItem
-            rowsFullWidth={rowsFullWidth}
             key={item.id}
             onItemClick={() => onItemClick(item.id)}
+            onComplete={onComplete}
+            onFavorite={onFavorite}
+            onDelete={onDelete}
             item={item}
           />
         ))}
+        <div className={styles.addNote} onClick={() => onItemClick('-1')}>
+          Add Todo +
+        </div>
       </div>
     </div>
   );

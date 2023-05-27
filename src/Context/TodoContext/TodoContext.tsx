@@ -1,10 +1,17 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { TodoItem } from '../../Pages/ToDoPage/Todo';
 import { mockData } from '../../Pages/ToDoPage/ToDoPageProps';
 import {
   TodoContextType,
   TodoInitial,
-  setDefaultTodo,
+  existItem,
+  getdefualtArgs,
 } from './TodoContextProps';
 export const TodoContext = createContext<TodoContextType>(TodoInitial);
 
@@ -16,27 +23,61 @@ export const TodoProvider = ({ children }: any) => {
     [list]
   );
   const [dirs, setDirs] = useState<Array<string>>(listOfDirs);
-  const addTodo = (dir: string) => {
-    setList((p) => [...p, setDefaultTodo(dir)]);
-  };
   const [filterList, setFilterList] = useState<TodoItem[]>([]);
 
-  useEffect(() => {
-    setFilterList(list.filter((i) => i.dir === selectedDir));
-  }, [selectedDir]);
+  const addTodo = (newTodoItem: TodoItem) => {
+    newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
+    if (existItem(list, newTodoItem.id)) {
+      setList((prevList) => {
+        const updatedList = prevList.map((item) =>
+          item.id === newTodoItem.id ? newTodoItem : item
+        );
+        return updatedList;
+      });
+    } else {
+      setList((prevList) => [...prevList, newTodoItem]);
+    }
+  };
 
-  const ModifayTodo = () => {};
-  const deleteTodo = () => {};
+  useEffect(() => {
+    setFilterList(list.filter((item) => item.dir === selectedDir));
+  }, [list, selectedDir]);
+
+  const onDelete = useCallback((id: string) => {
+    setList((prevList) => prevList.filter((item) => item.id !== id));
+  }, []);
+  const onFavorite = useCallback((id: string) => {
+    setList((prevList) => {
+      return prevList.map((item) => {
+        if (item.id === id) {
+          return { ...item, favorite: !item.favorite };
+        }
+        return item;
+      });
+    });
+  }, []);
+  const onComplete = useCallback((id: string) => {
+    setList((prevList) => {
+      return prevList.map((item) => {
+        if (item.id === id) {
+          return { ...item, completed: !item.completed };
+        }
+        return item;
+      });
+    });
+  }, []);
+
   return (
     <TodoContext.Provider
       value={{
         list,
+        onDelete,
+        onComplete,
+        onFavorite,
         setList,
         selectedDir,
         setSelectedDir,
         addTodo,
-        ModifayTodo,
-        deleteTodo,
         setDirs,
         dirs,
         filterList,

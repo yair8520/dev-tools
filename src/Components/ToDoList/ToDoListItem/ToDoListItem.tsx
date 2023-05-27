@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ToDoListItem.module.css';
 import { ToDoListItemProps } from './ToDoListItemProps';
-import { Card, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import { Text } from '../../Text';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -12,18 +12,16 @@ import { CIconButton } from '../../CIconButton';
 export const ToDoListItem = ({
   item,
   onItemClick,
-  rowsFullWidth,
+  onComplete,
+  onFavorite,
+  onDelete,
 }: ToDoListItemProps) => {
   const onItemPresssed = (func: Function) => (e: Event) => {
     e.stopPropagation();
-    func();
+    func(item.id);
   };
   return (
-    <Paper
-      className={styles.container}
-      onClick={onItemClick}
-      // style={rowsFullWidth ? { width: '90%' } : {}}
-    >
+    <Paper className={styles.container} onClick={onItemClick}>
       <div className={styles.subContainer}>
         <div className={styles.content}>
           <Text className={styles.title}>{item.title}</Text>
@@ -37,7 +35,7 @@ export const ToDoListItem = ({
           <div className={styles.bottomButtons}>
             <CIconButton
               title={'Favorite'}
-              onClick={onItemPresssed(() => console.log('Delete'))}
+              onClick={onItemPresssed(onFavorite)}
             >
               <FavoriteBorderIcon
                 htmlColor={item.favorite ? 'red' : undefined}
@@ -45,14 +43,11 @@ export const ToDoListItem = ({
             </CIconButton>
             <CIconButton
               title={item.completed ? 'Done' : 'InProgress'}
-              onClick={onItemPresssed(() => console.log('Delete'))}
+              onClick={onItemPresssed(onComplete)}
             >
               <TaskAltIcon htmlColor={item.completed ? 'green' : 'orange'} />
             </CIconButton>
-            <CIconButton
-              title={'Delete'}
-              onClick={onItemPresssed(() => console.log('Delete'))}
-            >
+            <CIconButton title={'Delete'} onClick={onItemPresssed(onDelete)}>
               <DeleteOutlineIcon />
             </CIconButton>
           </div>

@@ -10,20 +10,22 @@ import dayjs from 'dayjs';
 export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
   const { addTodo, dirs } = useContext(TodoContext);
   const [formValues, setFormValues] = useState({
-    title: item.title || '',
-    desc: item.desc || '',
-    dir: item.dir || '',
-    date: item.date ? dayjs(item.date) : null,
+    title: item?.title ?? '',
+    desc: item?.desc ?? '',
+    dir: item?.dir ?? '',
+    date: item?.date ? item.date : dayjs().format('YYYY-MM-DD'),
   });
   const { title, desc, dir, date } = formValues;
   const onChange = (val: any, key: string) => {
     setFormValues({ ...formValues, [key]: val });
   };
   const onclick = (e: any) => {
-    e.preventDefault();
+    addTodo({ ...item, ...formValues });
+    handleModal();
   };
   return (
-    <form onSubmit={onclick}>
+    //onSubmit={onclick}
+    <form>
       <div className={styles.container}>
         <div className={styles.content}>
           <MultiLineInput
@@ -37,8 +39,8 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
           <div className={styles.bottomContainer}>
             <InputLabel className={styles.label}>Task Date</InputLabel>
             <DatePicker
-              value={date}
-              onChange={(a) => onChange(a, 'date')}
+              value={dayjs(date)}
+              onChange={(a) => onChange(dayjs(a).format('YYYY-MM-DD'), 'date')}
               className={styles.datePicker}
             />
             <InputLabel className={styles.label}>Select Directory</InputLabel>
@@ -66,8 +68,8 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
             className={styles.descInput}
           />
         </div>
-        <Button type="submit" className={styles.button} variant="contained">
-          save
+        <Button onClick={onclick} className={styles.button} variant="contained">
+          {item ? 'save' : 'Update'}
         </Button>
       </div>
     </form>

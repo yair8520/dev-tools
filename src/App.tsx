@@ -9,20 +9,23 @@ import { UserProvider } from './Context/UserContext';
 import './GlobalStyle.module.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TodoProvider } from './Context/TodoContext/TodoContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <ModalProvider>
-        <CssBaseline />
-        <UserProvider>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <AppRouter />
-          </LocalizationProvider>
-        </UserProvider>
-      </ModalProvider>
+      <TodoProvider>
+        <ModalProvider>
+          <CssBaseline />
+          <UserProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <AppRouter />
+            </LocalizationProvider>
+          </UserProvider>
+        </ModalProvider>
+      </TodoProvider>
     </ThemeProvider>
   );
 }
