@@ -8,13 +8,8 @@ import { TodoModal } from '../TodoModal';
 import { getFilterFunction } from '../../Helpers/Todo';
 
 export const ToDoList = () => {
-  const {
-    list,
-    onDelete,
-    onFavorite,
-    onComplete,
-    selectedDir,
-  } = useContext(TodoContext);
+  const { list, onDelete, onFavorite, onComplete, selectedDir } =
+    useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
 
   const todoList = useMemo(() => {
@@ -42,6 +37,7 @@ export const ToDoList = () => {
             item={item}
           />
         ))}
+
         <div className={styles.addNote} onClick={() => onItemClick('-1')}>
           Add Todo +
         </div>

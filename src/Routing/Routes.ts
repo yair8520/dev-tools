@@ -30,6 +30,9 @@ const TypeScriptUtils = lazy(
 const Notes = lazy(
   () => import(/* webpackChunkName: "Notes" */ '../Components/Notes/Notes')
 );
+const ToDoPage = lazy(
+  () => import(/* webpackChunkName: "ToDoPage" */ '../Pages/ToDoPage/ToDoPage')
+);
 
 const routes = [
   {
@@ -61,7 +64,7 @@ const routes = [
     element: Notes,
   },
   {
-    path: '/ToDoPage',
+    path: '/ToDo',
     element: ToDoPage,
   },
   {

@@ -5,7 +5,7 @@ import { ToDoList } from '../../Components/ToDoList';
 import { Fab, useMediaQuery } from '@mui/material';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
-export const ToDoPage = () => {
+const ToDoPage = () => {
   const isSmallScreen = useMediaQuery('(max-width: 600px)');
   const [mobileOpen, setMobileOpen] = useState<boolean>(!isSmallScreen);
   return (
@@ -27,3 +27,4 @@ export const ToDoPage = () => {
     </div>
   );
 };
+export default ToDoPage;
