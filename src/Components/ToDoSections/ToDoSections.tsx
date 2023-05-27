@@ -19,13 +19,18 @@ export const ToDoSections = ({
   setMobileOpen,
   mobileOpen,
 }: any) => {
-  const { selectedDir, setSelectedDir, dirs } = useContext(TodoContext);
+  const { selectedDir, setSelectedDir, dirs, setFilterList, list } =
+    useContext(TodoContext);
   const [open, setOpen] = React.useState(true);
-
-  const onItemClick = useCallback((dir: string) => {
-    setSelectedDir(dir);
+  const onItemClick = useCallback((dir: any) => {
+    if (typeof dir === 'function') {
+      return setFilterList(list.filter(dir));
+    }
+    return setSelectedDir(dir);
   }, []);
+
   const props = isSmallScreen ? mobileDrawerProps : drawerProps;
+
   return (
     <div className={styles.container}>
       <Drawer
@@ -37,8 +42,9 @@ export const ToDoSections = ({
         <List>
           {defualtFolders.map((dir) => (
             <DirItem
+              Icon={dir.icon}
               selectedDir={selectedDir === dir.title}
-              onItemClick={onItemClick}
+              onItemClick={() => onItemClick(dir.filterBy)}
               key={dir.title}
               title={dir.title}
             />

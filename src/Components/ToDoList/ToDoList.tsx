@@ -8,14 +8,14 @@ import { TodoModal } from '../TodoModal';
 import { TodoHeader } from '../TodoHeader';
 
 export const ToDoList = () => {
-  const { selectedDir: filter, list, addTodo } = useContext(TodoContext);
+  const {
+    selectedDir: filter,
+    list,
+    addTodo,
+    filterList,
+  } = useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
   const [rowsFullWidth, setRowsFullWidth] = useState<boolean>(true);
-  const filterList = useMemo(() => {
-    if (filter !== '') return list.filter((i) => i.dir === filter);
-    return list;
-  }, [filter, list]);
-
   const onItemClick = useCallback((id: string) => {
     const item = list.filter((i) => i.id === id)[0];
     handleModal(<TodoModal item={item} />);

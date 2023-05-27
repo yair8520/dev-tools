@@ -3,11 +3,13 @@ import { v4 as uuid } from 'uuid';
 
 export type TodoContextType = {
     list: TodoItem[];
+    filterList: TodoItem[];
     setList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
     setSelectedDir: React.Dispatch<React.SetStateAction<string>>;
     selectedDir: string;
     addTodo: Function;
     ModifayTodo: Function;
+    setFilterList: Function;
     deleteTodo: Function;
     setDirs: Function;
     dirs: Array<string>;
@@ -15,9 +17,11 @@ export type TodoContextType = {
 };
 export const TodoInitial = {
     list: [],
+    filterList: [],
     dirs: [],
     setList: () => { },
     setDirs: () => { },
+    setFilterList: () => { },
     addTodo: () => { },
     ModifayTodo: () => { },
     deleteTodo: () => { },
