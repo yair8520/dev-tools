@@ -1,63 +1,69 @@
 .container {
-    height:250px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px !important;
-    transition: all 0.7s ease-in-out;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px !important;
+  transition: all 0.7s ease-in-out;
 }
 
 .container:hover {
-    transform: scale(1.05);
-    transition: 0.7s;
+  transform: scale(1.05);
+  transition: 0.7s;
 }
-
+.dateText {
+  margin-right: 5px;
+}
 .title {
-    font-weight: bold;
-    margin-bottom: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .desc {
-    margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  height: 110px;
+  overflow-x: auto;
 }
 
 .subContainer {
-    height: 90%;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
-    flex: 4
+  height: 100%;
+  flex: 4;
 }
 
 .bottom {
-    border-top: 2px dashed grey;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  border-top: 2px dashed grey;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .bottomButtons {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .date {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
-    .container {
-        width: 100%;
-        transform: none;
-    }
+  .container {
+    width: 100%;
+    transform: none;
+  }
 }

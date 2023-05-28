@@ -20,15 +20,16 @@ export const ToDoListItem = ({
     e.stopPropagation();
     func(item.id);
   };
+
   return (
     <Paper className={styles.container} onClick={onItemClick}>
       <div className={styles.subContainer}>
         <div className={styles.content}>
-          <Text className={styles.title}>{item.title}</Text>
-          <Text className={styles.desc}>{item.desc}</Text>
+          <Text variant='h6' className={styles.title}>{item.title}</Text>
+          <Text variant='body2' className={styles.desc}>{item.desc}</Text>
         </div>
         <div className={styles.date}>
-          <Text>{item.date}</Text>
+          <Text className={styles.dateText}>{item.date}</Text>
           <ScheduleIcon />
         </div>
         <div className={styles.bottom}>
