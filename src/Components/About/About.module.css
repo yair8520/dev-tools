@@ -26,13 +26,12 @@
     margin: 10px;
     margin-bottom: 25px;
     position: unset;
-
   }
   .icons {
     height: 25px !important;
     width: 25px !important;
   }
-  
+
   .iconContainer {
     flex-direction: row;
   }

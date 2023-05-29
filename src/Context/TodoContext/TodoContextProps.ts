@@ -2,51 +2,51 @@ import { v4 as uuid } from 'uuid';
 import { TodoItem } from '../../Pages/ToDoPage/Todo';
 
 export type TodoContextType = {
-    list: TodoItem[];
-    setList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
-    setSelectedDir: React.Dispatch<React.SetStateAction<string>>;
-    selectedDir: string;
-    addTodo: Function;
-    onDelete: Function;
-    onComplete: Function;
-    onFavorite: Function;
-    setDirs: Function;
-    dirs: Array<string>;
-    filterBy: Function | string,
-    setFilterBy: any,
+  list: TodoItem[];
+  setList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  setSelectedDir: React.Dispatch<React.SetStateAction<string>>;
+  selectedDir: string;
+  addTodo: Function;
+  onDelete: Function;
+  onComplete: Function;
+  onFavorite: Function;
+  setDirs: Function;
+  dirs: Array<string>;
+  filterBy: Function | string;
+  setFilterBy: any;
 };
 export const TodoInitial = {
-    list: [],
-    dirs: [],
-    setList: () => { },
-    setDirs: () => { },
-    onDelete: () => { },
-    onComplete: () => { },
-    onFavorite: () => { },
-    addTodo: () => { },
-    setSelectedDir: () => { },
-    selectedDir: '',
-    filterBy: "",
-    setFilterBy: null
-}
+  list: [],
+  dirs: [],
+  setList: () => {},
+  setDirs: () => {},
+  onDelete: () => {},
+  onComplete: () => {},
+  onFavorite: () => {},
+  addTodo: () => {},
+  setSelectedDir: () => {},
+  selectedDir: '',
+  filterBy: '',
+  setFilterBy: null,
+};
 export function setDefaultTodo(dir: string): TodoItem {
-    return {
-        id: uuid(),
-        title: 'Finish report',
-        desc: 'Finish report',
-        dir,
-        date: '2023-05-24',
-        completed: false,
-        favorite: false,
-    };
+  return {
+    id: uuid(),
+    title: 'Finish report',
+    desc: 'Finish report',
+    dir,
+    date: '2023-05-24',
+    completed: false,
+    favorite: false,
+  };
 }
 export function getdefualtArgs() {
-    return {
-        id: uuid(),
-        completed: false,
-        favorite: false,
-    };
+  return {
+    id: uuid(),
+    completed: false,
+    favorite: false,
+  };
 }
 export function existItem(list: TodoItem[], id: string): boolean {
-    return list.find((l) => l.id === id) !== undefined;
+  return list.find((l) => l.id === id) !== undefined;
 }

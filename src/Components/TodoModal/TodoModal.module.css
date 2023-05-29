@@ -1,49 +1,50 @@
 .container {
-    min-height: 60vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  min-height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .bottomContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 
-    align-self: center;
+  align-self: center;
 }
 
 .label {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .button {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.titleInput {}
+.titleInput {
+}
 
 .content {
-    flex: 6;
-    background-color: 'red';
-    display: flex;
-    gap: 15px;
-    flex-direction: column;
+  flex: 6;
+  background-color: 'red';
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
 }
 
 .descInput {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .datePicker {
-    width: 100%;
+  width: 100%;
 }
 
 .dropDown {
-    width: 100%;
+  width: 100%;
 }

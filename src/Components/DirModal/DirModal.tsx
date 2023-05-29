@@ -10,7 +10,7 @@ export const DirModal = ({ handleModal }: DirModalProps) => {
   const { setDirs, dirs } = useContext(TodoContext);
   const [title, setTitle] = useState<string>('');
   const [error, setError] = useState<string>('');
-  
+
   const onSave = () => {
     if (!title) return setError('Required Field');
     if (dirs.includes(title)) return setError('Already exists');

@@ -1,5 +1,5 @@
 :root {
-  --borderColor: #03A9F3;
+  --borderColor: #03a9f3;
 }
 
 .border {
@@ -12,11 +12,11 @@
 
   &:not(.disabled)::before,
   &:not(.disabled)::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 20px;
     height: 20px;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 
   &:not(.disabled)::before {
@@ -47,7 +47,6 @@
 }
 
 @media (max-width: 600px) {
-
   .border:not(.disabled):hover::before,
   .border:not(.disabled):hover::after {
     width: 20px;
