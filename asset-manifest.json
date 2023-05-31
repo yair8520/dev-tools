@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dev-tools/static/css/main.da138755.css",
-    "main.js": "/dev-tools/static/js/main.ac8ac5e9.js",
+    "main.js": "/dev-tools/static/js/main.7c9f0154.js",
     "formatter.css": "/dev-tools/static/css/formatter.6d0c233d.chunk.css",
     "formatter.js": "/dev-tools/static/js/formatter.31ada255.chunk.js",
     "DiffChecker.css": "/dev-tools/static/css/DiffChecker.d8852943.chunk.css",
@@ -26,7 +26,7 @@
     "static/js/890.ac534c75.chunk.js": "/dev-tools/static/js/890.ac534c75.chunk.js",
     "index.html": "/dev-tools/index.html",
     "main.da138755.css.map": "/dev-tools/static/css/main.da138755.css.map",
-    "main.ac8ac5e9.js.map": "/dev-tools/static/js/main.ac8ac5e9.js.map",
+    "main.7c9f0154.js.map": "/dev-tools/static/js/main.7c9f0154.js.map",
     "formatter.6d0c233d.chunk.css.map": "/dev-tools/static/css/formatter.6d0c233d.chunk.css.map",
     "formatter.31ada255.chunk.js.map": "/dev-tools/static/js/formatter.31ada255.chunk.js.map",
     "DiffChecker.d8852943.chunk.css.map": "/dev-tools/static/css/DiffChecker.d8852943.chunk.css.map",
@@ -52,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.da138755.css",
-    "static/js/main.ac8ac5e9.js"
+    "static/js/main.7c9f0154.js"
   ]
 }
