@@ -13,6 +13,7 @@ import { pages } from '../../Constant/Pages';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { handleGoogleLogin } from '../../Helpers/Firebase';
 import { UserContext } from '../../Context/UserContext';
+import { DrawerContext } from '../../Context/DrawerContext';
 
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
@@ -76,7 +77,7 @@ export const CDrawer = () => {
 };
 export const WithDrawer = ({ children }: any) => {
   const isSmallScreen = useMediaQuery('(max-width: 500px)');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext);
   if (isSmallScreen) {
     return (
       <>
@@ -89,12 +90,16 @@ export const WithDrawer = ({ children }: any) => {
           <Menu />
         </IconButton>
         <Drawer
+          // BackdropProps={{style:{backgroundColor:"transparent"}}}
+          elevation={0}
           anchor="right"
           PaperProps={{
             sx: {
               width: '40%',
               display: 'flex',
               alignItems: 'center',
+              alignSelf: 'center',
+
               paddingTop: '50px',
             },
           }}
@@ -112,8 +117,13 @@ export const WithDrawer = ({ children }: any) => {
 export function CustomLink({ to, name, inDrawer, children, ...props }: any) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+  const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext);
+
   return (
-    <li className={isActive ? 'active' : ''}>
+    <li
+      onClick={() => isDrawerOpen && setIsDrawerOpen(false)}
+      className={isActive ? 'active' : ''}
+    >
       <Link to={to} {...props}>
         {children}
       </Link>

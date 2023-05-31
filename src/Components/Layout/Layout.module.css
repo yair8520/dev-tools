@@ -5,4 +5,6 @@
   height: 100%;
   padding: 0 !important;
   justify-content: center;
+  overflow-y: hidden;
 }
+
