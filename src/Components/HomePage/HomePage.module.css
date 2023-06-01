@@ -20,8 +20,10 @@
 
 .madeBy {
   margin: 25px !important;
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   font-size: 24px;
 }
 

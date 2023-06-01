@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './About.module.css';
 import { AboutProps } from './AboutProps';
-import { Text } from '../Text';
 import { handleShareButton, mailtoHref, socialLinks } from './helpers';
 import { CIconButton } from '../CIconButton';
 import { Link } from 'react-router-dom';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import ShareIcon from '@mui/icons-material/Share';
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 
 export const About = ({}: AboutProps) => {
   return (

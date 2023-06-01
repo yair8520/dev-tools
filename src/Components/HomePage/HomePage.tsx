@@ -4,6 +4,8 @@ import { moreToCome, pages, welcomeMessage } from '../../Constant/Pages';
 import { HomePageItem } from '../HomePageItem';
 import { About } from '../About';
 import { Text } from '../Text';
+import { Avatar } from '@mui/material';
+import avatarImage from '../../Assests/Images/avatar.png';
 
 export const HomePage = () => {
   return (
@@ -23,8 +25,11 @@ export const HomePage = () => {
         <HomePageItem key={item.href} item={item} />
       ))}
       <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
-      <Text className={styles.madeBy}>Created By Yair Gabay </Text>
       <About />
+      <div className={styles.madeBy}>
+        <Text className={styles.madeBy}>Created By Yair Gabay</Text>
+        <Avatar sx={{ width: 30, height: 30 }} src={avatarImage} />
+      </div>
     </div>
   );
 };
