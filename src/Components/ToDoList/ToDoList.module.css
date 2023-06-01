@@ -18,7 +18,9 @@
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
 }
-
+.emptyList{
+  color: black;
+}
 .addNote {
   display: flex;
   align-items: center;

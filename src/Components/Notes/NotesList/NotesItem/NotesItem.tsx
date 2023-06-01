@@ -23,7 +23,7 @@ export const NotesItem = ({ item, deleteItem }: NotesItemProps) => {
           </CIconButton>
         </div>
         <div className={styles.textContainer}>
-          <Text className={styles.text}>{item.text}</Text>
+          <Text variant='caption' className={styles.text}>{item.text}</Text>
         </div>
         <div className={styles.date}>
           <Text flexWrap={'wrap'} variant="caption">

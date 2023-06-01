@@ -5,7 +5,8 @@ import { ToDoListItem } from './ToDoListItem';
 import { TodoContext } from '../../Context/TodoContext/TodoContext';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { TodoModal } from '../TodoModal';
-import { getFilterFunction } from '../../Helpers/Todo';
+import { emptyList, getFilterFunction } from '../../Helpers/Todo';
+import { Text } from '../Text';
 
 export const ToDoList = () => {
   const { list, onDelete, onFavorite, onComplete, selectedDir } =
@@ -23,7 +24,23 @@ export const ToDoList = () => {
     },
     [list, handleModal]
   );
-
+  const hideAddButton = ['Favorites', 'Complited'];
+  const Empty = () => {
+    if (hideAddButton.includes(selectedDir) && todoList.length === 0) {
+      return (
+        <div className={styles.emptyList}>
+          <Text  style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: emptyList[selectedDir as keyof object] }} />
+        </div>
+      );
+    } else if (hideAddButton.includes(selectedDir)) {
+      return null;
+    }
+    return (
+      <div className={styles.addNote} onClick={() => onItemClick('-1')}>
+        <Text> Add Todo +</Text>
+      </div>
+    );
+  };
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
@@ -38,9 +55,7 @@ export const ToDoList = () => {
           />
         ))}
 
-        <div className={styles.addNote} onClick={() => onItemClick('-1')}>
-          Add Todo +
-        </div>
+        <Empty />
       </div>
     </div>
   );

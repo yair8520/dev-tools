@@ -13,7 +13,7 @@ import { TodoProvider } from './Context/TodoContext/TodoContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
-
+console.log(isDark)
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <TodoProvider>

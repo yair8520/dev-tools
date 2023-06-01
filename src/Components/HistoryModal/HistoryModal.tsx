@@ -15,7 +15,7 @@ export const HistoryModal = ({ onClick, handleModal }: HistoryModalProps) => {
   return (
     <div className={styles.container}>
       <Text variant="h6"> Recent</Text>
-      {searches ? (
+      {searches.length!==0 ? (
         searches.map((s: string, i: number) => (
           <ButtonBase key={i} onClick={onItemPressed}>
             <Text
