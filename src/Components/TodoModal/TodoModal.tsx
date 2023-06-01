@@ -8,11 +8,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
 
 export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
-  const { addTodo, dirs } = useContext(TodoContext);
+  const { addTodo, dirs, selectedDir } = useContext(TodoContext);
   const [formValues, setFormValues] = useState({
     title: item?.title ?? '',
     desc: item?.desc ?? '',
-    dir: item?.dir ?? '',
+    dir: item?.dir ?? selectedDir,
     date: item?.date ? item.date : dayjs().format('YYYY-MM-DD'),
   });
   const { title, desc, dir, date } = formValues;

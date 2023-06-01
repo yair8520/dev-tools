@@ -21,6 +21,18 @@
   transform: scale(1.05);
   transition: 0.7s;
 }
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    
+  }
+  .container:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
 .dateText {
   margin-right: 5px;
 }
@@ -72,9 +84,3 @@
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-    transform: none;
-  }
-}

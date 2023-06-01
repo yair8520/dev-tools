@@ -29,7 +29,12 @@ export const ToDoList = () => {
     if (hideAddButton.includes(selectedDir) && todoList.length === 0) {
       return (
         <div className={styles.emptyList}>
-          <Text  style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: emptyList[selectedDir as keyof object] }} />
+          <Text
+            style={{ whiteSpace: 'pre-line' }}
+            dangerouslySetInnerHTML={{
+              __html: emptyList[selectedDir as keyof object],
+            }}
+          />
         </div>
       );
     } else if (hideAddButton.includes(selectedDir)) {
