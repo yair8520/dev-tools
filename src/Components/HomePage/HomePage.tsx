@@ -9,7 +9,7 @@ import avatarImage from '../../Assests/Images/avatar.png';
 
 export const HomePage = () => {
   return (
-    <div className={styles.gridContainer}>
+    <div className={styles.container}>
       <Text
         style={{ alignSelf: 'center', textAlign: 'center' }}
         padding={'25px'}
@@ -21,10 +21,12 @@ export const HomePage = () => {
       <Text className={styles.welcome} variant="body1">
         {welcomeMessage}
       </Text>
-      {pages.map((item) => (
-        <HomePageItem key={item.href} item={item} />
-      ))}
-      <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
+      <div className={styles.gridContainer}>
+        {pages.map((item) => (
+          <HomePageItem key={item.href} item={item} />
+        ))}
+        <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
+      </div>
       <About />
       <div className={styles.madeBy}>
         <Text className={styles.madeBy}>Created By Yair Gabay</Text>

@@ -5,6 +5,7 @@ import { Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LaunchIcon from '@mui/icons-material/Launch';
 import { Text } from '../Text';
+
 export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
       onClick={() => !disabled && navigate(item.href)}
       className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
-      <Card className={styles.container}>
+      <Card elevation={15} className={styles.container}>
         <div className={styles.content}>
           <div>
             <Text variant="h5" component="h2">
@@ -23,7 +24,11 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
               {item.description}
             </Text>
           </div>
-          {!disabled && <LaunchIcon />}
+          {!disabled && (
+            <div className={styles.launch}>
+              <LaunchIcon />
+            </div>
+          )}
         </div>
       </Card>
     </div>

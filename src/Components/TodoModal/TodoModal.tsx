@@ -24,7 +24,6 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
     handleModal();
   };
   return (
-    //onSubmit={onclick}
     <form>
       <div className={styles.container}>
         <div className={styles.content}>
