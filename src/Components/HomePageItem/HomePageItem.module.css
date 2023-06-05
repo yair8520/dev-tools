@@ -8,7 +8,7 @@
   height: 100%;
   cursor: pointer;
   position: relative;
-  margin: 25px;
+  margin: 5%;
 
   &:not(.disabled)::before,
   &:not(.disabled)::after {
@@ -90,7 +90,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (width< 600px)   {
 
   .border:not(.disabled):hover::before,
   .border:not(.disabled):hover::after {
@@ -102,9 +102,11 @@
     position: unset;
   }
 
-  .border:not(.disabled):hover {
-    transform: none;
+  .border:not(.disabled):hover,
+  .border:not(.disabled):nth-child(even):hover,
+  .border:not(.disabled):nth-child(odd):hover {
     transition: none;
+    transform: none;
   }
 
   .content {

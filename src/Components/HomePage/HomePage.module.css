@@ -2,8 +2,8 @@
   padding-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template: auto;
-  gap: 50px;
+  grid-template-rows: auto;
+  gap: 5%;
   width: 90%;
 }
 
@@ -39,7 +39,7 @@
 
 @media (max-width: 600px) {
   .gridContainer {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
