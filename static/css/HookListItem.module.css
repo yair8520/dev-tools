@@ -1,0 +1,1 @@
+.container{animation:enter .9s ease-in;display:flex;margin:0;padding-bottom:20px}.card{border:4px solid transparent;width:100%}.header{align-items:center;align-self:center;display:flex;flex-direction:row;justify-content:space-between;width:90%}.copyIcon{position:absolute;right:10%}@keyframes enter{0%{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}

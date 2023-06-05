@@ -1,0 +1,1 @@
+.container{align-items:center;display:flex;flex-direction:row;justify-content:center;width:100%}.dropDown{width:50%}.dropDownContainer{align-self:center;padding-left:5%;width:40%}.textField{padding-top:0;width:100%!important}@media (max-width:600px){.container{flex-direction:column}.dropDownContainer,.textField{padding-bottom:15px;padding-left:0;width:100%}}

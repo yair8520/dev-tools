@@ -1,0 +1,1 @@
+.container{min-width:250px;width:20%}.list{align-self:center;display:flex;flex-direction:row;flex-wrap:wrap;width:100%}.fab{bottom:4vh;margin-top:15px;position:sticky;top:30%;width:25px}@media (max-width:600px){.list{flex-direction:column}.container{width:100%}}

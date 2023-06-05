@@ -1,0 +1,1 @@
+.section-title{cursor:pointer;transition:color .3s ease-in-out}.container{align-self:center;width:100%}.section-title.expanded{color:#f60}.section-content{height:0;overflow:hidden;transition:height .3s ease-in-out}.section-content.expanded{height:auto;overflow:visible}
