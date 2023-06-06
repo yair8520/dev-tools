@@ -15,6 +15,12 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
     dir: item?.dir ?? selectedDir,
     date: item?.date ? item.date : dayjs().format('YYYY-MM-DD'),
   });
+  // const [formErrors, setFormErrors] = useState({
+  //   title: '',
+  //   desc: '',
+  //   dir: '',
+  //   date: '',
+  // });
   const { title, desc, dir, date } = formValues;
   const onChange = (val: any, key: string) => {
     setFormValues({ ...formValues, [key]: val });
@@ -24,53 +30,51 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
     handleModal();
   };
   return (
-    <form>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <MultiLineInput
-            value={title}
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <MultiLineInput
+          value={title}
+          required={true}
+          maxRows={1}
+          label="Title"
+          onChange={(val) => onChange(val, 'title')}
+          className={styles.titleInput}
+        />
+        <div className={styles.bottomContainer}>
+          <InputLabel className={styles.label}>Task Date</InputLabel>
+          <DatePicker
+            value={dayjs(date)}
+            onChange={(a) => onChange(dayjs(a).format('YYYY-MM-DD'), 'date')}
+            className={styles.datePicker}
+          />
+          <InputLabel className={styles.label}>Select Directory</InputLabel>
+          <Select
             required={true}
-            maxRows={1}
-            label="Title"
-            onChange={(val) => onChange(val, 'title')}
-            className={styles.titleInput}
-          />
-          <div className={styles.bottomContainer}>
-            <InputLabel className={styles.label}>Task Date</InputLabel>
-            <DatePicker
-              value={dayjs(date)}
-              onChange={(a) => onChange(dayjs(a).format('YYYY-MM-DD'), 'date')}
-              className={styles.datePicker}
-            />
-            <InputLabel className={styles.label}>Select Directory</InputLabel>
-            <Select
-              required={true}
-              value={dir}
-              onChange={(e) => {
-                onChange(e.target.value, 'dir');
-              }}
-              className={styles.dropDown}
-            >
-              {dirs.map((item: string) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
-            </Select>
-          </div>
-          <MultiLineInput
-            value={desc}
-            minRows={3}
-            label="Description"
-            maxRows={8}
-            onChange={(val) => onChange(val, 'desc')}
-            className={styles.descInput}
-          />
+            value={dir}
+            onChange={(e) => {
+              onChange(e.target.value, 'dir');
+            }}
+            className={styles.dropDown}
+          >
+            {dirs.map((item: string) => (
+              <MenuItem key={item} value={item}>
+                {item}
+              </MenuItem>
+            ))}
+          </Select>
         </div>
-        <Button onClick={onclick} className={styles.button} variant="contained">
-          {item ? 'save' : 'Update'}
-        </Button>
+        <MultiLineInput
+          value={desc}
+          minRows={3}
+          label="Description"
+          maxRows={8}
+          onChange={(val) => onChange(val, 'desc')}
+          className={styles.descInput}
+        />
       </div>
-    </form>
+      <Button onClick={onclick} className={styles.button} variant="contained">
+        {item ? 'save' : 'Update'}
+      </Button>
+    </div>
   );
 };

@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  gap: 5%;
+  gap: 50px;
   width: 90%;
 }
 
@@ -13,6 +13,8 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 50px
+  ;flex-wrap: wrap;
 }
 
 .welcome {
@@ -27,7 +29,7 @@
 }
 
 .madeBy {
-  margin: 25px !important;
+  margin-top: 50px !important;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,7 +50,7 @@
   }
 
   .madeBy {
-    margin:10px !important;
+    margin: 10px !important;
   }
 
   .welcome {

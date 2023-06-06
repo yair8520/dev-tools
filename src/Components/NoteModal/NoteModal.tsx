@@ -21,7 +21,7 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
     handleModal();
   };
   return (
-    <>
+    <div style={{ width: '80vw'}}>
       <div className={styles.buttons}>
         <CIconButton
           placement="top"
@@ -48,6 +48,6 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
           }}
         />
       </div>
-    </>
+    </div>
   );
 };

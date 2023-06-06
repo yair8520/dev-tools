@@ -42,15 +42,9 @@
 
 .border:not(.disabled):hover {
   transition: 0.7s;
-  cursor: pointer;
-}
-
-.border:not(.disabled):nth-child(even):hover {
   transform: translateY(-15px);
-}
 
-.border:not(.disabled):nth-child(odd):hover {
-  transform: translateY(15px);
+  cursor: pointer;
 }
 
 .launch {
@@ -90,21 +84,14 @@
   }
 }
 
-@media (width< 600px)   {
+@media (width< 600px) {
 
-  .border:not(.disabled):hover::before,
-  .border:not(.disabled):hover::after {
-    width: 20px;
-    height: 20px;
-  }
 
   .launch {
     position: unset;
   }
 
-  .border:not(.disabled):hover,
-  .border:not(.disabled):nth-child(even):hover,
-  .border:not(.disabled):nth-child(odd):hover {
+  .border:not(.disabled):hover {
     transition: none;
     transform: none;
   }

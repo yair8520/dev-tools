@@ -18,8 +18,7 @@
 .container:hover {
   transform: scale(1.05);
   transition: 0.7s;
-  transform: scale(1.05);
-  transition: 0.7s;
+
 }
 
 @media (max-width: 600px) {
