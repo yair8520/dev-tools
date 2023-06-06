@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/dev-tools/static/css/main.1a53713f.css",
-    "main.js": "/dev-tools/static/js/main.1118fc0b.js",
-    "formatter.css": "/dev-tools/static/css/formatter.68e959f5.chunk.css",
+    "main.css": "/dev-tools/static/css/main.f5392632.css",
+    "main.js": "/dev-tools/static/js/main.15decdfa.js",
+    "formatter.css": "/dev-tools/static/css/formatter.04a56871.chunk.css",
     "formatter.js": "/dev-tools/static/js/formatter.11a804b9.chunk.js",
     "DiffChecker.css": "/dev-tools/static/css/DiffChecker.d8852943.chunk.css",
     "DiffChecker.js": "/dev-tools/static/js/DiffChecker.a54cbe48.chunk.js",
@@ -13,9 +13,9 @@
     "TypeScriptUtils.css": "/dev-tools/static/css/TypeScriptUtils.bb5db246.chunk.css",
     "TypeScriptUtils.js": "/dev-tools/static/js/TypeScriptUtils.90a1f4c8.chunk.js",
     "Notes.css": "/dev-tools/static/css/Notes.088a8255.chunk.css",
-    "Notes.js": "/dev-tools/static/js/Notes.3003ec36.chunk.js",
-    "ToDo.css": "/dev-tools/static/css/ToDo.82c7b94f.chunk.css",
-    "ToDo.js": "/dev-tools/static/js/ToDo.bd884e15.chunk.js",
+    "Notes.js": "/dev-tools/static/js/Notes.8fe65d34.chunk.js",
+    "ToDo.css": "/dev-tools/static/css/ToDo.21208eb7.chunk.css",
+    "ToDo.js": "/dev-tools/static/js/ToDo.fd8b4eaf.chunk.js",
     "static/js/400.ab0250b5.chunk.js": "/dev-tools/static/js/400.ab0250b5.chunk.js",
     "static/js/250.35077701.chunk.js": "/dev-tools/static/js/250.35077701.chunk.js",
     "static/js/63.a67ecdd5.chunk.js": "/dev-tools/static/js/63.a67ecdd5.chunk.js",
@@ -26,9 +26,9 @@
     "static/js/890.ac534c75.chunk.js": "/dev-tools/static/js/890.ac534c75.chunk.js",
     "static/media/avatar.png": "/dev-tools/static/media/avatar.bcff52817c3ef3964548.png",
     "index.html": "/dev-tools/index.html",
-    "main.1a53713f.css.map": "/dev-tools/static/css/main.1a53713f.css.map",
-    "main.1118fc0b.js.map": "/dev-tools/static/js/main.1118fc0b.js.map",
-    "formatter.68e959f5.chunk.css.map": "/dev-tools/static/css/formatter.68e959f5.chunk.css.map",
+    "main.f5392632.css.map": "/dev-tools/static/css/main.f5392632.css.map",
+    "main.15decdfa.js.map": "/dev-tools/static/js/main.15decdfa.js.map",
+    "formatter.04a56871.chunk.css.map": "/dev-tools/static/css/formatter.04a56871.chunk.css.map",
     "formatter.11a804b9.chunk.js.map": "/dev-tools/static/js/formatter.11a804b9.chunk.js.map",
     "DiffChecker.d8852943.chunk.css.map": "/dev-tools/static/css/DiffChecker.d8852943.chunk.css.map",
     "DiffChecker.a54cbe48.chunk.js.map": "/dev-tools/static/js/DiffChecker.a54cbe48.chunk.js.map",
@@ -39,9 +39,9 @@
     "TypeScriptUtils.bb5db246.chunk.css.map": "/dev-tools/static/css/TypeScriptUtils.bb5db246.chunk.css.map",
     "TypeScriptUtils.90a1f4c8.chunk.js.map": "/dev-tools/static/js/TypeScriptUtils.90a1f4c8.chunk.js.map",
     "Notes.088a8255.chunk.css.map": "/dev-tools/static/css/Notes.088a8255.chunk.css.map",
-    "Notes.3003ec36.chunk.js.map": "/dev-tools/static/js/Notes.3003ec36.chunk.js.map",
-    "ToDo.82c7b94f.chunk.css.map": "/dev-tools/static/css/ToDo.82c7b94f.chunk.css.map",
-    "ToDo.bd884e15.chunk.js.map": "/dev-tools/static/js/ToDo.bd884e15.chunk.js.map",
+    "Notes.8fe65d34.chunk.js.map": "/dev-tools/static/js/Notes.8fe65d34.chunk.js.map",
+    "ToDo.21208eb7.chunk.css.map": "/dev-tools/static/css/ToDo.21208eb7.chunk.css.map",
+    "ToDo.fd8b4eaf.chunk.js.map": "/dev-tools/static/js/ToDo.fd8b4eaf.chunk.js.map",
     "400.ab0250b5.chunk.js.map": "/dev-tools/static/js/400.ab0250b5.chunk.js.map",
     "250.35077701.chunk.js.map": "/dev-tools/static/js/250.35077701.chunk.js.map",
     "63.a67ecdd5.chunk.js.map": "/dev-tools/static/js/63.a67ecdd5.chunk.js.map",
@@ -52,7 +52,7 @@
     "890.ac534c75.chunk.js.map": "/dev-tools/static/js/890.ac534c75.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a53713f.css",
-    "static/js/main.1118fc0b.js"
+    "static/css/main.f5392632.css",
+    "static/js/main.15decdfa.js"
   ]
 }
