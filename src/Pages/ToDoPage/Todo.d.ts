@@ -1,6 +1,7 @@
 export interface ITodoList {
-  list: TodoItem[];
+  [id: string]: TodoItem;
 }
+
 export interface TodoItem {
   id: string;
   dir: string;

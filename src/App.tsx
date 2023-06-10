@@ -13,19 +13,19 @@ import { TodoProvider } from './Context/TodoContext/TodoContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
-console.log(isDark)
+  console.log(isDark);
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <TodoProvider>
-        <ModalProvider>
-          <CssBaseline />
-          <UserProvider>
+      <UserProvider>
+        <TodoProvider>
+          <ModalProvider>
+            <CssBaseline />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <AppRouter />
             </LocalizationProvider>
-          </UserProvider>
-        </ModalProvider>
-      </TodoProvider>
+          </ModalProvider>
+        </TodoProvider>
+      </UserProvider>
     </ThemeProvider>
   );
 }

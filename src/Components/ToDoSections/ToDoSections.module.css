@@ -12,6 +12,7 @@
 
 .addSection {
   width: 90%;
+  margin-bottom: 25px;
   align-self: center;
   text-transform: none;
 }

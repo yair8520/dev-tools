@@ -1,63 +1,96 @@
 import React, {
   createContext,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { TodoItem } from '../../Pages/ToDoPage/Todo';
-import { mockData } from '../../Pages/ToDoPage/ToDoPageProps';
+import { ITodoList, TodoItem } from '../../Pages/ToDoPage/Todo';
 import {
   TodoContextType,
   TodoInitial,
   existItem,
   getdefualtArgs,
 } from './TodoContextProps';
+import {
+  addTask,
+  addToComplete,
+  addToFav,
+  deleteTask,
+  getAllTasks,
+} from '../../Helpers/FireBase/Tasks';
+import { UserContext } from '../UserContext';
 export const TodoContext = createContext<TodoContextType>(TodoInitial);
 
 export const TodoProvider = ({ children }: any) => {
-  const [list, setList] = useState<TodoItem[]>(mockData);
   const [selectedDir, setSelectedDir] = useState<string>('All');
-  const listOfDirs: Array<string> = useMemo(
-    () => Array.from(new Set(list.map((item) => item.dir))),
+  const { user } = useContext(UserContext);
+  const [list, setList] = useState<ITodoList>({});
+  useEffect(() => {
+    if (user?.email) {
+      const fetchData = async () => {
+        const tasks: any = await getAllTasks(user?.email);
+        setList(tasks);
+      };
+      fetchData();
+    }
+  }, [user?.email]);
+
+  const listOfDirs: string[] = useMemo(
+    () => Array.from(new Set(Object.values(list).map((item) => item.dir))),
     [list]
   );
   const [dirs, setDirs] = useState<Array<string>>(listOfDirs);
   const [filterBy, setFilterBy] = useState<any>();
   const addTodo = (newTodoItem: TodoItem) => {
     newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
+    addTask(newTodoItem.id, newTodoItem);
     if (existItem(list, newTodoItem.id)) {
       setList((prevList) => {
-        const updatedList = prevList.map((item) =>
-          item.id === newTodoItem.id ? newTodoItem : item
-        );
+        const updatedList = { ...prevList, [newTodoItem.id]: newTodoItem };
         return updatedList;
       });
     } else {
-      setList((prevList) => [...prevList, newTodoItem]);
+      setList((prevList) => ({ ...prevList, [newTodoItem.id]: newTodoItem }));
     }
   };
+
   const onDelete = useCallback((id: string) => {
-    setList((prevList) => prevList.filter((item) => item.id !== id));
-  }, []);
-  const onFavorite = useCallback((id: string) => {
+    deleteTask(id);
     setList((prevList) => {
-      return prevList.map((item) => {
-        if (item.id === id) {
-          return { ...item, favorite: !item.favorite };
-        }
-        return item;
-      });
+      const updatedList = { ...prevList };
+      delete updatedList[id];
+      return updatedList;
     });
   }, []);
+
+  const onFavorite = useCallback((id: string) => {
+    setList((prevList) => {
+      const updatedList = { ...prevList };
+      if (updatedList[id]) {
+        const newFavorite = !updatedList[id].favorite;
+        updatedList[id] = {
+          ...updatedList[id],
+          favorite: newFavorite,
+        };
+        addToFav(id, newFavorite);
+      }
+      return updatedList;
+    });
+  }, []);
+
   const onComplete = useCallback((id: string) => {
     setList((prevList) => {
-      return prevList.map((item) => {
-        if (item.id === id) {
-          return { ...item, completed: !item.completed };
-        }
-        return item;
-      });
+      const updatedList = { ...prevList };
+      if (updatedList[id]) {
+        updatedList[id] = {
+          ...updatedList[id],
+          completed: !updatedList[id].completed,
+        };
+      }
+      addToComplete(id, !updatedList[id].completed);
+      return updatedList;
     });
   }, []);
 

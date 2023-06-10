@@ -17,6 +17,8 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { defualtFolders } from './helper';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { DirModal } from '../DirModal';
+import { UserContext } from '../../Context/UserContext';
+import { Text } from '../Text';
 export const ToDoSections = ({
   isSmallScreen,
   setMobileOpen,
@@ -25,6 +27,7 @@ export const ToDoSections = ({
   const props = isSmallScreen ? mobileDrawerProps : drawerProps;
   const { selectedDir, dirs, setSelectedDir } = useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
+  const { user } = useContext(UserContext);
   const [open, setOpen] = React.useState(true);
   const onItemClick = (dir: string) => {
     setSelectedDir(dir);
@@ -40,6 +43,20 @@ export const ToDoSections = ({
         className={styles.drawer}
         {...props}
       >
+        <Text
+          style={{
+            alignSelf: 'center',
+            textAlign: 'center',
+            padding: '25px 0 25px',
+            width:'90%'
+          }}
+          variant="subtitle2"
+          textOverflow='clip'
+        >
+          {!user?.email
+            ? 'Log In with your Google Account to save your progress'
+            : `Logged in as ${user?.email}`}
+        </Text>
         <Button
           variant="contained"
           className={styles.addSection}

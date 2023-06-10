@@ -24,8 +24,8 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
     setFormValues({ ...formValues, [key]: val });
   };
   const validateForm = () => {
-    console.log("formValues.dir",formValues.dir);
-    if (!formValues.dir) {
+    console.log('formValues.dir', formValues.dir);
+    if (!formValues.dir || formValues.dir === 'All') {
       setFormErrors({ ...formErrors, ['dir']: 'Requird Field' });
       return false;
     }
@@ -42,7 +42,6 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
       handleModal();
     }
   };
-  console.log(formValues);
   return (
     <div className={styles.container}>
       <div className={styles.content}>

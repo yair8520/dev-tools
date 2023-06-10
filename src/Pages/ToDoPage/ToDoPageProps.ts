@@ -4,8 +4,8 @@ export interface ToDoPageProps {
   [key: string]: any;
 }
 
-export const mockData: TodoItem[] = [
-  {
+export const mockData: ITodoList = {
+  '1': {
     id: '1',
     dir: 'Work',
     desc: '',
@@ -14,7 +14,7 @@ export const mockData: TodoItem[] = [
     completed: false,
     favorite: false,
   },
-  {
+  '2': {
     id: '2',
     dir: 'Home',
     desc: '',
@@ -24,4 +24,4 @@ export const mockData: TodoItem[] = [
     favorite: false,
   },
 
-];
+}

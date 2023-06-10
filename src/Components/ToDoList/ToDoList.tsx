@@ -11,20 +11,20 @@ import { Text } from '../Text';
 export const ToDoList = () => {
   const { list, onDelete, onFavorite, onComplete, selectedDir } =
     useContext(TodoContext);
+  const arrayList=Object.values(list)
   const { handleModal } = useContext(ModalContext);
-console.log(list)
   const todoList = useMemo(() => {
-    return getFilterFunction(selectedDir, list);
+    return getFilterFunction(selectedDir, arrayList);
   }, [selectedDir, list]);
 
   const onItemClick = useCallback(
     (id: string) => {
-      const item = list.filter((i) => i.id === id)[0];
+      const item = arrayList.filter((i) => i.id === id)[0];
       handleModal(<TodoModal item={item} />);
     },
     [list, handleModal]
   );
-  const hideAddButton = ['Favorites', 'Complited'];
+  const hideAddButton = ['Favorites', 'Complited',"All"];
   const Empty = () => {
     if (hideAddButton.includes(selectedDir) && todoList.length === 0) {
       return (
