@@ -15,26 +15,42 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
     dir: item?.dir ?? selectedDir,
     date: item?.date ? item.date : dayjs().format('YYYY-MM-DD'),
   });
-  // const [formErrors, setFormErrors] = useState({
-  //   title: '',
-  //   desc: '',
-  //   dir: '',
-  //   date: '',
-  // });
+  const [formErrors, setFormErrors] = useState({
+    title: '',
+    dir: '',
+  });
   const { title, desc, dir, date } = formValues;
   const onChange = (val: any, key: string) => {
     setFormValues({ ...formValues, [key]: val });
   };
-  const onclick = (e: any) => {
-    addTodo({ ...item, ...formValues });
-    handleModal();
+  const validateForm = () => {
+    console.log("formValues.dir",formValues.dir);
+    if (!formValues.dir) {
+      setFormErrors({ ...formErrors, ['dir']: 'Requird Field' });
+      return false;
+    }
+
+    if (!formValues.title) {
+      setFormErrors({ ...formErrors, ['title']: 'Requird Field' });
+      return false;
+    }
+    return true;
   };
+  const onclick = (e: any) => {
+    if (validateForm()) {
+      addTodo({ ...item, ...formValues });
+      handleModal();
+    }
+  };
+  console.log(formValues);
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <MultiLineInput
           value={title}
           required={true}
+          error={!!formErrors.title}
+          helperText={formErrors.title}
           maxRows={1}
           label="Title"
           onChange={(val) => onChange(val, 'title')}
@@ -47,9 +63,10 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
             onChange={(a) => onChange(dayjs(a).format('YYYY-MM-DD'), 'date')}
             className={styles.datePicker}
           />
-          <InputLabel className={styles.label}>Select Directory</InputLabel>
+          <InputLabel className={styles.label}>Select Directory *</InputLabel>
           <Select
             required={true}
+            error={!!formErrors.dir}
             value={dir}
             onChange={(e) => {
               onChange(e.target.value, 'dir');

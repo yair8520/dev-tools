@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { auth, db } from '../Config/Firebase';
-import { ISection, Inote } from '../Components/Notes/NotesList/helper';
+import { auth, db } from '../../Config/Firebase';
+import { ISection, Inote } from '../../Components/Notes/NotesList/helper';
 
 export const handleGoogleLogin = () => {
   return new Promise((resolve, reject) => {

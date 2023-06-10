@@ -12,7 +12,7 @@ export const ToDoList = () => {
   const { list, onDelete, onFavorite, onComplete, selectedDir } =
     useContext(TodoContext);
   const { handleModal } = useContext(ModalContext);
-
+console.log(list)
   const todoList = useMemo(() => {
     return getFilterFunction(selectedDir, list);
   }, [selectedDir, list]);

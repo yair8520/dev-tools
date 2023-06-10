@@ -6,7 +6,7 @@ import { NotesList } from './NotesList';
 import { ISection } from './NotesList/helper';
 import { filterListByQuary, filterListByTimeAndSection } from './helper';
 import { UserContext } from '../../Context/UserContext';
-import { getUserSections } from '../../Helpers/Firebase';
+import { getUserSections } from '../../Helpers/FireBase/Notes';
 
 const Notes = () => {
   const { user }: any = useContext(UserContext);

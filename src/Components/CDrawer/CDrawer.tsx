@@ -11,7 +11,7 @@ import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { pages } from '../../Constant/Pages';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { handleGoogleLogin } from '../../Helpers/Firebase';
+import { handleGoogleLogin } from '../../Helpers/FireBase/Notes';
 import { UserContext } from '../../Context/UserContext';
 import { DrawerContext } from '../../Context/DrawerContext';
 

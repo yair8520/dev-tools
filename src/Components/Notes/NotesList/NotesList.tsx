@@ -20,7 +20,7 @@ import {
   removeNote,
   removeSection,
   renameSection,
-} from '../../../Helpers/Firebase';
+} from '../../../Helpers/FireBase/Notes';
 
 export const NotesList = ({
   list,
