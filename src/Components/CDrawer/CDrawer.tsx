@@ -18,7 +18,7 @@ import { DrawerContext } from '../../Context/DrawerContext';
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
   const isSmallScreen = useMediaQuery('(max-width: 500px)');
-  const { user, saveUser }: any = useContext(UserContext);
+  const { user }: any = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState(user);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ export const CDrawer = () => {
   function onLogin() {
     handleGoogleLogin()
       .then((user) => {
-        saveUser(user);
         setLoginInfo(user);
       })
       .catch((error) => {
@@ -66,7 +65,7 @@ export const CDrawer = () => {
               </CIconButton>
             ) : (
               <CIconButton title={loginInfo.email}>
-                <Avatar alt="Remy Sharp" src={loginInfo?.photoURL} />
+                <Avatar src={loginInfo?.photoURL} />
               </CIconButton>
             )}
           </ul>
