@@ -37,10 +37,13 @@ export const TodoProvider = ({ children }: any) => {
     }
   }, [user?.email]);
 
-  const listOfDirs: string[] = useMemo(
-    () => Array.from(new Set(Object.values(list).map((item) => item.dir))),
-    [list]
-  );
+  const listOfDirs: string[] = useMemo(() => {
+    if (list === null || list === undefined) {
+      return [];
+    }
+    return Array.from(new Set(Object.values(list).map((item) => item.dir)));
+  }, [list]);
+  
   const [dirs, setDirs] = useState<Array<string>>(listOfDirs);
   const [filterBy, setFilterBy] = useState<any>();
   const addTodo = (newTodoItem: TodoItem) => {
