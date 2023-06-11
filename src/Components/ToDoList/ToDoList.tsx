@@ -11,7 +11,8 @@ import { Text } from '../Text';
 export const ToDoList = () => {
   const { list, onDelete, onFavorite, onComplete, selectedDir } =
     useContext(TodoContext);
-  const arrayList=Object.values(list)
+    const arrayList = list ? Object.values(list) : [];
+
   const { handleModal } = useContext(ModalContext);
   const todoList = useMemo(() => {
     return getFilterFunction(selectedDir, arrayList);
