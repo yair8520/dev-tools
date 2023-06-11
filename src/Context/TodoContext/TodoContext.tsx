@@ -10,7 +10,6 @@ import { ITodoList, TodoItem } from '../../Pages/ToDoPage/Todo';
 import {
   TodoContextType,
   TodoInitial,
-  existItem,
   getdefualtArgs,
 } from './TodoContextProps';
 import {
@@ -36,20 +35,21 @@ export const TodoProvider = ({ children }: any) => {
       fetchData();
     }
   }, [user?.email]);
-
-  const listOfDirs: string[] = useMemo(() => {
-    if (list === null || list === undefined) {
-      return [];
-    }
-    return Array.from(new Set(Object.values(list).map((item) => item.dir)));
+  const [dirs, setDirs] = useState<Array<string>>([]);
+  useEffect(() => {
+    setDirs(() => {
+      if (list === null || list === undefined) {
+        return [];
+      }
+      return Array.from(new Set(Object.values(list).map((item) => item.dir)));
+    });
   }, [list]);
-  
-  const [dirs, setDirs] = useState<Array<string>>(listOfDirs);
+
   const [filterBy, setFilterBy] = useState<any>();
   const addTodo = (newTodoItem: TodoItem) => {
     newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
     addTask(newTodoItem.id, newTodoItem);
-    if (existItem(list, newTodoItem.id)) {
+    if (list[newTodoItem.id]) {
       setList((prevList) => {
         const updatedList = { ...prevList, [newTodoItem.id]: newTodoItem };
         return updatedList;
