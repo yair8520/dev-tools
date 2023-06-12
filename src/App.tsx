@@ -10,6 +10,7 @@ import './GlobalStyle.module.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TodoProvider } from './Context/TodoContext/TodoContext';
+import { NotesProvider } from './Context/NotesContext/NotesContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
@@ -18,12 +19,14 @@ function App() {
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <UserProvider>
         <TodoProvider>
-          <ModalProvider>
-            <CssBaseline />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <AppRouter />
-            </LocalizationProvider>
-          </ModalProvider>
+          <NotesProvider>
+            <ModalProvider>
+              <CssBaseline />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <AppRouter />
+              </LocalizationProvider>
+            </ModalProvider>
+          </NotesProvider>
         </TodoProvider>
       </UserProvider>
     </ThemeProvider>

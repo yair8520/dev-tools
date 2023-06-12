@@ -7,22 +7,18 @@ import { ISection } from './NotesList/helper';
 import { filterListByQuary, filterListByTimeAndSection } from './helper';
 import { UserContext } from '../../Context/UserContext';
 import { getUserSections } from '../../Helpers/FireBase/Notes';
+import { NotesContext } from '../../Context/NotesContext/NotesContext';
 
 const Notes = () => {
-  const { user }: any = useContext(UserContext);
-  const [quary, setQuary] = useState<string>('');
-  const [list, setList] = useState<ISection>({});
-  const [filteredList, setFilteredList] = useState<ISection>({});
-  useEffect(() => {
-    if (user?.email) {
-      getUserSections(user.email)
-        .then((res: any) => {
-          setList(res);
-          setFilteredList(res);
-        })
-        .catch((s) => console.log({ s }));
-    }
-  }, [user]);
+  const {
+    filteredList,
+    list,
+    quary,
+    setFilteredList,
+    setList,
+    setQuary,
+    user,
+  } = useContext(NotesContext);
 
   const sectionArray = useMemo(
     () => Object.entries(list).map((item) => item[1].subject),
