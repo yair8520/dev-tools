@@ -22,13 +22,17 @@
   top: -25px;
   right: 25px;
   text-align: center;
-  width: 50px;
   height: 25px;
   border-top-right-radius: 11px;
   border-top-left-radius: 11px;
   z-index: 5;
   background-color: #1976d2;
   color: white;
+  text-overflow: ellipsis;
+  width: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .container:hover {
@@ -99,4 +103,5 @@
   flex: 1;
   display: flex;
   align-items: center;
+  margin-bottom:3px ;
 }
