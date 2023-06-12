@@ -23,7 +23,6 @@ export const CDrawer = () => {
 
   useEffect(() => {
     setLoginInfo(user);
-    console.log(user)
   }, [user]);
 
   function onLogin() {

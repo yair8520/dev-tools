@@ -49,7 +49,6 @@ export const Seperator = ({
       ) : (
         <CIconButton
           onClick={() => {
-            console.log(text);
             changeSectionTitle(text);
             setDisabled(!disabled);
           }}

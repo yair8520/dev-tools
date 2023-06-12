@@ -10,8 +10,6 @@ export const handleGoogleLogin = () => {
       .signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
-        console.log('User logged in:', user);
-
         resolve(user);
       })
       .catch((error) => {

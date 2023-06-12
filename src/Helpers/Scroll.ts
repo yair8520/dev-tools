@@ -16,6 +16,5 @@ export const scrollTo = ({
       }, 3000);
     }
   } else {
-    console.log('ASdasd', element);
   }
 };

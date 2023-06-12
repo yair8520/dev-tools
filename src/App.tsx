@@ -14,7 +14,6 @@ import { NotesProvider } from './Context/NotesContext/NotesContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
-  console.log(isDark);
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <UserProvider>
