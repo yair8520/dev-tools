@@ -5,7 +5,7 @@ import { auth } from '../../Config/Firebase';
 const useFirebaseAuth = ({ setUser }: any): void => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      setUser(authUser?.toJSON());
+      setUser(authUser ? authUser.toJSON() : null);
     });
 
     return () => {

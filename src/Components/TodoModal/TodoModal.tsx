@@ -25,7 +25,11 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
   };
   const validateForm = () => {
     console.log('formValues.dir', formValues.dir);
-    if (!formValues.dir || formValues.dir === 'All') {
+    if (
+      !formValues.dir ||
+      formValues.dir === 'All' ||
+      formValues.dir === 'today`s tasks'
+    ) {
       setFormErrors({ ...formErrors, ['dir']: 'Requird Field' });
       return false;
     }

@@ -43,7 +43,7 @@ export const ToDoList = () => {
     }
     return (
       <div className={styles.addNote} onClick={() => onItemClick('-1')}>
-        <Text> Add Todo +</Text>
+        <Text> Add Task +</Text>
       </div>
     );
   };

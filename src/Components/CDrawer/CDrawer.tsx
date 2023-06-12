@@ -23,6 +23,7 @@ export const CDrawer = () => {
 
   useEffect(() => {
     setLoginInfo(user);
+    console.log(user)
   }, [user]);
 
   function onLogin() {
@@ -59,7 +60,7 @@ export const CDrawer = () => {
             >
               {!isDark ? <DarkModeIcon /> : <LightModeIcon />}
             </CIconButton>
-            {!loginInfo ? (
+            {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>
                 <AccountCircleIcon />
               </CIconButton>
