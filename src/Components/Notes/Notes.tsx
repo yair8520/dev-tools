@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import styles from './Notes.module.css';
 import { Text } from '../Text';
 import { SearchBar } from '../SearchBar';
 import { NotesList } from './NotesList';
-import { ISection } from './NotesList/helper';
 import { filterListByQuary, filterListByTimeAndSection } from './helper';
-import { UserContext } from '../../Context/UserContext';
-import { getUserSections } from '../../Helpers/FireBase/Notes';
 import { NotesContext } from '../../Context/NotesContext/NotesContext';
 
 const Notes = () => {
