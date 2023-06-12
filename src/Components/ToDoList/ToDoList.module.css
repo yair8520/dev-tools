@@ -15,14 +15,14 @@
   width: 90%;
   display: grid;
   gap: 30px;
-  grid-auto-rows: 45%;
-  align-items: center;
-
+  margin-top: 15px;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.emptyList{
+
+.emptyList {
   color: black;
 }
+
 .addNote {
   display: flex;
   align-items: center;
@@ -46,8 +46,8 @@
 @media (max-width: 800px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 30px;
-    grid-auto-rows: 36%;
+    gap: 50px;
+
   }
 
   .container {
