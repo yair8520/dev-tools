@@ -5,5 +5,6 @@ export interface NotesItemProps {
     date: string;
     timeStamp: number;
     pinned: boolean;
+    blurred: boolean;
   };
 }

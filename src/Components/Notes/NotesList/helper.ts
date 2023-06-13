@@ -8,6 +8,7 @@ export interface ISection {
 export interface Inote {
   [key: string]: {
     text: string;
+    blurred: boolean;
     timeStamp: number;
     date: string;
     pinned: boolean;

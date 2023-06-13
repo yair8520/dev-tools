@@ -114,6 +114,7 @@ export const NotesList = ({
       addNote(user, sectionId, {
         [noteId]: {
           pinned: false,
+          blurred:false,
           text: '',
           date: getTime(),
           timeStamp: getTimeStamp(),
@@ -123,6 +124,7 @@ export const NotesList = ({
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       updatedList[sectionId].notes[noteId] = {
+        blurred:false,
         pinned: false,
         text: '',
         date: getTime(),

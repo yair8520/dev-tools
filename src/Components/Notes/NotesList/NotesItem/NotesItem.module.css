@@ -37,7 +37,9 @@
 .text {
   word-break: break-all;
 }
-
+.blurText {
+  -webkit-filter: blur(3px);
+}
 .textContainer {
   overflow: hidden;
   white-space: break-spaces;
