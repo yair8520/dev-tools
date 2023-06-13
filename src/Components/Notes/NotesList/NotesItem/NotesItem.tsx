@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './NotesItem.module.css';
 import { NotesItemProps } from './NotesItemProps';
 import { Text } from '../../../Text';
@@ -9,19 +9,21 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export const NotesItem = ({ item, deleteItem }: NotesItemProps) => {
-  const blurText = item.blurred ? styles.blurText : '';
+  const [hide, setHide] = useState(false);
+  const blurText = hide ? styles.blurText : '';
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Card sx={{ boxShadow: 5 }} className={styles.container}>
         <div className={styles.removeItem}>
           <CIconButton
             placement="top"
-            title={item.blurred ? 'hide' : 'show'}
+            title={!hide ? 'hide' : 'show'}
             onClick={(e: any) => {
               e.stopPropagation();
+              setHide(!hide)
             }}
           >
-            {item.blurred ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            {!hide ? <VisibilityIcon /> : <VisibilityOffIcon />}
           </CIconButton>
           <CIconButton
             placement="top"
