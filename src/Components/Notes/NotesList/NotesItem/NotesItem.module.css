@@ -1,9 +1,9 @@
 .container {
   margin: 25px;
-  padding: 20px;
+  padding: 30px;
   border-radius: 15px;
   border: solid 2px black;
-  height: 150px;
+  height: 250px;
   transition: all 0.7s ease-in-out;
   position: relative;
 }
