@@ -80,6 +80,26 @@ export const editNote = (
   };
   return userRef.set(updateData, { merge: true });
 };
+export const updateBlur = (
+  userId: string,
+  sectionId: string,
+  noteId: string,
+  val: boolean
+) => {
+  const userRef = db.collection('users').doc(userId);
+  const updateData = {
+    [`sections`]: {
+      [`${sectionId}`]: {
+        notes: {
+          [`${noteId}`]: {
+            blurred: val,
+          },
+        },
+      },
+    },
+  };
+  return userRef.set(updateData, { merge: true });
+};
 
 export const addSection = (
   userId: string,

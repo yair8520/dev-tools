@@ -20,6 +20,7 @@ import {
   removeNote,
   removeSection,
   renameSection,
+  updateBlur,
 } from '../../../Helpers/FireBase/Notes';
 
 export const NotesList = ({
@@ -47,6 +48,35 @@ export const NotesList = ({
             },
           },
         };
+        return {
+          ...prev,
+          [sectionIndex]: updatedSection,
+        };
+      });
+    },
+    [setList]
+  );
+  const updateNoteBlur = useCallback(
+    (sectionIndex: string, noteIndex: string) => {
+      setList((prev: ISection) => {
+        const updatedSection = {
+          ...prev[sectionIndex],
+          notes: {
+            ...prev[sectionIndex].notes,
+            [noteIndex]: {
+              ...prev[sectionIndex].notes[noteIndex],
+              blurred: !prev[sectionIndex].notes[noteIndex].blurred,
+            },
+          },
+        };
+        if (user) {
+          updateBlur(
+            user,
+            sectionIndex,
+            noteIndex,
+            !prev[sectionIndex].notes[noteIndex].blurred
+          );
+        }
         return {
           ...prev,
           [sectionIndex]: updatedSection,
@@ -114,7 +144,7 @@ export const NotesList = ({
       addNote(user, sectionId, {
         [noteId]: {
           pinned: false,
-          blurred:false,
+          blurred: false,
           text: '',
           date: getTime(),
           timeStamp: getTimeStamp(),
@@ -124,7 +154,7 @@ export const NotesList = ({
     setList((prev: ISection) => {
       const updatedList = { ...prev };
       updatedList[sectionId].notes[noteId] = {
-        blurred:false,
+        blurred: false,
         pinned: false,
         text: '',
         date: getTime(),
@@ -178,6 +208,7 @@ export const NotesList = ({
                 >
                   <NotesItem
                     deleteItem={() => deleteItem(section[0], note[0])}
+                    updateNoteBlur={() => updateNoteBlur(section[0], note[0])}
                     item={note[1]}
                   />
                 </div>
