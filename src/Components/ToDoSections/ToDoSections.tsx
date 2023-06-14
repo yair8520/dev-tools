@@ -19,6 +19,7 @@ import { ModalContext } from '../ModalContext/ModalContext';
 import { DirModal } from '../DirModal';
 import { UserContext } from '../../Context/UserContext';
 import { Text } from '../Text';
+import { DirItemButtons } from './DirItem/DirItemButtons';
 export const ToDoSections = ({
   isSmallScreen,
   setMobileOpen,
@@ -48,10 +49,10 @@ export const ToDoSections = ({
             alignSelf: 'center',
             textAlign: 'center',
             padding: '25px 0 25px',
-            width:'90%'
+            width: '90%',
           }}
           variant="subtitle2"
-          textOverflow='clip'
+          textOverflow="clip"
         >
           {!user?.email
             ? 'Log In with your Google Account to save your progress'
@@ -87,6 +88,7 @@ export const ToDoSections = ({
                 selectedDir={selectedDir === dir}
                 onItemClick={() => onItemClick(dir)}
                 key={dir}
+                secondaryAction={<DirItemButtons dir={dir} />}
                 title={dir}
               />
             ))}

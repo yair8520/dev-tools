@@ -13,9 +13,10 @@ export const DirItem = ({
   onItemClick,
   selectedDir,
   Icon,
+  secondaryAction,
 }: DirItemProps) => {
   return (
-    <ListItem key={title} disablePadding>
+    <ListItem secondaryAction={secondaryAction} key={title} disablePadding>
       <ListItemButton selected={selectedDir} onClick={() => onItemClick(title)}>
         {Icon && (
           <ListItemIcon>
