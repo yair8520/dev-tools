@@ -11,9 +11,10 @@ import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { pages } from '../../Constant/Pages';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { handleGoogleLogin } from '../../Helpers/FireBase/Notes';
 import { UserContext } from '../../Context/UserContext';
 import { DrawerContext } from '../../Context/DrawerContext';
+import { StylesProvider } from '@material-ui/core';
+import { googleLogOut, handleGoogleLogin } from '../../Helpers/FireBase/auth';
 
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
@@ -29,6 +30,15 @@ export const CDrawer = () => {
     handleGoogleLogin()
       .then((user) => {
         setLoginInfo(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  function onLogOut() {
+    googleLogOut()
+      .then(() => {
+        setLoginInfo(null);
       })
       .catch((error) => {
         alert(error);
@@ -61,11 +71,16 @@ export const CDrawer = () => {
             </CIconButton>
             {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>
-                <AccountCircleIcon />
+                <AccountCircleIcon sx={{ width: 25, height: 25 }} />
+                <Text className={'loginText'}>Login</Text>
               </CIconButton>
             ) : (
-              <CIconButton title={loginInfo.email}>
-                <Avatar src={loginInfo?.photoURL} />
+              <CIconButton title={loginInfo.email} onClick={() => onLogOut()}>
+                <Avatar
+                  sx={{ width: 25, height: 25 }}
+                  src={loginInfo?.photoURL}
+                />
+                <Text className={'logoutText'}>LogOut</Text>
               </CIconButton>
             )}
           </ul>

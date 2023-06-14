@@ -1,24 +1,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { auth, db } from '../../Config/Firebase';
+import { db } from '../../Config/Firebase';
 import { ISection, Inote } from '../../Components/Notes/NotesList/helper';
 
-export const handleGoogleLogin = () => {
-  return new Promise((resolve, reject) => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-        resolve(user);
-      })
-      .catch((error) => {
-        // Handle login error
-        console.error('Login error:', error);
-        reject(error);
-      });
-  });
-};
 export const saveUserSections = (userId: string, sections: ISection) => {
   const userRef = db.collection('users').doc(userId);
   return userRef.set({ sections });

@@ -10,6 +10,17 @@ body {
   text-align: center;
 }
 
+.loginText {
+  padding-left: 4px;
+  text-decoration: underline;
+}
+
+.logoutText {
+  padding-left: 4px;
+  color: red;
+  text-decoration: underline;
+}
+
 .theme_icon {
   display: flex;
   align-items: center;
