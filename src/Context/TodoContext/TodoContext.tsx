@@ -46,6 +46,9 @@ export const TodoProvider = ({ children }: any) => {
   }, [list]);
 
   const [filterBy, setFilterBy] = useState<any>();
+  const deleteDir = (dir: string) => {};
+  const editDir = (dir: string) => {};
+
   const addTodo = (newTodoItem: TodoItem) => {
     newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
     addTask(newTodoItem.id, newTodoItem);
@@ -112,6 +115,8 @@ export const TodoProvider = ({ children }: any) => {
         dirs,
         filterBy,
         setFilterBy,
+        deleteDir,
+        editDir,
       }}
     >
       {children}

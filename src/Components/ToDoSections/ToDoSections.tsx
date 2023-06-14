@@ -33,9 +33,11 @@ export const ToDoSections = ({
   const onItemClick = (dir: string) => {
     setSelectedDir(dir);
   };
-  const openEditModal = () => {
+
+  const openSaveModal = () => {
     handleModal(<DirModal />);
   };
+
   return (
     <div className={styles.container}>
       <Drawer
@@ -61,7 +63,7 @@ export const ToDoSections = ({
         <Button
           variant="contained"
           className={styles.addSection}
-          onClick={openEditModal}
+          onClick={openSaveModal}
         >
           Add Directory +
         </Button>
@@ -88,7 +90,6 @@ export const ToDoSections = ({
                 selectedDir={selectedDir === dir}
                 onItemClick={() => onItemClick(dir)}
                 key={dir}
-                secondaryAction={<DirItemButtons dir={dir} />}
                 title={dir}
               />
             ))}

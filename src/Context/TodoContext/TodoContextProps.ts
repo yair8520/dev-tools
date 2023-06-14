@@ -14,6 +14,8 @@ export type TodoContextType = {
   dirs: Array<string>;
   filterBy: Function | string;
   setFilterBy: any;
+  deleteDir: Function
+  editDir: Function
 };
 export const TodoInitial = {
   list: {},
@@ -25,6 +27,8 @@ export const TodoInitial = {
   onFavorite: () => { },
   addTodo: () => { },
   setSelectedDir: () => { },
+  deleteDir: () => { },
+  editDir: () => { },
   selectedDir: '',
   filterBy: '',
   setFilterBy: null,
