@@ -10,12 +10,10 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { pages } from '../../Constant/Pages';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { UserContext } from '../../Context/UserContext';
 import { DrawerContext } from '../../Context/DrawerContext';
-import { StylesProvider } from '@material-ui/core';
 import { googleLogOut, handleGoogleLogin } from '../../Helpers/FireBase/auth';
-
+import GoogleIcon from '@mui/icons-material/Google';
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
   const isSmallScreen = useMediaQuery('(max-width: 500px)');
@@ -71,7 +69,7 @@ export const CDrawer = () => {
             </CIconButton>
             {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>
-                <AccountCircleIcon sx={{ width: 25, height: 25 }} />
+                <GoogleIcon sx={{ width: 25, height: 25 }} />
                 <Text className={'loginText'}>Login</Text>
               </CIconButton>
             ) : (
