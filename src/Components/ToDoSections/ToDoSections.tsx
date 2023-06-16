@@ -19,7 +19,6 @@ import { ModalContext } from '../ModalContext/ModalContext';
 import { DirModal } from '../DirModal';
 import { UserContext } from '../../Context/UserContext';
 import { Text } from '../Text';
-import { DirItemButtons } from './DirItem/DirItemButtons';
 export const ToDoSections = ({
   isSmallScreen,
   setMobileOpen,

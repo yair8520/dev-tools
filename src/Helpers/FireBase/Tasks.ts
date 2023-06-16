@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { auth, db } from '../../Config/Firebase';
-import { TodoItem } from '../../Pages/ToDoPage/Todo';
+import { ITodoList, TodoItem } from '../../Pages/ToDoPage/Todo';
 
 
 const firebaseMiddlware = (callback: (userRef: any) => void) => {
@@ -19,6 +19,14 @@ export const addTask = (taskId: string, task: TodoItem) => {
       [`tasks`]: {
         [`${taskId}`]: { ...task }
       },
+    };
+    return userRef.set(updateData, { merge: true });
+  });
+};
+export const sendList = (list: ITodoList) => {
+  firebaseMiddlware((userRef) => {
+    const updateData = {
+      tasks: { ...list }
     };
     return userRef.set(updateData, { merge: true });
   });

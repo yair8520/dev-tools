@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './DirItem.module.css';
 import { DirItemProps } from './DirItemProps';
 import {
@@ -10,6 +10,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { DirItemButtons } from './DirItemButtons';
+import { TodoContext } from '../../../Context/TodoContext/TodoContext';
 
 export const DirItem = ({
   title,
@@ -18,14 +19,20 @@ export const DirItem = ({
   Icon,
 }: DirItemProps) => {
   const theme = useTheme();
+  const { editDir } = useContext(TodoContext);
   const [edit, setEdit] = useState(false);
   const [modText, setModText] = useState(title);
+  const saveEdit = () => {
+    setEdit(!edit);
+    editDir(modText,title);
+  };
   return (
     <ListItem
       secondaryAction={
         !Icon ? (
           <DirItemButtons
             setEdit={setEdit}
+            saveEdit={saveEdit}
             edit={edit}
             dir={title}
           />
@@ -63,7 +70,7 @@ export const DirItem = ({
             }}
             variant="standard"
             disabled={!edit}
-            onBlur={() => setEdit(!edit)}
+            onBlur={saveEdit}
             onChange={(e) => setModText(e.target.value)}
             value={modText}
           />

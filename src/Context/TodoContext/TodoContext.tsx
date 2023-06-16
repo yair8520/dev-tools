@@ -17,6 +17,7 @@ import {
   addToComplete,
   addToFav,
   deleteTask,
+  sendList,
   getAllTasks,
 } from '../../Helpers/FireBase/Tasks';
 import { UserContext } from '../UserContext';
@@ -46,8 +47,28 @@ export const TodoProvider = ({ children }: any) => {
   }, [list]);
 
   const [filterBy, setFilterBy] = useState<any>();
-  const deleteDir = (dir: string) => {};
-  const editDir = (dir: string) => {};
+  const deleteDir = (deleted: string) => {
+    setList((prevList) => {
+      const updatedList = { ...prevList };
+      for (const l in updatedList) {
+        if (updatedList[l].dir === deleted) delete updatedList[l];
+      }
+      sendList(updatedList);
+      return updatedList;
+    });
+    setSelectedDir('All');
+  };
+  const editDir = (newDir: string, prevDir: string) => {
+    setList((prevList) => {
+      const updatedList = { ...prevList };
+      for (const l in updatedList) {
+        if (updatedList[l].dir === prevDir) updatedList[l].dir = newDir;
+      }
+      sendList(updatedList);
+      return updatedList;
+    });
+    setSelectedDir(newDir);
+  };
 
   const addTodo = (newTodoItem: TodoItem) => {
     newTodoItem = { ...getdefualtArgs(), ...newTodoItem };
