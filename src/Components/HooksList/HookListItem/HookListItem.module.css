@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  animation: enter 0.9s ease-in;
+  animation: enter 0.5s ease-in;
   padding-bottom: 20px;
   margin: 0;
 }

@@ -4,23 +4,26 @@
   margin-bottom: 20px;
   width: 95%;
   align-self: center;
-  margin: 10px;
 }
+
 .button {
   padding: 10px 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
+  background-color: #000;
+  color: #fff;
   width: 50%;
   font-size: min(5vw, 25px);
-  border-radius: 15px 15px 0 0;
-  border: #3776ce solid 2px;
+  transition: background-color 0.3s ease;
+}
+
+.button:not(.selected):hover {
+  background-color: #333;
+
 }
 
 .selected {
-  background-color: #000;
+  background-color: #3776ce;
   color: #fff;
-  border: 0;
 }
