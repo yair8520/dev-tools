@@ -15,7 +15,7 @@ export const ConfirmModal = ({
   };
   return (
     <div className={styles.container}>
-      <Text> {title}</Text>
+      <Text variant="h6"> {title}</Text>
       <div className={styles.buttons}>
         <Button onClick={() => handlerWrapper()}>Cancel</Button>
         <Button onClick={() => handlerWrapper(onNext)}>Yes!</Button>
