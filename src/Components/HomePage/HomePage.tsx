@@ -29,7 +29,7 @@ export const HomePage = () => {
       </div>
       <About />
       <div className={styles.madeBy}>
-        <Text >Created By Yair Gabay</Text>
+        <Text>Created By Yair Gabay</Text>
         <Avatar sx={{ width: 30, height: 30 }} src={avatarImage} />
       </div>
     </div>

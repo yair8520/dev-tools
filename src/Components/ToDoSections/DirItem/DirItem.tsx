@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import styles from './DirItem.module.css';
 import { DirItemProps } from './DirItemProps';
 import {
   ListItem,
@@ -24,7 +23,7 @@ export const DirItem = ({
   const [modText, setModText] = useState(title);
   const saveEdit = () => {
     setEdit(!edit);
-    editDir(modText,title);
+    editDir(modText, title);
   };
   return (
     <ListItem

@@ -10,7 +10,7 @@ import { useMediaQuery } from '../../Hooks/useMediaQuery';
 import { Slider } from '@mui/material';
 import { Text } from '../Text';
 
-export const JsonTree = ({ data,isSmallScreen }: JsonTreeProps) => {
+export const JsonTree = ({ data, isSmallScreen }: JsonTreeProps) => {
   const { isDark } = useContext(AppContext);
   const [options, setOptions] = useState<ICheckBox[]>(editorOptions);
   const [space, setSpace] = useState<number>(isSmallScreen ? 4 : 10);

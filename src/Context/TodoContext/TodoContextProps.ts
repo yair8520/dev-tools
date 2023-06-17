@@ -14,21 +14,21 @@ export type TodoContextType = {
   dirs: Array<string>;
   filterBy: Function | string;
   setFilterBy: any;
-  deleteDir: Function
-  editDir: Function
+  deleteDir: Function;
+  editDir: Function;
 };
 export const TodoInitial = {
   list: {},
   dirs: [],
-  setList: () => { },
-  setDirs: () => { },
-  onDelete: () => { },
-  onComplete: () => { },
-  onFavorite: () => { },
-  addTodo: () => { },
-  setSelectedDir: () => { },
-  deleteDir: () => { },
-  editDir: () => { },
+  setList: () => {},
+  setDirs: () => {},
+  onDelete: () => {},
+  onComplete: () => {},
+  onFavorite: () => {},
+  addTodo: () => {},
+  setSelectedDir: () => {},
+  deleteDir: () => {},
+  editDir: () => {},
   selectedDir: '',
   filterBy: '',
   setFilterBy: null,

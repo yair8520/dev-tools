@@ -14,7 +14,7 @@ export const AppRouter = () => {
       <Router>
         {modal ? <Modal /> : null}
         <Layout>
-        <Header />
+          <Header />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               {routes.map((route, index) => (

@@ -23,7 +23,7 @@ export const mobileDrawerProps: DrawerProps = {
   sx: {
     '& .MuiDrawer-paper': {
       padding: '25px',
-      width:'70%',
+      width: '70%',
       height: '100%',
     },
   },

@@ -14,7 +14,7 @@ export const NotesProvider = ({ children }: any) => {
   useEffect(() => {
     if (user?.email) {
       getUserSections(user.email)
-          .then((res: any) => {
+        .then((res: any) => {
           setList(res);
           setFilteredList(res);
         })

@@ -1,6 +1,5 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import styles from './ToDoList.module.css';
-import { ToDoListProps } from './ToDoListProps';
 import { ToDoListItem } from './ToDoListItem';
 import { TodoContext } from '../../Context/TodoContext/TodoContext';
 import { ModalContext } from '../ModalContext/ModalContext';
@@ -11,7 +10,7 @@ import { Text } from '../Text';
 export const ToDoList = () => {
   const { list, onDelete, onFavorite, onComplete, selectedDir } =
     useContext(TodoContext);
-    const arrayList = list ? Object.values(list) : [];
+  const arrayList = list ? Object.values(list) : [];
 
   const { handleModal } = useContext(ModalContext);
   const todoList = useMemo(() => {
@@ -25,7 +24,7 @@ export const ToDoList = () => {
     },
     [list, handleModal]
   );
-  const hideAddButton = ['Favorites', 'Complited',"All","today`s tasks"];
+  const hideAddButton = ['Favorites', 'Complited', 'All', 'today`s tasks'];
   const Empty = () => {
     if (hideAddButton.includes(selectedDir) && todoList.length === 0) {
       return (

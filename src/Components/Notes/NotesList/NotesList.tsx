@@ -34,7 +34,7 @@ export const NotesList = ({
   const newSectionCount = useRef(listAsArray.length);
   useEffect(() => {
     newSectionCount.current = listAsArray.length + 1;
-  }, [list]);
+  }, [list, listAsArray.length]);
   const updateNoteText = useCallback(
     (sectionIndex: string, noteIndex: string, newText: string) => {
       setList((prev: ISection) => {

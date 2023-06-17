@@ -29,12 +29,12 @@ export const TodoModal = ({ item, handleModal }: TodoModalProps) => {
       formValues.dir === 'All' ||
       formValues.dir === 'today`s tasks'
     ) {
-      setFormErrors({ ...formErrors, ['dir']: 'Requird Field' });
+      setFormErrors({ ...formErrors, dir: 'Requird Field' });
       return false;
     }
 
     if (!formValues.title) {
-      setFormErrors({ ...formErrors, ['title']: 'Requird Field' });
+      setFormErrors({ ...formErrors, title: 'Requird Field' });
       return false;
     }
     return true;

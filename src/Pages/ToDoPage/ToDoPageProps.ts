@@ -23,5 +23,4 @@ export const mockData: ITodoList = {
     completed: false,
     favorite: false,
   },
-
-}
+};

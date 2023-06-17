@@ -9,8 +9,7 @@ export const useGoogleLogin = () => {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth
         .signInWithPopup(provider)
-        .then((result) => {
-        })
+        .then((result) => {})
         .catch((error) => {
           console.error('Login error:', error);
         });

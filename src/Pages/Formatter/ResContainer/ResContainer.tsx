@@ -13,7 +13,12 @@ export const ResContainer = ({ data }: ResContainerProps) => {
   }, [data.res]);
   return (
     <div id="result" className={styles.container}>
-      {data.res !== '' && <JsonTree isSmallScreen={isSmallScreen} data={data.res !== '' && data.res} />}
+      {data.res !== '' && (
+        <JsonTree
+          isSmallScreen={isSmallScreen}
+          data={data.res !== '' && data.res}
+        />
+      )}
     </div>
   );
 };
