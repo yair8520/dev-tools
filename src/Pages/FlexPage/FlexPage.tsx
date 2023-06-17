@@ -9,7 +9,7 @@ import {
   flexItemsInitial,
 } from './FlexPageProps';
 import { Mutable } from '../../Constant/DropDown';
-import { AppContext } from '../../Components/ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 import { Axis } from '../../Components/Axis';
 
 const FlexPage = () => {

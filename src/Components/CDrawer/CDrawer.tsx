@@ -4,7 +4,7 @@ import { Menu } from '@material-ui/icons';
 import './CDrawer.css';
 import { Text } from '../Text';
 import { useMediaQuery } from '../../Hooks/useMediaQuery';
-import { AppContext } from '../ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { CIconButton } from '../CIconButton';

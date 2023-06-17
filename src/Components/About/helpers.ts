@@ -1,7 +1,6 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import NextWeekIcon from '@mui/icons-material/NextWeek';
-import BugReportIcon from '@mui/icons-material/BugReport';
 
 export const socialLinks = [
   {

@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 import { TodoContext } from '../../Context/TodoContext/TodoContext';
 
 export const DirModal = ({ handleModal }: DirModalProps) => {
-  const { setDirs, dirs } = useContext(TodoContext);
+  const { setDirs, dirs, setSelectedDir } = useContext(TodoContext);
   const [title, setTitle] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -15,6 +15,7 @@ export const DirModal = ({ handleModal }: DirModalProps) => {
     if (!title) return setError('Required Field');
     if (dirs.includes(title)) return setError('Already exists');
     setDirs((p: string[]) => [...p, title]);
+    setSelectedDir(title);
     handleModal();
   };
   return (

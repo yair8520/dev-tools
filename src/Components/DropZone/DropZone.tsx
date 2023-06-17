@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './DropZone.css';
 import { DropZoneProps } from './DropZoneProps';
 import { Text } from '../Text';
-import { AppContext } from '../ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 
 export const DropZone = ({
   onChange,

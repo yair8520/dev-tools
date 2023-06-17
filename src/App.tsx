@@ -4,7 +4,7 @@ import { ModalProvider } from './Components/ModalContext/ModalContext';
 import { CssBaseline } from '@mui/material';
 import { darkTheme, lightTheme } from './Theme';
 import { AppRouter } from './Routing';
-import { AppContext } from './Components/ThemeContext/ThemeContext';
+import { AppContext } from './Context/ThemeContext/ThemeContext';
 import { UserProvider } from './Context/UserContext';
 import './GlobalStyle.module.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';

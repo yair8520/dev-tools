@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { HomePage } from '../Components/HomePage';
+import { HomePage } from '../Pages/HomePage';
 
 const Formatter = lazy(
   () =>
@@ -17,13 +17,13 @@ const FlexPage = lazy(
 const CustomHooks = lazy(
   () =>
     import(
-      /* webpackChunkName: "CustomHooks" */ '../Components/CustomHooks/CustomHooks'
+      /* webpackChunkName: "CustomHooks" */ '../Pages/CustomHooks/CustomHooks'
     )
 );
 const TypeScriptUtils = lazy(
   () =>
     import(
-      /* webpackChunkName: "TypeScriptUtils" */ '../Components/TypeScriptUtils/TypeScriptUtils'
+      /* webpackChunkName: "TypeScriptUtils" */ '../Pages/TypeScriptUtils/TypeScriptUtils'
     )
 );
 const Notes = lazy(

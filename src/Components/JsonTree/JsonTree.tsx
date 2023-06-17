@@ -5,7 +5,7 @@ import ReactJson from 'react-json-view';
 import { editorOptions } from '../../Constant/CheckBox';
 import { CheckBox } from '../CheckBox';
 import { ICheckBox } from '../../Constant/Types';
-import { AppContext } from '../ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 import { useMediaQuery } from '../../Hooks/useMediaQuery';
 import { Slider } from '@mui/material';
 import { Text } from '../Text';

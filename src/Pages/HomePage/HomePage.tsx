@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './HomePage.module.css';
 import { moreToCome, pages, welcomeMessage } from '../../Constant/Pages';
-import { HomePageItem } from '../HomePageItem';
-import { About } from '../About';
-import { Text } from '../Text';
+import { HomePageItem } from '../../Components/HomePageItem';
+import { About } from '../../Components/About';
+import { Text } from '../../Components/Text';
 import { Avatar } from '@mui/material';
 import avatarImage from '../../Assests/Images/avatar.png';
 

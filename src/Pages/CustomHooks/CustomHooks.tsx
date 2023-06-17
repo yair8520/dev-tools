@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CustomHooks.module.css';
-import { HooksList } from '../HooksList';
+import { HooksList } from '../../Components/HooksList';
 
 const CustomHooks = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './DiffContainer.module.css';
 import { DiffContainerProps } from './DiffContainerProps';
 import ReactDiffViewer from 'react-diff-viewer';
-import { AppContext } from '../ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 
 export const DiffContainer = ({ original, changed }: DiffContainerProps) => {
   const { isDark } = useContext(AppContext);

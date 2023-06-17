@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './TypeScriptUtils.module.css';
-import { HookListItem } from '../HooksList/HookListItem';
-import { Text } from '../Text';
+import { HookListItem } from '../../Components/HooksList/HookListItem';
+import { Text } from '../../Components/Text';
 import { utilsExamples } from '../../Constant/TSUtils';
-import { SideMenu } from '../SideMenu';
-import { LayoutWithSideMenu } from '../LayoutWithSideMenu';
+import { SideMenu } from '../../Components/SideMenu';
+import { LayoutWithSideMenu } from '../../Components/LayoutWithSideMenu';
 import { extractTitles } from '../../Helpers/Json';
 
 const TypeScriptUtils = () => {

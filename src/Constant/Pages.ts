@@ -4,6 +4,7 @@ import DifferenceIcon from '@mui/icons-material/Difference';
 import PhishingIcon from '@mui/icons-material/Phishing';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import ScreenshotMonitorIcon from '@mui/icons-material/ScreenshotMonitor';
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
 export const pages: IPages[] = [
@@ -14,6 +15,14 @@ export const pages: IPages[] = [
     description:
       'Manage and organize your personal notes with Firebase integration.',
     Icon: NotesIcon,
+  },
+  {
+    href: '/todo',
+    title: 'Tasks',
+    headline: 'Tasks',
+    description:
+      'Stay organized and manage your to-do list efficiently. with Firebase integration.',
+    Icon: AddTaskIcon,
   },
   {
     href: '/custom-hooks',

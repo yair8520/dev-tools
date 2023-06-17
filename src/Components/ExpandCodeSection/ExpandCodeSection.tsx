@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './ExpandCodeSection.module.css';
 import { ExpandCodeSectionProps } from './ExpandCodeSectionProps';
 import { Collapse, CardContent, Typography } from '@mui/material';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { dracula, github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { AppContext } from '../ThemeContext/ThemeContext';
+import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 
 export const ExpandCodeSection = ({
   expanded,
