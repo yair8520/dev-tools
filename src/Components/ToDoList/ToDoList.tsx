@@ -25,7 +25,7 @@ export const ToDoList = () => {
     },
     [list, handleModal]
   );
-  const hideAddButton = ['Favorites', 'Complited',"All"];
+  const hideAddButton = ['Favorites', 'Complited',"All","today`s tasks"];
   const Empty = () => {
     if (hideAddButton.includes(selectedDir) && todoList.length === 0) {
       return (

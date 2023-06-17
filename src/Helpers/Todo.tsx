@@ -27,7 +27,11 @@ const defualtFolders = [
 ];
 
 export const emptyList: Record<string, string> = {
-  Complited: '<strong>No completed tasks yet.</strong>\n  Start completing tasks to see them here!',
-  Favorites: '<strong>No favorite tasks yet.</strong>\n Add tasks to your favorites to see them here!',
+  Complited:
+    '<strong>No completed tasks yet.</strong>\n  Start completing tasks to see them here!',
+  Favorites:
+    '<strong>No favorite tasks yet.</strong>\n Add tasks to your favorites to see them here!',
   All: '<strong>No tasks found.</strong>\n Add tasks to see them here!',
+  'today`s tasks':
+    '<strong>No tasks for today.</strong>\n Add tasks to see them here!',
 };

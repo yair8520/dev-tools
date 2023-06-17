@@ -47,16 +47,20 @@ export const CDrawer = () => {
       <WithDrawer>
         <div className="nav">
           <ul>
-            {pages.map((item, i) => (
-              <CustomLink key={item.href} to={item.href}>
-                <Text
-                  style={{
-                    color: !isDark && isSmallScreen ? 'black' : 'white',
-                  }}
-                  variant="subtitle1"
-                >
-                  {item.title}
-                </Text>
+            {pages.map((Item, i) => (
+              <CustomLink key={Item.href} to={Item.href}>
+                <div className="item">
+                  {Item.Icon && <Item.Icon />}
+                  <Text
+                    style={{
+                      marginTop:-10,
+                      color: !isDark && isSmallScreen ? 'black' : 'white',
+                    }}
+                    variant="subtitle1"
+                  >
+                    {Item.title}
+                  </Text>
+                </div>
               </CustomLink>
             ))}
             <CIconButton

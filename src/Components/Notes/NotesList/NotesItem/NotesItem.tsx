@@ -40,7 +40,7 @@ export const NotesItem = ({
           </CIconButton>
         </div>
         <div className={`${styles.textContainer} ${blurText}`}>
-          <Text variant="caption" className={styles.text}>
+          <Text variant='subtitle2' className={styles.text}>
             {item.text}
           </Text>
         </div>
