@@ -16,10 +16,10 @@ import { handleAnonymousSignIn } from './Helpers/FireBase/auth';
 function App() {
   const { isDark } = useContext(AppContext);
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <UserProvider>
-        <TodoProvider>
-          <NotesProvider>
+    <UserProvider>
+      <TodoProvider>
+        <NotesProvider>
+          <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <ModalProvider>
               <CssBaseline />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -36,10 +36,10 @@ function App() {
                 </GoogleOneTapLogin>
               </LocalizationProvider>
             </ModalProvider>
-          </NotesProvider>
-        </TodoProvider>
-      </UserProvider>
-    </ThemeProvider>
+          </ThemeProvider>
+        </NotesProvider>
+      </TodoProvider>
+    </UserProvider>
   );
 }
 
