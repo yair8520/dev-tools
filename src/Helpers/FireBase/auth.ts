@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { auth } from '../../Config/Firebase';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 export const handleGoogleLogin = () => {
   return new Promise((resolve, reject) => {
@@ -29,4 +30,10 @@ export const googleLogOut = () => {
         reject(error);
       });
   });
+};
+export const handleAnonymousSignIn = (credential: string) => {
+  return auth.signInWithCredential(GoogleAuthProvider.credential(credential))
+    .catch((error) => {
+      console.log('Sign-in error:', error);
+    });
 };

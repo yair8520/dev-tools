@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'firebase/auth';
 import { auth } from '../../Config/Firebase';
 
@@ -11,7 +11,7 @@ const useFirebaseAuth = ({ setUser }: any): void => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [setUser]);
 };
 
 export default useFirebaseAuth;
