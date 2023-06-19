@@ -19,24 +19,23 @@ function App() {
     <UserProvider>
       <TodoProvider>
         <NotesProvider>
-          <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-            <ModalProvider>
-              <CssBaseline />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <GoogleOneTapLogin
-                  onError={(error) => console.log(error)}
-                  googleAccountConfigs={{
-                    callback: ({ credential }) =>
-                      handleAnonymousSignIn(credential),
-                    client_id: process.env.REACT_APP_CLIENT_ID!,
-                    auto_select: false,
-                  }}
-                >
+          <GoogleOneTapLogin
+            onError={(error) => console.log(error)}
+            googleAccountConfigs={{
+              callback: ({ credential }) => handleAnonymousSignIn(credential),
+              client_id: process.env.REACT_APP_CLIENT_ID!,
+              auto_select: false,
+            }}
+          >
+            <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+              <ModalProvider>
+                <CssBaseline />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <AppRouter />
-                </GoogleOneTapLogin>
-              </LocalizationProvider>
-            </ModalProvider>
-          </ThemeProvider>
+                </LocalizationProvider>
+              </ModalProvider>
+            </ThemeProvider>
+          </GoogleOneTapLogin>
         </NotesProvider>
       </TodoProvider>
     </UserProvider>
