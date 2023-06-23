@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { HomePage } from '../Pages/HomePage';
+import { ApiPage } from '../Pages/ApiPage';
 
 const Formatter = lazy(
   () =>
@@ -65,6 +66,10 @@ const routes = [
   {
     path: '/ToDo',
     element: ToDoPage,
+  },
+  {
+    path: '/api',
+    element: ApiPage,
   },
   {
     path: '*',

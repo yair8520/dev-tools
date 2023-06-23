@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext,  useState } from 'react';
 import { User } from '../Types/User';
 import useFirebaseAuth from '../Hooks/useFirebaseAuth/useFirebaseAuth';
 import { GoogleOneTap } from '../Components/GoogleOneTap';
@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: any) => {
   const handleAnonymousSignIn = (credential: string) => {
     return auth
       .signInWithCredential(GoogleAuthProvider.credential(credential))
-      .then((user) => console.log(user.user))
       .catch((error) => {
         console.log('Sign-in error:', error);
       });

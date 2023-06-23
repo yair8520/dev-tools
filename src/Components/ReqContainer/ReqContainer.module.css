@@ -1,0 +1,24 @@
+.container {
+    height: 50%;
+}
+
+.inputContainer {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.paramsContainer {
+    height: 50%;
+}
+
+.input {
+    width: 100%;
+}
+@media (max-width: 600px) {
+    .inputContainer {
+    flex-direction: column;
+    }
+    
+  }
+  

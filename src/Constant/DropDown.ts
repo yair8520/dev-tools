@@ -102,3 +102,5 @@ export const jsonExample = {
     bicycle: { color: 'red', price: 19.95 },
   },
 };
+
+export const methods = ["GET", "POST", "PUT", "DELETE"];
