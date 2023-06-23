@@ -31,9 +31,4 @@ export const googleLogOut = () => {
       });
   });
 };
-export const handleAnonymousSignIn = (credential: string) => {
-  return auth.signInWithCredential(GoogleAuthProvider.credential(credential))
-    .catch((error) => {
-      console.log('Sign-in error:', error);
-    });
-};
+
