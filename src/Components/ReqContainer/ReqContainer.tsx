@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './ReqContainer.module.css';
 import { ReqContainerProps } from './ReqContainerProps';
 import { MultiLineInput } from '../MultiLineInput';
-import { Button, MenuItem, Select } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import { methods } from '../../Constant/DropDown';
 import { ParamsContainer } from '../ParamsContainer';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 
 export const ReqContainer = ({ item }: ReqContainerProps) => {
   const { sendReq, addTabData } = useContext(TabsContext);
-
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
@@ -37,7 +37,12 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
             addTabData({ tabId: item.id, type: 'url', value: url })
           }
         />
-        <Button onClick={() => sendReq({ tabId: item.id })}>Send</Button>
+        <LoadingButton
+          loading={false}
+          onClick={() => sendReq({ tabId: item.id })}
+        >
+          Send
+        </LoadingButton>
       </div>
       <ParamsContainer id={item.id} data={item.data} />
     </div>

@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import styles from './ApiTabs.module.css';
-import { ApiTabsProps } from './ApiTabsProps';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -29,7 +27,7 @@ export const ApiTabs = () => {
           sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}
           onChange={handleChange}
           scrollButtons={true}
-          variant='scrollable'
+          variant="scrollable"
           allowScrollButtonsMobile={true}
         >
           {Object.entries(tabs).map((t: [string, ITab]) => (

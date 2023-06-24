@@ -3,23 +3,15 @@ import { ApiContextProps } from './ApiContextProps';
 import { IApiTabs, IParams, apiTabs } from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
-import {
-  AxiosError,
-  AxiosHeaders,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from 'axios';
+import { AxiosRequestConfig } from 'axios';
+import { objectToPairs } from '../../Helpers/Json';
 
 interface AppContextInterface {
   tabs: IApiTabs;
   setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
   addTab: Function;
   removeTab: Function;
-  error: AxiosError<any> | null;
   loading: boolean;
-  response: AxiosResponse<any> | undefined;
-  time: string | undefined;
-  size: number | undefined;
   addData: ({ itemId, key, value, tabId, type }: any) => void;
   addTabData: ({ tabId, type, value }: any) => void;
   addSubTab: ({ tabId, type }: any) => void;
@@ -37,10 +29,6 @@ export const TabsContext = React.createContext<AppContextInterface>({
   sendReq: () => {},
   removeSubTab: () => {},
   addTabData: () => {},
-  error: null,
-  response: undefined,
-  time: undefined,
-  size: 0,
   loading: false,
 });
 
@@ -110,17 +98,48 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     });
   };
 
-  const { error, fetchData, loading, response, time, size } = useAxios();
+  const { fetchData, loading } = useAxios();
+  const updateRes = ({ time, response, size, tabId }: any) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      const tabToUpdate = newTabs[tabId];
+      const updatedTab = {
+        ...tabToUpdate,
+        res: { time, response, size },
+      };
+      newTabs[tabId] = updatedTab;
+      return newTabs;
+    });
+  };
+  const updateResError = ({ time, error, tabId, errorMessage }: any) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      const tabToUpdate = newTabs[tabId];
+      const updatedTab = {
+        ...tabToUpdate,
+        res: { time, response: undefined, size: '', error, errorMessage },
+      };
+      newTabs[tabId] = updatedTab;
+      return newTabs;
+    });
+  };
+
   const sendReq = ({ tabId }: any) => {
     const tab = tabs[tabId];
     const axiosParams: AxiosRequestConfig = {
       url: tab.url,
       method: tab.method,
-      params: tab.data.queryParams,
-      headers: tab.data.headers as AxiosHeaders,
+      params: objectToPairs(tab.data.queryParams),
+      headers: objectToPairs(tab.data.headers),
       data: tab.data.body,
     };
-    fetchData(axiosParams);
+    fetchData(axiosParams)
+      .then(({ time, response, size }) =>
+        updateRes({ time, response, size, tabId })
+      )
+      .catch(({ error, time, errorMessage }) =>
+        updateResError({ time, error, tabId, errorMessage })
+      );
   };
   return (
     <TabsContext.Provider
@@ -133,12 +152,9 @@ export const ApiContext = ({ children }: ApiContextProps) => {
         removeSubTab,
         addSubTab,
         sendReq,
-        error,
+
         loading,
         addTabData,
-        response,
-        time,
-        size,
       }}
     >
       {children}

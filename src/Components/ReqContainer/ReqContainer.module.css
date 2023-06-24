@@ -15,10 +15,13 @@
 .input {
     width: 100%;
 }
+
 @media (max-width: 600px) {
     .inputContainer {
-    flex-direction: column;
+        flex-direction: column;
     }
-    
-  }
-  
+
+    .input {
+        margin-top: 15px !important;
+    }
+}

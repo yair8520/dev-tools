@@ -103,4 +103,4 @@ export const jsonExample = {
   },
 };
 
-export const methods = ["GET", "POST", "PUT", "DELETE"];
+export const methods = ['GET', 'POST', 'PUT', 'DELETE'];

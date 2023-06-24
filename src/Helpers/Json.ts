@@ -1,4 +1,6 @@
+import { AxiosHeaders } from 'axios';
 import { IHooksDescription } from '../Constant/Hooks';
+import { IParams } from '../Constant/Mock';
 
 export function prettifyJSON(jsonStr: string | any[]) {
   if (!jsonStr || typeof jsonStr !== 'string') {
@@ -86,4 +88,12 @@ export function generateInterfaceFromJson(json: string): string {
 }
 export const extractTitles = (array: IHooksDescription[]) => {
   return array.map((item, i) => item.title);
+};
+
+export const objectToPairs = (obj: IParams): AxiosHeaders => {
+  return Object.fromEntries(
+    Object.entries(obj)
+      .filter(([key, value]) => value.value !== "") // Exclude pairs with empty values
+      .map(([key, value]) => [value.key, value.value])
+  ) as AxiosHeaders;
 };

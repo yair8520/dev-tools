@@ -14,7 +14,6 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-  console.log(data.queryParams)
   return (
     <Box className={styles.customBox} sx={{ borderColor: 'divider' }}>
       <TabContext value={value}>

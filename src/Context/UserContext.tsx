@@ -1,4 +1,4 @@
-import React, { createContext,  useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { User } from '../Types/User';
 import useFirebaseAuth from '../Hooks/useFirebaseAuth/useFirebaseAuth';
 import { GoogleOneTap } from '../Components/GoogleOneTap';

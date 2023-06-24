@@ -12,7 +12,6 @@ export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
   const handleChange = ({ itemId, key, value, tabId, type }: any) => {
     addData({ itemId, key, value, tabId, type });
   };
-  console.log(Object.entries(list).length)
   return (
     <>
       {Object.entries(list).map(([k, v]) => (
