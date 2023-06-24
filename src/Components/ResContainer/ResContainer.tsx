@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ResContainer.module.css';
-import { ResContainerProps } from './ResContainerProps';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { Text } from '../Text';
-export const ResContainer = ({}: ResContainerProps) => {
+import { TabsContext } from '../../Context/ApiContext/ApiContext';
+export const ResContainer = () => {
   const [value, setValue] = React.useState('1');
-
+  const { response, time,size } = useContext(TabsContext);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -17,9 +17,12 @@ export const ResContainer = ({}: ResContainerProps) => {
     <div className={styles.container}>
       <h1>Response</h1>
       <div className={styles.properties}>
-        <Text>Status: </Text>
-        <Text>Time: </Text>
-        <Text>Size: </Text>
+        <Text>
+          Status: {response?.status}
+          {response?.statusText}{' '}
+        </Text>
+        <Text>Time: {time}</Text>
+        <Text>Size: {size}kb</Text>
       </div>
       <div className={styles.resContainer}>
         <Box

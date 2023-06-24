@@ -7,8 +7,13 @@ export interface ITab {
   title: string;
   value: string;
   url: string;
-  data: IApiData;
   method: string;
+  data: IApiData;
+}
+export interface IApiData {
+  queryParams: IParams;
+  headers: IParams;
+  body: string
 }
 export interface IParams {
   [key: string]: {
@@ -17,18 +22,13 @@ export interface IParams {
   }
 }
 
-export interface IApiData {
-  queryParams: IParams;
-  headers: IParams;
-  body: string
-}
 
 export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
     title: "Tab 1",
     value: "tab1",
-    url: "https://example.com/api/tab1",
+    url: "https://jsonplaceholder.typicode.com/todos",
     data: {
       queryParams: {
         '0': {
@@ -58,7 +58,7 @@ export const apiTabs: IApiTabs = {
     id: '2',
     title: "Tab 2",
     value: "tab2",
-    url: "https://example.com/api/tab2",
+    url: "https://jsonplaceholder.typicode.com/todos",
     data: {
       queryParams: {
         '0': {
@@ -80,7 +80,7 @@ export const apiTabs: IApiTabs = {
     id: '3',
     title: "Tab 3",
     value: "tab3",
-    url: "https://example.com/api/tab3",
+    url: "https://jsonplaceholder.typicode.com/todos",
     data: {
       queryParams: {},
       headers: {},

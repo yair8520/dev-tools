@@ -9,7 +9,7 @@ export const TabItem = ({ item, ...rest }: TabItemProps) => {
   return (
     <TabPanel className={styles.container} value={item.value}>
       <ReqContainer item={item} />
-      <ResContainer item={item} />
+      <ResContainer />
     </TabPanel>
   );
 };
