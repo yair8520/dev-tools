@@ -1,3 +1,12 @@
 .container {
     height: 50%;
 }
+
+.resContainer {}
+
+.properties {
+    display: flex;
+    width: 20%;
+    margin: 25px;
+    justify-content: space-between;
+}

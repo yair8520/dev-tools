@@ -33,7 +33,7 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
         />
         <Button>Send</Button>
       </div>
-      <ParamsContainer data={item.data} />
+      <ParamsContainer id={item.id} data={item.data} />
     </div>
   );
 };

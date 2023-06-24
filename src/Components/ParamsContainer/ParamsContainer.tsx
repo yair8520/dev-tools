@@ -7,14 +7,15 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { ParamsList } from '../ParamsList';
 import styles from './ParamsContainer.module.css';
-export const ParamsContainer = ({ data }: ParamsContainerProps) => {
+
+export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   return (
-    <Box className={styles.customBox}>
+    <Box className={styles.customBox} sx={{ borderColor: 'divider' }}>
       <TabContext value={value}>
         <Box>
           <TabList
@@ -28,12 +29,16 @@ export const ParamsContainer = ({ data }: ParamsContainerProps) => {
           </TabList>
 
           <TabPanel value="1">
-            <ParamsList list={data.queryParams} />
+            <ParamsList
+              type={'queryParams'}
+              tabId={id}
+              list={data.queryParams}
+            />
           </TabPanel>
           <TabPanel value="2">
-            <ParamsList list={data.headers} />
+            <ParamsList type={'headers'} tabId={id} list={data.headers} />
           </TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
+          <TabPanel value="3"></TabPanel>
         </Box>
       </TabContext>
     </Box>

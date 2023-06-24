@@ -1,38 +1,52 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './ParamsList.module.css';
 import { ParamsListProps } from './ParamsListProps';
-import { IParams } from '../../Constant/Mock';
 import { MultiLineInput } from '../MultiLineInput';
 import { CIconButton } from '../CIconButton';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { TabsContext } from '../../Context/ApiContext/ApiContext';
 
-export const ParamsList = ({ list }: ParamsListProps) => {
-  const [params, setParams] = useState<IParams>(list);
-
-  const handleChange = (val: string) => {};
+export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
+  const { addData, addSubTab, removeSubTab } = useContext(TabsContext);
+  const handleChange = ({ itemId, key, value, tabId, type }: any) => {
+    addData({ itemId, key, value, tabId, type });
+  };
   return (
     <>
-      {Object.entries(params).map(([k, v]) => (
+      {Object.entries(list).map(([k, v]) => (
         <div key={k} className={styles.container}>
           <MultiLineInput
             className={styles.input}
             value={v.key}
             label={'key'}
-            onChange={(key) => handleChange(key)}
+            onChange={(t) => {
+              handleChange({ itemId: k, key: t, value: v.value, tabId, type });
+            }}
           />
           <MultiLineInput
             className={styles.input}
             value={v.value}
             label={'value'}
-            onChange={(val) => handleChange(val)}
+            onChange={(text) =>
+              handleChange({ itemId: k, key: v.key, value: text, tabId, type })
+            }
           />
-          <CIconButton onClick={() => {}} title={'Remove'} placement="right">
+          <CIconButton
+            onClick={() => removeSubTab({ tabId, type, itemId: k })}
+            title={'Remove'}
+            placement="right"
+          >
             <RemoveCircleOutlineIcon />
           </CIconButton>
         </div>
       ))}
-      <CIconButton onClick={() => {}} title={'Add'}>
+      <CIconButton
+        onClick={() => {
+          addSubTab({ tabId, type });
+        }}
+        title={'Add'}
+      >
         <ControlPointIcon />
       </CIconButton>
     </>

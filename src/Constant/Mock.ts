@@ -3,6 +3,7 @@ export interface IApiTabs {
 }
 
 export interface ITab {
+  id: string,
   title: string;
   value: string;
   url: string;
@@ -23,27 +24,28 @@ export interface IApiData {
 }
 
 export const apiTabs: IApiTabs = {
-  tab1: {
+  '1': {
+    id: '1',
     title: "Tab 1",
     value: "tab1",
     url: "https://example.com/api/tab1",
     data: {
       queryParams: {
-        param1: {
+        '0': {
           key: "param1",
           value: "value1"
         },
-        param2: {
+        '1': {
           key: "param2",
           value: "value2"
         }
       },
       headers: {
-        header1: {
+        '0': {
           key: "header1",
           value: "value1"
         },
-        header2: {
+        '1': {
           key: "header2",
           value: "value2"
         }
@@ -52,19 +54,20 @@ export const apiTabs: IApiTabs = {
     },
     method: "GET"
   },
-  tab2: {
+  '2': {
+    id: '2',
     title: "Tab 2",
     value: "tab2",
     url: "https://example.com/api/tab2",
     data: {
       queryParams: {
-        param3: {
+        '0': {
           key: "param3",
           value: "value3"
         }
       },
       headers: {
-        header3: {
+        '0': {
           key: "header3",
           value: "value3"
         }
@@ -73,7 +76,8 @@ export const apiTabs: IApiTabs = {
     },
     method: "POST"
   },
-  tab3: {
+  '3': {
+    id: '3',
     title: "Tab 3",
     value: "tab3",
     url: "https://example.com/api/tab3",
