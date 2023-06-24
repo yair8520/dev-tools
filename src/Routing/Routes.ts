@@ -33,7 +33,7 @@ const ToDoPage = lazy(
   () => import(/* webpackChunkName: "ToDo" */ '../Pages/ToDoPage/ToDoPage')
 );
 const ApiPage = lazy(
-  () => import(/* webpackChunkName: "ToDo" */ '../Pages/ApiPage/ApiPage')
+  () => import(/* webpackChunkName: "Api" */ '../Pages/ApiPage/ApiPage')
 );
 
 const routes = [
