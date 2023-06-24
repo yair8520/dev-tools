@@ -50,7 +50,7 @@ export const CDrawer = () => {
             {pages.map((Item, i) => (
               <CustomLink key={Item.href} to={Item.href}>
                 <div className="item">
-                  {Item.Icon && <Item.Icon />}
+                  {Item.Icon && <Item.Icon sx={{ width: 18, height: 18 }} />}
                   <Text
                     style={{
                       marginTop: -10,

@@ -32,7 +32,7 @@ export const NotesItem = ({
               updateNoteBlur();
             }}
           >
-            {!item.blurred ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            {!item.blurred ? <VisibilityOffIcon /> : <VisibilityIcon />}
           </CIconButton>
           <CIconButton
             placement="top"

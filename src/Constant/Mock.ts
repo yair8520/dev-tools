@@ -44,23 +44,17 @@ export const apiTabs: IApiTabs = {
     data: {
       queryParams: {
         '0': {
-          key: 'param1',
-          value: 'value1',
+          key: '',
+          value: '',
         },
-        '1': {
-          key: 'param2',
-          value: 'value2',
-        },
+
       },
       headers: {
         '0': {
-          key: 'header1',
-          value: 'value1',
+          key: 'Content-Type',
+          value: 'application/json',
         },
-        '1': {
-          key: 'header2',
-          value: 'value2',
-        },
+
       },
       body: 'Request body for Tab 1',
     },
@@ -80,14 +74,14 @@ export const apiTabs: IApiTabs = {
     data: {
       queryParams: {
         '0': {
-          key: 'param3',
-          value: 'value3',
+          key: '',
+          value: '',
         },
       },
       headers: {
         '0': {
-          key: 'header3',
-          value: 'value3',
+          key: 'Content-Type',
+          value: 'application/json',
         },
       },
       body: 'Request body for Tab 2',
@@ -107,7 +101,12 @@ export const apiTabs: IApiTabs = {
     url: 'https://jsonplaceholder.typicode.com/todos',
     data: {
       queryParams: {},
-      headers: {},
+      headers: {
+        '0': {
+          key: 'Content-Type',
+          value: 'application/json',
+        },
+      },
       body: 'Request body for Tab 3',
     },
     res: {

@@ -8,6 +8,9 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Text } from '../Text';
 import { JsonPanel } from '../JsonPanel';
 import { ResContainerProps } from './ResContainerProps';
+import { Description } from '../Description';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import { httpStatuses } from '../../Constant/Errors';
 
 export const ResContainer = ({ item }: ResContainerProps) => {
   const [value, setValue] = React.useState('1');
@@ -22,8 +25,12 @@ export const ResContainer = ({ item }: ResContainerProps) => {
       ) : null}
       <div className={styles.properties}>
         <Text>
-          Status: {item.res.response?.status}
-          {item.res.response?.statusText}{' '}
+          Status: {item.res.response?.status ?? ' ' + '  '}
+          {item.res.response?.status && (
+            <Description title={httpStatuses[item.res.response?.status ?? 1]}>
+              <LightbulbIcon />
+            </Description>
+          )}
         </Text>
         <Text>Time: {item.res.time}</Text>
         <Text>Size: {item.res.size}kb</Text>

@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import { HomePage } from '../Pages/HomePage';
-import { ApiPage } from '../Pages/ApiPage';
 
 const Formatter = lazy(
   () =>
@@ -32,6 +31,9 @@ const Notes = lazy(
 );
 const ToDoPage = lazy(
   () => import(/* webpackChunkName: "ToDo" */ '../Pages/ToDoPage/ToDoPage')
+);
+const ApiPage = lazy(
+  () => import(/* webpackChunkName: "ToDo" */ '../Pages/ApiPage/ApiPage')
 );
 
 const routes = [

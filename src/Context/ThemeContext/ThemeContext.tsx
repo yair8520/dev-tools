@@ -7,12 +7,12 @@ interface AppContextInterface {
 }
 
 export const AppContext = React.createContext<AppContextInterface>({
-  isDark: true,
+  isDark: false,
   setIsDark: () => {},
 });
 
 export const ThemeContext = ({ children }: ThemeContextProps) => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   return (
     <AppContext.Provider value={{ isDark, setIsDark }}>

@@ -3,7 +3,7 @@ import styles from './ApiPage.module.css';
 
 import { ApiTabs } from '../../Components/ApiTabs';
 import { ApiContext } from '../../Context/ApiContext';
-export const ApiPage = () => {
+const ApiPage = () => {
   return (
     <div className={styles.container}>
       <ApiContext>
@@ -12,3 +12,4 @@ export const ApiPage = () => {
     </div>
   );
 };
+export default ApiPage;

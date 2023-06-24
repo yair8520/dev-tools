@@ -14,7 +14,6 @@ import {
   HelpOutline,
   RemoveCircleOutline,
 } from '@material-ui/icons';
-import { IconButton } from '@mui/material';
 import { flexItemsInitial } from '../../../Pages/FlexPage/FlexPageProps';
 import { Description } from '../../Description';
 import { flexDescription } from '../../../Constant/Description';
