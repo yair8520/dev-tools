@@ -8,23 +8,9 @@ export const isUrlValid = (url: string) => {
     return false;
   }
 };
-export function addParamsToURL(
-  url: string,
-  params: any
-) {
-  const queryString = Object.keys(params)
-    .filter((key) => key !== '' && params[key].key !== '')
-    .map(
-      (key) =>
-        `${encodeURIComponent(params[key].key)}=${encodeURIComponent(
-          params[key].value
-        )}`
-    )
-    .join('&');
+export function addParamsToURL(url: string, { key, value }: any) {
+  const urlObject = new URL(url);
+  urlObject.searchParams.set(key, value);
 
-  const updatedURL = url.includes('?')
-    ? `${url}&${queryString}`
-    : `${url}?${queryString}`;
-
-  return updatedURL;
+  return urlObject.toString();
 }

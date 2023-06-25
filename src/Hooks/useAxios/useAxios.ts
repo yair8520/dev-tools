@@ -30,17 +30,22 @@ export const useAxios = () => {
       axios
         .request(axiosParams)
         .then((response) => {
-          end = performance.now();
           res({
             response,
             size: calculateSize(response.data),
-            time: formatTime(end - start),
+            time: formatTime(performance.now() - start),
           });
         })
         .catch((error: AxiosError) => {
-          end = performance.now();
-          const errorMessage = errorMessages[error.code as keyof object] || error.message || 'An error occurred';
-          rej({ error, time: formatTime(end - start), errorMessage });
+          const errorMessage =
+            errorMessages[error.code as keyof object] ||
+            error.message ||
+            'An error occurred';
+          rej({
+            error,
+            time: formatTime(performance.now() - start),
+            errorMessage,
+          });
         })
         .finally(() => {
           setLoading(false);
