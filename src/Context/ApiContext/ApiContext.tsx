@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
 import { objectToPairs } from '../../Helpers/Json';
+import { addParamsToURL } from '../../Helpers/Url';
 
 interface AppContextInterface {
   tabs: IApiTabs;
@@ -71,6 +72,10 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
         ...tabToUpdate,
+        url:
+          // type === 'queryParams'
+             addParamsToURL(tabToUpdate.url, { key, value }),
+            // : tabToUpdate.url,
         data: {
           ...tabToUpdate.data,
           [type]: {
