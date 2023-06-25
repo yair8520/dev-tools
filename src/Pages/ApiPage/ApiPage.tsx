@@ -5,11 +5,9 @@ import { ApiTabs } from '../../Components/ApiTabs';
 import { ApiContext } from '../../Context/ApiContext';
 const ApiPage = () => {
   return (
-    <div className={styles.container}>
-      <ApiContext>
-        <ApiTabs />
-      </ApiContext>
-    </div>
+    <ApiContext>
+      <ApiTabs />
+    </ApiContext>
   );
 };
 export default ApiPage;

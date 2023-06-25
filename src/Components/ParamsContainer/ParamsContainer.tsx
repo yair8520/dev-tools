@@ -15,7 +15,10 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
     setValue(newValue);
   };
   return (
-    <Box className={styles.customBox} sx={{ borderColor: 'divider' }}>
+    <Box
+      className={styles.customBox}
+      sx={{ border: 1, borderColor: 'divider' }}
+    >
       <TabContext value={value}>
         <Box>
           <TabList
