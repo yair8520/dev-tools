@@ -7,6 +7,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { ParamsList } from '../ParamsList';
 import styles from './ParamsContainer.module.css';
+import { JsonPanel } from '../JsonPanel';
 
 export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
   const [value, setValue] = React.useState('1');
@@ -41,7 +42,9 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
           <TabPanel value="2">
             <ParamsList type={'headers'} tabId={id} list={data.headers} />
           </TabPanel>
-          <TabPanel value="3"></TabPanel>
+          <TabPanel value="3">
+            <JsonPanel value={JSON.stringify(data.body, null, 3)} />
+          </TabPanel>
         </Box>
       </TabContext>
     </Box>

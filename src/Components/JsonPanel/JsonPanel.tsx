@@ -14,7 +14,7 @@ export const JsonPanel = ({
     <div className={styles.container}>
       <CodeMirror
         value={value}
-        editable
+        editable={editable}
         maxHeight="500px"
         theme={isDark ? 'dark' : 'light'}
         extensions={[json()]}
