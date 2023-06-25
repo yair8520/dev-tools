@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
 import { objectToPairs } from '../../Helpers/Json';
+import { addParamsToURL } from '../../Helpers/Url';
 //import { addParamsToURL } from '../../Helpers/Url';
 
 interface AppContextInterface {
@@ -62,6 +63,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[tabId].data[type as keyof object][itemId];
+      newTabs[tabId].url= addParamsToURL(newTabs[tabId].url, newTabs[tabId].data.queryParams)
       return newTabs;
     });
   };
@@ -72,7 +74,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
         ...tabToUpdate,
-
+        url: addParamsToURL(tabToUpdate.url, tabToUpdate.data.queryParams),
         data: {
           ...tabToUpdate.data,
           [type]: {
