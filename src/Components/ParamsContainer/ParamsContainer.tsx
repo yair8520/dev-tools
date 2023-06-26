@@ -46,7 +46,6 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
           <TabPanel value="3">
             <JsonPanel
               onChange={(value: string) => {
-                console.log(value)
                 updateBody({ tabId: id, type: 'body', value });
               }}
               value={data.body}

@@ -41,7 +41,8 @@ export const useAxios = () => {
             error.message ||
             'An error occurred';
           rej({
-            error,
+            ...error,
+            size: calculateSize(error.response),
             time: formatTime(performance.now() - start),
             errorMessage,
           });

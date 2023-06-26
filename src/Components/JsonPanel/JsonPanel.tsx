@@ -1,25 +1,24 @@
 import React, { useContext } from 'react';
 import styles from './JsonPanel.module.css';
 import { JsonPanelProps } from './JsonPanelProps';
-import CodeMirror from '@uiw/react-codemirror';
-import { json } from '@codemirror/lang-json';
 import { AppContext } from '../../Context/ThemeContext/ThemeContext';
+var newline = String.fromCharCode(13, 10);
 export const JsonPanel = ({
   value,
   onChange,
   editable = true,
+  rows=8
 }: JsonPanelProps) => {
   const { isDark } = useContext(AppContext);
   return (
-    <div className={styles.container}>
-      <CodeMirror
-        value={value}
-        editable={editable}
-        maxHeight="500px"
-        theme={isDark ? 'dark' : 'light'}
-        extensions={[json()]}
-        onChange={onChange}
-      />
-    </div>
+    <textarea
+      cols={50}
+      rows={rows}
+      disabled={!editable}
+      onChange={(e) => onChange(e.target.value)}
+      className={styles.container}
+      style={isDark ? { color: 'white' } : {}}
+      value={value?.replaceAll('\\n', newline)}
+    />
   );
 };

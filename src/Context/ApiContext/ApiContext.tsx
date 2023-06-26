@@ -164,13 +164,20 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       return newTabs;
     });
   };
-  const updateResError = ({ time, error, tabId, errorMessage }: any) => {
+  const updateResError = ({
+    time,
+    error,
+    tabId,
+    errorMessage,
+    response,
+    size,
+  }: any) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
         ...tabToUpdate,
-        res: { time, response: undefined, size: '', error, errorMessage },
+        res: { time, response: response, error, errorMessage, size },
       };
       newTabs[tabId] = updatedTab;
       return newTabs;
@@ -190,8 +197,8 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       .then(({ time, response, size }) =>
         updateRes({ time, response, size, tabId })
       )
-      .catch(({ error, time, errorMessage }) =>
-        updateResError({ time, error, tabId, errorMessage })
+      .catch(({ error, time, errorMessage, response, size }) =>
+        updateResError({ time, error, tabId, errorMessage, response, size })
       );
   };
   return (

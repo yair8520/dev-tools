@@ -57,6 +57,7 @@ export const ResContainer = ({ item }: ResContainerProps) => {
             </Box>
             <TabPanel value="1">
               <JsonPanel
+                rows={30}
                 editable={false}
                 value={JSON.stringify(item.res.response?.data, null, 3)}
               />
