@@ -93,7 +93,7 @@ export const extractTitles = (array: IHooksDescription[]) => {
 export const objectToPairs = (obj: IParams): AxiosHeaders => {
   return Object.fromEntries(
     Object.entries(obj)
-      .filter(([key, value]) => value.value !== "") // Exclude pairs with empty values
+      .filter(([key, value]) => value.value !== "" && (value.checked === undefined || value.checked)) // Exclude pairs with empty values or checked set to false
       .map(([key, value]) => [value.key, value.value])
   ) as AxiosHeaders;
 };

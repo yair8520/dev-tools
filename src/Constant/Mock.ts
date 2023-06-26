@@ -32,6 +32,7 @@ export interface IParams {
   [key: string]: {
     key: string;
     value: string;
+    checked: boolean
   };
 }
 
@@ -46,6 +47,7 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: '',
           value: '',
+          checked: false
         },
 
       },
@@ -53,10 +55,13 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
+          checked: true
         },
-
       },
-      body: 'Request body for Tab 1',
+      body:
+        `{
+  
+}`,
     },
     res: {
       time: 0,
@@ -76,15 +81,21 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: '',
           value: '',
+          checked: false
+
         },
       },
       headers: {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
+          checked: true
         },
       },
-      body: 'Request body for Tab 2',
+      body:
+        `{
+  
+}`,
     },
     res: {
       time: 0,
@@ -105,9 +116,13 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
+          checked: true
         },
       },
-      body: 'Request body for Tab 3',
+      body:
+      `{
+
+}`,
     },
     res: {
       time: 0,

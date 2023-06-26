@@ -15,7 +15,9 @@ interface AppContextInterface {
   removeTab: Function;
   loading: boolean;
   addData: ({ itemId, key, value, tabId, type }: any) => void;
+  toggleQuary: ({ itemId, key, value, tabId, type }: any) => void;
   addTabData: ({ tabId, type, value }: any) => void;
+  updateBody: ({ tabId, type, value }: any) => void;
   addSubTab: ({ tabId, type }: any) => void;
   sendReq: ({ tabId }: any) => void;
   removeSubTab: ({ tabId, type, itemId }: any) => void;
@@ -27,9 +29,11 @@ export const TabsContext = React.createContext<AppContextInterface>({
   addTab: () => {},
   removeTab: () => {},
   addData: () => {},
+  toggleQuary: () => {},
   addSubTab: () => {},
   sendReq: () => {},
   removeSubTab: () => {},
+  updateBody: () => {},
   addTabData: () => {},
   loading: false,
 });
@@ -63,7 +67,10 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[tabId].data[type as keyof object][itemId];
-      newTabs[tabId].url= addParamsToURL(newTabs[tabId].url, newTabs[tabId].data.queryParams)
+      newTabs[tabId].url = addParamsToURL(
+        newTabs[tabId].url,
+        newTabs[tabId].data.queryParams
+      );
       return newTabs;
     });
   };
@@ -72,6 +79,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
+      const checked = tabToUpdate.data.queryParams[itemId].checked;
       const updatedTab = {
         ...tabToUpdate,
         url: addParamsToURL(tabToUpdate.url, tabToUpdate.data.queryParams),
@@ -81,11 +89,37 @@ export const ApiContext = ({ children }: ApiContextProps) => {
             ...(tabToUpdate.data[
               type as keyof typeof tabToUpdate.data
             ] as IParams),
-            [itemId]: { key, value },
+            [itemId]: { key, value, checked },
           },
         },
       };
       newTabs[tabId] = updatedTab;
+      return newTabs;
+    });
+  };
+
+  const toggleQuary = ({ itemId, key, value, tabId, type }: any) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      const tabToUpdate = newTabs[tabId];
+      const prevItem = tabToUpdate.data.queryParams[itemId];
+      const updatedTab = {
+        ...tabToUpdate,
+        data: {
+          ...tabToUpdate.data,
+          [type]: {
+            ...(tabToUpdate.data[
+              type as keyof typeof tabToUpdate.data
+            ] as IParams),
+            [itemId]: { ...prevItem, checked: !prevItem.checked },
+          },
+        },
+      };
+      newTabs[tabId] = updatedTab;
+      newTabs[tabId].url = addParamsToURL(
+        updatedTab.url,
+        updatedTab.data.queryParams
+      );
       return newTabs;
     });
   };
@@ -96,6 +130,21 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       const updatedTab = {
         ...tabToUpdate,
         [type]: value,
+      };
+      newTabs[tabId] = updatedTab;
+      return newTabs;
+    });
+  };
+  const updateBody = ({ tabId, type, value }: any) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      const tabToUpdate = newTabs[tabId];
+      const updatedTab = {
+        ...tabToUpdate,
+        data: {
+          ...tabToUpdate.data,
+          [type]: value,
+        },
       };
       newTabs[tabId] = updatedTab;
       return newTabs;
@@ -156,9 +205,10 @@ export const ApiContext = ({ children }: ApiContextProps) => {
         removeSubTab,
         addSubTab,
         sendReq,
-
+        toggleQuary,
         loading,
         addTabData,
+        updateBody,
       }}
     >
       {children}

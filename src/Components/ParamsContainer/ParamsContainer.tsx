@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ParamsContainerProps } from './ParamsContainerProps';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -8,10 +8,11 @@ import TabPanel from '@mui/lab/TabPanel';
 import { ParamsList } from '../ParamsList';
 import styles from './ParamsContainer.module.css';
 import { JsonPanel } from '../JsonPanel';
+import { TabsContext } from '../../Context/ApiContext/ApiContext';
 
 export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
   const [value, setValue] = React.useState('1');
-
+  const { updateBody } = useContext(TabsContext);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -43,7 +44,13 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
             <ParamsList type={'headers'} tabId={id} list={data.headers} />
           </TabPanel>
           <TabPanel value="3">
-            <JsonPanel value={JSON.stringify(data.body, null, 3)} />
+            <JsonPanel
+              onChange={(value: string) => {
+                console.log(value)
+                updateBody({ tabId: id, type: 'body', value });
+              }}
+              value={data.body}
+            />
           </TabPanel>
         </Box>
       </TabContext>

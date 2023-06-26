@@ -24,7 +24,6 @@ export const useAxios = () => {
     time: string;
   }> => {
     const start = performance.now();
-    let end;
     setLoading(true);
     return new Promise((res, rej) => {
       axios
