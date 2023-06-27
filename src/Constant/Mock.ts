@@ -1,5 +1,4 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 export interface IApiTabs {
   [key: string]: ITab;
@@ -36,8 +35,8 @@ export interface IParams {
     checked: boolean
   };
 }
-export const getDefaultTab = (): ITab => {
-  const id = uuidv4()
+export const getDefaultTab = (id: string): ITab => {
+
   return {
     id: id,
     title: 'New Tab',
@@ -45,9 +44,25 @@ export const getDefaultTab = (): ITab => {
     url: '',
     method: 'GET',
     data: {
-      queryParams: {},
-      headers: {},
-      body: '',
+      queryParams: {
+        '0': {
+          key: '',
+          value: '',
+          checked: false
+        },
+
+      },
+      headers: {
+        '0': {
+          key: 'Content-Type',
+          value: 'application/json',
+          checked: true
+        },
+      },
+      body:
+        `{
+  
+}`,
     },
     res: {
       time: 0,

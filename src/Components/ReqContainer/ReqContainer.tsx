@@ -9,7 +9,7 @@ import { ParamsContainer } from '../ParamsContainer';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 
 export const ReqContainer = ({ item }: ReqContainerProps) => {
-  const { sendReq, addTabData } = useContext(TabsContext);
+  const { sendReq, addTabData, loading } = useContext(TabsContext);
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
@@ -38,7 +38,8 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
           }
         />
         <LoadingButton
-          loading={false}
+          loading={loading}
+          disabled={!item.url}
           onClick={() => sendReq({ tabId: item.id })}
         >
           Send

@@ -6,6 +6,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import { CIconButton } from '../CIconButton';
 import { handleCopy, handlePaste } from '../../Helpers/Clipboard';
+import { Text } from '../Text';
+import { prettifyJSON } from '../../Helpers/Json';
 
 var newline = String.fromCharCode(13, 10);
 export const JsonPanel = ({
@@ -19,6 +21,7 @@ export const JsonPanel = ({
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
+      
         <CIconButton
           onClick={() => handleCopy(value)}
           title={'Copy'}
@@ -26,14 +29,20 @@ export const JsonPanel = ({
         >
           <ContentCopyIcon />
         </CIconButton>
+
         {editable && (
+          <>
           <CIconButton
             onClick={() => handlePaste(onChange)}
             title={'Paste'}
             placement="right"
-          >
+            >
             <ContentPasteIcon />
           </CIconButton>
+            <CIconButton onClick={() => onChange(prettifyJSON(value))} placement="left">
+            <Text>Beautify</Text>
+          </CIconButton>
+            </>
         )}
       </div>
       <textarea

@@ -42,6 +42,7 @@ export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
           />
 
           <MultiLineInput
+            disabled={!v.checked}
             className={styles.input}
             value={v.key}
             label={'key'}
@@ -50,6 +51,7 @@ export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
             }}
           />
           <MultiLineInput
+            disabled={!v.checked}
             className={styles.input}
             value={v.value}
             label={'value'}

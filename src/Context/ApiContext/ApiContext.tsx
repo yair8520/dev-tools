@@ -41,8 +41,8 @@ export const TabsContext = React.createContext<AppContextInterface>({
 export const ApiContext = ({ children }: ApiContextProps) => {
   const [tabs, setTabs] = useState<IApiTabs>(apiTabs);
 
-  const addTab = () => {
-    const newTab = getDefaultTab();
+  const addTab = (id: string) => {
+    const newTab = getDefaultTab(id);
 
     setTabs((prevTabs: IApiTabs) => {
       const updatedTabs = { ...prevTabs };

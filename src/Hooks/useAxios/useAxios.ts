@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import { errorMessages } from '../../Constant/Errors';
 
 export const useAxios = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const formatTime = (milliseconds: number) => {
     const seconds = Math.floor(milliseconds / 1000);
     const millisecondsRemainder = Math.floor(milliseconds % 1000);

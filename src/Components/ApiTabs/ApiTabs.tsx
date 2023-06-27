@@ -7,6 +7,8 @@ import { ITab } from '../../Constant/Mock';
 import { TabItem } from '../TabItem';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import { Text } from '../Text';
+import { v4 as uuidv4 } from 'uuid';
+
 import styles from './ApiTabs.module.css';
 import AddIcon from '@mui/icons-material/Add';
 export const ApiTabs = () => {
@@ -14,6 +16,11 @@ export const ApiTabs = () => {
   const { tabs, addTab } = useContext(TabsContext);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  };
+  const onAddTab = () => {
+    const id = uuidv4();
+    addTab(id);
+    setValue(id);
   };
   return (
     <TabContext value={value}>
@@ -46,7 +53,7 @@ export const ApiTabs = () => {
               value={t[1].value}
             />
           ))}
-          <div className={styles.addIcon} onClick={() => addTab()}>
+          <div className={styles.addIcon} onClick={onAddTab}>
             <AddIcon />
           </div>
         </TabList>
