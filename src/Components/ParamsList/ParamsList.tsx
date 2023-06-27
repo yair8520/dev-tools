@@ -6,9 +6,10 @@ import { CIconButton } from '../CIconButton';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
-import { Checkbox } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+
 export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
   const { addData, addSubTab, removeSubTab, toggleQuary } =
     useContext(TabsContext);
@@ -19,20 +20,27 @@ export const ParamsList = ({ list, tabId, type }: ParamsListProps) => {
     <>
       {Object.entries(list).map(([k, v]) => (
         <div key={k} className={styles.container}>
-          <Checkbox
-            checked={v.checked ?? false}
-            checkedIcon={<RadioButtonCheckedIcon />}
-            icon={<RadioButtonUncheckedIcon />}
-            onChange={() => {
-              toggleQuary({
-                itemId: k,
-                key: 'checked',
-                value: !v.checked,
-                tabId,
-                type,
-              });
-            }}
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={v.checked ?? false}
+                checkedIcon={<RadioButtonCheckedIcon />}
+                icon={<RadioButtonUncheckedIcon />}
+                onChange={() => {
+                  toggleQuary({
+                    itemId: k,
+                    key: 'checked',
+                    value: !v.checked,
+                    tabId,
+                    type,
+                  });
+                }}
+              />
+            }
+            label={v.checked ? 'active' : 'inactive'}
+            labelPlacement="start"
           />
+
           <MultiLineInput
             className={styles.input}
             value={v.key}

@@ -6,10 +6,12 @@ import TabList from '@mui/lab/TabList';
 import { ITab } from '../../Constant/Mock';
 import { TabItem } from '../TabItem';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
-
+import { Text } from '../Text';
+import styles from './ApiTabs.module.css';
+import AddIcon from '@mui/icons-material/Add';
 export const ApiTabs = () => {
   const [value, setValue] = React.useState('tab1');
-  const { tabs } = useContext(TabsContext);
+  const { tabs, addTab } = useContext(TabsContext);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -31,8 +33,20 @@ export const ApiTabs = () => {
           allowScrollButtonsMobile={true}
         >
           {Object.entries(tabs).map((t: [string, ITab]) => (
-            <Tab key={t[0]} label={t[1].title} value={t[1].value} />
+            <Tab
+              key={t[0]}
+              label={
+                <Text>
+                  {t[1].title}
+                  <Text className={`${styles[t[1].method]} ${styles.icon}`}>
+                    {t[1].method}
+                  </Text>
+                </Text>
+              }
+              value={t[1].value}
+            />
           ))}
+          <Tab icon={<AddIcon />} onClick={() => addTab()} />
         </TabList>
 
         {Object.entries(tabs).map((t: [string, ITab]) => (

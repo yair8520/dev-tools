@@ -79,10 +79,13 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
-      const checked = tabToUpdate.data.queryParams[itemId].checked;
+      const { checked } = tabToUpdate.data[type as keyof object][itemId];
       const updatedTab = {
         ...tabToUpdate,
-        url: addParamsToURL(tabToUpdate.url, tabToUpdate.data.queryParams),
+        url:
+          type === 'queryParams'
+            ? addParamsToURL(tabToUpdate.url, tabToUpdate.data.queryParams)
+            : tabToUpdate.url,
         data: {
           ...tabToUpdate.data,
           [type]: {
@@ -102,7 +105,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
-      const prevItem = tabToUpdate.data.queryParams[itemId];
+      const prevItem: IParams = tabToUpdate.data[type as keyof object][itemId];
       const updatedTab = {
         ...tabToUpdate,
         data: {
@@ -186,6 +189,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
 
   const sendReq = ({ tabId }: any) => {
     const tab = tabs[tabId];
+
     const axiosParams: AxiosRequestConfig = {
       url: tab.url,
       method: tab.method,

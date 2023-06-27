@@ -43,7 +43,7 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
           <TabPanel value="2">
             <ParamsList type={'headers'} tabId={id} list={data.headers} />
           </TabPanel>
-          <TabPanel value="3">
+          <TabPanel sx={{ paddingTop: 0 }} value="3">
             <JsonPanel
               onChange={(value: string) => {
                 updateBody({ tabId: id, type: 'body', value });

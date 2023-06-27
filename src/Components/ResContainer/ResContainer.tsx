@@ -55,7 +55,7 @@ export const ResContainer = ({ item }: ResContainerProps) => {
                 <Tab label="Header" value="2" />
               </TabList>
             </Box>
-            <TabPanel value="1">
+            <TabPanel sx={{ paddingTop: 0 }} value="1">
               <JsonPanel
                 rows={30}
                 editable={false}

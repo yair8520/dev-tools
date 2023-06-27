@@ -1,0 +1,20 @@
+.icon {
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+.GET {
+    color: #49bc8d;
+}
+
+.POST {
+    color: #edc95e;
+}
+
+.DELETE {
+    color: #f19283;
+}
+
+.PUT {
+    color: #628dc1;
+}
