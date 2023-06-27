@@ -10,7 +10,7 @@ import { Text } from '../Text';
 import styles from './ApiTabs.module.css';
 import AddIcon from '@mui/icons-material/Add';
 export const ApiTabs = () => {
-  const [value, setValue] = React.useState('tab1');
+  const [value, setValue] = React.useState('1');
   const { tabs, addTab } = useContext(TabsContext);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -36,17 +36,19 @@ export const ApiTabs = () => {
             <Tab
               key={t[0]}
               label={
-                <Text>
-                  {t[1].title}
+                <>
+                  <Text>{t[1].title}</Text>
                   <Text className={`${styles[t[1].method]} ${styles.icon}`}>
                     {t[1].method}
                   </Text>
-                </Text>
+                </>
               }
               value={t[1].value}
             />
           ))}
-          <Tab icon={<AddIcon />} onClick={() => addTab()} />
+          <div className={styles.addIcon} onClick={() => addTab()}>
+            <AddIcon />
+          </div>
         </TabList>
 
         {Object.entries(tabs).map((t: [string, ITab]) => (

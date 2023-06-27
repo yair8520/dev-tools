@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ApiContextProps } from './ApiContextProps';
-import { IApiTabs, IParams, apiTabs } from '../../Constant/Mock';
+import { IApiTabs, IParams, apiTabs, getDefaultTab } from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
@@ -41,7 +41,15 @@ export const TabsContext = React.createContext<AppContextInterface>({
 export const ApiContext = ({ children }: ApiContextProps) => {
   const [tabs, setTabs] = useState<IApiTabs>(apiTabs);
 
-  const addTab = () => {};
+  const addTab = () => {
+    const newTab = getDefaultTab();
+
+    setTabs((prevTabs: IApiTabs) => {
+      const updatedTabs = { ...prevTabs };
+      updatedTabs[newTab.id] = newTab;
+      return updatedTabs;
+    });
+  };
   const removeTab = () => {};
   const addSubTab = ({ tabId, type }: any) => {
     setTabs((prevTabs: IApiTabs) => {

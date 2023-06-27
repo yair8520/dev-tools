@@ -18,3 +18,11 @@
 .PUT {
     color: #628dc1;
 }
+
+.addIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+
+}

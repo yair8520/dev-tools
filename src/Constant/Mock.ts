@@ -37,10 +37,11 @@ export interface IParams {
   };
 }
 export const getDefaultTab = (): ITab => {
+  const id = uuidv4()
   return {
-    id: uuidv4(),
+    id: id,
     title: 'New Tab',
-    value: '',
+    value: id,
     url: '',
     method: 'GET',
     data: {
@@ -64,7 +65,7 @@ export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
     title: 'Tab 1',
-    value: 'tab1',
+    value: '1',
     url: 'https://jsonplaceholder.typicode.com/todos',
     data: {
       queryParams: {
@@ -98,7 +99,7 @@ export const apiTabs: IApiTabs = {
   '2': {
     id: '2',
     title: 'Tab 2',
-    value: 'tab2',
+    value: '2',
     url: 'https://jsonplaceholder.typicode.com/todos',
     data: {
       queryParams: {
@@ -132,7 +133,7 @@ export const apiTabs: IApiTabs = {
   '3': {
     id: '3',
     title: 'Tab 3',
-    value: 'tab3',
+    value: '3',
     url: 'https://jsonplaceholder.typicode.com/todos',
     data: {
       queryParams: {},
