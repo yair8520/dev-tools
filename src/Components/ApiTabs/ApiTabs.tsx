@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -8,19 +8,23 @@ import { TabItem } from '../TabItem';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import { Text } from '../Text';
 import { v4 as uuidv4 } from 'uuid';
-
 import styles from './ApiTabs.module.css';
 import AddIcon from '@mui/icons-material/Add';
+
 export const ApiTabs = () => {
   const [value, setValue] = React.useState('1');
   const { tabs, addTab } = useContext(TabsContext);
+  useEffect(() => {
+    const tabKeys = Object.keys(tabs);
+    const lastKey = tabKeys[tabKeys.length - 1];
+    setValue(lastKey);
+  }, [tabs]);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   const onAddTab = () => {
     const id = uuidv4();
     addTab(id);
-    setValue(id);
   };
   return (
     <TabContext value={value}>

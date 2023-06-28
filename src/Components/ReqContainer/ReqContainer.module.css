@@ -16,6 +16,22 @@
     width: 100%;
 }
 
+.GET {
+    color: #49bc8d;
+}
+
+.POST {
+    color: #edc95e;
+}
+
+.DELETE {
+    color: #f19283;
+}
+
+.PUT {
+    color: #628dc1;
+}
+
 @media (max-width: 600px) {
     .inputContainer {
         flex-direction: column;

@@ -11,6 +11,7 @@ import { CIconButton } from '../CIconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ConfirmModal } from '../ConfirmModal';
 import { ModalContext } from '../ModalContext/ModalContext';
+import { Text } from '../Text';
 export const ReqContainer = ({ item }: ReqContainerProps) => {
   const { sendReq, addTabData, loading, removeTab } = useContext(TabsContext);
   const { handleModal } = useContext(ModalContext);
@@ -34,7 +35,7 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
         >
           {methods.map((item: string) => (
             <MenuItem key={item} value={item}>
-              {item}
+              <Text className={`${styles[item]}`}> {item}</Text>
             </MenuItem>
           ))}
         </Select>
