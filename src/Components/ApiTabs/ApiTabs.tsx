@@ -14,11 +14,11 @@ import AddIcon from '@mui/icons-material/Add';
 export const ApiTabs = () => {
   const [value, setValue] = React.useState('1');
   const { tabs, addTab } = useContext(TabsContext);
+  const tabsKeys = Object.keys(tabs);
   useEffect(() => {
-    const tabKeys = Object.keys(tabs);
-    const lastKey = tabKeys[tabKeys.length - 1];
-    setValue(lastKey);
-  }, [tabs]);
+    setValue(tabsKeys[tabsKeys.length - 1]);
+  }, [tabsKeys.length]);
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
