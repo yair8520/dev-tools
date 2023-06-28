@@ -1,23 +1,29 @@
 .icon {
     letter-spacing: -1px;
-    font-size: 14px;
+    font-size: 12px;
+    margin-right: 5px;
+    color: white;
+    padding-left: 5px;
     padding-right: 5px;
+    border-radius: 12px;
+    align-items: center;
+    display: flex;
 }
 
 .GET {
-    color: #49bc8d;
+    background-color: #49bc8d;
 }
 
 .POST {
-    color: #edc95e;
+    background-color: #edc95e;
 }
 
 .DELETE {
-    color: #f19283;
+    background-color: #f19283;
 }
 
 .PUT {
-    color: #628dc1;
+    background-color: #628dc1;
 }
 
 .addIcon {
@@ -26,7 +32,8 @@
     justify-content: center;
     width: 50px;
 }
-.removeButton{
+
+.removeButton {
     position: absolute;
     top: 0;
 }
@@ -35,5 +42,5 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 }
