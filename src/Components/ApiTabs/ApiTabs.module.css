@@ -22,7 +22,7 @@
 
 .addIcon {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     width: 50px;
 }
@@ -35,5 +35,5 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
