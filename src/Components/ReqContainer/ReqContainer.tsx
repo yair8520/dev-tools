@@ -7,9 +7,18 @@ import { LoadingButton } from '@mui/lab';
 import { methods } from '../../Constant/DropDown';
 import { ParamsContainer } from '../ParamsContainer';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
-
+import { CIconButton } from '../CIconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { ConfirmModal } from '../ConfirmModal';
+import { ModalContext } from '../ModalContext/ModalContext';
 export const ReqContainer = ({ item }: ReqContainerProps) => {
-  const { sendReq, addTabData, loading } = useContext(TabsContext);
+  const { sendReq, addTabData, loading, removeTab } = useContext(TabsContext);
+  const { handleModal } = useContext(ModalContext);
+  const deleteTab = () => {
+    handleModal(
+      <ConfirmModal title="Sure?" onNext={() => removeTab({ id: item.id })} />
+    );
+  };
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
@@ -44,6 +53,9 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
         >
           Send
         </LoadingButton>
+        <CIconButton title={'Delete this Tab'} onClick={() => deleteTab()}>
+          <DeleteIcon htmlColor="red" />
+        </CIconButton>
       </div>
       <ParamsContainer id={item.id} data={item.data} />
     </div>

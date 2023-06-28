@@ -1,6 +1,7 @@
 .icon {
     letter-spacing: -1px;
     font-size: 14px;
+    padding-right: 5px;
 }
 
 .GET {
@@ -24,5 +25,15 @@
     align-items: center;
     justify-content: center;
     width: 50px;
+}
+.removeButton{
+    position: absolute;
+    top: 0;
+}
 
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -41,14 +41,18 @@ export const ApiTabs = () => {
         >
           {Object.entries(tabs).map((t: [string, ITab]) => (
             <Tab
+              wrapped
+              sx={{ maxWidth: '150px' }}
               key={t[0]}
               label={
-                <>
-                  <Text>{t[1].title}</Text>
+                <div className={styles.title}>
                   <Text className={`${styles[t[1].method]} ${styles.icon}`}>
                     {t[1].method}
                   </Text>
-                </>
+                  <Text numberOfLines={1} textOverflow="clip">
+                    {t[1].title}
+                  </Text>
+                </div>
               }
               value={t[1].value}
             />

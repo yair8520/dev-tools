@@ -50,7 +50,13 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       return updatedTabs;
     });
   };
-  const removeTab = () => {};
+  const removeTab = ({ id }: any) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      delete newTabs[id];
+      return newTabs;
+    });
+  };
   const addSubTab = ({ tabId, type }: any) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
