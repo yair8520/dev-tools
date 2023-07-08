@@ -17,9 +17,13 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
   const { handleModal } = useContext(ModalContext);
   const deleteTab = () => {
     handleModal(
-      <ConfirmModal title='This action will delete this current tab' onNext={() => removeTab({ id: item.id })} />
+      <ConfirmModal
+        title="This action will delete this current tab"
+        onNext={() => removeTab({ id: item.id })}
+      />
     );
   };
+  console.log(item.id);
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>

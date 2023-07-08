@@ -6,6 +6,7 @@ export interface IApiTabs {
 
 export interface ITab {
   id: string;
+  collection: string;
   title: string;
   value: string;
   url: string;
@@ -35,10 +36,11 @@ export interface IParams {
     checked: boolean
   };
 }
-export const getDefaultTab = (id: string): ITab => {
+export const getDefaultTab = (id: string, collection: string): ITab => {
 
   return {
     id: id,
+    collection: collection,
     title: 'New Tab',
     value: id,
     url: '',
@@ -79,6 +81,8 @@ export const getDefaultTab = (id: string): ITab => {
 export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
+    collection: "bb",
+
     title: 'Tab 1',
     value: '1',
     url: 'https://jsonplaceholder.typicode.com/todos',
@@ -113,6 +117,8 @@ export const apiTabs: IApiTabs = {
   },
   '2': {
     id: '2',
+    collection: "cc",
+
     title: 'Tab 2',
     value: '2',
     url: 'https://jsonplaceholder.typicode.com/todos',
@@ -147,6 +153,8 @@ export const apiTabs: IApiTabs = {
   },
   '3': {
     id: '3',
+    collection: "aa",
+
     title: 'Tab 3',
     value: '3',
     url: 'https://jsonplaceholder.typicode.com/todos',

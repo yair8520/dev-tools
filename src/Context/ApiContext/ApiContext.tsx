@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ApiContextProps } from './ApiContextProps';
 import { IApiTabs, IParams, apiTabs, getDefaultTab } from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
@@ -10,10 +10,16 @@ import { addParamsToURL } from '../../Helpers/Url';
 
 interface AppContextInterface {
   tabs: IApiTabs;
+  filterTabs: IApiTabs;
   setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
   addTab: Function;
   removeTab: Function;
+  editTabTitle: Function;
   loading: boolean;
+  selectedCollection: { collection: string; id: string };
+  collections: { collection: string; id: string }[];
+  setCollections: Function;
+  setSelectedCollection: Function;
   addData: ({ itemId, key, value, tabId, type }: any) => void;
   toggleQuary: ({ itemId, key, value, tabId, type }: any) => void;
   addTabData: ({ tabId, type, value }: any) => void;
@@ -25,7 +31,16 @@ interface AppContextInterface {
 
 export const TabsContext = React.createContext<AppContextInterface>({
   tabs: {},
+  filterTabs: {},
+  selectedCollection: {
+    collection: '',
+    id: '',
+  },
+  collections: [],
+  setCollections: () => {},
+  setSelectedCollection: () => {},
   setTabs: () => {},
+  editTabTitle: () => {},
   addTab: () => {},
   removeTab: () => {},
   addData: () => {},
@@ -40,25 +55,61 @@ export const TabsContext = React.createContext<AppContextInterface>({
 
 export const ApiContext = ({ children }: ApiContextProps) => {
   const [tabs, setTabs] = useState<IApiTabs>(apiTabs);
+  const [filterTabs, setFilterTabs] = useState<IApiTabs>(apiTabs);
+  const [collections, setCollections] = useState<
+    { collection: string; id: string }[]
+  >([]);
+  const [selectedCollection, setSelectedCollection] = useState<{
+    collection: string;
+    id: string;
+  }>({ collection: 'bb', id: '1' });
 
+  useEffect(() => {
+    const filteredTabs: IApiTabs = {};
+    Object.keys(tabs).forEach((key) => {
+      if (tabs[key].collection === selectedCollection.collection) {
+        filteredTabs[key] = tabs[key];
+      }
+    });
+    setFilterTabs(filteredTabs);
+  }, [selectedCollection, tabs]);
+  useEffect(() => {
+    const uniqueCollections: { collection: string; id: string }[] = [];
+    for (const key in tabs) {
+      const tab = tabs[key];
+      const existingCollection = uniqueCollections.find(
+        (item) => item.collection === tab.collection
+      );
+      if (!existingCollection) {
+        uniqueCollections.push({ collection: tab.collection, id: tab.id });
+      }
+    }
+    setCollections(uniqueCollections);
+  }, [tabs]);
   const addTab = (id: string) => {
-    const newTab = getDefaultTab(id);
-
-    setTabs((prevTabs: IApiTabs) => {
+    const newTab = getDefaultTab(id, selectedCollection.collection);
+    setFilterTabs((prevTabs: IApiTabs) => {
       const updatedTabs = { ...prevTabs };
       updatedTabs[newTab.id] = newTab;
       return updatedTabs;
     });
   };
   const removeTab = ({ id }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[id];
       return newTabs;
     });
   };
+  const editTabTitle = ({ id, newTitle }: any) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
+      const newTabs = { ...prevTabs };
+      newTabs[id].title = newTitle;
+      return newTabs;
+    });
+  };
   const addSubTab = ({ tabId, type }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
@@ -78,7 +129,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     });
   };
   const removeSubTab = ({ tabId, type, itemId }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[tabId].data[type as keyof object][itemId];
       newTabs[tabId].url = addParamsToURL(
@@ -90,7 +141,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   };
 
   const addData = ({ itemId, key, value, tabId, type }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const { checked } = tabToUpdate.data[type as keyof object][itemId];
@@ -116,7 +167,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   };
 
   const toggleQuary = ({ itemId, key, value, tabId, type }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const prevItem: IParams = tabToUpdate.data[type as keyof object][itemId];
@@ -141,7 +192,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     });
   };
   const addTabData = ({ tabId, type, value }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
@@ -153,7 +204,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     });
   };
   const updateBody = ({ tabId, type, value }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
@@ -170,7 +221,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
 
   const { fetchData, loading } = useAxios();
   const updateRes = ({ time, response, size, tabId }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
@@ -189,7 +240,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     response,
     size,
   }: any) => {
-    setTabs((prevTabs: IApiTabs) => {
+    setFilterTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab = {
@@ -202,7 +253,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   };
 
   const sendReq = ({ tabId }: any) => {
-    const tab = tabs[tabId];
+    const tab = filterTabs[tabId];
 
     const axiosParams: AxiosRequestConfig = {
       url: tab.url,
@@ -222,6 +273,9 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   return (
     <TabsContext.Provider
       value={{
+        filterTabs,
+        editTabTitle,
+        selectedCollection,
         tabs,
         setTabs,
         addTab,
@@ -234,6 +288,9 @@ export const ApiContext = ({ children }: ApiContextProps) => {
         loading,
         addTabData,
         updateBody,
+        collections,
+        setCollections,
+        setSelectedCollection,
       }}
     >
       {children}
