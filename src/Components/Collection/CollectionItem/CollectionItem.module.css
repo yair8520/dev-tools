@@ -15,6 +15,7 @@
     border-radius: 15px;
     align-items: center;
     justify-content: center;
+    text-transform: none;
 }
 
 .container:hover .options {
@@ -22,9 +23,18 @@
 }
 
 .options {
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+
     top: -21%;
-    right: -9%;
+    right: -7%;
     z-index: 5;
+}
+
+.icon {
+   
+    border-radius: 15px;
+    padding: 0
 }

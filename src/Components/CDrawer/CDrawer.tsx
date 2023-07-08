@@ -69,7 +69,7 @@ export const CDrawer = () => {
                 setIsDark(!isDark);
               }}
             >
-              {!isDark ? <DarkModeIcon /> : <LightModeIcon />}
+              {!isDark ? <DarkModeIcon htmlColor='white' /> : <LightModeIcon />}
             </CIconButton>
             {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>

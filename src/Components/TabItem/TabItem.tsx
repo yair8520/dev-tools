@@ -7,9 +7,10 @@ import { ResContainer } from '../ResContainer';
 import { Text } from '../Text';
 import EditIcon from '@mui/icons-material/Edit';
 import { CIconButton } from '../CIconButton';
-import { TextField, useTheme } from '@mui/material';
+import { Button, TextField, useTheme } from '@mui/material';
 import HttpIcon from '@mui/icons-material/Http';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
+import SaveIcon from '@mui/icons-material/Save';
 export const TabItem = ({ item, ...rest }: TabItemProps) => {
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(item.title);
@@ -18,6 +19,9 @@ export const TabItem = ({ item, ...rest }: TabItemProps) => {
 
   return (
     <TabPanel className={styles.container} value={item.value}>
+      <Button endIcon={<SaveIcon />} variant="outlined">
+        save
+      </Button>
       <div className={styles.sectionDetailed}>
         <HttpIcon htmlColor="#1976d2" />
         <Text variant="subtitle2">{`${item.collection} / `}</Text>
@@ -36,8 +40,7 @@ export const TabItem = ({ item, ...rest }: TabItemProps) => {
                 border: 'none',
                 outline: 'none',
               },
-              width:
-                text.length > 0 ? `calc(${text.length * 9}px )` : '100%',
+              width: text.length > 0 ? `calc(${text.length * 9}px )` : '100%',
               maxWidth: '50vw',
             }}
             InputProps={{

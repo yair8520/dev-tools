@@ -22,6 +22,7 @@ interface AppContextInterface {
   collections: { collection: string; id: string }[];
   setCollections: Function;
   createCollection: Function;
+  editCollection: Function;
   setSelectedCollection: Function;
   addData: ({ itemId, key, value, tabId, type }: any) => void;
   toggleQuary: ({ itemId, key, value, tabId, type }: any) => void;
@@ -41,6 +42,7 @@ export const TabsContext = React.createContext<AppContextInterface>({
   },
   collections: [],
   setCollections: () => {},
+  editCollection: () => {},
   createCollection: () => {},
   removeCollection: () => {},
   setSelectedCollection: () => {},
@@ -67,7 +69,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   const [selectedCollection, setSelectedCollection] = useState<{
     collection: string;
     id: string;
-  }>({ collection: 'bb', id: '1' });
+  }>({ collection: 'collection1', id: '1' });
 
   const removeCollection = (name: string) => {
     setTabs((prevTabs: IApiTabs) => {
@@ -125,6 +127,21 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       return updatedTabs;
     });
     setSelectedCollection({ collection: newName, id });
+  };
+  const editCollection = (newName: string, prevName: string) => {
+    setTabs((prevTabs: IApiTabs) => {
+      const updatedTabs = { ...prevTabs };
+      for (const key in updatedTabs) {
+        if (updatedTabs.hasOwnProperty(key)) {
+          const tab = updatedTabs[key];
+          if (tab.collection === prevName) {
+            updatedTabs[key] = { ...tab, collection: newName };
+          }
+        }
+      }
+      return updatedTabs;
+    });
+    setSelectedCollection({ collection: newName, id: '0' });
   };
   const removeTab = ({ id }: any) => {
     setTabs((prevTabs: IApiTabs) => {
@@ -306,6 +323,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     <TabsContext.Provider
       value={{
         filterTabs,
+        editCollection,
         editTabTitle,
         createCollection,
         selectedCollection,

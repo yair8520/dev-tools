@@ -10,6 +10,7 @@ export const ModifyModal = ({
   value = '',
   onNext,
   collections,
+  title,
 }: ModifyModalProps) => {
   const [text, setText] = useState<string>(value);
   const [error, setError] = useState<string>('');
@@ -18,12 +19,13 @@ export const ModifyModal = ({
       setError('Required Field');
       return;
     }
-    for (const c of collections) {
-      if (c.collection === text) {
-        setError('Already exists');
-        return;
+    if (!value)
+      for (const c of collections) {
+        if (c.collection === text) {
+          setError('Already exists');
+          return;
+        }
       }
-    }
     onNext(text);
     handleModal();
   };
@@ -31,7 +33,7 @@ export const ModifyModal = ({
   return (
     <div className={styles.container}>
       <Text className={styles.title} variant="h5">
-        {value ? 'edit Collection name' : 'new Collection name'}
+        {title}
       </Text>
       <MultiLineInput
         className={styles.input}

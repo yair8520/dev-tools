@@ -11,7 +11,7 @@ import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import { ModifyModal } from '../ModifyModal';
 export const Collection = ({ list }: CollectionProps) => {
   const { handleModal } = useContext(ModalContext);
-  const { removeCollection, createCollection, collections } =
+  const { removeCollection, createCollection, collections, editCollection } =
     useContext(TabsContext);
   const deleteCollection = (name: string) => {
     handleModal(
@@ -21,7 +21,16 @@ export const Collection = ({ list }: CollectionProps) => {
       />
     );
   };
-  const editCollectionTitle = () => {};
+  const editCollectionTitle = (prevName: string) => {
+    handleModal(
+      <ModifyModal
+        collections={collections}
+        value={prevName}
+        title={'Edit Collection name'}
+        onNext={(newName: string) => editCollection(newName, prevName)}
+      />
+    );
+  };
   const addCollection = () => {
     handleModal(
       <ModifyModal
@@ -34,7 +43,7 @@ export const Collection = ({ list }: CollectionProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.options}>
-        <Text>Collections</Text>
+        <Text variant='h6'>Collections</Text>
         <CIconButton onClick={() => addCollection()}>
           <AddBoxIcon />
         </CIconButton>

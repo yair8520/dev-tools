@@ -81,7 +81,7 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
 export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
-    collection: "bb",
+    collection: "collection1",
 
     title: 'Tab 1',
     value: '1',
@@ -117,7 +117,7 @@ export const apiTabs: IApiTabs = {
   },
   '2': {
     id: '2',
-    collection: "cc",
+    collection: "collection1",
 
     title: 'Tab 2',
     value: '2',
@@ -151,33 +151,5 @@ export const apiTabs: IApiTabs = {
     },
     method: 'POST',
   },
-  '3': {
-    id: '3',
-    collection: "aa",
 
-    title: 'Tab 3',
-    value: '3',
-    url: 'https://jsonplaceholder.typicode.com/todos',
-    data: {
-      queryParams: {},
-      headers: {
-        '0': {
-          key: 'Content-Type',
-          value: 'application/json',
-          checked: true
-        },
-      },
-      body:
-        `{
-
-}`,
-    },
-    res: {
-      time: 0,
-      size: '',
-      response: undefined,
-      error: null,
-    },
-    method: 'PUT',
-  },
 };
