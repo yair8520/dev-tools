@@ -9,6 +9,7 @@
     margin-top: 10px;
     overflow-x: auto;
     width: 90vw;
+    align-items: center;
 }
 
 .options {

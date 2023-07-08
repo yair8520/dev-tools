@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useContext, useMemo } from 'react';
 import styles from './ToDoList.module.css';
 import { ToDoListItem } from './ToDoListItem';

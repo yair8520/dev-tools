@@ -8,11 +8,13 @@ export const CIconButton = ({
   onClick = undefined,
   title,
   placement,
+  sx,
 }: CIconButtonProps) => {
   return (
     <Description placement={placement} title={title}>
       <IconButton
         style={!onClick ? { cursor: 'default' } : {}}
+        sx={sx}
         disableRipple={!onClick}
         onClick={onClick}
       >

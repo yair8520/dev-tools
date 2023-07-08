@@ -23,7 +23,6 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
       />
     );
   };
-  console.log(item.id);
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
