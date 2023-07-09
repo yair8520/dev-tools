@@ -1,40 +1,39 @@
 .container {
-    display: flex;
-    min-width: 150px;
-    height: 50px;
-    margin-top: 10px;
-    border-radius: 15px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  min-width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .button {
-    height: 100%;
-    width: 100%;
-    border-radius: 15px;
-    align-items: center;
-    justify-content: center;
-    text-transform: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: center;
+  text-transform: none;
 }
 
 .container:hover .options {
-    visibility: visible;
+  visibility: visible;
 }
 
 .options {
-    visibility: hidden;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
 
-    top: -21%;
-    right: -7%;
-    z-index: 5;
+  top: -21%;
+  right: -7%;
+  z-index: 5;
 }
 
 .icon {
-   
-    border-radius: 15px;
-    padding: 0
+  padding: 0 !important;
 }
