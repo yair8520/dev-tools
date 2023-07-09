@@ -1,7 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { auth } from '../../Config/Firebase';
-import { GoogleAuthProvider } from 'firebase/auth';
 
 export const handleGoogleLogin = () => {
   return new Promise((resolve, reject) => {

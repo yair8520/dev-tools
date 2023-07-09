@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styles from './TabItem.module.css';
 import { TabItemProps } from './TabItemProps';
 import TabPanel from '@mui/lab/TabPanel/TabPanel';
@@ -11,15 +12,37 @@ import { Button, TextField, useTheme } from '@mui/material';
 import HttpIcon from '@mui/icons-material/Http';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import SaveIcon from '@mui/icons-material/Save';
+import { saveTab } from '../../Helpers/FireBase/Api';
 export const TabItem = ({ item, ...rest }: TabItemProps) => {
+  const [hasChanged, setHasChanged] = useState(false);
+  const prevItemRef = useRef(item);
+  useEffect(() => {
+    prevItemRef.current = item;
+  }, []);
+
+  useEffect(() => {
+    if (JSON.stringify(item) !== JSON.stringify(prevItemRef.current)) {
+      setHasChanged(true);
+    } else if (hasChanged) {
+      setHasChanged(false);
+    }
+  }, [item]);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(item.title);
   const theme = useTheme();
   const { editTabTitle } = useContext(TabsContext);
-
   return (
     <TabPanel className={styles.container} value={item.value}>
-      <Button endIcon={<SaveIcon />} variant="outlined">
+      <Button
+        disabled={!hasChanged}
+        endIcon={<SaveIcon />}
+        variant="outlined"
+        onClick={() => {
+          setHasChanged(false);
+          prevItemRef.current = item;
+          saveTab(item.id, item);
+        }}
+      >
         save
       </Button>
       <div className={styles.sectionDetailed}>

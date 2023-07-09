@@ -9,13 +9,13 @@ import { InputButtons } from '../DiffChecker/InputButtons';
 
 export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
   const [text, setText] = useState<string>(value);
-  const handleKeyDown = (e: any) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      setText(e.target.value);
-      onFinish();
-    }
-  };
+  // const handleKeyDown = (e: any) => {
+  //   if (e.key === 'Enter') {
+  //     e.preventDefault();
+  //     setText(e.target.value);
+  //     onFinish();
+  //   }
+  // };
   const onFinish = () => {
     onChange(text);
     handleModal();
@@ -37,7 +37,7 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
       <div className={styles.container}>
         <MultiLineInput
           minRows={15}
-          onKeyDown={handleKeyDown}
+          // onKeyDown={handleKeyDown}
           className={styles.input}
           value={text}
           onChange={(e) => setText(e)}

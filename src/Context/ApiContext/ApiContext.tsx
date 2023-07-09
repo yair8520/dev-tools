@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ApiContextProps } from './ApiContextProps';
 import { IApiTabs, IParams, apiTabs, getDefaultTab } from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
@@ -8,10 +8,11 @@ import { objectToPairs } from '../../Helpers/Json';
 import { addParamsToURL } from '../../Helpers/Url';
 //import { addParamsToURL } from '../../Helpers/Url';
 import { v4 as uuidv4 } from 'uuid';
+import { UserContext } from '../UserContext';
+import { getAllTabs } from '../../Helpers/FireBase/Api';
 
 interface AppContextInterface {
   tabs: IApiTabs;
-  filterTabs: IApiTabs;
   setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
   addTab: Function;
   removeTab: Function;
@@ -35,7 +36,6 @@ interface AppContextInterface {
 
 export const TabsContext = React.createContext<AppContextInterface>({
   tabs: {},
-  filterTabs: {},
   selectedCollection: {
     collection: '',
     id: '',
@@ -61,11 +61,20 @@ export const TabsContext = React.createContext<AppContextInterface>({
 });
 
 export const ApiContext = ({ children }: ApiContextProps) => {
-  const [tabs, setTabs] = useState<IApiTabs>(apiTabs);
-  const [filterTabs, setFilterTabs] = useState<IApiTabs>(apiTabs);
+  const [tabs, setTabs] = useState<IApiTabs>({});
   const [collections, setCollections] = useState<
     { collection: string; id: string }[]
   >([]);
+  const { user } = useContext(UserContext);
+  useEffect(() => {
+    if (user?.email) {
+      getAllTabs(user.email)
+        .then((res: any) => {
+          setTabs(res);
+        })
+        .catch((s) => console.log({ s }));
+    } else setTabs(apiTabs);
+  }, [user]);
   const [selectedCollection, setSelectedCollection] = useState<{
     collection: string;
     id: string;
@@ -322,7 +331,6 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   return (
     <TabsContext.Provider
       value={{
-        filterTabs,
         editCollection,
         editTabTitle,
         createCollection,

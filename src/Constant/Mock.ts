@@ -18,7 +18,7 @@ export interface ITab {
 export interface IResponse {
   time: number;
   size: string;
-  response: AxiosResponse<any> | undefined;
+  response: AxiosResponse<any> | null;
   error?: AxiosError<any> | null;
   errorMessage?: string | null;
 }
@@ -69,7 +69,7 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
     res: {
       time: 0,
       size: '',
-      response: undefined,
+      response: null,
       error: null,
       errorMessage: null,
     },
@@ -81,7 +81,7 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
 export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
-    collection: "collection1",
+    collection: "example collection",
 
     title: 'Tab 1',
     value: '1',
@@ -110,7 +110,7 @@ export const apiTabs: IApiTabs = {
     res: {
       time: 0,
       size: '',
-      response: undefined,
+      response: null,
       error: null,
     },
     method: 'GET',
@@ -146,7 +146,7 @@ export const apiTabs: IApiTabs = {
     res: {
       time: 0,
       size: '',
-      response: undefined,
+      response: null,
       error: null,
     },
     method: 'POST',
