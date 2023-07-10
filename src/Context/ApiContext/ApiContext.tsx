@@ -1,12 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ApiContextProps } from './ApiContextProps';
-import { IApiTabs, IParams, apiTabs, getDefaultTab } from '../../Constant/Mock';
+import {
+  IApiTabs,
+  IParams,
+  ITab,
+  apiTabs,
+  getDefaultTab,
+} from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
 import { objectToPairs } from '../../Helpers/Json';
 import { addParamsToURL } from '../../Helpers/Url';
-//import { addParamsToURL } from '../../Helpers/Url';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../UserContext';
 import { getAllTabs } from '../../Helpers/FireBase/Api';
@@ -71,6 +76,11 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       getAllTabs(user.email)
         .then((res: any) => {
           setTabs(res);
+          const firstItem: ITab = res[Object.keys(res)[0]];
+          setSelectedCollection({
+            collection: firstItem.collection,
+            id: firstItem.id,
+          });
         })
         .catch((s) => console.log({ s }));
     } else setTabs(apiTabs);

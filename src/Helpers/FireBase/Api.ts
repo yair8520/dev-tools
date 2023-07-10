@@ -1,4 +1,3 @@
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { auth, db } from '../../Config/Firebase';
 import { ITab, apiTabs } from '../../Constant/Mock';
@@ -12,7 +11,9 @@ const firebaseMiddlware = (callback: (userRef: any) => void) => {
     callback(userRef);
 };
 export const saveTab = (tabId: string, tab: ITab) => {
-    console.log(tabId, tab)
+    tab.res.response = null
+    tab.res.error = null
+    tab.res.errorMessage = null
     firebaseMiddlware((userRef) => {
         const updateData = {
             [`api`]: {
@@ -29,7 +30,7 @@ export const getAllTabs = (email: string) => {
             .get()
             .then((doc: any) => {
                 if (doc.exists) {
-                    resolve(doc.data()?.api);
+                    resolve(doc.data()?.api ?? {});
                 } else {
                     userRef
                         .set({ sections: apiTabs })

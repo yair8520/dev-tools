@@ -12,7 +12,7 @@ export const getUserSections = (userId: string) => {
   return new Promise((resolve, reject) => {
     userRef.get().then((doc) => {
       if (doc.exists) {
-        resolve(doc.data()?.sections);
+        resolve(doc.data()?.sections ?? {});
       } else {
         const initialSections = {};
         userRef.set({ sections: initialSections }).then(() => initialSections);

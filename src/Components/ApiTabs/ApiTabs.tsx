@@ -17,6 +17,7 @@ export const ApiTabs = () => {
   const [value, setValue] = React.useState('1');
   const { tabs, addTab, collections, selectedCollection } =
     useContext(TabsContext);
+
   useEffect(() => {
     setValue(selectedCollection.id);
   }, [selectedCollection]);
@@ -69,10 +70,7 @@ export const ApiTabs = () => {
                       <Text className={`${styles[t[1].method]} ${styles.icon}`}>
                         {t[1].method}
                       </Text>
-                      <Text
-                        numberOfLines={1}
-                        style={{ overflowWrap: 'anywhere' }}
-                      >
+                      <Text style={{ overflowWrap: 'anywhere' }}>
                         {t[1].title}
                       </Text>
                     </div>

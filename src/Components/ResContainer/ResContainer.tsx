@@ -66,7 +66,7 @@ export const ResContainer = ({ item }: ResContainerProps) => {
               <div className={styles.gridContainer}>
                 {item.res.response?.headers
                   ? Object.entries(item.res.response?.headers!).map(
-                      ([key, value]) => (
+                      ([key, value]:any) => (
                         <div key={key} className={styles.gridItem}>
                           <Text className={styles.key}>{key}:</Text>
                           <Text className="header-value">{value}</Text>

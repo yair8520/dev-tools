@@ -19,7 +19,7 @@ export const SearchBar = ({
         className={styles.textField}
         label="Search"
         variant="outlined"
-        fullWidth
+        fullWidth={true}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         InputProps={{

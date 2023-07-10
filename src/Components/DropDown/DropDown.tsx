@@ -14,7 +14,7 @@ export const DropDown = ({
   title,
 }: DropDownProps) => {
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth={true}>
       <div className={styles.header}>
         <Text bold>{title}</Text>
         <Description title={flexDescription[title as keyof object] ?? ''}>
