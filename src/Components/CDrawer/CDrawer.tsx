@@ -16,7 +16,7 @@ import { googleLogOut, handleGoogleLogin } from '../../Helpers/FireBase/auth';
 import GoogleIcon from '@mui/icons-material/Google';
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
-  const isSmallScreen = useMediaQuery('(max-width: 500px)');
+  const isSmallScreen = useMediaQuery('(max-width: 800px)');
   const { user }: any = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState(user);
 
@@ -50,7 +50,14 @@ export const CDrawer = () => {
             {pages.map((Item, i) => (
               <CustomLink key={Item.href} to={Item.href}>
                 <div className="item">
-                  {Item.Icon && <Item.Icon sx={{ width: '18px !important', height: '18px !important' }} />}
+                  {Item.Icon && (
+                    <Item.Icon
+                      sx={{
+                        width: '18px !important',
+                        height: '18px !important',
+                      }}
+                    />
+                  )}
                   <Text
                     style={{
                       marginTop: -10,
@@ -69,7 +76,11 @@ export const CDrawer = () => {
                 setIsDark(!isDark);
               }}
             >
-              {!isDark ? <DarkModeIcon htmlColor='white' /> : <LightModeIcon />}
+              {!isDark ? (
+                <DarkModeIcon htmlColor={isSmallScreen ? 'black' : 'white'} />
+              ) : (
+                <LightModeIcon />
+              )}
             </CIconButton>
             {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>
@@ -92,7 +103,7 @@ export const CDrawer = () => {
   );
 };
 export const WithDrawer = ({ children }: any) => {
-  const isSmallScreen = useMediaQuery('(max-width: 500px)');
+  const isSmallScreen = useMediaQuery('(max-width: 800px)');
   const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext);
   if (isSmallScreen) {
     return (
@@ -106,15 +117,12 @@ export const WithDrawer = ({ children }: any) => {
           <Menu />
         </IconButton>
         <Drawer
-          // BackdropProps={{style:{backgroundColor:"transparent"}}}
           elevation={0}
           anchor="right"
           PaperProps={{
             sx: {
               width: '40%',
               display: 'flex',
-              alignItems: 'center',
-              alignSelf: 'center',
 
               paddingTop: '50px',
             },

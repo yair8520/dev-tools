@@ -1,8 +1,10 @@
 import 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
+
 import { auth, db } from '../../Config/Firebase';
 import { ITab, apiTabs } from '../../Constant/Mock';
 
-const firebaseMiddlware = (callback: (userRef: any) => void) => {
+const firebaseMiddleware = (callback: (userRef: any) => void) => {
     if (!auth.currentUser) {
         console.log('not auth', auth.currentUser);
         return;
@@ -11,18 +13,24 @@ const firebaseMiddlware = (callback: (userRef: any) => void) => {
     callback(userRef);
 };
 export const saveTab = (tabId: string, tab: ITab) => {
-    tab.res.response = null
-    tab.res.error = null
-    tab.res.errorMessage = null
-    firebaseMiddlware((userRef) => {
+    firebaseMiddleware((userRef) => {
         const updateData = {
             [`api`]: {
-                [`${tabId}`]: { ...tab },
+                [`${tabId}`]: { ...removeUnUsedVars(tab) },
             },
         };
         return userRef.set(updateData, { merge: true });
     });
 }
+export const deleteTabFB = (tabId: string) => {
+    firebaseMiddleware((userRef) => {
+        const updateData = {
+            [`api.${tabId}`]: firebase.firestore.FieldValue.delete(),
+        };
+        return userRef.update(updateData);
+    });
+}
+
 export const getAllTabs = (email: string) => {
     return new Promise((resolve, reject) => {
         const userRef = db.collection('users').doc(email);
@@ -40,3 +48,10 @@ export const getAllTabs = (email: string) => {
             .catch(reject);
     });
 };
+const removeUnUsedVars = (tab: ITab) => {
+    tab.res.response = null
+    tab.res.error = null
+    tab.res.errorMessage = null
+    return tab
+
+}

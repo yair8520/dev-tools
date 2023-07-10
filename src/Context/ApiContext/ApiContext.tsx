@@ -14,7 +14,7 @@ import { objectToPairs } from '../../Helpers/Json';
 import { addParamsToURL } from '../../Helpers/Url';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../UserContext';
-import { getAllTabs } from '../../Helpers/FireBase/Api';
+import { deleteTabFB, getAllTabs, saveTab } from '../../Helpers/FireBase/Api';
 
 interface AppContextInterface {
   tabs: IApiTabs;
@@ -91,16 +91,16 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   }>({ collection: 'collection1', id: '1' });
 
   const removeCollection = (name: string) => {
+    let firstCollection: ITab;
     setTabs((prevTabs: IApiTabs) => {
       const newTabs: IApiTabs = {};
-      let firstCollectionId: string | null = null;
       for (const tabId in prevTabs) {
         if (prevTabs.hasOwnProperty(tabId)) {
           const tab = prevTabs[tabId];
           if (tab.collection !== name) {
             newTabs[tabId] = tab;
-            if (!firstCollectionId) {
-              firstCollectionId = tab.collection;
+            if (!firstCollection) {
+              firstCollection = tab;
             }
           }
         }
@@ -109,8 +109,8 @@ export const ApiContext = ({ children }: ApiContextProps) => {
         prevCollections.filter((collection) => collection.collection !== name)
       );
       setSelectedCollection({
-        collection: firstCollectionId || '',
-        id: firstCollectionId || '',
+        collection: firstCollection.collection || '',
+        id: firstCollection.id || '',
       });
       return newTabs;
     });
@@ -131,6 +131,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   }, [tabs]);
   const addTab = (id: string) => {
     const newTab = getDefaultTab(id, selectedCollection.collection);
+    saveTab(id, newTab);
     setTabs((prevTabs: IApiTabs) => {
       const updatedTabs = { ...prevTabs };
       updatedTabs[newTab.id] = newTab;
@@ -163,6 +164,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setSelectedCollection({ collection: newName, id: '0' });
   };
   const removeTab = ({ id }: any) => {
+    deleteTabFB(id);
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[id];
