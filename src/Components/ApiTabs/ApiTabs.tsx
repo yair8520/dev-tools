@@ -12,10 +12,11 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './ApiTabs.module.css';
 import AddIcon from '@mui/icons-material/Add';
 import { Collection } from '../Collection';
+import { EmptyCollections } from '../EmptyCollections';
 
 export const ApiTabs = () => {
   const [value, setValue] = React.useState('1');
-  const { tabs, addTab, collections, selectedCollection } =
+  const { tabs, addTab, collections, selectedCollection, createCollection } =
     useContext(TabsContext);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export const ApiTabs = () => {
   return (
     <div style={{ height: '150vh' }}>
       <Collection list={collections} />
-      {collections.length !== 0 ? (
+      {collections?.length !== 0 ? (
         <TabContext value={value}>
           <Box
             sx={{
@@ -88,7 +89,9 @@ export const ApiTabs = () => {
             ))}
           </Box>
         </TabContext>
-      ) : null}
+      ) : (
+        <EmptyCollections createCollection={createCollection} />
+      )}
     </div>
   );
 };

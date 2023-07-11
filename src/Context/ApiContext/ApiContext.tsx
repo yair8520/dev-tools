@@ -109,8 +109,8 @@ export const ApiContext = ({ children }: ApiContextProps) => {
         prevCollections.filter((collection) => collection.collection !== name)
       );
       setSelectedCollection({
-        collection: firstCollection.collection || '',
-        id: firstCollection.id || '',
+        collection: firstCollection?.collection || '',
+        id: firstCollection?.id || '',
       });
       return newTabs;
     });
@@ -138,7 +138,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       return updatedTabs;
     });
   };
-  const createCollection = (newName: string) => {
+  const createCollection = (newName = 'Example') => {
     const id = uuidv4();
     const newTab = getDefaultTab(id, newName);
     setTabs((prevTabs: IApiTabs) => {

@@ -33,11 +33,10 @@ export interface IParams {
   [key: string]: {
     key: string;
     value: string;
-    checked: boolean
+    checked: boolean;
   };
 }
 export const getDefaultTab = (id: string, collection: string): ITab => {
-
   return {
     id: id,
     collection: collection,
@@ -50,19 +49,17 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
         '0': {
           key: '',
           value: '',
-          checked: false
+          checked: false,
         },
-
       },
       headers: {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
-          checked: true
+          checked: true,
         },
       },
-      body:
-        `{
+      body: `{
   
 }`,
     },
@@ -74,14 +71,12 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
       errorMessage: null,
     },
   };
-
-
 };
 
 export const apiTabs: IApiTabs = {
   '1': {
     id: '1',
-    collection: "example collection",
+    collection: 'example collection',
 
     title: 'Tab 1',
     value: '1',
@@ -91,19 +86,17 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: '',
           value: '',
-          checked: false
+          checked: false,
         },
-
       },
       headers: {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
-          checked: true
+          checked: true,
         },
       },
-      body:
-        `{
+      body: `{
   
 }`,
     },
@@ -117,7 +110,7 @@ export const apiTabs: IApiTabs = {
   },
   '2': {
     id: '2',
-    collection: "collection1",
+    collection: 'collection1',
 
     title: 'Tab 2',
     value: '2',
@@ -127,19 +120,17 @@ export const apiTabs: IApiTabs = {
         '0': {
           key: '',
           value: '',
-          checked: false
-
+          checked: false,
         },
       },
       headers: {
         '0': {
           key: 'Content-Type',
           value: 'application/json',
-          checked: true
+          checked: true,
         },
       },
-      body:
-        `{
+      body: `{
   
 }`,
     },
@@ -151,5 +142,4 @@ export const apiTabs: IApiTabs = {
     },
     method: 'POST',
   },
-
 };

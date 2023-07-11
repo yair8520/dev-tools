@@ -1,0 +1,1 @@
+export { EmptyCollections } from './EmptyCollections';
