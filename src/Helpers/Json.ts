@@ -1,6 +1,6 @@
 import { AxiosHeaders } from 'axios';
 import { IHooksDescription } from '../Constant/Hooks';
-import { IParams } from '../Constant/Mock';
+import { IApiTabs, IParams, ITab } from '../Constant/Mock';
 
 export function prettifyJSON(jsonStr: string | any[]) {
   if (!jsonStr || typeof jsonStr !== 'string') {
@@ -89,6 +89,9 @@ export function generateInterfaceFromJson(json: string): string {
 export const extractTitles = (array: IHooksDescription[]) => {
   return array.map((item, i) => item.title);
 };
+export const getFirstId = (array: IApiTabs) => {
+  return array[Object.keys(array)[0]];
+};
 
 export const objectToPairs = (obj: IParams): AxiosHeaders => {
   return Object.fromEntries(
@@ -105,4 +108,12 @@ export function countCheckedItems(params: IParams): number {
     }
   }
   return count;
+}
+export function findTabByCollection(apiTabs: IApiTabs, collection: string): string | undefined {
+  for (const key in apiTabs) {
+    if (apiTabs.hasOwnProperty(key) && apiTabs[key].collection === collection) {
+      return apiTabs[key].id;
+    }
+  }
+  return undefined;
 }

@@ -15,13 +15,15 @@ import { Collection } from '../Collection';
 import { EmptyCollections } from '../EmptyCollections';
 
 export const ApiTabs = () => {
-  const [value, setValue] = React.useState('1');
-  const { tabs, addTab, collections, selectedCollection, createCollection } =
-    useContext(TabsContext);
-
-  useEffect(() => {
-    setValue(selectedCollection.id);
-  }, [selectedCollection]);
+  const {
+    tabs,
+    addTab,
+    collections,
+    selectedCollection,
+    createCollection,
+    tabIndex,
+    setTabIndex,
+  } = useContext(TabsContext);
 
   const list = useMemo(() => {
     const filteredTabs: IApiTabs = {};
@@ -35,18 +37,17 @@ export const ApiTabs = () => {
   }, [selectedCollection, tabs]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+    setTabIndex(newValue);
   };
   const onAddTab = () => {
     const id = uuidv4();
     addTab(id);
-    setValue(id);
   };
   return (
     <div style={{ height: '150vh' }}>
       <Collection list={collections} />
       {collections?.length !== 0 ? (
-        <TabContext value={value}>
+        <TabContext value={tabIndex}>
           <Box
             sx={{
               marginTop: '25px',

@@ -1,9 +1,15 @@
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
-
 import { auth, db } from '../../Config/Firebase';
 import { ITab, apiTabs } from '../../Constant/Mock';
 import { toast } from 'react-toastify';
+
+const removeUnUsedVars = (tab: ITab) => {
+    tab.res.response = null;
+    tab.res.error = null;
+    tab.res.errorMessage = null;
+    return tab;
+};
 
 const firebaseMiddleware = (
     callback: (
@@ -14,11 +20,29 @@ const firebaseMiddleware = (
         console.log('not auth', auth.currentUser);
         return;
     }
-
     const userRef = db.collection('users').doc(auth.currentUser!.email!);
     callback(userRef)
         .then(() => toast.success('Operation succeeded'))
         .catch(() => toast.error('Operation failed'));
+};
+
+export const deleteTabByCollection = (collection: string) => {
+    firebaseMiddleware((userRef) => {
+        return userRef.get().then((doc) => {
+            if (doc.exists) {
+                const apiData = doc.data()?.api || {};
+                const deletePromises: Promise<void>[] = [];
+                Object.entries(apiData).forEach(([key, tab]: any) => {
+                    if (tab.collection === collection) {
+                        deletePromises.push(userRef.update({
+                            [`api.${key}`]: firebase.firestore.FieldValue.delete()
+                        }));
+                    }
+                });
+                return Promise.all(deletePromises);
+            }
+        });
+    });
 };
 export const saveTab = (tabId: string, tab: ITab) => {
     firebaseMiddleware((userRef) => {
@@ -53,10 +77,4 @@ export const getAllTabs = (email: string) => {
             })
             .catch(reject);
     });
-};
-const removeUnUsedVars = (tab: ITab) => {
-    tab.res.response = null;
-    tab.res.error = null;
-    tab.res.errorMessage = null;
-    return tab;
 };

@@ -8,8 +8,12 @@ import { CIconButton } from '../CIconButton';
 import { handleCopy, handlePaste } from '../../Helpers/Clipboard';
 import { Text } from '../Text';
 import { prettifyJSON } from '../../Helpers/Json';
+import DownloadIcon from '@mui/icons-material/Download';
+import { downloadFile } from '../../Helpers/Files';
+import { getTime } from '../../Helpers/Time';
 
 var newline = String.fromCharCode(13, 10);
+
 export const JsonPanel = ({
   value,
   onChange,
@@ -21,28 +25,27 @@ export const JsonPanel = ({
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
-      
-        <CIconButton
-          onClick={() => handleCopy(value)}
-          title={'Copy'}
-          placement="left"
-        >
+        <CIconButton onClick={() => handleCopy(value)} title={'Copy'}>
           <ContentCopyIcon />
         </CIconButton>
+        {value && (
+          <CIconButton
+            onClick={() => downloadFile({ data: value, nameOfFile: getTime() })}
+            title={'save as file'}
+          >
+            <DownloadIcon />
+          </CIconButton>
+        )}
 
         {editable && (
           <>
-          <CIconButton
-            onClick={() => handlePaste(onChange)}
-            title={'Paste'}
-            placement="right"
-            >
-            <ContentPasteIcon />
-          </CIconButton>
-            <CIconButton onClick={() => onChange(prettifyJSON(value))} placement="left">
-            <Text>Beautify</Text>
-          </CIconButton>
-            </>
+            <CIconButton onClick={() => handlePaste(onChange)} title={'Paste'}>
+              <ContentPasteIcon />
+            </CIconButton>
+            <CIconButton onClick={() => onChange(prettifyJSON(value))}>
+              <Text>Beautify</Text>
+            </CIconButton>
+          </>
         )}
       </div>
       <textarea

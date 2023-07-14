@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ApiContextProps } from './ApiContextProps';
+import {
+  ApiContextProps,
+  AppContextInterface,
+  initialTabContext,
+} from './ApiContextProps';
 import {
   IApiTabs,
   IParams,
@@ -10,63 +14,22 @@ import {
 import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
-import { objectToPairs } from '../../Helpers/Json';
+import { findTabByCollection, objectToPairs } from '../../Helpers/Json';
 import { addParamsToURL } from '../../Helpers/Url';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../UserContext';
-import { deleteTabFB, getAllTabs, saveTab } from '../../Helpers/FireBase/Api';
+import {
+  deleteTabByCollection,
+  deleteTabFB,
+  getAllTabs,
+  saveTab,
+} from '../../Helpers/FireBase/Api';
 
-interface AppContextInterface {
-  tabs: IApiTabs;
-  setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
-  addTab: Function;
-  removeTab: Function;
-  editTabTitle: Function;
-  removeCollection: Function;
-  loading: boolean;
-  selectedCollection: { collection: string; id: string };
-  collections: { collection: string; id: string }[];
-  setCollections: Function;
-  createCollection: Function;
-  editCollection: Function;
-  setSelectedCollection: Function;
-  addData: ({ itemId, key, value, tabId, type }: any) => void;
-  toggleQuary: ({ itemId, key, value, tabId, type }: any) => void;
-  addTabData: ({ tabId, type, value }: any) => void;
-  updateBody: ({ tabId, type, value }: any) => void;
-  addSubTab: ({ tabId, type }: any) => void;
-  sendReq: ({ tabId }: any) => void;
-  removeSubTab: ({ tabId, type, itemId }: any) => void;
-}
-
-export const TabsContext = React.createContext<AppContextInterface>({
-  tabs: {},
-  selectedCollection: {
-    collection: '',
-    id: '',
-  },
-  collections: [],
-  setCollections: () => {},
-  editCollection: () => {},
-  createCollection: () => {},
-  removeCollection: () => {},
-  setSelectedCollection: () => {},
-  setTabs: () => {},
-  editTabTitle: () => {},
-  addTab: () => {},
-  removeTab: () => {},
-  addData: () => {},
-  toggleQuary: () => {},
-  addSubTab: () => {},
-  sendReq: () => {},
-  removeSubTab: () => {},
-  updateBody: () => {},
-  addTabData: () => {},
-  loading: false,
-});
-
+export const TabsContext =
+  React.createContext<AppContextInterface>(initialTabContext);
 export const ApiContext = ({ children }: ApiContextProps) => {
-  
+  const [tabIndex, setTabIndex] = React.useState('');
+
   const [tabs, setTabs] = useState<IApiTabs>({});
   const [collections, setCollections] = useState<
     { collection: string; id: string }[]
@@ -84,14 +47,16 @@ export const ApiContext = ({ children }: ApiContextProps) => {
           });
         })
         .catch((s) => console.log({ s }));
-    } else setTabs(apiTabs);
+    } else setTabs({});
   }, [user]);
+
   const [selectedCollection, setSelectedCollection] = useState<{
     collection: string;
     id: string;
   }>({ collection: 'collection1', id: '1' });
 
   const removeCollection = (name: string) => {
+    deleteTabByCollection(name);
     let firstCollection: ITab;
     setTabs((prevTabs: IApiTabs) => {
       const newTabs: IApiTabs = {};
@@ -116,7 +81,9 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       return newTabs;
     });
   };
-
+  useEffect(() => {
+    setTabIndex(selectedCollection.id);
+  }, [selectedCollection]);
   useEffect(() => {
     const uniqueCollections: { collection: string; id: string }[] = [];
     for (const key in tabs) {
@@ -131,6 +98,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setCollections(uniqueCollections);
   }, [tabs]);
   const addTab = (id: string) => {
+    setTabIndex(id);
     const newTab = getDefaultTab(id, selectedCollection.collection);
     saveTab(id, newTab);
     setTabs((prevTabs: IApiTabs) => {
@@ -169,6 +137,11 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       delete newTabs[id];
+      const existingTab = findTabByCollection(
+        newTabs,
+        selectedCollection.collection
+      );
+      setTabIndex(existingTab!);
       return newTabs;
     });
   };
@@ -344,6 +317,8 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   return (
     <TabsContext.Provider
       value={{
+        setTabIndex,
+        tabIndex,
         editCollection,
         editTabTitle,
         createCollection,
