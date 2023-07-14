@@ -66,6 +66,7 @@ export const TabsContext = React.createContext<AppContextInterface>({
 });
 
 export const ApiContext = ({ children }: ApiContextProps) => {
+  
   const [tabs, setTabs] = useState<IApiTabs>({});
   const [collections, setCollections] = useState<
     { collection: string; id: string }[]

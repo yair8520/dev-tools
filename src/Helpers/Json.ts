@@ -97,3 +97,12 @@ export const objectToPairs = (obj: IParams): AxiosHeaders => {
       .map(([key, value]) => [value.key, value.value])
   ) as AxiosHeaders;
 };
+export function countCheckedItems(params: IParams): number {
+  let count = 0;
+  for (const key in params) {
+    if (params.hasOwnProperty(key) && params[key].checked) {
+      count++;
+    }
+  }
+  return count;
+}

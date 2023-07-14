@@ -16,6 +16,10 @@ import { saveTab } from '../../Helpers/FireBase/Api';
 export const TabItem = ({ item, ...rest }: TabItemProps) => {
   const [hasChanged, setHasChanged] = useState(false);
   const prevItemRef = useRef(item);
+  const [edit, setEdit] = useState(false);
+  const [text, setText] = useState(item.title);
+  const theme = useTheme();
+  const { editTabTitle } = useContext(TabsContext);
   useEffect(() => {
     prevItemRef.current = item;
   }, []);
@@ -27,10 +31,6 @@ export const TabItem = ({ item, ...rest }: TabItemProps) => {
       setHasChanged(false);
     }
   }, [item]);
-  const [edit, setEdit] = useState(false);
-  const [text, setText] = useState(item.title);
-  const theme = useTheme();
-  const { editTabTitle } = useContext(TabsContext);
   return (
     <TabPanel className={styles.container} value={item.value}>
       <Button

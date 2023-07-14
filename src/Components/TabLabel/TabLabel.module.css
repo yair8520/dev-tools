@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.tag {
+    color: #49bc8d !important
+}
+
+.dot {
+    background-color: #49bc8d !important;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}

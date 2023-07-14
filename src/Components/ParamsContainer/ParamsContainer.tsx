@@ -9,6 +9,8 @@ import { ParamsList } from '../ParamsList';
 import styles from './ParamsContainer.module.css';
 import { JsonPanel } from '../JsonPanel';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
+import { TabLabel } from '../TabLabel';
+import { countCheckedItems } from '../../Helpers/Json';
 
 export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
   const [value, setValue] = React.useState('1');
@@ -28,11 +30,29 @@ export const ParamsContainer = ({ data, id }: ParamsContainerProps) => {
             allowScrollButtonsMobile={true}
             onChange={handleChange}
           >
-            <Tab label="Query Params" value="1" />
-            <Tab label="Headers" value="2" />
-            <Tab label="Body" value="3" />
+            <Tab
+              label={
+                <TabLabel
+                  title="Query Params"
+                  numberOfItems={countCheckedItems(data.queryParams)}
+                />
+              }
+              value="1"
+            />
+            <Tab
+              label={
+                <TabLabel
+                  title="Headers"
+                  numberOfItems={countCheckedItems(data.headers)}
+                />
+              }
+              value="2"
+            />
+            <Tab
+              label={<TabLabel title="Body" active={Boolean(data.body)} />}
+              value="3"
+            />
           </TabList>
-
           <TabPanel value="1">
             <ParamsList
               type={'queryParams'}

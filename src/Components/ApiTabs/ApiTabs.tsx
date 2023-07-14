@@ -30,7 +30,8 @@ export const ApiTabs = () => {
         filteredTabs[key] = tabs[key];
       }
     });
-    return Object.entries(filteredTabs);
+    const newList = Object.entries(filteredTabs);
+    return newList;
   }, [selectedCollection, tabs]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

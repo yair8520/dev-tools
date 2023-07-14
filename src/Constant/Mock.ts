@@ -59,9 +59,7 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
           checked: true,
         },
       },
-      body: `{
-  
-}`,
+      body: "",
     },
     res: {
       time: 0,
@@ -96,9 +94,7 @@ export const apiTabs: IApiTabs = {
           checked: true,
         },
       },
-      body: `{
-  
-}`,
+      body: "",
     },
     res: {
       time: 0,
@@ -130,9 +126,7 @@ export const apiTabs: IApiTabs = {
           checked: true,
         },
       },
-      body: `{
-  
-}`,
+      body: "",
     },
     res: {
       time: 0,
