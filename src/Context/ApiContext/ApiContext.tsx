@@ -1,16 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  ApiContextProps,
-  AppContextInterface,
-  initialTabContext,
-} from './ApiContextProps';
-import {
-  IApiTabs,
-  IParams,
-  ITab,
-  apiTabs,
-  getDefaultTab,
-} from '../../Constant/Mock';
+import { IApiTabs, IParams, ITab, getDefaultTab } from '../../Constant/Mock';
 import { v4 as uuid } from 'uuid';
 import { useAxios } from '../../Hooks/useAxios';
 import { AxiosRequestConfig } from 'axios';
@@ -19,10 +8,14 @@ import { addParamsToURL } from '../../Helpers/Url';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../UserContext';
 import {
+  ApiContextProps,
+  AppContextInterface,
+  initialTabContext,
+} from './ApiContextProps';
+import {
   deleteTabByCollection,
   deleteTabFB,
   getAllTabs,
-  saveTab,
 } from '../../Helpers/FireBase/Api';
 
 export const TabsContext =
@@ -100,7 +93,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   const addTab = (id: string) => {
     setTabIndex(id);
     const newTab = getDefaultTab(id, selectedCollection.collection);
-    saveTab(id, newTab);
+    //saveTab(id, newTab);
     setTabs((prevTabs: IApiTabs) => {
       const updatedTabs = { ...prevTabs };
       updatedTabs[newTab.id] = newTab;
@@ -298,13 +291,12 @@ export const ApiContext = ({ children }: ApiContextProps) => {
 
   const sendReq = ({ tabId }: any) => {
     const tab = tabs[tabId];
-    console.log({ tab });
     const axiosParams: AxiosRequestConfig = {
       url: tab.url,
       method: tab.method,
       params: objectToPairs(tab.data.queryParams),
       headers: objectToPairs(tab.data.headers),
-      data: tab.data.body,
+      data: tab.data.body || undefined,
     };
     fetchData(axiosParams)
       .then(({ time, response, size }) =>

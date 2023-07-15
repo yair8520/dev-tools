@@ -14,6 +14,7 @@ import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import SaveIcon from '@mui/icons-material/Save';
 import { saveTab } from '../../Helpers/FireBase/Api';
 export const TabItem = ({ item, ...rest }: TabItemProps) => {
+  
   const [hasChanged, setHasChanged] = useState(false);
   const prevItemRef = useRef(item);
   const [edit, setEdit] = useState(false);

@@ -1,3 +1,26 @@
+.container {
+    height: 150vh;
+    animation: enter 0.5s ease-in;
+
+}
+
+.enter {
+    animation: enter 0.5s ease-in;
+
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .icon {
     letter-spacing: -1px;
     font-size: 12px;

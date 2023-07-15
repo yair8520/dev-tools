@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './Seperator.module.css';
 import { SeperatorProps } from './SeperatorProps';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
@@ -6,6 +6,8 @@ import { CIconButton } from '../CIconButton';
 import { TextField, useTheme } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { ConfirmModal } from '../ConfirmModal';
+import { ModalContext } from '../ModalContext/ModalContext';
 
 export const Seperator = ({
   title,
@@ -16,6 +18,15 @@ export const Seperator = ({
 
   const [text, setText] = useState<string>(title);
   const [disabled, setDisabled] = useState<boolean>(true);
+  const { handleModal } = useContext(ModalContext);
+  const openConfirmModal = () => {
+    handleModal(
+      <ConfirmModal
+        title={`This Action will delete all from "${title}" section`}
+        onNext={deleteSection}
+      />
+    );
+  };
   return (
     <div className={styles.container}>
       <div className={styles.separator}></div>
@@ -59,9 +70,7 @@ export const Seperator = ({
       <CIconButton
         placement="right"
         title={'delete'}
-        onClick={() => {
-          deleteSection();
-        }}
+        onClick={() => openConfirmModal()}
       >
         <DeleteIcon />
       </CIconButton>

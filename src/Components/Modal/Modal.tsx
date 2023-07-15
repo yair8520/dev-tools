@@ -24,16 +24,14 @@ export const Modal = () => {
 
 const style = {
   position: 'absolute',
-
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 'auto',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  borderRadius: 8,
-  p: 4,
+  backgroundColor: '#ffffff',
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
+  borderRadius: '8px',
+  padding: '16px',
 
   '@media (max-width: 600px)': {
     minWidth: '90vw',

@@ -42,7 +42,7 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
     collection: collection,
     title: 'New Tab',
     value: id,
-    url: '',
+    url: 'https://jsonplaceholder.typicode.com/todos/',
     method: 'GET',
     data: {
       queryParams: {
