@@ -58,6 +58,21 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
           value: 'application/json',
           checked: true,
         },
+        '1': {
+          key: 'Accept',
+          value: '*/*',
+          checked: true,
+        },
+        '2': {
+          key: 'Cache-Control',
+          value: 'no-cache',
+          checked: true,
+        },
+        '3': {
+          key: 'Connection',
+          value: 'keep-alive',
+          checked: true,
+        },
       },
       body: "",
     },

@@ -17,26 +17,25 @@ export const CollectionItem = ({
   return (
     <>
       <div className={styles.container}>
-        <Button
-          className={styles.button}
+        <div
+          className={`${styles.button}${selected ? ' ' + styles.selected : ''}`}
           onClick={() => setSelectedCollection(item)}
-          variant={selected ? 'contained' : 'outlined'}
         >
-          <Text>{item.collection}</Text>
-        </Button>
+          <Text variant={selected ? 'h6' : 'body1'}>{item.collection}</Text>
+        </div>
 
         <div className={styles.options}>
-          <CIconButton
-            className={styles.icon}
-            onClick={() => deleteCollection(item.collection)}
-          >
-            <CancelIcon sx={{ height: '20px', width: '20px' }} color="error" />
-          </CIconButton>
           <CIconButton
             className={styles.icon}
             onClick={() => editCollectionTitle(item.collection)}
           >
             <BorderColorRounded sx={{ height: '20px', width: '20px' }} />
+          </CIconButton>
+          <CIconButton
+            className={styles.icon}
+            onClick={() => deleteCollection(item.collection)}
+          >
+            <CancelIcon sx={{ height: '20px', width: '20px' }} color="error" />
           </CIconButton>
         </div>
       </div>

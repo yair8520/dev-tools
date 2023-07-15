@@ -3,7 +3,7 @@ import styles from './Collection.module.css';
 import { CollectionProps } from './CollectionProps';
 import { CollectionItem } from './CollectionItem';
 import { Text } from '../Text';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { CIconButton } from '../CIconButton';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { ConfirmModal } from '../ConfirmModal';
@@ -45,7 +45,7 @@ export const Collection = ({ list }: CollectionProps) => {
       <div className={styles.options}>
         <Text variant='h6'>Collections</Text>
         <CIconButton onClick={() => addCollection()}>
-          <AddBoxIcon />
+          <AddCircleOutlineIcon />
         </CIconButton>
       </div>
       <div className={styles.row}>

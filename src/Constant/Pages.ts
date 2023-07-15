@@ -5,9 +5,18 @@ import PhishingIcon from '@mui/icons-material/Phishing';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import ScreenshotMonitorIcon from '@mui/icons-material/ScreenshotMonitor';
 import AddTaskIcon from '@mui/icons-material/AddTask';
+import SignpostIcon from '@mui/icons-material/Signpost';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
 export const pages: IPages[] = [
+  {
+    href: '/api',
+    title: 'Api',
+    headline: 'Api',
+    description:
+      'Manage and organize your api`s with Firebase integration.',
+    Icon: SignpostIcon,
+  },
   {
     href: '/notes',
     title: 'Notes',

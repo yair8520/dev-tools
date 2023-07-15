@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './About.module.css';
-import { AboutProps } from './AboutProps';
 import { handleShareButton, mailtoHref, socialLinks } from './helpers';
 import { CIconButton } from '../CIconButton';
 import { Link } from 'react-router-dom';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import ShareIcon from '@mui/icons-material/Share';
 
-export const About = ({}: AboutProps) => {
+export const About = () => {
   return (
     <div className={styles.container}>
       <div className={styles.iconContainer}>

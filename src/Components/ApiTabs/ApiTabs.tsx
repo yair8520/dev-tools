@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext,  useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -32,8 +32,8 @@ export const ApiTabs = () => {
         filteredTabs[key] = tabs[key];
       }
     });
-    const newList = Object.entries(filteredTabs);
-    return newList;
+
+    return Object.entries(filteredTabs);
   }, [selectedCollection, tabs]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

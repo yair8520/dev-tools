@@ -12,11 +12,13 @@ body {
 
 .loginText {
   padding-left: 4px;
+  width:45px;
   text-decoration: underline;
 }
 
 .logoutText {
   padding-left: 4px;
+  width:45px;
   color: red;
   text-decoration: underline;
 }
@@ -28,7 +30,6 @@ body {
 }
 
 .nav {
-
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -39,7 +40,6 @@ body {
 }
 
 .nav ul {
-
   padding: 0;
   margin: 0;
   list-style: none;
@@ -72,6 +72,8 @@ body {
 }
 
 .nav li {
+  animation: slideIn 0.8s forwards;
+
   position: relative;
   width: 50px;
   display: flex;
@@ -116,5 +118,17 @@ body {
 
   .nav {
     align-self: center;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
