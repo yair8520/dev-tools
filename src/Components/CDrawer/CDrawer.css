@@ -97,7 +97,7 @@ body {
   width: 100%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .site-title {
     font-size: 20px;
   }
@@ -107,6 +107,11 @@ body {
     width: 100%;
     align-self: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
   }
 
   .nav li {

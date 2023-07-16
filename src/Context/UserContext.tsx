@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { User } from '../Types/User';
 import useFirebaseAuth from '../Hooks/useFirebaseAuth/useFirebaseAuth';
 import { GoogleOneTap } from '../Components/GoogleOneTap';
@@ -15,7 +15,14 @@ export const UserContext = createContext<UserContextType>({
 
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useFirebaseAuth({ setUser });
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   const handleAnonymousSignIn = (credential: string) => {
     return auth
       .signInWithCredential(GoogleAuthProvider.credential(credential))
@@ -28,7 +35,7 @@ export const UserProvider = ({ children }: any) => {
     <UserContext.Provider value={{ user }}>
       {
         <>
-          {!user && (
+          {!user && !loading && (
             <GoogleOneTap handleAnonymousSignIn={handleAnonymousSignIn} />
           )}
           {children}

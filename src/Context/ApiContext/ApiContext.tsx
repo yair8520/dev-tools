@@ -111,6 +111,10 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     setSelectedCollection({ collection: newName, id });
   };
   const editCollection = (newName: string, prevName: string) => {
+    setSelectedCollection({
+      collection: newName,
+      id: tabs[Object.keys(tabs)[0]].id,
+    });
     setTabs((prevTabs: IApiTabs) => {
       const updatedTabs = { ...prevTabs };
       for (const key in updatedTabs) {
@@ -123,7 +127,6 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       }
       return updatedTabs;
     });
-    setSelectedCollection({ collection: newName, id: '0' });
   };
   const removeTab = ({ id }: any) => {
     deleteTabFB(id);

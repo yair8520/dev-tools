@@ -28,7 +28,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 'auto',
-  backgroundColor: '#ffffff',
+  bgcolor: 'background.paper',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
   borderRadius: '8px',
   padding: '16px',
