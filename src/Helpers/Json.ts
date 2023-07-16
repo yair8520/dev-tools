@@ -1,6 +1,7 @@
 import { AxiosHeaders } from 'axios';
 import { IHooksDescription } from '../Constant/Hooks';
 import { IApiTabs, IParams, ITab } from '../Constant/Mock';
+import { removeUnUsedVars } from './FireBase/Api';
 
 export function prettifyJSON(jsonStr: string | any[]) {
   if (!jsonStr || typeof jsonStr !== 'string') {
@@ -116,4 +117,8 @@ export function findTabByCollection(apiTabs: IApiTabs, collection: string): stri
     }
   }
   return undefined;
+}
+export const changesAccrued = (prev: ITab, next: ITab) => {
+  return JSON.stringify(removeUnUsedVars(prev)) !==
+    JSON.stringify(removeUnUsedVars(next))
 }

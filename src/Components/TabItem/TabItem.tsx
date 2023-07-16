@@ -13,8 +13,8 @@ import HttpIcon from '@mui/icons-material/Http';
 import { TabsContext } from '../../Context/ApiContext/ApiContext';
 import SaveIcon from '@mui/icons-material/Save';
 import { saveTab } from '../../Helpers/FireBase/Api';
+import { changesAccrued } from '../../Helpers/Json';
 export const TabItem = ({ item, ...rest }: TabItemProps) => {
-  
   const [hasChanged, setHasChanged] = useState(false);
   const prevItemRef = useRef(item);
   const [edit, setEdit] = useState(false);
@@ -26,7 +26,7 @@ export const TabItem = ({ item, ...rest }: TabItemProps) => {
   }, []);
 
   useEffect(() => {
-    if (JSON.stringify(item) !== JSON.stringify(prevItemRef.current)) {
+    if (changesAccrued(prevItemRef.current, item)) {
       setHasChanged(true);
     } else if (hasChanged) {
       setHasChanged(false);

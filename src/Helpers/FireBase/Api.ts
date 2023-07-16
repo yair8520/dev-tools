@@ -5,10 +5,12 @@ import { ITab, apiTabs } from '../../Constant/Mock';
 import { toast } from 'react-toastify';
 import { apiMessages } from '../../Constant/FirbaseMessages';
 
-const removeUnUsedVars = (tab: ITab) => {
+export const removeUnUsedVars = (tab: ITab) => {
     tab.res.response = null;
     tab.res.error = null;
     tab.res.errorMessage = null;
+    tab.res.size = null;
+    tab.res.time = null;
     return tab;
 };
 
@@ -73,7 +75,7 @@ export const getAllTabs = (email: string) => {
                 if (doc.exists) {
                     resolve(doc.data()?.api ?? {});
                 } else {
-                    userRef.set({ sections: apiTabs }).then(() => resolve(apiTabs));
+                    userRef.set({ sections: {} }).then(() => resolve({}));
                 }
             })
             .catch(reject);

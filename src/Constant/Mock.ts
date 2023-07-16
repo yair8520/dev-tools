@@ -16,8 +16,8 @@ export interface ITab {
 }
 
 export interface IResponse {
-  time: number;
-  size: string;
+  time: number | null;
+  size: string | null;
   response: AxiosResponse<any> | null;
   error?: AxiosError<any> | null;
   errorMessage?: string | null;
@@ -68,17 +68,13 @@ export const getDefaultTab = (id: string, collection: string): ITab => {
           value: 'no-cache',
           checked: true,
         },
-        '3': {
-          key: 'Connection',
-          value: 'keep-alive',
-          checked: true,
-        },
+
       },
       body: "",
     },
     res: {
-      time: 0,
-      size: '',
+      time: null,
+      size: null,
       response: null,
       error: null,
       errorMessage: null,
