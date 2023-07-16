@@ -46,7 +46,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   const [selectedCollection, setSelectedCollection] = useState<{
     collection: string;
     id: string;
-  }>({ collection: 'collection1', id: '1' });
+  }>({ collection: 'collection1', id: '-1' });
 
   const removeCollection = (name: string) => {
     deleteTabByCollection(name);

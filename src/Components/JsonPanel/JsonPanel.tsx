@@ -21,14 +21,13 @@ export const JsonPanel = ({
   rows = 8,
 }: JsonPanelProps) => {
   const { isDark } = useContext(AppContext);
-
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
         <CIconButton onClick={() => handleCopy(value)} title={'Copy'}>
           <ContentCopyIcon />
         </CIconButton>
-        {value && (
+        {value?.length !== 0 && (
           <CIconButton
             onClick={() => downloadFile({ data: value, nameOfFile: getTime() })}
             title={'save as file'}

@@ -119,6 +119,8 @@ export function findTabByCollection(apiTabs: IApiTabs, collection: string): stri
   return undefined;
 }
 export const changesAccrued = (prev: ITab, next: ITab) => {
-  return JSON.stringify(removeUnUsedVars(prev)) !==
-    JSON.stringify(removeUnUsedVars(next))
-}
+  const newPrev = JSON.parse(JSON.stringify(prev));
+  const newNext = JSON.parse(JSON.stringify(next));
+  return JSON.stringify(removeUnUsedVars(newPrev)) !==
+    JSON.stringify(removeUnUsedVars(newNext));
+};

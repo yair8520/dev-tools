@@ -7,7 +7,7 @@ export const downloadFile = ({ nameOfFile, data }: IFile) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = "dev-tools " + nameOfFile;
+    link.download = "dev-tools " + nameOfFile+".txt";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

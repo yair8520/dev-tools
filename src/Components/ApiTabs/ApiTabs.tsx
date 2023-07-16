@@ -46,7 +46,7 @@ export const ApiTabs = () => {
   return (
     <div className={styles.container}>
       <Collection list={collections} />
-      {collections?.length !== 0 ? (
+      {collections?.length !== 0 && selectedCollection.id !== '-1' ? (
         <div className={styles.enter}>
           <TabContext value={tabIndex}>
             <Box
