@@ -21,6 +21,7 @@ export const JsonPanel = ({
   rows = 8,
 }: JsonPanelProps) => {
   const { isDark } = useContext(AppContext);
+  const fileName = editable ? 'Request' : 'Response';
   return (
     <div className={styles.container}>
       <div className={styles.icons}>
@@ -31,7 +32,7 @@ export const JsonPanel = ({
           (value?.length !== 0 && (
             <CIconButton
               onClick={() =>
-                downloadFile({ data: value, nameOfFile: getTime() })
+                downloadFile({ data: value, nameOfFile: fileName + getTime() })
               }
               title={'save as file'}
             >
