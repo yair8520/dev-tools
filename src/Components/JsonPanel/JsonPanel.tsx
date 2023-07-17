@@ -27,14 +27,17 @@ export const JsonPanel = ({
         <CIconButton onClick={() => handleCopy(value)} title={'Copy'}>
           <ContentCopyIcon />
         </CIconButton>
-        {value?.length !== 0 && (
-          <CIconButton
-            onClick={() => downloadFile({ data: value, nameOfFile: getTime() })}
-            title={'save as file'}
-          >
-            <DownloadIcon />
-          </CIconButton>
-        )}
+        {!value ||
+          (value?.length !== 0 && (
+            <CIconButton
+              onClick={() =>
+                downloadFile({ data: value, nameOfFile: getTime() })
+              }
+              title={'save as file'}
+            >
+              <DownloadIcon />
+            </CIconButton>
+          ))}
 
         {editable && (
           <>

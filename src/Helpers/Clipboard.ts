@@ -1,5 +1,8 @@
 export const handlePaste = (setValue: (t: string) => void) => {
-  navigator.clipboard.readText().then((text) => setValue(text));
+  navigator.clipboard.readText().then((text = "") => {
+
+    setValue(text)
+  });
 };
 export const handleCopy = (t: string) => {
   navigator.clipboard
