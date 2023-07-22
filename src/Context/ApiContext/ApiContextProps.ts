@@ -4,6 +4,7 @@ export interface ApiContextProps {
   [key: string]: any;
 }
 export const initialTabContext = {
+  useProxy: false,
   tabs: {},
   selectedCollection: {
     collection: '',
@@ -12,6 +13,7 @@ export const initialTabContext = {
   collections: [],
   loading: false,
   tabIndex: '',
+  setUseProxy: () => { },
   setCollections: () => { },
   editCollection: () => { },
   createCollection: () => { },
@@ -32,9 +34,8 @@ export const initialTabContext = {
 }
 export interface AppContextInterface {
   tabIndex: string;
-  setTabIndex: React.Dispatch<React.SetStateAction<string>>;
+  useProxy: boolean,
   tabs: IApiTabs;
-  setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
   addTab: Function;
   removeTab: Function;
   editTabTitle: Function;
@@ -46,6 +47,9 @@ export interface AppContextInterface {
   createCollection: Function;
   editCollection: Function;
   setSelectedCollection: Function;
+  setUseProxy: React.Dispatch<React.SetStateAction<boolean>>,
+  setTabIndex: React.Dispatch<React.SetStateAction<string>>;
+  setTabs: React.Dispatch<React.SetStateAction<IApiTabs>>;
   addData: ({ itemId, key, value, tabId, type }: any) => void;
   toggleQuary: ({ itemId, key, value, tabId, type }: any) => void;
   addTabData: ({ tabId, type, value }: any) => void;

@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    height: 25px !important;
+    width: 25px !important;
+
+}
+
+.link {
+    color: inherit;
+    display: flex;
+    justify-content: center;
+}

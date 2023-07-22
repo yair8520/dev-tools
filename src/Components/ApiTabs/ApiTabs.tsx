@@ -13,6 +13,7 @@ import styles from './ApiTabs.module.css';
 import AddIcon from '@mui/icons-material/Add';
 import { Collection } from '../Collection';
 import { EmptyCollections } from '../EmptyCollections';
+import { ProxySection } from '../ProxySection';
 
 export const ApiTabs = () => {
   const {
@@ -48,6 +49,7 @@ export const ApiTabs = () => {
       <Collection list={collections} />
       {collections?.length !== 0 && selectedCollection.id !== '-1' ? (
         <div className={styles.enter}>
+          <ProxySection />
           <TabContext value={tabIndex}>
             <Box
               sx={{

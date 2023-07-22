@@ -25,9 +25,11 @@ export const useAxios = () => {
   }> => {
     const start = performance.now();
     setLoading(true);
+    axios.defaults.headers.common['Access-Control-Request-Headers'] = null
+    axios.defaults.headers.common['Access-Control-Request-Method'] = null
     return new Promise((res, rej) => {
       axios
-        .request(axiosParams)
+        .request({ ...axiosParams, withCredentials: false, })
         .then((response) => {
           res({
             response,

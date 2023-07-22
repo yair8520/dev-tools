@@ -22,6 +22,7 @@ export const TabsContext =
   React.createContext<AppContextInterface>(initialTabContext);
 export const ApiContext = ({ children }: ApiContextProps) => {
   const [tabIndex, setTabIndex] = React.useState('');
+  const [useProxy, setUseProxy] = React.useState(false);
 
   const [tabs, setTabs] = useState<IApiTabs>({});
   const [collections, setCollections] = useState<
@@ -301,6 +302,10 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       headers: objectToPairs(tab.data.headers),
       data: tab.data.body || undefined,
     };
+    if (useProxy) {
+      axiosParams.baseURL =
+        'https://nocorsproxyserver-b23bc189a395.herokuapp.com/api/';
+    }
     fetchData(axiosParams)
       .then(({ time, response, size }) =>
         updateRes({ time, response, size, tabId })
@@ -312,6 +317,8 @@ export const ApiContext = ({ children }: ApiContextProps) => {
   return (
     <TabsContext.Provider
       value={{
+        useProxy,
+        setUseProxy,
         setTabIndex,
         tabIndex,
         editCollection,

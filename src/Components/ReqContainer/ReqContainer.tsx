@@ -12,8 +12,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { ConfirmModal } from '../ConfirmModal';
 import { ModalContext } from '../ModalContext/ModalContext';
 import { Text } from '../Text';
+
 export const ReqContainer = ({ item }: ReqContainerProps) => {
-  const { sendReq, addTabData, loading, removeTab } = useContext(TabsContext);
+  const { sendReq, addTabData, loading, removeTab, useProxy } =
+    useContext(TabsContext);
   const { handleModal } = useContext(ModalContext);
   const deleteTab = () => {
     handleModal(
@@ -49,6 +51,11 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
           onChange={(url) =>
             addTabData({ tabId: item.id, type: 'url', value: url })
           }
+          InputProps={{
+            startAdornment: useProxy ? (
+              <Text className={styles.proxyInput}>{'{{proxy}}/'}</Text>
+            ) : null,
+          }}
         />
         <LoadingButton
           loading={loading}
