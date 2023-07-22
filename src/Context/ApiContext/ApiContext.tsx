@@ -280,16 +280,21 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     response,
     size,
   }: any) => {
-    console.log({ time, error, tabId, errorMessage, response, size });
+    console.log(response);
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
       const updatedTab: ITab = {
         ...tabToUpdate,
 
-        res: { time, response: null, error, errorMessage, size },
+        res: {
+          time,
+          response: response === undefined ? null : response,
+          error,
+          errorMessage,
+          size,
+        },
       };
-      console.log(updatedTab);
       newTabs[tabId] = updatedTab;
       return newTabs;
     });
