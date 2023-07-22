@@ -59,14 +59,18 @@ export const ResContainer = ({ item }: ResContainerProps) => {
               <JsonPanel
                 rows={30}
                 editable={false}
-                value={JSON.stringify(item.res.response?.data, null, 3)}
+                value={
+                  item.res.response?.data
+                    ? JSON.stringify(item.res.response?.data, null, 3)
+                    : ''
+                }
               />
             </TabPanel>
             <TabPanel value="2">
               <div className={styles.gridContainer}>
                 {item.res.response?.headers
                   ? Object.entries(item.res.response?.headers!).map(
-                      ([key, value]:any) => (
+                      ([key, value]: any) => (
                         <div key={key} className={styles.gridItem}>
                           <Text className={styles.key}>{key}:</Text>
                           <Text className="header-value">{value}</Text>

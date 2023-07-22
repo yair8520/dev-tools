@@ -15,14 +15,14 @@ export const ProxySection = () => {
         control={
           <IOSSwitch
             sx={{ m: 1 }}
-            value={useProxy}
+            value={!useProxy}
             onChange={() => setUseProxy(!useProxy)}
           />
         }
-        label={`${useProxy ? 'Activate' : 'Disable'} Proxy Server`}
+        label={`${!useProxy ? 'Activate' : 'Disable'} Proxy Server`}
       />
       <CIconButton
-        title={`The ProxySection component is a crucial feature in our Postman Clone application. It allows users to enable or disable the NoCORS Proxy Server. When activated, the Proxy Server acts as an intermediary between our front-end and external APIs with CORS restrictions, enabling seamless data access. Toggle the "Activate" or "Disable" button to control the Proxy Server and facilitate smooth API interactions in our application.`}
+        title={`The ProxySection component is a crucial feature in Postman Clone application. It allows users to enable or disable the NoCORS Proxy Server. When activated, the Proxy Server acts as an intermediary between our front-end and external APIs with CORS restrictions, enabling seamless data access. Toggle the "Activate" or "Disable" button to control the Proxy Server and facilitate smooth API interactions in our application.`}
         onClick={() => {}}
       >
         <HelpOutline />

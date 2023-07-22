@@ -6,7 +6,8 @@ export const errorMessages = {
     ERR_CONNECTION_REFUSED: 'The connection was refused.',
     ERR_INVALID_URL: 'The URL is invalid.',
     ERR_SSL_PROTOCOL_ERROR: 'An SSL/TLS protocol error occurred.',
-};
+    ENOTFOUND: 'The requested resource was not found.'
+    };
 
 export const httpStatuses: { [code: number]: string } = {
     1: "Informational Response",

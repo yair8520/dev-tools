@@ -260,7 +260,6 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     });
   };
 
-  const { fetchData, loading } = useAxios();
   const updateRes = ({ time, response, size, tabId }: any) => {
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
@@ -281,17 +280,22 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     response,
     size,
   }: any) => {
+    console.log({ time, error, tabId, errorMessage, response, size });
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
-      const updatedTab = {
+      const updatedTab: ITab = {
         ...tabToUpdate,
-        res: { time, response: response, error, errorMessage, size },
+
+        res: { time, response: null, error, errorMessage, size },
       };
+      console.log(updatedTab);
       newTabs[tabId] = updatedTab;
       return newTabs;
     });
   };
+
+  const { fetchData, loading } = useAxios();
 
   const sendReq = ({ tabId }: any) => {
     const tab = tabs[tabId];
@@ -303,8 +307,9 @@ export const ApiContext = ({ children }: ApiContextProps) => {
       data: tab.data.body || undefined,
     };
     if (useProxy) {
-      axiosParams.baseURL =
-        'https://nocorsproxyserver-b23bc189a395.herokuapp.com/api/';
+      axiosParams.url =
+        'https://nocorsproxyserver-b23bc189a395.herokuapp.com/api/' +
+        axiosParams.url;
     }
     fetchData(axiosParams)
       .then(({ time, response, size }) =>
