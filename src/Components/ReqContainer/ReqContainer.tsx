@@ -53,7 +53,7 @@ export const ReqContainer = ({ item }: ReqContainerProps) => {
           }
           InputProps={{
             startAdornment: useProxy ? (
-              <Text className={styles.proxyInput}>{'{{proxy}}/'}</Text>
+              <Text className={styles.proxyInput}>{'{{Proxy}}/'}</Text>
             ) : null,
           }}
         />
