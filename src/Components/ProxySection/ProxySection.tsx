@@ -30,7 +30,8 @@ export const ProxySection = () => {
       <CIconButton title={`See Source Code`} onClick={() => {}}>
         <Link
           className={styles.link}
-          to={'https://github.com/yair8520/noCorsProxyServer'}
+          target="_blank"
+          to={'http://ec2-16-171-200-227.eu-north-1.compute.amazonaws.com:3000'}
         >
           <OpenInNewIcon className={styles.icon} />
         </Link>
