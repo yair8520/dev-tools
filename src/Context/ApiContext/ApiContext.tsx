@@ -280,7 +280,6 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     response,
     size,
   }: any) => {
-    console.log(response);
     setTabs((prevTabs: IApiTabs) => {
       const newTabs = { ...prevTabs };
       const tabToUpdate = newTabs[tabId];
@@ -313,7 +312,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     };
     if (useProxy) {
       axiosParams.url =
-        'https://nocorsproxyserver-b23bc189a395.herokuapp.com/api/' +
+        'http://ec2-16-171-200-227.eu-north-1.compute.amazonaws.com:3000/api/' +
         axiosParams.url;
     }
     fetchData(axiosParams)
