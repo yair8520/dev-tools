@@ -1,11 +1,11 @@
 .container {
     height: 150vh;
-    animation: enter 0.5s ease-in;
+    animation: enter 0.3s ease-in;
 
 }
 
 .enter {
-    animation: enter 0.5s ease-in;
+    animation: enter 0.3s ease-in;
 
 }
 
