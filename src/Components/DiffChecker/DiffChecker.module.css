@@ -3,7 +3,21 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
+  animation: enter 0.5s ease-in;
+
 }
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+
+  }
+}
+
 .text {
   font-weight: 900;
   padding: 15px;
