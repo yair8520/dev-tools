@@ -312,7 +312,7 @@ export const ApiContext = ({ children }: ApiContextProps) => {
     };
     if (useProxy) {
       axiosParams.url =
-        'https://nocorsproxyserver-b23bc189a395.herokuapp.com/api/' +
+        'https://ec2-16-171-200-227.eu-north-1.compute.amazonaws.com/api/' +
         axiosParams.url;
     }
     fetchData(axiosParams)
