@@ -8,7 +8,7 @@ import { LayoutWithSideMenu } from '../LayoutWithSideMenu';
 import { extractTitles } from '../../Helpers/Json';
 import { useScrollToElementOnMount } from '../../Hooks/useScrollToElementOnMount';
 export const HooksList = () => {
-  useScrollToElementOnMount();
+  const id = useScrollToElementOnMount();
 
   const extractListOfTitles = () => {
     return [
@@ -28,7 +28,7 @@ export const HooksList = () => {
             </Text>
 
             {HooksDescription.map((val) => (
-              <HookListItem key={val.title} item={val} />
+              <HookListItem active={id === val.title} key={val.title} item={val} />
             ))}
             <Text style={{ alignSelf: 'center' }} padding={'25px'} variant="h6">
               React Native Hooks

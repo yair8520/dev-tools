@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { scrollTo } from '../../Helpers/Scroll';
 
-export const useScrollToElementOnMount = () => {
+export const useScrollToElementOnMount = (): string | undefined => {
   const { targetId } = useParams();
   useEffect(() => {
     if (targetId) {
@@ -12,5 +12,6 @@ export const useScrollToElementOnMount = () => {
       }
     }
   }, [targetId]);
+  return targetId
 };
 

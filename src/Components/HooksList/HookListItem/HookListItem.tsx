@@ -19,8 +19,8 @@ import { ExpandCodeSection } from '../../ExpandCodeSection';
 import ShareIcon from '@mui/icons-material/Share';
 import { handleShareButton } from '../../About/helpers';
 
-export const HookListItem = ({ item }: HookListItemProps) => {
-  const [expanded, setExpanded] = React.useState(false);
+export const HookListItem = ({ item, active = false }: HookListItemProps) => {
+  const [expanded, setExpanded] = React.useState(active);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -36,7 +36,7 @@ export const HookListItem = ({ item }: HookListItemProps) => {
   return (
     <div className={styles.container}>
       <Card id={item.title} className={styles.card}>
-        <CardActions disableSpacing sx={{justifyContent:'space-between'}}>
+        <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
           <CardHeader
             onClick={handleExpandClick}
             disableTypography

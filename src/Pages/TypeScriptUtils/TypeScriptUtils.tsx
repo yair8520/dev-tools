@@ -9,8 +9,7 @@ import { extractTitles } from '../../Helpers/Json';
 import { useScrollToElementOnMount } from '../../Hooks/useScrollToElementOnMount';
 
 const TypeScriptUtils = () => {
-  useScrollToElementOnMount();
-
+  const id = useScrollToElementOnMount();
   return (
     <div className={styles.container}>
       <LayoutWithSideMenu
@@ -21,7 +20,11 @@ const TypeScriptUtils = () => {
               <div className={styles.separator} />
             </Text>
             {utilsExamples.map((val) => (
-              <HookListItem key={val.title} item={val} />
+              <HookListItem
+                active={id === val.title}
+                key={val.title}
+                item={val}
+              />
             ))}
           </>
         )}

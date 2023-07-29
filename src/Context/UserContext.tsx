@@ -21,7 +21,7 @@ export const UserProvider = ({ children }: any) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 3000);
   }, []);
   const handleAnonymousSignIn = (credential: string) => {
     return auth

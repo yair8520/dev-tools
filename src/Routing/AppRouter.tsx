@@ -1,5 +1,5 @@
 import React, { Suspense, useContext } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Layout } from '../Components';
 import { ModalContext } from '../Components/ModalContext/ModalContext';
 import { Modal } from '../Components/Modal';
@@ -11,7 +11,7 @@ export const AppRouter = () => {
 
   return (
     <DrawerProvider>
-      <Router>
+      <Router basename='/dev-tools'>
         {modal ? <Modal /> : null}
         <Layout>
           <Header />

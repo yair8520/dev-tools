@@ -26,12 +26,12 @@ export const pages: IPages[] = [
     Icon: NotesIcon,
   },
   {
-    href: '/todo',
-    title: 'Tasks',
-    headline: 'Tasks',
+    href: '/flex-playGround',
+    headline: 'Flex Playground',
+    title: 'Flex',
     description:
-      'Stay organized and manage your to-do list efficiently with Firebase integration.',
-    Icon: AddTaskIcon,
+      'Experiment with different flexbox layouts and see the results in real-time.',
+    Icon: ScreenshotMonitorIcon,
   },
   {
     href: '/custom-hooks',
@@ -49,13 +49,16 @@ export const pages: IPages[] = [
     Icon: ShuffleIcon,
   },
   {
-    href: '/flex-playGround',
-    headline: 'Flex Playground',
-    title: 'Flex',
+    href: '/todo',
+    title: 'Tasks',
+    headline: 'Tasks',
     description:
-      'Experiment with different flexbox layouts and see the results in real-time.',
-    Icon: ScreenshotMonitorIcon,
+      'Stay organized and manage your to-do list efficiently with Firebase integration.',
+    Icon: AddTaskIcon,
   },
+
+
+
   {
     href: '/json-formatter',
     title: 'JSON',
