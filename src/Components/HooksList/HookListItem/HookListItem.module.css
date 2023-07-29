@@ -10,6 +10,15 @@
   width: 100%;
 }
 
+.buttonSection {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
+  font-size: 22px;
+}
+
 .header {
   flex-direction: row;
   display: flex;
@@ -22,6 +31,11 @@
 .copyIcon {
   position: absolute;
   right: 10%;
+}
+@media (max-width: 600px) {
+  .title {
+    font-size: 15px;
+  }
 }
 
 /* Keyframe animation for list item entering */

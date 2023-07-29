@@ -6,8 +6,11 @@ import { utilsExamples } from '../../Constant/TSUtils';
 import { SideMenu } from '../../Components/SideMenu';
 import { LayoutWithSideMenu } from '../../Components/LayoutWithSideMenu';
 import { extractTitles } from '../../Helpers/Json';
+import { useScrollToElementOnMount } from '../../Hooks/useScrollToElementOnMount';
 
 const TypeScriptUtils = () => {
+  useScrollToElementOnMount();
+
   return (
     <div className={styles.container}>
       <LayoutWithSideMenu

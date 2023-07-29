@@ -6,7 +6,10 @@ import { Text } from '../Text';
 import { SideMenu } from '../SideMenu';
 import { LayoutWithSideMenu } from '../LayoutWithSideMenu';
 import { extractTitles } from '../../Helpers/Json';
+import { useScrollToElementOnMount } from '../../Hooks/useScrollToElementOnMount';
 export const HooksList = () => {
+  useScrollToElementOnMount();
+
   const extractListOfTitles = () => {
     return [
       ...extractTitles(HooksDescription),

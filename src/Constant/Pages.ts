@@ -11,10 +11,10 @@ import { SvgIconTypeMap } from '@mui/material';
 export const pages: IPages[] = [
   {
     href: '/api',
-    title: 'Api',
-    headline: 'Api',
+    title: 'API',
+    headline: 'API',
     description:
-      'Manage and organize your api`s with Firebase integration.',
+      'Manage and organize your APIs with Firebase integration and the option for a proxy server.',
     Icon: SignpostIcon,
   },
   {
@@ -30,7 +30,7 @@ export const pages: IPages[] = [
     title: 'Tasks',
     headline: 'Tasks',
     description:
-      'Stay organized and manage your to-do list efficiently. with Firebase integration.',
+      'Stay organized and manage your to-do list efficiently with Firebase integration.',
     Icon: AddTaskIcon,
   },
   {
@@ -38,14 +38,14 @@ export const pages: IPages[] = [
     title: 'Hooks',
     headline: 'Custom Hooks',
     description:
-      'Find and share custom React hooks for common use cases live With CodeSandBox.',
+      'Find and share custom React hooks for common use cases live with CodeSandbox.',
     Icon: PhishingIcon,
   },
   {
     href: '/TS-utils',
     headline: 'TypeScript Utility Types',
     title: 'TS',
-    description: 'Learn about different TypeScript Utils. ',
+    description: 'Learn about different TypeScript utility types with code snippets.',
     Icon: ShuffleIcon,
   },
   {
@@ -72,6 +72,7 @@ export const pages: IPages[] = [
     Icon: DifferenceIcon,
   },
 ];
+
 
 export const moreToCome: IPages = {
   description: '',

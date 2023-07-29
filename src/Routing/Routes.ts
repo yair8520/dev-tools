@@ -54,11 +54,11 @@ const routes = [
     element: FlexPage,
   },
   {
-    path: '/custom-hooks',
+    path: '/custom-hooks/:targetId?',
     element: CustomHooks,
   },
   {
-    path: '/TS-utils',
+    path: '/TS-utils/:targetId?',
     element: TypeScriptUtils,
   },
   {

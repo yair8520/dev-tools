@@ -27,13 +27,15 @@ export const mailtoHref = `mailto:${recipient}?subject=${encodeURIComponent(
   subject
 )}`;
 
-export const handleShareButton = () => {
+export const handleShareButton = (divId = "") => {
+  if (divId)
+    divId = `/${divId}`
   if (navigator.share) {
     navigator
       .share({
         title: 'Dev-Tools',
         text: `Check out this site`,
-        url: document.location.href,
+        url: document.location.href + divId,
       })
       .then(() => {
         console.log('Successfully shared');
