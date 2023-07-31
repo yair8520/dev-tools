@@ -1,14 +1,27 @@
 .gridContainer {
   padding-top: 20px;
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 50px;
   width: 90%;
 }
 
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 20px !important;
+  margin-top: 25px;
+  transition: all 0.7s ease-in-out;
+}
+
 .container {
-  width: 90%;
+  width: 70%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -48,6 +61,10 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
+  }
+
+  .container {
+    width: 90%;
   }
 
   .madeBy {

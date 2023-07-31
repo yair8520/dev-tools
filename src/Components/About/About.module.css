@@ -6,6 +6,7 @@
   position: fixed;
   left: 0;
   top: 20%;
+
 }
 
 .icons {
@@ -18,6 +19,8 @@
   animation: slideIn 0.8s forwards;
   display: flex;
   flex-direction: column;
+  border-radius: 50px !important;
+  padding: 10px;
   align-items: center;
   justify-content: center;
 }

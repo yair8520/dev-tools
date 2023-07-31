@@ -22,7 +22,7 @@ export const Header = () => {
                 cursor: 'pointer',
               },
             }}
-            className={styles.title}
+            className={`${styles.title}`}
           >
             <HandymanIcon />
             Dev-Tools

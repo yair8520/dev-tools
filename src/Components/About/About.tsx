@@ -5,11 +5,12 @@ import { CIconButton } from '../CIconButton';
 import { Link } from 'react-router-dom';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import ShareIcon from '@mui/icons-material/Share';
+import { Paper } from '@mui/material';
 
 export const About = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.iconContainer}>
+      <Paper className={styles.iconContainer}>
         {socialLinks.map((link) => (
           <CIconButton
             placement="right"
@@ -38,7 +39,7 @@ export const About = () => {
         >
           <ShareIcon className={styles.icons} />
         </CIconButton>
-      </div>
+      </Paper>
     </div>
   );
 };

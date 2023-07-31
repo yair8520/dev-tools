@@ -90,6 +90,6 @@ export interface IPages {
   description: string;
   Icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>> & { muiName: string };
 }
-export const welcomeMessage = `Access popular tools quickly on my site.
- Manage notes, find custom React hooks, explore TypeScript utility types, experiment with flexbox, format JSON, and compare text. Enhance your workflow here. 
+export const welcomeMessage = `Access popular tools quickly on my site,
+ Enhance your workflow here. 
 Happy coding!`;

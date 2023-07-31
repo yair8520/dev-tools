@@ -14,7 +14,7 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
       onClick={() => !disabled && navigate(item.href)}
       className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
-      <Card elevation={15} className={styles.container}>
+      <Card elevation={10} className={styles.container}>
         <div className={styles.content}>
           <div>
             <Text variant="h5" component="h2">
