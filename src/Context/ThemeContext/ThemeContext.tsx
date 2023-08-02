@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeContextProps } from './ThemeContextProps';
+import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 interface AppContextInterface {
   isDark: boolean;
@@ -12,8 +13,7 @@ export const AppContext = React.createContext<AppContextInterface>({
 });
 
 export const ThemeContext = ({ children }: ThemeContextProps) => {
-  const [isDark, setIsDark] = useState(false);
-
+  const [isDark, setIsDark] = useLocalStorage('darkMode', true);
   return (
     <AppContext.Provider value={{ isDark, setIsDark }}>
       {children}
