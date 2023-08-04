@@ -27,8 +27,8 @@ export const pages: IPages[] = [
   },
   {
     href: '/flex-playGround',
-    headline: 'Flex Playground',
-    title: 'Flex',
+    headline: 'FlexBox Playground',
+    title: 'FlexBox',
     description:
       'Experiment with different flexbox layouts and see the results in real-time.',
     Icon: ScreenshotMonitorIcon,
@@ -56,9 +56,6 @@ export const pages: IPages[] = [
       'Stay organized and manage your to-do list efficiently with Firebase integration.',
     Icon: AddTaskIcon,
   },
-
-
-
   {
     href: '/json-formatter',
     title: 'JSON',
@@ -93,3 +90,18 @@ export interface IPages {
 export const welcomeMessage = `Access popular tools quickly on my site,
  Enhance your workflow here. 
 Happy coding!`;
+
+export const pagesByRoute = {
+  "/api": "API Management",
+  "/notes": "Notes",
+  "/flex-playGround": "FlexBox Playground",
+  "/custom-hooks": "Custom Hooks",
+  "/TS-utils": "TypeScript Utility Types",
+  "/todo": "Task Management",
+  "/json-formatter": "JSON Formatter",
+  "/diff-checker": "Diff Checker"
+};
+export const buildSiteTitle = (route: string) => {
+  const name = pagesByRoute[route as keyof object]
+  return !name ? `Dev-Tools` : `Dev-Tools | ${name}`
+}

@@ -6,8 +6,10 @@ import { Text } from '../Text';
 import styles from './Header.module.css';
 import { useSendLogsPerRoute } from '../../Hooks/useSendLogsPerRoute';
 import HandymanIcon from '@mui/icons-material/Handyman';
+import { usePageTitle } from '../../Hooks/usePageTitle';
 export const Header = () => {
   const navigate = useNavigate();
+  usePageTitle()
   useSendLogsPerRoute();
   return (
     <AppBar style={{ height: '60px' }} position="static">
