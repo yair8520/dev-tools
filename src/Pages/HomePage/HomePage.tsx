@@ -29,12 +29,12 @@ export const HomePage = () => {
           ))}
           <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
         </div>
-        <About />
-        <div className={styles.madeBy}>
-          <Text>Created By Yair Gabay</Text>
-          <Avatar sx={{ width: 30, height: 30 }} src={avatarImage} />
-        </div>
       </Card>
+      <About />
+      <div className={styles.madeBy}>
+        <Text variant={'h6'} className={'gradientText'}>Created By Yair Gabay</Text>
+        <Avatar sx={{ width: 30, height: 30 }} src={avatarImage} />
+      </div>
     </div>
   );
 };

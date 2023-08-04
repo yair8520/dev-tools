@@ -16,6 +16,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
+    border-radius: 2px; /* Make the elements round */
     transition: 0.3s ease-in-out;
   }
 
@@ -39,6 +40,7 @@
     height: calc(100% + 9px);
   }
 }
+
 
 .border:not(.disabled):hover {
   transform: scale(1.05);

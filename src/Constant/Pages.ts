@@ -88,7 +88,7 @@ export interface IPages {
   Icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>> & { muiName: string };
 }
 export const welcomeMessage = `Access popular tools quickly on my site,
- Enhance your workflow here. 
+ Enhance your workflow. 
 Happy coding!`;
 
 export const pagesByRoute = {
