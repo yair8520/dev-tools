@@ -5,6 +5,38 @@ export interface IUtilsDescription {
 }
 export const utilsExamples: IUtilsDescription[] = [
   {
+    title: 'as const',
+    desc: 'Preserve literal types in a deeply nested configuration object.',
+    code: `
+  // Define a deeply nested configuration object
+  const appConfig = {
+    apiUrl: 'https://api.example.com',
+    timeout: 5000,
+    features: {
+      analytics: true,
+      userManagement: {
+        enableRegistration: true,
+        enablePasswordReset: true,
+      },
+    },
+    defaultSettings: {
+      theme: 'light',
+      language: 'en',
+    },
+  } as const;
+
+  // Attempt to modify properties (will result in a TypeScript error):
+  // appConfig.apiUrl = 'https://new-api.example.com';
+  
+  // Create a function to print the app configuration
+  function printAppConfig(config: typeof appConfig) {
+    console.log('API URL:', config.apiUrl);
+    console.log('Timeout:', config.timeout);
+  }
+
+  `,
+  },
+  {
     title: 'Partial<Type>',
     desc: 'Make all properties of an object optional.',
     code: `
