@@ -5,35 +5,37 @@ export interface IUtilsDescription {
 }
 export const utilsExamples: IUtilsDescription[] = [
   {
-    title: 'as const',
-    desc: 'Preserve literal types in a deeply nested configuration object.',
+    title: 'as const (Literal Types & Alternative to Enums)',
+    desc: 'Preserve literal types, type inference, and use as an alternative to enums.',
     code: `
-  // Define a deeply nested configuration object
-  const appConfig = {
-    apiUrl: 'https://api.example.com',
-    timeout: 5000,
-    features: {
-      analytics: true,
-      userManagement: {
-        enableRegistration: true,
-        enablePasswordReset: true,
-      },
-    },
-    defaultSettings: {
-      theme: 'light',
-      language: 'en',
-    },
+  // Define routes with 'as const' for literal types
+  const routes = {
+    home: '/',
+    admin: '/admin',
+    users: '/users',
   } as const;
 
-  // Attempt to modify properties (will result in a TypeScript error):
-  // appConfig.apiUrl = 'https://new-api.example.com';
-  
-  // Create a function to print the app configuration
-  function printAppConfig(config: typeof appConfig) {
-    console.log('API URL:', config.apiUrl);
-    console.log('Timeout:', config.timeout);
-  }
+  // Infer the type of 'routes' object
+  type TypeOfRoutes = typeof routes;
 
+  // Function to navigate to a specific route
+  const goToRoute = (route: TypeOfRoutes[keyof TypeOfRoutes]) => {
+    console.log('Navigating to:', route);
+    // Actual navigation logic goes here
+  };
+
+  // Call the 'goToRoute' function
+  goToRoute(routes.admin); // Navigating to: /admin
+  goToRoute(routes.users); // Navigating to: /users
+
+  // 'as const' preserves literal types, providing type safety
+  // Similar effect to enums but with more flexibility
+  // TypeOfRoutes is inferred as:
+  // type TypeOfRoutes = {
+  //   readonly home: "/";
+  //   readonly admin: "/admin";
+  //   readonly users: "/users";
+  // };
   `,
   },
   {
