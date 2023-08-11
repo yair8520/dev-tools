@@ -5,7 +5,7 @@ export interface IUtilsDescription {
 }
 export const utilsExamples: IUtilsDescription[] = [
   {
-    title: 'as const (Literal Types & Alternative to Enums)',
+    title: 'as const ',
     desc: 'Preserve literal types, type inference, and use as an alternative to enums.',
     code: `
   // Define routes with 'as const' for literal types
