@@ -1,10 +1,11 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useRef } from 'react';
 import styles from './Notes.module.css';
 import { Text } from '../Text';
 import { SearchBar } from '../SearchBar';
 import { NotesList } from './NotesList';
 import { filterListByQuary, filterListByTimeAndSection } from './helper';
 import { NotesContext } from '../../Context/NotesContext/NotesContext';
+import { PullToRefreshWrapper } from '../RefreshControl';
 
 const Notes = () => {
   const {
@@ -15,6 +16,7 @@ const Notes = () => {
     setList,
     setQuary,
     user,
+    getAll
   } = useContext(NotesContext);
 
   const sectionArray = useMemo(
@@ -39,6 +41,17 @@ const Notes = () => {
     }
     setFilteredList(filterListByQuary(filteredList, str));
   };
+
+  const handleRefresh = () => {
+    // Perform the refresh action, e.g., fetch new data
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        console.log('Refreshed!');
+        resolve();
+      }, 2000);
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -66,12 +79,14 @@ const Notes = () => {
           options={sectionArray}
           filterByTimeAndSection={filterByTimeAndSection}
         />
-        <NotesList
-          user={user?.email}
-          list={filteredList}
-          setList={setFilteredList}
-          setOriginalList={setList}
-        />
+        <PullToRefreshWrapper onRefresh={getAll}>
+          <NotesList
+            user={user?.email}
+            list={filteredList}
+            setList={setFilteredList}
+            setOriginalList={setList}
+          />
+        </PullToRefreshWrapper>
       </div>
     </div>
   );

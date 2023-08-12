@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   gap: 50px;
-  width: 90%;
+  width: 100%;
 }
 
 
@@ -74,4 +74,12 @@
   .welcome {
     width: 90%;
   }
+}
+
+@media (max-width: 1000px) {
+  .gridContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+
 }

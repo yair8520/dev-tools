@@ -9,6 +9,7 @@ export type NotesContextProps = {
   filteredList: ISection;
   setFilteredList: React.Dispatch<React.SetStateAction<ISection>>;
   user: User | null;
+  getAll: any;
 };
 export const initial = {
   quary: '',
@@ -17,5 +18,6 @@ export const initial = {
   setList: () => {},
   filteredList: {},
   setFilteredList: () => {},
+  getAll: () => {},
   user: null,
 };

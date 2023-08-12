@@ -30,7 +30,27 @@
   background-size: 500% auto;
   animation: textShine 5s ease-in-out infinite alternate;
 }
+.pull-indicator {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-lighter);
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+}
 
+.pull-indicator i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.pull-indicator.flip i {
+  transform: rotate(180deg);
+}
 @keyframes textShine {
   0% {
     background-position: 0% 50%;

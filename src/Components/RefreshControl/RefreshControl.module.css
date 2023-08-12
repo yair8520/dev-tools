@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.refreshIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.showLoader {
+    opacity: 1;
+    height: 50px;
+}

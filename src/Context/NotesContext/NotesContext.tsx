@@ -11,14 +11,18 @@ export const NotesProvider = ({ children }: any) => {
   const [quary, setQuary] = useState<string>('');
   const [list, setList] = useState<ISection>({});
   const [filteredList, setFilteredList] = useState<ISection>({});
+
+  const getAll = () => {
+    getUserSections(user?.email!)
+      .then((res: any) => {
+        setList(res);
+        setFilteredList(res);
+      })
+      .catch((s) => console.log({ s }));
+  };
   useEffect(() => {
     if (user?.email) {
-      getUserSections(user.email)
-        .then((res: any) => {
-          setList(res);
-          setFilteredList(res);
-        })
-        .catch((s) => console.log({ s }));
+      getAll();
     }
   }, [user]);
   const contextValue: NotesContextProps = {
@@ -29,6 +33,7 @@ export const NotesProvider = ({ children }: any) => {
     filteredList,
     setFilteredList,
     user,
+    getAll,
   };
 
   return (
