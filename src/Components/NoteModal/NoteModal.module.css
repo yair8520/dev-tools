@@ -11,6 +11,7 @@
 .input {
   min-height: 50px;
   width: 100%;
+  text-align: center;
 }
 
 .input textarea::-webkit-scrollbar {
@@ -26,4 +27,11 @@
   position: absolute;
   top: 2%;
   right: 2%;
+}
+
+.endAdornment {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
 }

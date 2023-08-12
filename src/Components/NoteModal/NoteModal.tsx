@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './NoteModal.module.css';
 import { NoteModalProps } from './NoteModalProps';
 import { MultiLineInput } from '../MultiLineInput';
@@ -9,17 +9,13 @@ import { InputButtons } from '../DiffChecker/InputButtons';
 
 export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
   const [text, setText] = useState<string>(value);
-  // const handleKeyDown = (e: any) => {
-  //   if (e.key === 'Enter') {
-  //     e.preventDefault();
-  //     setText(e.target.value);
-  //     onFinish();
-  //   }
-  // };
+
   const onFinish = () => {
     onChange(text);
     handleModal();
   };
+  const multiLineInputRef = useRef(null);
+
   return (
     <div style={{ width: '80vw' }}>
       <div className={styles.buttons}>
@@ -41,9 +37,16 @@ export const NoteModal = ({ value, onChange, handleModal }: NoteModalProps) => {
           className={styles.input}
           value={text}
           onChange={(e) => setText(e)}
+          inputRef={multiLineInputRef} // Pass the ref
           InputProps={{
             endAdornment: (
-              <InputButtons withFile={false} value={text} onChange={setText} />
+              <InputButtons
+                withFile={true}
+                value={text}
+                onChange={setText}
+                editor={true}
+                multiLineInputRef={multiLineInputRef}
+              />
             ),
           }}
         />

@@ -15,11 +15,14 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { CIconButton } from '../../CIconButton';
+import { InputPropsEditor } from '../../InputPropsEditor';
 export const InputButtons = ({
   onChange,
   value,
   type,
   withFile = true,
+  editor = false,
+  multiLineInputRef
 }: InputButtonsProps) => {
   return (
     <InputAdornment className={styles.container} position="end">
@@ -58,6 +61,7 @@ export const InputButtons = ({
           </label>
         </IconButton>
       )}
+      {editor && <InputPropsEditor multiLineInputRef={multiLineInputRef} />}
     </InputAdornment>
   );
 };

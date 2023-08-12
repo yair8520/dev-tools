@@ -1,0 +1,1 @@
+export { InputPropsEditor } from './InputPropsEditor';
