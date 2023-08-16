@@ -12,8 +12,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TodoProvider } from './Context/TodoContext/TodoContext';
 import { NotesProvider } from './Context/NotesContext/NotesContext';
 
+
 function App() {
   const { isDark } = useContext(AppContext);
+  
   return (
     <UserProvider>
       <TodoProvider>
