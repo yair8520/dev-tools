@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar } from '@mui/material';
 import { CDrawer } from '../CDrawer';
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,15 @@ import styles from './Header.module.css';
 import { useSendLogsPerRoute } from '../../Hooks/useSendLogsPerRoute';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import { usePageTitle } from '../../Hooks/usePageTitle';
+import CachedIcon from '@mui/icons-material/Cached';
+import { CIconButton } from '../CIconButton';
+import { useMediaQuery } from '../../Hooks/useMediaQuery';
 export const Header = () => {
   const navigate = useNavigate();
-  usePageTitle()
+  usePageTitle();
   useSendLogsPerRoute();
+  const isPWA = useMediaQuery('(display-mode: standalone)');
+
   return (
     <AppBar style={{ height: '60px' }} position="static">
       <Toolbar>
@@ -29,6 +34,13 @@ export const Header = () => {
             <HandymanIcon />
             Dev-Tools
           </Text>
+          {isPWA && (
+            <div id={'ReloadButton'}>
+              <CIconButton onClick={() => window.location.reload()}>
+                <CachedIcon />
+              </CIconButton>
+            </div>
+          )}
         </div>
         <div className={styles.items}>
           <CDrawer />
