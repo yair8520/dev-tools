@@ -62,35 +62,46 @@ export const FlexChildrens = ({
       <Text bold variant="h6">
         {`Selected Item { ${selectedIndex + 1} }`}
       </Text>
-      {child &&
-        flexItemOptions.map((item) =>
-          item.range ? (
-            <div key={`${item.type}-input `}>
-              <div className={styles.item}>
-                <Text bold>{item.type}</Text>
-                <Description title={flexDescription[item.type as keyof object]}>
-                  <HelpOutline />
-                </Description>
+      <div
+        style={{
+          height: '100%',
+          justifyContent: 'space-around',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {child &&
+          flexItemOptions.map((item) =>
+            item.range ? (
+              <div key={`${item.type}-input `}>
+                <div className={styles.item}>
+                  <Text bold>{item.type}</Text>
+                  <Description
+                    title={flexDescription[item.type as keyof object]}
+                  >
+                    <HelpOutline />
+                  </Description>
+                </div>
+                <MultiLineInput
+                  onChange={(e) => handleInput(item.type, e)}
+                  value={child[item.type as keyof object]}
+                  className={styles.input}
+                  multiline={false}
+                  type="number"
+                  inputProps={{ min: -10, max: 10, step: 1 }}
+                />
               </div>
-              <MultiLineInput
-                onChange={(e) => handleInput(item.type, e)}
+            ) : (
+              <DropDown
+                key={`${item.type}-drop`}
+                handleChange={(e: string) => handleInput(item.type, e)}
+                options={item.options}
+                title={item.type}
                 value={child[item.type as keyof object]}
-                className={styles.input}
-                multiline={false}
-                type="number"
-                inputProps={{ min: -10, max: 10, step: 1 }}
               />
-            </div>
-          ) : (
-            <DropDown
-              key={`${item.type}-drop`}
-              handleChange={(e: string) => handleInput(item.type, e)}
-              options={item.options}
-              title={item.type}
-              value={child[item.type as keyof object]}
-            />
-          )
-        )}
+            )
+          )}
+      </div>
     </>
   );
 };

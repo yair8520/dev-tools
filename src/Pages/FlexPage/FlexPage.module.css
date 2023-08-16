@@ -27,5 +27,6 @@
   .options {
     width: 100%;
     overflow-y: none;
+    margin-bottom: 50px;
   }
 }

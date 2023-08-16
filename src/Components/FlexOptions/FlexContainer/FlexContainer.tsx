@@ -26,24 +26,26 @@ export const FlexContainer = ({
       return { ...InitialStyle };
     });
   return (
-    <>
+    <div style={{ height: '100%' }}>
       <div className={styles.header}>
         <Text variant="h5"> Container options</Text>
         <CIconButton title={'Reset All'} onClick={reset}>
           <RemoveCircleOutline />
         </CIconButton>
       </div>
-      {flexOptions.map((option: IFlexOptions, i) => {
-        return (
-          <DropDown
-            key={option.type}
-            handleChange={(e: string) => handleChange(option.type, e)}
-            value={containerStyle?.[option.type! as keyof object] ?? 0}
-            options={option.options}
-            title={option.type}
-          />
-        );
-      })}
-    </>
+      <div style={{ height: '100%', justifyContent: 'space-around' ,display:'flex',flexDirection:'column' }}>
+        {flexOptions.map((option: IFlexOptions, i) => {
+          return (
+            <DropDown
+              key={option.type}
+              handleChange={(e: string) => handleChange(option.type, e)}
+              value={containerStyle?.[option.type! as keyof object] ?? 0}
+              options={option.options}
+              title={option.type}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 };
