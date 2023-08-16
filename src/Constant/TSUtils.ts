@@ -39,6 +39,59 @@ export const utilsExamples: IUtilsDescription[] = [
   `,
   },
   {
+    title: 'keyof & typeof',
+    desc: `Explore the basics of TypeScript's keyof and typeof operators through a practical example showcasing secure property access and value assignment.`, code: `
+      // Define an object
+      const car = {
+        make: 'Toyota',
+        model: 'Camry',
+        year: 2022,
+      } as const;
+  
+      // Access a property using keyof and typeof
+      type CarKey = keyof typeof car; // Type: 'make' | 'model' | 'year'
+      type CarProperty = typeof car[CarKey]; // Type: 'Toyota' | 'Camry' | 2022
+  
+      // Usage
+      const carKey: CarKey = 'make'; // Allowed values: 'make', 'model', 'year'
+      const carProperty: CarProperty = car[carKey]; // Type inference based on carKey
+  
+      console.log('Car Property:', carProperty);
+      `,
+  },
+  {
+    title: 'Extending keyof & typeof',
+    desc: `Learn how to safely extend an object's properties while maintaining type safety using TypeScript's keyof and typeof operators.`,
+    code: `
+      // Base object
+      const basePerson = {
+        name: 'Alice',
+        age: 30,
+      } as const;
+  
+      // Extending the base object
+      const extendedPerson = {
+        ...basePerson,
+        city: 'Wonderland',
+      } as const;
+  
+      // Utility function to access property from object
+      function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+        return obj[key];
+      }
+  
+      // Usage
+      const name = getProperty(extendedPerson, 'name'); // Type: 'Alice'
+      const age = getProperty(extendedPerson, 'age');   // Type: 30
+      const city = getProperty(extendedPerson, 'city'); // Type: 'Wonderland'
+  
+      console.log('Name:', name);
+      console.log('Age:', age);
+      console.log('City:', city);
+      `,
+  }
+  ,
+  {
     title: 'Partial<Type>',
     desc: 'Make all properties of an object optional.',
     code: `
