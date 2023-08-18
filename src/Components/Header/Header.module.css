@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.reload {
+  margin-left: 15px;
+}
+
 .title {
   width: 120px;
   flex-direction: row;

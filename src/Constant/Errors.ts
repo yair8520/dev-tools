@@ -1,5 +1,5 @@
 export const errorMessages = {
-    ERR_NETWORK: 'A network error occurred.',
+    ERR_NETWORK: 'A network error occurred, Please verify the server address.',
     ERR_NAME_NOT_RESOLVED: 'The requested hostname could not be resolved. Please verify the server address.',
     ERR_ABORTED: 'The request was aborted.',
     ERR_CONNECTION_TIMED_OUT: 'The connection timed out.',
@@ -7,7 +7,7 @@ export const errorMessages = {
     ERR_INVALID_URL: 'The URL is invalid.',
     ERR_SSL_PROTOCOL_ERROR: 'An SSL/TLS protocol error occurred.',
     ENOTFOUND: 'The requested resource was not found.'
-    };
+};
 
 export const httpStatuses: { [code: number]: string } = {
     1: "Informational Response",
