@@ -38,8 +38,8 @@ export const Header = () => {
             <HandymanIcon />
             Dev-Tools
           </Text>
-          {!isPWA && (
-            <>
+          <>
+            {isPWA && (
               <div className={styles.reload}>
                 <CIconButton
                   title={'Reload'}
@@ -48,19 +48,19 @@ export const Header = () => {
                   <CachedIcon />
                 </CIconButton>
               </div>
-              <div className={styles.reload}>
-                {isOnline ? (
-                  <CIconButton title={'Online'}>
-                    <WifiIcon htmlColor="green" />
-                  </CIconButton>
-                ) : (
-                  <CIconButton title={'offline'}>
-                    <WifiOffIcon htmlColor="red" />
-                  </CIconButton>
-                )}
-              </div>
-            </>
-          )}
+            )}
+            <div className={styles.reload}>
+              {isOnline ? (
+                <CIconButton title={'Online'}>
+                  <WifiIcon htmlColor="green" />
+                </CIconButton>
+              ) : (
+                <CIconButton title={'offline'}>
+                  <WifiOffIcon htmlColor="red" />
+                </CIconButton>
+              )}
+            </div>
+          </>
         </div>
         <div className={styles.items}>
           <CDrawer />
