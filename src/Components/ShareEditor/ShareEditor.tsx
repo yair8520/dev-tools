@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ShareEditor.module.css';
 import {
   IShareBinData,
@@ -15,21 +15,27 @@ import { CIconButton } from '../CIconButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { handleCopy } from '../../Helpers/Clipboard';
+import ReplayIcon from '@mui/icons-material/Replay';
 
 export const ShareEditor = ({}: ShareEditorProps) => {
   const [data, setData] = useState<TShareBinData>(IShareBinData);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
   const [shareLink, setShareLink] = useState<string>('');
 
+  useEffect(() => {
+    setDisabled(!data.code);
+  }, [data.code]);
+
   const handleChange = (t: string, key: keyof TShareBinData) => {
-    setData((p) => {
-      return { ...p, [key]: t };
-    });
+    setData((prevData) => ({ ...prevData, [key]: t }));
   };
+
   const onSubmit = () => {
     addShareBinData(data)
       .then((l) => {
-        setShareLink(`http://localhost:3000/dev-tools#/shared/${l}`);
+        setShareLink(
+          `${window.location.origin}${window.location.pathname}#/shared/${l}`
+        );
       })
       .catch((e) => {
         console.warn(e);
@@ -49,7 +55,7 @@ export const ShareEditor = ({}: ShareEditorProps) => {
             },
           }}
           className={styles.multilineInput}
-          placeholder={'{ Paste / Write Your Code here... }'}
+          placeholder={'{ Paste / Write Your Code here... }*'}
           id="resInput"
           onChange={(t) => handleChange(t, 'code')}
           value={data.code}
@@ -67,29 +73,27 @@ export const ShareEditor = ({}: ShareEditorProps) => {
       </div>
       <div className={styles.inputs}>
         <MultiLineInput
-          label="Comment"
-          minRows={3}
-          className={styles.multilineInput}
-          placeholder={'Write Your Comment here...'}
-          id="resInput"
-          onChange={(t) => handleChange(t, 'comment')}
-          value={data.comment}
-        />
-        <MultiLineInput
           label="Headline"
           minRows={3}
           className={styles.multilineInput}
           placeholder={'Write Your Headline here...'}
-          id="resInput"
           onChange={(t) => handleChange(t, 'headline')}
           value={data.headline}
+        />
+        <MultiLineInput
+          label="Comment"
+          minRows={3}
+          className={styles.multilineInput}
+          placeholder={'Write Your Comment here...'}
+          onChange={(t) => handleChange(t, 'comment')}
+          value={data.comment}
         />
       </div>
       <div className={styles.buttons}>
         {!shareLink ? (
           <LoadingButton
             variant="contained"
-            loading={loading}
+            disabled={disabled}
             onClick={onSubmit}
             endIcon={<SendIcon />}
           >
@@ -99,11 +103,11 @@ export const ShareEditor = ({}: ShareEditorProps) => {
           <TextField
             disabled={true}
             value={shareLink}
+            style={{ width: '40%' }}
             InputProps={{
               endAdornment: (
                 <>
                   <CIconButton
-                    placement="right"
                     title={'Copy'}
                     onClick={() => handleCopy(shareLink)}
                   >
@@ -111,9 +115,12 @@ export const ShareEditor = ({}: ShareEditorProps) => {
                   </CIconButton>
                   <CIconButton
                     title={'Visit'}
-                    onClick={() => handleCopy(shareLink)}
+                    onClick={() => window.open(shareLink, '_blank')}
                   >
                     <OpenInNewIcon />
+                  </CIconButton>
+                  <CIconButton title={'Again'} onClick={() => setShareLink('')}>
+                    <ReplayIcon />
                   </CIconButton>
                 </>
               ),

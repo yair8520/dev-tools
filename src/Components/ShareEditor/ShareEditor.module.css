@@ -18,3 +18,11 @@
 }
 
 .input {}
+
+@media (max-width: 600px) {
+    .inputs {
+        flex-direction: column;
+
+    }
+
+}

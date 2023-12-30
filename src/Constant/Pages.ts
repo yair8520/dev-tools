@@ -8,7 +8,16 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import SignpostIcon from '@mui/icons-material/Signpost';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
+import LinkIcon from '@mui/icons-material/Link';
 export const pages: IPages[] = [
+  {
+    href: '/share-bin',
+    title: 'Share',
+    headline: 'Share Code Bin',
+    description:
+      'Instantly share code with a single click and generate a URL for others to view.',
+    Icon: LinkIcon,
+  },
   {
     href: '/api',
     title: 'API',
@@ -45,7 +54,8 @@ export const pages: IPages[] = [
     href: '/TS-utils',
     headline: 'TypeScript Utility Types',
     title: 'TS',
-    description: 'Learn about different TypeScript utility types with code snippets.',
+    description:
+      'Learn about different TypeScript utility types with code snippets.',
     Icon: ShuffleIcon,
   },
   {
@@ -73,7 +83,6 @@ export const pages: IPages[] = [
   },
 ];
 
-
 export const moreToCome: IPages = {
   description: '',
   title: '',
@@ -92,16 +101,17 @@ export const welcomeMessage = `Access popular tools quickly on my site,
 Happy coding!`;
 
 export const pagesByRoute = {
-  "/api": "API Management",
-  "/notes": "Notes",
-  "/flex-playGround": "FlexBox Playground",
-  "/custom-hooks": "Custom Hooks",
-  "/TS-utils": "TypeScript Utility Types",
-  "/todo": "Task Management",
-  "/json-formatter": "JSON Formatter",
-  "/diff-checker": "Diff Checker"
+  '/api': 'API Management',
+  '/notes': 'Notes',
+  '/flex-playGround': 'FlexBox Playground',
+  '/custom-hooks': 'Custom Hooks',
+  '/TS-utils': 'TypeScript Utility Types',
+  '/todo': 'Task Management',
+  '/json-formatter': 'JSON Formatter',
+  '/diff-checker': 'Diff Checker',
+  '/code-bin': 'code bin',
 };
 export const buildSiteTitle = (route: string) => {
-  const name = pagesByRoute[route as keyof object]
-  return !name ? `Dev-Tools` : `Dev-Tools | ${name}`
-}
+  const name = pagesByRoute[route as keyof object];
+  return !name ? `Dev-Tools` : `Dev-Tools | ${name}`;
+};

@@ -32,3 +32,20 @@ export const addShareBinData = (shareBinData: TShareBinData) => {
       return 'Error adding share bin data: ';
     });
 };
+export const getSharedBinByID = (id: string): Promise<TShareBinData | null> => {
+  const shareBinCollection = db.collection('share-bin');
+
+  const shareBinDocument = shareBinCollection.doc(id);
+  return shareBinDocument
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        return doc.data() as TShareBinData;
+      } else {
+        return null;
+      }
+    })
+    .catch((error) => {
+      throw new Error('Error getting share bin data: ' + error.message);
+    });
+};

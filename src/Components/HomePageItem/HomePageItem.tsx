@@ -10,7 +10,7 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
   const navigate = useNavigate();
 
   return (
-    <div
+    <section
       onClick={() => !disabled && navigate(item.href)}
       className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
@@ -31,6 +31,6 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
           )}
         </div>
       </Card>
-    </div>
+    </section>
   );
 };

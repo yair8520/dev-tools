@@ -16,7 +16,7 @@ import { googleLogOut, handleGoogleLogin } from '../../Helpers/FireBase/auth';
 import GoogleIcon from '@mui/icons-material/Google';
 export const CDrawer = () => {
   const { isDark, setIsDark } = useContext(AppContext);
-  const isSmallScreen = useMediaQuery('(max-width: 800px)');
+  const isSmallScreen = useMediaQuery('(max-width: 940px)');
   const { user }: any = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState(user);
 
@@ -49,7 +49,7 @@ export const CDrawer = () => {
           <ul>
             {pages.map((Item, i) => (
               <CustomLink key={Item.href} to={Item.href}>
-                <div className="item">
+                <section className="item">
                   {Item.Icon && (
                     <Item.Icon
                       sx={{
@@ -67,7 +67,7 @@ export const CDrawer = () => {
                   >
                     {Item.title}
                   </Text>
-                </div>
+                </section>
               </CustomLink>
             ))}
             <CIconButton
@@ -103,7 +103,7 @@ export const CDrawer = () => {
   );
 };
 export const WithDrawer = ({ children }: any) => {
-  const isSmallScreen = useMediaQuery('(max-width: 800px)');
+  const isSmallScreen = useMediaQuery('(max-width: 940px)');
   const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext);
   if (isSmallScreen) {
     return (

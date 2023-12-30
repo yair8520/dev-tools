@@ -7,9 +7,18 @@ import { ShareEditor } from '../../Components/ShareEditor';
 const ShareBinPage = ({}: ShareBinPageProps) => {
   return (
     <div className={styles.container}>
-      <Text style={{ alignSelf: 'center' }}  padding={'25px'} variant="h6">
+      <Text
+        style={{ alignSelf: 'center' }}
+        padding={'25px'}
+        paddingBottom={'15px'}
+        variant="h6"
+      >
         Code Share Bin
         <div className={styles.separator} />
+      </Text>
+      <Text className={styles.subText}>
+        Instantly share code with a single click and generate a URL for others
+        to view.
       </Text>
       <div className={styles.content}>
         <ShareEditor />

@@ -27,7 +27,6 @@ export const HomePage = () => {
           {pages.map((item) => (
             <HomePageItem key={item.href} item={item} />
           ))}
-          <HomePageItem disabled key={moreToCome.href} item={moreToCome} />
         </div>
       </Card>
       <About />
