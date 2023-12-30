@@ -3,5 +3,8 @@
   "yaml.schemas": {
     "file:///c%3A/Users/yair8/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
     "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/yair8/Desktop/dev/dev-tools/.github/workflows/deploy.yml"
-  }
+  },
+  "exportall.config.folderListener": [
+    "/src/Hooks"
+  ]
 }

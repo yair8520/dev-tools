@@ -1,9 +1,21 @@
 import { lazy } from 'react';
 import { HomePage } from '../Pages/HomePage';
 
+const SharedWithMe = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "SharedWithMe" */ '../Pages/SharedWithMe/SharedWithMe'
+    )
+);
 const Formatter = lazy(
   () =>
     import(/* webpackChunkName: "formatter" */ '../Pages/Formatter/Formatter')
+);
+const ShareBin = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ShareBin" */ '../Pages/ShareBinPage/ShareBinPage'
+    )
 );
 const DiffChecker = lazy(
   () =>
@@ -72,6 +84,18 @@ const routes = [
   {
     path: '/api',
     element: ApiPage,
+  },
+  {
+    path: '/api',
+    element: ApiPage,
+  },
+  {
+    path: '/share-bin',
+    element: ShareBin,
+  },
+  {
+    path: '/shared/:targetId?',
+    element: SharedWithMe,
   },
   {
     path: '*',

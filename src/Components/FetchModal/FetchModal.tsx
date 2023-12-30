@@ -9,8 +9,8 @@ import React, { useState } from 'react';
 import styles from './FetchModal.module.css';
 import { FetchModalProps } from './FetchModalProps';
 import { FileCopy } from '@material-ui/icons';
-import { useFetch } from '../../Hooks/useFetch/';
 import { handlePaste } from '../../Helpers/Clipboard';
+import { useFetch } from '../../Hooks';
 export const FetchModal = ({ onChange, handleModal }: FetchModalProps) => {
   const [value, setValue] = useState<string>(
     'https://jsonplaceholder.typicode.com/todos'

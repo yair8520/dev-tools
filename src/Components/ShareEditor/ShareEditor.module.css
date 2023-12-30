@@ -1,0 +1,20 @@
+.container {
+    gap: 25px
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.multilineInput {
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    margin: 25px;
+    gap: 25px
+}
+
+.input {}

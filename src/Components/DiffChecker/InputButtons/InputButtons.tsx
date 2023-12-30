@@ -2,27 +2,24 @@ import React from 'react';
 import styles from './InputButtons.module.css';
 import { InputButtonsProps } from './InputButtonsProps';
 import { IconButton, InputAdornment } from '@mui/material';
-import {
-  Description,
-  CallReceivedSharp,
-  CallMadeSharp,
-} from '@material-ui/icons';
+import { Description } from '@material-ui/icons';
 import {
   handleCopy,
   handleFile,
   handlePaste,
 } from '../../../Helpers/Clipboard';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { CIconButton } from '../../CIconButton';
 import { InputPropsEditor } from '../../InputPropsEditor';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 export const InputButtons = ({
   onChange,
   value,
   type,
   withFile = true,
   editor = false,
-  multiLineInputRef
+  multiLineInputRef,
 }: InputButtonsProps) => {
   return (
     <InputAdornment className={styles.container} position="end">
@@ -31,14 +28,14 @@ export const InputButtons = ({
         title={'Copy'}
         onClick={() => handleCopy(value)}
       >
-        <CallMadeSharp />
+        <ContentCopyIcon />
       </CIconButton>
       <CIconButton
         placement="left"
         title={'Paste'}
         onClick={() => handlePaste(onChange)}
       >
-        <CallReceivedSharp />
+        <ContentPasteIcon />
       </CIconButton>
       <CIconButton
         placement="right"
