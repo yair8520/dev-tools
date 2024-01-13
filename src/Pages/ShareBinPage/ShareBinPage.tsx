@@ -1,21 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, } from 'react';
 import styles from './ShareBinPage.module.css';
-import {  TSharedLinks } from './ShareBinPageProps';
 import { Text } from '../../Components';
 import { ShareEditor } from '../../Components/ShareEditor';
-import { getSharedEntryPerUser } from '../../Helpers/FireBase/ShareBin';
-import { UserContext } from '../../Context/UserContext';
 import { CIconButton } from '../../Components/CIconButton';
 import { ModalContext } from '../../Components/ModalContext/ModalContext';
 import HistoryIcon from '@mui/icons-material/History';
 import { ShareBinHistory } from '../../Components/ShareBinHistory';
 
 const ShareBinPage = () => {
-  const [sharedLinks, setSharedLinks] = useState<TSharedLinks | null>(null);
-  const { user } = useContext(UserContext);
-  useEffect(() => {
-    getSharedEntryPerUser().then((d) => setSharedLinks(d));
-  }, [user]);
+
   const { handleModal } = useContext(ModalContext);
 
   return (
@@ -38,7 +31,7 @@ const ShareBinPage = () => {
               title={'View Recent'}
               onClick={() =>
                 handleModal(
-                  <ShareBinHistory loggedIn={!!user} items={sharedLinks} />
+                  <ShareBinHistory />
                 )
               }
             >
