@@ -19,14 +19,6 @@ export const pages: IPages[] = [
     Icon: LinkIcon,
   },
   {
-    href: '/api',
-    title: 'API',
-    headline: 'API',
-    description:
-      'Manage and organize your APIs with Firebase integration and the option for a proxy server.',
-    Icon: SignpostIcon,
-  },
-  {
     href: '/notes',
     title: 'Notes',
     headline: 'Notes',
@@ -42,6 +34,31 @@ export const pages: IPages[] = [
       'Experiment with different flexbox layouts and see the results in real-time.',
     Icon: ScreenshotMonitorIcon,
   },
+
+  {
+    href: '/diff-checker',
+    title: 'Diff',
+    headline: 'Diff Checker',
+    description:
+      'Compare two pieces of text/files and highlight the differences.',
+    Icon: DifferenceIcon,
+  },
+  {
+    href: '/json-formatter',
+    title: 'JSON',
+    headline: 'JSON Formatter',
+    description: 'Easily format and prettify JSON data.',
+    Icon: FormatAlignLeftIcon,
+  },
+  {
+    href: '/api',
+    title: 'API',
+    headline: 'API',
+    description:
+      'Manage and organize your APIs with Firebase integration and the option for a proxy server.',
+    Icon: SignpostIcon,
+  },
+
   {
     href: '/custom-hooks',
     title: 'Hooks',
@@ -65,21 +82,6 @@ export const pages: IPages[] = [
     description:
       'Stay organized and manage your to-do list efficiently with Firebase integration.',
     Icon: AddTaskIcon,
-  },
-  {
-    href: '/json-formatter',
-    title: 'JSON',
-    headline: 'JSON Formatter',
-    description: 'Easily format and prettify JSON data.',
-    Icon: FormatAlignLeftIcon,
-  },
-  {
-    href: '/diff-checker',
-    title: 'Diff',
-    headline: 'Diff Checker',
-    description:
-      'Compare two pieces of text/files and highlight the differences.',
-    Icon: DifferenceIcon,
   },
 ];
 
