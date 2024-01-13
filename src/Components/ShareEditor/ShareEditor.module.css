@@ -13,16 +13,23 @@
 
 .inputs {
     display: flex;
-    margin: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     gap: 25px
 }
 
-.input {}
+.shareInput {
+    width: 40%
+}
 
 @media (max-width: 600px) {
     .inputs {
         flex-direction: column;
 
+    }
+
+    .shareInput {
+        width: 100%;
     }
 
 }

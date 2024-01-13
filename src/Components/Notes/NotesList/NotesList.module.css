@@ -1,20 +1,15 @@
 .container {
-  width: 50%;
-  min-width: 250px;
+  overflow: hidden;
+  width: 20%;
+  flex-grow: 1;
+
+  transition: all 0.8s ease 0.3s;
 }
 
-.listContainer {}
 
-@keyframes enter {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.addItemContainer {
+  overflow: hidden;
+  flex-grow: 1;
 }
 
 .list {
@@ -23,8 +18,14 @@
   width: 100%;
   align-self: center;
   animation: enter 0.5s ease-in;
-
   flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.container:hover {
+  flex-grow: 100;
 }
 
 .fab {
@@ -35,6 +36,8 @@
   width: 25px;
 }
 
+.listContainer {}
+
 @media (max-width: 600px) {
   .list {
     flex-direction: column;
@@ -42,5 +45,17 @@
 
   .container {
     width: 100%;
+  }
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

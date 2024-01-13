@@ -17,15 +17,14 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { handleCopy } from '../../Helpers/Clipboard';
 import ReplayIcon from '@mui/icons-material/Replay';
 
-export const ShareEditor = ({}: ShareEditorProps) => {
+export const ShareEditor = () => {
   const [data, setData] = useState<TShareBinData>(IShareBinData);
   const [disabled, setDisabled] = useState<boolean>(true);
   const [shareLink, setShareLink] = useState<string>('');
 
   useEffect(() => {
-    setDisabled(!data.code);
-  }, [data.code]);
-
+    setDisabled(!(data.code && data.headline));
+  }, [data.code, data.headline]);
   const handleChange = (t: string, key: keyof TShareBinData) => {
     setData((prevData) => ({ ...prevData, [key]: t }));
   };
@@ -55,7 +54,7 @@ export const ShareEditor = ({}: ShareEditorProps) => {
             },
           }}
           className={styles.multilineInput}
-          placeholder={'{ Paste / Write Your Code here... }*'}
+          placeholder={'{ Paste / Write Your Code here... } *'}
           id="resInput"
           onChange={(t) => handleChange(t, 'code')}
           value={data.code}
@@ -73,7 +72,7 @@ export const ShareEditor = ({}: ShareEditorProps) => {
       </div>
       <div className={styles.inputs}>
         <MultiLineInput
-          label="Headline"
+          label="Headline *"
           minRows={3}
           className={styles.multilineInput}
           placeholder={'Write Your Headline here...'}
@@ -103,7 +102,7 @@ export const ShareEditor = ({}: ShareEditorProps) => {
           <TextField
             disabled={true}
             value={shareLink}
-            style={{ width: '40%' }}
+            className={styles.shareInput}
             InputProps={{
               endAdornment: (
                 <>

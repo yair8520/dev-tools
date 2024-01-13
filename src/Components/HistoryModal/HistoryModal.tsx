@@ -1,39 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './HistoryModal.module.css';
 import { HistoryModalProps } from './HistoryModalProps';
 import { Text } from '../Text';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
-import { ButtonBase } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { TSearch } from '../../Pages/Formatter/FormatterBody/FormatterBodyProps';
 
 export const HistoryModal = ({ onClick, handleModal }: HistoryModalProps) => {
-  const [searches, setSearches] = useLocalStorage<any>('searches', []);
+  const [searches] = useLocalStorage<TSearch[]>('searches', []);
 
-  const onItemPressed = (e: any) => {
-    onClick(e.target.innerText);
+  const onItemPressed = (search: TSearch) => {
+    onClick(search.text);
     handleModal();
   };
+
   return (
-    <div className={styles.container}>
-      <Text variant="h6"> Recent</Text>
+    <Box className={styles.container}>
+      <Text variant="h6">Recent</Text>
       {searches.length !== 0 ? (
-        searches.map((s: string, i: number) => (
-          <ButtonBase key={i} onClick={onItemPressed}>
-            <Text
-              sx={{
-                display: '-webkit-box',
-                overflow: 'hidden',
-                WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 1,
-              }}
-              variant="body1"
-            >
-              {s.toString()}
-            </Text>
-          </ButtonBase>
+        searches.map((search: TSearch, index: number) => (
+          <div
+            key={index}
+            className={styles.row}
+            onClick={() => onItemPressed(search)}
+          >
+            <Box className={styles.content}>
+              <Text className={styles.text} variant="body1">
+                {search.text}
+              </Text>
+              <Text className={styles.date} variant="caption">
+                {search.date}
+              </Text>
+            </Box>
+          </div>
         ))
       ) : (
-        <Text>There is no recent Data</Text>
+        <Text>There is no recent data</Text>
       )}
-    </div>
+    </Box>
   );
 };

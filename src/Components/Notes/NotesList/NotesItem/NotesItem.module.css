@@ -1,8 +1,8 @@
 .container {
-  margin: 25px;
+
   padding: 30px;
   border-radius: 15px;
- 
+
   height: 250px;
   transition: all 0.7s ease-in-out;
   position: relative;
@@ -21,10 +21,7 @@
   right: 5px;
 }
 
-.container:hover {
-  transform: scale(1.05);
-  transition: 0.7s;
-}
+
 
 .container:hover .removeItem {
   display: block;
@@ -37,9 +34,11 @@
 .text {
   word-break: break-all;
 }
+
 .blurText {
   -webkit-filter: blur(3px);
 }
+
 .textContainer {
   overflow: hidden;
   white-space: break-spaces;

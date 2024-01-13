@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from '@mui/material';
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { MultiLineInput } from '../../../Components';
 import { DropZone } from '../../../Components/DropZone';
 import { FetchModal } from '../../../Components/FetchModal';
@@ -8,9 +8,10 @@ import { ModalContext } from '../../../Components/ModalContext/ModalContext';
 import { jsonExample } from '../../../Constant/DropDown';
 import { prettifyJSON } from '../../../Helpers/Json';
 import styles from './FormatterBody.module.css';
-import { FormatterBodyProps } from './FormatterBodyProps';
+import { FormatterBodyProps, TSearch } from './FormatterBodyProps';
 import { InputButtons } from '../../../Components/DiffChecker/InputButtons';
 import { useLocalStorage } from '../../../Hooks/useLocalStorage';
+import { getTime } from '../../../Helpers/Time';
 
 export const FormatterBody = ({
   setRes,
@@ -28,13 +29,32 @@ export const FormatterBody = ({
     setError('');
     setRes({ json: false, res: '' });
   };
-  const [searches, setSearches] = useLocalStorage<any>('searches', []);
+  const [searches, setSearches] = useLocalStorage<TSearch[]>('searches', []);
+
+  useEffect(() => {
+    const storedSearches = localStorage.getItem('searches');
+    if (storedSearches) {
+      try {
+        const parsedSearches = JSON.parse(storedSearches);
+        const typedSearches: TSearch[] = parsedSearches.map((item: any) =>
+          typeof item === 'string' ? { text: item, date: getTime() } : item
+        );
+        setSearches(typedSearches);
+      } catch (error) {
+        console.error('Error parsing stored searches:', error);
+      }
+    }
+  }, [setSearches]);
+
   const handleSaveSearch = (search: string) => {
-    if (!searches.includes(search)) {
-      const updatedSearches = [...searches, search];
+    if (!searches.find((savedSearch) => savedSearch.text === search)) {
+      const currentTime = getTime();
+      const searchObject: TSearch = { text: search, date: currentTime };
+      const updatedSearches = [searchObject, ...searches];
       setSearches(updatedSearches);
     }
   };
+
   const setExample = () => {
     setRaw(JSON.stringify(jsonExample));
   };

@@ -213,7 +213,7 @@ export const NotesList = ({
                   />
                 </div>
               ))}
-              <div className={styles.container}>
+              <div className={styles.addItemContainer}>
                 <AddItem onAddItem={() => onAddItem(section[0])} />
               </div>
             </div>

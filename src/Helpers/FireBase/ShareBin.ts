@@ -1,15 +1,65 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import { db } from '../../Config/Firebase';
+import { auth, db } from '../../Config/Firebase';
 import { TShareBinData } from '../../Components/ShareEditor/ShareEditorProps';
 import { v4 as uuidv4 } from 'uuid';
+import { getTime } from '../Time';
+import { TSharedLinks } from '../../Pages/ShareBinPage/ShareBinPageProps';
 
-// Function to generate a short ID from a UUID
+const firebaseMiddlware = (callback: (userRef: any) => void) => {
+  if (!auth.currentUser) {
+    console.log('not auth', auth.currentUser);
+    return;
+  }
+  const userRef = db.collection('users').doc(auth.currentUser!.email!);
+  callback(userRef);
+};
+export const saveShareBinEntry = async (
+  id: string,
+  data: Omit<TShareBinData, 'code '>
+): Promise<void> => {
+  return new Promise<void>((resolve, reject) => {
+    firebaseMiddlware((userRef) => {
+      const updateData = {
+        [`share-bin`]: {
+          [`${id}`]: {
+            comment: data.comment,
+            date: data.date,
+            headline: data.headline,
+          },
+        },
+      };
+
+      userRef
+        .set(updateData, { merge: true })
+        .then(() => resolve())
+        .catch((error: any) => reject(error));
+    });
+  });
+};
+export const getSharedEntryPerUser = async (): Promise<TSharedLinks | null> => {
+  return new Promise<TSharedLinks | null>((resolve, reject) => {
+    firebaseMiddlware((userRef) => {
+      userRef
+        .get()
+        .then((doc: any) => {
+          if (doc.exists) {
+            const shareBinData: TSharedLinks =
+              doc.data()?.['share-bin'] || null;
+            resolve(shareBinData);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch(reject);
+    });
+  });
+};
+
 const generateShortId = () => {
   const fullUuid = uuidv4();
-  // Truncate the UUID to get a shorter ID
-  const shortId = fullUuid.substring(0, 8); // You can adjust the length as needed
+  const shortId = fullUuid.substring(0, 8);
   return shortId;
 };
 
@@ -24,6 +74,7 @@ export const addShareBinData = (shareBinData: TShareBinData) => {
       code: shareBinData.code,
       headline: shareBinData.headline,
       comment: shareBinData.comment,
+      date: getTime(),
     })
     .then(() => {
       return shortId;

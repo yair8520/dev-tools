@@ -1,5 +1,48 @@
 .container {
   display: flex;
-  width: 50vw;
+ 
   flex-direction: column;
+  max-height: 50vh;
+  overflow-y: auto;
+  gap: 15px;
+  padding: 10px;
+}
+
+.row {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.row:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row:hover {
+  background-color: #f0f0f023;
+  /* Adjust the background color on hover */
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+}
+
+.text {
+  flex: 80%;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.date {
+  flex: 20%;
+  text-align: right;
 }
