@@ -19,14 +19,6 @@ export const pages: IPages[] = [
     Icon: LinkIcon,
   },
   {
-    href: '/notes',
-    title: 'Notes',
-    headline: 'Notes',
-    description:
-      'Manage and organize your personal notes with Firebase integration.',
-    Icon: NotesIcon,
-  },
-  {
     href: '/flex-playGround',
     headline: 'FlexBox Playground',
     title: 'FlexBox',
@@ -34,7 +26,13 @@ export const pages: IPages[] = [
       'Experiment with different flexbox layouts and see the results in real-time.',
     Icon: ScreenshotMonitorIcon,
   },
-
+  {
+    href: '/json-formatter',
+    title: 'JSON',
+    headline: 'JSON Formatter',
+    description: 'Easily format and prettify JSON data.',
+    Icon: FormatAlignLeftIcon,
+  },
   {
     href: '/diff-checker',
     title: 'Diff',
@@ -44,12 +42,14 @@ export const pages: IPages[] = [
     Icon: DifferenceIcon,
   },
   {
-    href: '/json-formatter',
-    title: 'JSON',
-    headline: 'JSON Formatter',
-    description: 'Easily format and prettify JSON data.',
-    Icon: FormatAlignLeftIcon,
+    href: '/notes',
+    title: 'Notes',
+    headline: 'Notes',
+    description:
+      'Manage and organize your personal notes with Firebase integration.',
+    Icon: NotesIcon,
   },
+
   {
     href: '/api',
     title: 'API',
@@ -98,7 +98,7 @@ export interface IPages {
   description: string;
   Icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>> & { muiName: string };
 }
-export const welcomeMessage = `Access popular tools quickly on my site,
+export const welcomeMessage = `Access popular tools quickly,
  Enhance your workflow. 
 Happy coding!`;
 
