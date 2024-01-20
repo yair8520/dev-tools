@@ -22,8 +22,8 @@ const FlexPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [containerStyle, setContainerStyle] =
     useState<Mutable<IContainerStyle>>(InitialStyle);
-  const [expandedFirst, setExpandedFirst] = useState(true);
-  const [expandedSecond, setExpandedSecond] = useState(true);
+  const [expandedFirst, setExpandedFirst] = useState(false);
+  const [expandedSecond, setExpandedSecond] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -32,7 +32,7 @@ const FlexPage = () => {
           className={styles.rowItem}
           onClick={() => setExpandedFirst(!expandedFirst)}
         >
-          <Text variant="caption" style={{ marginRight: '5px' }}>
+          <Text variant="body2" style={{ marginRight: '5px' }}>
             Container Style
           </Text>
           <ExpandMoreIcon
@@ -50,7 +50,7 @@ const FlexPage = () => {
           className={styles.rowItem}
           onClick={() => setExpandedSecond(!expandedSecond)}
         >
-          <Text variant="caption" style={{ marginRight: '5px' }}>
+          <Text variant="body2" style={{ marginRight: '5px' }}>
             Children Style
           </Text>
           <ExpandMoreIcon
@@ -66,7 +66,6 @@ const FlexPage = () => {
             ),
           }}
         />
-
         <FlexOptions
           items={items}
           setItems={setItems}
