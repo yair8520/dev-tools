@@ -6,11 +6,13 @@
   height: calc(100vh - 70px);
   overflow: hidden;
 }
+
 .options {
   height: 100%;
   width: 40%;
   overflow-y: auto;
 }
+
 .demo {
   display: flex;
   position: relative;
@@ -18,12 +20,23 @@
   height: calc(100vh - 70px);
   transition: all 0.5s ease;
 }
+
+.rowItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  padding-left: 5%;
+  padding-bottom: 15px;
+}
+
 @media (max-width: 700px) {
   .container {
     flex-direction: column;
     height: 100%;
     overflow: none;
   }
+
   .options {
     width: 100%;
     overflow-y: none;

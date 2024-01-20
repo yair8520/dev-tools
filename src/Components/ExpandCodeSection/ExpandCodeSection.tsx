@@ -14,9 +14,11 @@ export const ExpandCodeSection = ({
   return (
     <Collapse in={expanded} timeout="auto">
       <CardContent>
-        <Typography style={{ whiteSpace: 'pre-line' }} variant="body1">
-          {item.desc}
-        </Typography>
+        {item.desc ? (
+          <Typography style={{ whiteSpace: 'pre-line' }} variant="body1">
+            {item.desc}
+          </Typography>
+        ) : null}
         <div>
           <SyntaxHighlighter
             style={isDark ? dracula : github}

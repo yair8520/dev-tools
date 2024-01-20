@@ -25,10 +25,10 @@ export const About = () => {
         ))}
         <CIconButton
           placement="right"
-          title={'Report a Bug'}
+          title={'Report Issue or Improvement'}
           onClick={() => {}}
         >
-          <Link style={{ color: 'red' }} to={mailtoHref}>
+          <Link style={{ color: 'red' }} to={'https://github.com/yair8520/dev-tools/issues/new'}>
             <BugReportIcon className={styles.icons} />
           </Link>
         </CIconButton>

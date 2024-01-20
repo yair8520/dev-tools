@@ -11,6 +11,10 @@ import {
 import { Mutable } from '../../Constant/DropDown';
 import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 import { Axis } from '../../Components/Axis';
+import { ExpandCodeSection } from '../../Components/ExpandCodeSection';
+import { Text } from '../../Components';
+import { createObjectString } from '../../Helpers/Json';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const FlexPage = () => {
   const { isDark } = useContext(AppContext);
@@ -18,9 +22,51 @@ const FlexPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [containerStyle, setContainerStyle] =
     useState<Mutable<IContainerStyle>>(InitialStyle);
+  const [expandedFirst, setExpandedFirst] = useState(true);
+  const [expandedSecond, setExpandedSecond] = useState(true);
+
   return (
     <div className={styles.container}>
       <div className={styles.options}>
+        <div
+          className={styles.rowItem}
+          onClick={() => setExpandedFirst(!expandedFirst)}
+        >
+          <Text variant="caption" style={{ marginRight: '5px' }}>
+            Container Style
+          </Text>
+          <ExpandMoreIcon
+            style={{ transform: expandedFirst ? 'rotate(180deg)' : '' }}
+          />
+        </div>
+        <ExpandCodeSection
+          expanded={expandedFirst}
+          item={{
+            code: createObjectString(containerStyle, 'container'),
+          }}
+        />
+
+        <div
+          className={styles.rowItem}
+          onClick={() => setExpandedSecond(!expandedSecond)}
+        >
+          <Text variant="caption" style={{ marginRight: '5px' }}>
+            Children Style
+          </Text>
+          <ExpandMoreIcon
+            style={{ transform: expandedSecond ? 'rotate(180deg)' : '' }}
+          />
+        </div>
+        <ExpandCodeSection
+          expanded={expandedSecond}
+          item={{
+            code: createObjectString(
+              items[selectedIndex],
+              `container > :nth-child(${selectedIndex + 1})`
+            ),
+          }}
+        />
+
         <FlexOptions
           items={items}
           setItems={setItems}

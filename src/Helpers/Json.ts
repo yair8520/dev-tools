@@ -97,7 +97,10 @@ export const getFirstId = (array: IApiTabs) => {
 export const objectToPairs = (obj: IParams): AxiosHeaders => {
   return Object.fromEntries(
     Object.entries(obj)
-      .filter(([key, value]) => value.value !== "" && (value.checked === undefined || value.checked)) // Exclude pairs with empty values or checked set to false
+      .filter(
+        ([key, value]) =>
+          value.value !== '' && (value.checked === undefined || value.checked)
+      ) // Exclude pairs with empty values or checked set to false
       .map(([key, value]) => [value.key, value.value])
   ) as AxiosHeaders;
 };
@@ -110,7 +113,10 @@ export function countCheckedItems(params: IParams): number {
   }
   return count;
 }
-export function findTabByCollection(apiTabs: IApiTabs, collection: string): string | undefined {
+export function findTabByCollection(
+  apiTabs: IApiTabs,
+  collection: string
+): string | undefined {
   for (const key in apiTabs) {
     if (apiTabs.hasOwnProperty(key) && apiTabs[key].collection === collection) {
       return apiTabs[key].id;
@@ -121,6 +127,26 @@ export function findTabByCollection(apiTabs: IApiTabs, collection: string): stri
 export const changesAccrued = (prev: ITab, next: ITab) => {
   const newPrev = JSON.parse(JSON.stringify(prev));
   const newNext = JSON.parse(JSON.stringify(next));
-  return JSON.stringify(removeUnUsedVars(newPrev)) !==
-    JSON.stringify(removeUnUsedVars(newNext));
+  return (
+    JSON.stringify(removeUnUsedVars(newPrev)) !==
+    JSON.stringify(removeUnUsedVars(newNext))
+  );
+};
+export const createObjectString = (obj:any, objectName:any) => {
+  let result = `.${objectName} {\n`;
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result += `  ${key}: "${obj[key]}",\n`;
+    }
+  }
+
+  // Remove the trailing comma and newline if there are properties
+  if (result.length > 2) {
+    result = result.slice(0, -2);
+  }
+
+  result += '\n};';
+
+  return result;
 };
