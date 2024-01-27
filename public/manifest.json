@@ -12,7 +12,7 @@
       "name": "Open Notes",
       "short_name": "Notes",
       "description": "Quickly takes notes",
-      "url": "./#/notes",
+      "url": "./notes",
       "icons": [
         {
           "src": "icons/icon-96.png",
@@ -24,7 +24,7 @@
       "name": "Open Tasks",
       "short_name": "Tasks",
       "description": "Add tasks",
-      "url": "./#/todo",
+      "url": "./todo",
       "icons": [
         {
           "src": "icons/icon-96.png",

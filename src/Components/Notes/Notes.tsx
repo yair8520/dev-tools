@@ -79,14 +79,14 @@ const Notes = () => {
           options={sectionArray}
           filterByTimeAndSection={filterByTimeAndSection}
         />
-        <PullToRefreshWrapper onRefresh={getAll}>
+        {/* <PullToRefreshWrapper onRefresh={getAll}> */}
           <NotesList
             user={user?.email}
             list={filteredList}
             setList={setFilteredList}
             setOriginalList={setList}
           />
-        </PullToRefreshWrapper>
+        {/* </PullToRefreshWrapper> */}
       </div>
     </div>
   );
