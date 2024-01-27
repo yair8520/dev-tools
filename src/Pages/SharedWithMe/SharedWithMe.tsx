@@ -22,7 +22,7 @@ const SharedWithMe = () => {
   const [saved, setSaved] = useState<boolean>();
   const { isDark } = useContext(AppContext);
   const { user } = useContext(UserContext);
-
+ 
   useEffect(() => {
     if (targetId) {
       getSharedBinByID(targetId)
