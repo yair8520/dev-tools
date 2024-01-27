@@ -16,7 +16,7 @@ export const ShareBinHistory = () => {
   }, [user]);
   const onItemPressed = (id: string) => {
     window.open(
-      `${window.location.origin}${window.location.pathname}#/shared/${id}`,
+      `${window.location.origin}/shared/${id}`,
       '_blank'
     );
   };

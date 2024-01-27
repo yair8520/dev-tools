@@ -33,7 +33,7 @@ export const ShareEditor = () => {
     addShareBinData(data)
       .then((l) => {
         setShareLink(
-          `${window.location.origin}${window.location.pathname}#/shared/${l}`
+          `${window.location.origin}${window.location.pathname}/shared/${l}`
         );
       })
       .catch((e) => {

@@ -1,3 +1,3 @@
 # Dev Tools
 
-[Live Demo](https://yair8520.github.io/dev-tools)
+[Live Demo](https://dev-tools-front.vercel.app/)
