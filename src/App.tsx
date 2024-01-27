@@ -17,20 +17,20 @@ function App() {
   const { isDark } = useContext(AppContext);
   
   return (
-    <UserProvider>
-      <TodoProvider>
-        <NotesProvider>
-          <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-            <ModalProvider>
-              <CssBaseline />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
+    // <UserProvider>
+    //   <TodoProvider>
+    //     <NotesProvider>
+    //       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+    //         <ModalProvider>
+    //           <CssBaseline />
+    //           <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <AppRouter />
-              </LocalizationProvider>
-            </ModalProvider>
-          </ThemeProvider>
-        </NotesProvider>
-      </TodoProvider>
-    </UserProvider>
+    //           </LocalizationProvider>
+    //         </ModalProvider>
+    //       </ThemeProvider>
+    //     </NotesProvider>
+    //   </TodoProvider>
+    // </UserProvider>
   );
 }
 

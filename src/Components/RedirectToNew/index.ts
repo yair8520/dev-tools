@@ -1,0 +1,1 @@
+export { RedirectToNew } from './RedirectToNew';
