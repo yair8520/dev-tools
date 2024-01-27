@@ -7,6 +7,7 @@ import { TShareBinData } from '../ShareEditor/ShareEditorProps';
 import { UserContext } from '../../Context/UserContext';
 import { getSharedEntryPerUser } from '../../Helpers/FireBase/ShareBin';
 import { TSharedLinks } from '../../Pages/ShareBinPage/ShareBinPageProps';
+import { useNavigate } from 'react-router-dom';
 
 export const ShareBinHistory = () => {
   const [sharedLinks, setSharedLinks] = useState<TSharedLinks | null>(null);
@@ -14,11 +15,10 @@ export const ShareBinHistory = () => {
   useEffect(() => {
     getSharedEntryPerUser().then((d) => setSharedLinks(d));
   }, [user]);
+  const navigate = useNavigate();
+
   const onItemPressed = (id: string) => {
-    window.open(
-      `${window.location.origin}/shared/${id}`,
-      '_blank'
-    );
+    navigate(`/shared/${id}`)
   };
   const loggedIn = !!user;
   let renderedItems;

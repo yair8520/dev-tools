@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dev-tools-front.vercel.app/</loc>
+    <loc>https://frontend-dev-tools.vercel.app/</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/json-formatter</loc>
+    <loc>https://frontend-dev-tools.vercel.app/json-formatter</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/diff-checker</loc>
+    <loc>https://frontend-dev-tools.vercel.app/diff-checker</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/flex-playGround</loc>
+    <loc>https://frontend-dev-tools.vercel.app/flex-playGround</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/custom-hooks</loc>
+    <loc>https://frontend-dev-tools.vercel.app/custom-hooks</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/TS-utils</loc>
+    <loc>https://frontend-dev-tools.vercel.app/TS-utils</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/notes</loc>
+    <loc>https://frontend-dev-tools.vercel.app/notes</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/todo</loc>
+    <loc>https://frontend-dev-tools.vercel.app/todo</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/api</loc>
+    <loc>https://frontend-dev-tools.vercel.app/api</loc>
   </url>
   <url>
-    <loc>https://dev-tools-front.vercel.app/share-bin</loc>
+    <loc>https://frontend-dev-tools.vercel.app/share-bin</loc>
   </url>
 </urlset>
