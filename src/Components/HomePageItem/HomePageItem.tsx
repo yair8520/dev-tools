@@ -10,20 +10,20 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
   const navigate = useNavigate();
 
   return (
-    <section
+    <div
       onClick={() => !disabled && navigate(item.href)}
       className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
-      <Card elevation={10} className={styles.container}>
+      <Card  elevation={10} className={styles.container}>
         <div className={styles.content}>
-          <div>
+          <>
             <Text variant="h5" component="h2">
               {item.headline}
             </Text>
-            <Text sx={{ mt: 1 }} color="text.secondary">
+            <Text sx={{ mt: 1 }} className={styles.desc} color="text.secondary">
               {item.description}
             </Text>
-          </div>
+          </>
           {!disabled && (
             <div className={styles.launch}>
               <LaunchIcon />
@@ -31,6 +31,6 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
           )}
         </div>
       </Card>
-    </section>
+    </div>
   );
 };

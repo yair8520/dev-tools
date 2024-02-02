@@ -3,69 +3,40 @@
 }
 
 .border {
-  animation: slideIn 0.8s forwards;
   position: relative;
   width: 100%;
   height: 100%;
   cursor: pointer;
-
   margin-top: 5%;
   margin-bottom: 5%;
-
-  &:not(.disabled)::before,
-  &:not(.disabled)::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-    /* Make the elements round */
-    transition: 0.3s ease-in-out;
-  }
-
-  &:not(.disabled)::before {
-    top: -5px;
-    left: -5px;
-    border-top: 3px solid var(--borderColor);
-    border-left: 3px solid var(--borderColor);
-  }
-
-  &:not(.disabled)::after {
-    right: -5px;
-    bottom: -5px;
-    border-bottom: 3px solid var(--borderColor);
-    border-right: 3px solid var(--borderColor);
-  }
-
-  &:not(.disabled):hover::before,
-  &:not(.disabled):hover::after {
-    width: calc(100% + 9px);
-    height: calc(100% + 9px);
-  }
-}
-
-
-.border:not(.disabled):hover {
-  transform: scale(1.05);
-  transition: 0.7s;
-  cursor: pointer;
-
-}
-
-.launch {
-  position: absolute;
-  bottom: 15px;
-  right: '50%'
 }
 
 .container {
   width: 100%;
   border-radius: 15px !important;
   height: 100%;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
 }
 
 .container:hover {
-  cursor: pointer;
+  box-shadow: 0 0 10px var(--borderColor);
+}
+
+.container .desc {
+  opacity: 1;
+  height: 100%;
+  transition: opacity 0.7s ease-in-out, height 0.7s ease-in-out;
+}
+
+.container:hover .desc {
+  opacity: 0;
+  height: 0;
+}
+
+.container:hover .content {
+  justify-content: center;
 }
 
 .disabled {
@@ -78,17 +49,31 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
   transition: all 0.7s ease-in-out;
-  justify-content: space-between;
+  min-height: 160px;
+  text-align: center;
+
 }
 
+.container:hover .launch {
+  right: 45%;
 
+}
 
-@media (width< 600px) {
+.launch {
+  position: absolute;
+  bottom: 5px;
+  right: 10%;
+  transition: right 0.4s ease-in-out,
 
+}
 
+@media (max-width: 600px) {
   .launch {
     position: unset;
+    padding-top: 15px;
   }
 
   .container:hover {
@@ -97,18 +82,6 @@
   }
 
   .content {
-    flex-direction: row;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
+    flex-direction: column;
   }
 }
