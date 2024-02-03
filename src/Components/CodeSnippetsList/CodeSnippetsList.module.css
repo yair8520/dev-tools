@@ -1,0 +1,19 @@
+.container {}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 16px;
+    transition: all 0.3s ease-in-out;
+    align-self: center;
+    height: 97.5%;
+}
+
+.list {
+    overflow-y: auto;
+    max-height: 97.5%;
+
+}

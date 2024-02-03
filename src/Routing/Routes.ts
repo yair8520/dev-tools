@@ -11,6 +11,10 @@ const Formatter = lazy(
   () =>
     import(/* webpackChunkName: "formatter" */ '../Pages/Formatter/Formatter')
 );
+const CodeSnippestPage = lazy(
+  () =>
+    import(/* webpackChunkName: "CodeSnippestPage" */ '../Components/CodeSnippestPage/CodeSnippestPage')
+);
 const ShareBin = lazy(
   () =>
     import(
@@ -96,6 +100,10 @@ const routes = [
   {
     path: '/shared/:targetId?',
     element: SharedWithMe,
+  },
+  {
+    path: 'code-snippets',
+    element: CodeSnippestPage,
   },
   {
     path: '*',

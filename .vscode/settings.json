@@ -6,5 +6,8 @@
   },
   "exportall.config.folderListener": [
     "/src/Hooks"
+  ],
+  "cSpell.words": [
+    "prismjs"
   ]
 }
