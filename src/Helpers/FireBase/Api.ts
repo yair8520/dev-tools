@@ -1,7 +1,7 @@
 import 'firebase/compat/auth';
 import firebase from 'firebase/compat/app';
 import { auth, db } from '../../Config/Firebase';
-import { ITab, apiTabs } from '../../Constant/Mock';
+import { ITab } from '../../Constant/Mock';
 import { toast } from 'react-toastify';
 import { apiMessages } from '../../Constant/FirbaseMessages';
 

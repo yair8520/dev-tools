@@ -10,9 +10,11 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { CIconButton } from '../CIconButton';
 import { handleCopy } from '../../Helpers/Clipboard';
 import { Snippets } from '../../Context/SnippestContext/SnippestContextProps';
+import SaveIcon from '@mui/icons-material/Save';
+import { Text } from '../Text';
 
 export const SnippestEditor = () => {
-  const { items, selectedId, handleCodeChange } = useContext(Snippets);
+  const { items, selectedId, handleCodeChange,handleSave } = useContext(Snippets);
 
   const item = items[selectedId];
   return (
@@ -22,6 +24,11 @@ export const SnippestEditor = () => {
           <div className={styles.buttonsContainer}>
             <CIconButton onClick={() => handleCopy(item.code)}>
               <ContentCopyIcon />
+              <Text> Copy</Text>
+            </CIconButton>
+            <CIconButton onClick={() => handleSave(item.id)}>
+              <SaveIcon />
+              <Text> Save</Text>
             </CIconButton>
           </div>
           <AceEditor

@@ -15,7 +15,7 @@ export const EditTitleModal = ({
   return (
     <div className={styles.container}>
       <Text className={styles.title} variant="h5">
-        Add Directory
+        Change Title
       </Text>
       <MultiLineInput
         className={styles.input}

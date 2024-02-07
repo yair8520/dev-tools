@@ -7,18 +7,26 @@ import {
 import { ConfirmModal } from '../../Components/ConfirmModal';
 import { EditTitleModal } from '../../Components/EditTitleModal';
 import { ModalContext } from '../../Components/ModalContext/ModalContext';
+import {
+  addNewSnippet,
+  deleteSnippet,
+  editSnippet,
+} from '../../Helpers/FireBase/Snippest';
+import { v4 as uuidv4 } from 'uuid';
 
 export const SnippestContext = ({ children }: any) => {
   const [items, setItems] = useState(codeSnippiest);
   const [selectedId, setSelectedId] = useState('1');
   const { handleModal } = useContext(ModalContext);
   const addCodeItem = () => {
+    const id = uuidv4();
+    const item = getNewSnippets(id);
     setItems((p: any) => {
-      return { ...p, ...getNewSnippets() };
+      return { ...p, [id]: item };
     });
+    addNewSnippet(id, item);
   };
 
-  
   const onEditTitle = (id: string, title: string) => {
     handleModal(
       <EditTitleModal
@@ -36,17 +44,21 @@ export const SnippestContext = ({ children }: any) => {
     );
   };
   const editTitle = (id: string, newTitle: string) => {
-    setItems((prevItems: any) => {
-      return {
-        ...prevItems,
-        [id]: {
-          ...prevItems[id],
-          title: newTitle,
-        },
-      };
-    });
+    editSnippet(id, { ...items[id], title: newTitle });
+
+    setItems((prevItems: any) => ({
+      ...prevItems,
+      [id]: {
+        ...prevItems[id],
+        title: newTitle,
+      },
+    }));
+  };
+  const handleSave = (id: string) => {
+    editSnippet(id, { ...items[id] });
   };
   const removeItem = (id: string) => {
+    deleteSnippet(id);
     setItems((prevItems: any) => {
       const { [id]: removedItem, ...restItems } = prevItems;
       return restItems;
@@ -66,6 +78,7 @@ export const SnippestContext = ({ children }: any) => {
       value={{
         items,
         setItems,
+        handleSave,
         selectedId,
         setSelectedId,
         addCodeItem,
