@@ -11,21 +11,23 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TodoProvider } from './Context/TodoContext/TodoContext';
 import { NotesProvider } from './Context/NotesContext/NotesContext';
-
+import { SnippestContext } from './Context/SnippestContext';
 
 function App() {
   const { isDark } = useContext(AppContext);
-  
+
   return (
     <UserProvider>
       <TodoProvider>
         <NotesProvider>
           <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <ModalProvider>
-              <CssBaseline />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <AppRouter />
-              </LocalizationProvider>
+              <SnippestContext>
+                <CssBaseline />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <AppRouter />
+                </LocalizationProvider>
+              </SnippestContext>
             </ModalProvider>
           </ThemeProvider>
         </NotesProvider>

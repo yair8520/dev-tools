@@ -21,7 +21,7 @@ export const Header = () => {
   const isPWA = useMediaQuery('(display-mode: standalone)');
   const isOnline = useNetworkStatus();
   return (
-    <AppBar style={{ height: '60px' }} position="static">
+    <AppBar style={{ height: '60px'  }} className={styles.header} position="static" >
       <Toolbar>
         <div className={styles.siteTitle}>
           <Text
