@@ -1,2 +1,22 @@
 .container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+   
+}
+
+.buttonContainer {
+    position: absolute;
+    right: 0;
+    top:1px;
+    clip-path: circle(65% at right 0);
+    transition: clip-path 1s; 
+    background-color: var(--borderColor);
+    border-radius: 15px 
+}
+.buttonContainer.active {
+    clip-path: circle(100%);
+}
+.container:hover .buttonContainer {
+    clip-path: circle(100%);
 }

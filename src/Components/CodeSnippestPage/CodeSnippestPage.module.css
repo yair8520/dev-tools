@@ -13,3 +13,21 @@
     display: flex;
     flex-direction: column;
 }
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px
+    }
+
+    .left {
+        width: 90%;
+        max-height: 450px;
+    }
+
+    .right {
+        width: 90%;
+
+    }
+}

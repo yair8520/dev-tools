@@ -6,7 +6,12 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { CIconButton } from '../CIconButton';
 import { CodeSnippetListItem } from '../CodeSnippetListItem';
 import { Snippets } from '../../Context/SnippestContext/SnippestContextProps';
-export const CodeSnippetsList = ({}: CodeSnippetsListProps) => {
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+
+export const CodeSnippetsList = ({
+  setAutoSave,
+  autoSave,
+}: CodeSnippetsListProps) => {
   const {
     items,
     addCodeItem,
@@ -15,17 +20,24 @@ export const CodeSnippetsList = ({}: CodeSnippetsListProps) => {
     onEditTitle,
     onRemoveItem,
   } = useContext(Snippets);
-
   return (
     <Paper className={styles.wrapper}>
       <Typography variant="h6">
         Code Snippets
         <CIconButton
-          style={{ display: 'flex', marginLeft: 'auto' }}
-          placement="right"
+          style={{ display: 'flex' }}
+          placement="top-end"
           onClick={addCodeItem}
+          title={'Add Item'}
         >
           <AddCircleOutlineIcon />
+        </CIconButton>
+        <CIconButton
+          placement="top-start"
+          title={autoSave ? 'Auto Save' : 'Auto Save is OFF'}
+          onClick={() => setAutoSave(!autoSave)}
+        >
+          <AutorenewIcon color={autoSave ? 'info' : 'error'} />
         </CIconButton>
       </Typography>
       {Object.keys(items).length === 0 ? (

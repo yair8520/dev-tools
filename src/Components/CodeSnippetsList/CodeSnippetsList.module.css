@@ -15,5 +15,8 @@
 .list {
     overflow-y: auto;
     max-height: 97.5%;
-
+    display: flex;
+    flex-direction: column;
+    gap: 15px
 }
+

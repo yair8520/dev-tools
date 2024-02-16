@@ -21,6 +21,7 @@ interface SnippetsInterface {
 export const Snippets = React.createContext<SnippetsInterface>({
   items: codeSnippiest,
   selectedId: '1',
+
   setItems: () => {},
   handleSave: () => {},
   setSelectedId: () => {},

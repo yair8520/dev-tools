@@ -1,11 +1,11 @@
-import { ToastContainerProps, Zoom } from "react-toastify";
+import { ToastContainerProps, Slide } from "react-toastify";
 
 
 export const toastConfig: ToastContainerProps = {
-    autoClose: 2000,
-    pauseOnHover: true,
-    position: 'bottom-center',
+    autoClose: 1000,
+    position: 'bottom-right',
     newestOnTop: true,
-    transition: Zoom
+    transition: Slide
+    
 
 };

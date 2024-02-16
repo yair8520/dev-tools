@@ -2,16 +2,14 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { auth, db } from '../../Config/Firebase';
-import { v4 as uuidv4 } from 'uuid';
-import { getTime } from '../Time';
 import {
   TCodeSnippiest,
   TSnippiest,
 } from '../../Components/CodeSnippestPage/CodeSnippestPageProps';
+import { toast } from 'react-toastify';
 
 const firebaseMiddleware = (callback: (userRef: any) => void) => {
   if (!auth.currentUser) {
-    console.log('not auth', auth.currentUser);
     return;
   }
   const userRef = db.collection('users').doc(auth.currentUser!.email!);
@@ -19,12 +17,16 @@ const firebaseMiddleware = (callback: (userRef: any) => void) => {
 };
 
 export const addNewSnippet = (id: string, item: TCodeSnippiest) => {
-  firebaseMiddleware((userRef) => {
-    const updateData = {
-      [`snippets.${id}`]: item,
-    };
-    return userRef.update(updateData);
-  });
+  if (!auth.currentUser) {
+    toast.error('Please logged in order to save your work.');
+    return;
+  }
+  const userRef = db.collection('users').doc(auth.currentUser!.email!);
+
+  const updateData = {
+    [`snippets.${id}`]: item,
+  };
+  return userRef.update(updateData);
 };
 export const editSnippet = (id: string, updatedItem: TCodeSnippiest) => {
   firebaseMiddleware((userRef) => {

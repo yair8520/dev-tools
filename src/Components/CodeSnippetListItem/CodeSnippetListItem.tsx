@@ -14,8 +14,13 @@ export const CodeSnippetListItem = ({
   selected,
 }: CodeSnippetListItemProps) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <ListItem selected={selected} button onClick={() => onPress(snippet.id)}>
+    <div className={styles.container}>
+      <ListItem
+        style={{ borderRadius: '15px',border:'1px #04a9f3 solid' }}
+        selected={selected}
+        button
+        onClick={() => onPress(snippet.id)}
+      >
         <Text
           style={{ display: 'flex', flexGrow: 1, lineBreak: 'anywhere' }}
           numb
@@ -23,14 +28,16 @@ export const CodeSnippetListItem = ({
           {snippet.title}
         </Text>
       </ListItem>
-      <>
+      <div
+        className={`${styles.buttonContainer} ${selected ? styles.active : ''}`}
+      >
         <CIconButton onClick={() => editTitle(snippet.id)}>
           <EditIcon />
         </CIconButton>
         <CIconButton onClick={() => removeItem(snippet.id)}>
           <DeleteOutlineIcon />
         </CIconButton>
-      </>
+      </div>
       <Divider />
     </div>
   );

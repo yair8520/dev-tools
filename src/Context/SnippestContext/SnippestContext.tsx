@@ -87,6 +87,7 @@ export const SnippestContext = ({ children }: any) => {
         editTitle,
         removeItem,
         handleCodeChange,
+       
       }}
     >
       {children}
