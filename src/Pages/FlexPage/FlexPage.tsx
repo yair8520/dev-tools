@@ -9,7 +9,6 @@ import {
   flexItemsInitial,
 } from './FlexPageProps';
 import { Mutable } from '../../Constant/DropDown';
-import { AppContext } from '../../Context/ThemeContext/ThemeContext';
 import { Axis } from '../../Components/Axis';
 import { ExpandCodeSection } from '../../Components/ExpandCodeSection';
 import { Text } from '../../Components';
@@ -17,7 +16,6 @@ import { createObjectString } from '../../Helpers/Json';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const FlexPage = () => {
-  const { isDark } = useContext(AppContext);
   const [items, setItems] = useState<Mutable<ItemsStyle>[]>(flexItemsInitial);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [containerStyle, setContainerStyle] =
@@ -77,7 +75,7 @@ const FlexPage = () => {
       <div
         style={{
           ...containerStyle,
-          backgroundColor: !isDark ? '#f3f4f6' : '#333',
+          backgroundColor: '#333',
         }}
         className={styles.demo}
       >

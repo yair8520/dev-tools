@@ -46,17 +46,17 @@ export const JsonTree = ({ data, isSmallScreen }: JsonTreeProps) => {
       <ReactJson
         style={{
           width: '100%',
-          backgroundColor: options[0].state || isDark ? 'black' : 'white',
+          backgroundColor: 'black',
         }}
         src={data}
         indentWidth={space}
-        onEdit={() => {}}
+        onEdit={() => { }}
         iconStyle={'circle'}
-        theme={options[0].state || isDark ? 'chalk' : undefined}
-        displayDataTypes={options[1].state}
-        collapsed={options[2].state ? 2 : undefined}
-        sortKeys={options[3].state}
-        displayObjectSize={options[4].state}
+        theme={"chalk"}
+        displayDataTypes={options[0].state}
+        collapsed={options[1].state ? 2 : undefined}
+        sortKeys={options[2].state}
+        displayObjectSize={options[3].state}
       />
     </div>
   );

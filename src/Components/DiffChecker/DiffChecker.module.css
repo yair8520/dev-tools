@@ -4,7 +4,7 @@
   flex-direction: column;
   padding-bottom: 20px;
   animation: enter 0.3s ease-in;
-
+  min-height: calc(100vh - 70px);
 }
 
 @keyframes enter {
@@ -24,6 +24,7 @@
   display: flex;
   align-self: center;
 }
+
 .inputs {
   width: 100%;
   display: flex;
@@ -32,24 +33,29 @@
   flex-direction: row;
   padding-bottom: 20px;
 }
+
 .separator {
   border: 2px solid #f0f0f0;
   width: 100%;
 }
+
 .input {
   align-self: center;
   display: flex;
   width: 100%;
-  padding-bottom: 15px;
+
 }
+
 .inputContainer {
   padding-top: 15px;
   width: 49%;
 }
+
 @media (max-width: 600px) {
   .inputs {
     flex-direction: column;
   }
+
   .inputContainer {
     width: 100%;
   }

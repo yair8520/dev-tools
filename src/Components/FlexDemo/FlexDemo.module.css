@@ -7,6 +7,7 @@
   cursor: pointer;
   align-items: center;
   animation: enter 0.3s ease-in-out;
+  
 }
 .container.selected {
   background-color: #3776ce;

@@ -15,6 +15,7 @@ export const MultiLineInput = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={styles.text}
+      style={{ backgroundColor: '#2f2f2f' }}
       {...rest}
     />
   );

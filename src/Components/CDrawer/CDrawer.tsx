@@ -70,7 +70,7 @@ export const CDrawer = () => {
                 </section>
               </CustomLink>
             ))}
-            <CIconButton
+            {/* <CIconButton
               title={!isDark ? 'Dark' : 'Light'}
               onClick={() => {
                 setIsDark(!isDark);
@@ -81,7 +81,7 @@ export const CDrawer = () => {
               ) : (
                 <LightModeIcon />
               )}
-            </CIconButton>
+            </CIconButton> */}
             {!loginInfo?.photoURL ? (
               <CIconButton onClick={() => onLogin()}>
                 <GoogleIcon sx={{ width: 25, height: 25 }} />
