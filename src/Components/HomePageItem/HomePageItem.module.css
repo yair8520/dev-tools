@@ -9,7 +9,17 @@
   cursor: pointer;
   margin-top: 5%;
   margin-bottom: 5%;
-  
+
+}
+
+.newTag {
+  background-color: red;
+  position: absolute;
+  -webkit-transform: rotate(35deg);
+  right: 10px;
+  top: 20px;
+  width: 50px;
+  text-align: center;
 }
 
 .container {
@@ -84,5 +94,10 @@
 
   .content {
     flex-direction: column;
+  }
+
+  .newTag {
+    top: 14px;
+    width: 50px;
   }
 }

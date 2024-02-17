@@ -14,6 +14,9 @@ export const HomePageItem = ({ item, disabled = false }: HomePageItemProps) => {
       onClick={() => !disabled && navigate(item.href)}
       className={`${styles.border} ${disabled ? styles.disabled : ''}`}
     >
+      {item.new && (
+        <div className={styles.newTag}>New</div>
+      )}
       <Card  elevation={10} className={styles.container}>
         <div className={styles.content}>
           <>

@@ -2,14 +2,23 @@ import NotesIcon from '@mui/icons-material/Notes';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import DifferenceIcon from '@mui/icons-material/Difference';
 import PhishingIcon from '@mui/icons-material/Phishing';
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import ScreenshotMonitorIcon from '@mui/icons-material/ScreenshotMonitor';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import SignpostIcon from '@mui/icons-material/Signpost';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
+import CodeIcon from '@mui/icons-material/Code';
+import DataObjectIcon from '@mui/icons-material/DataObject';
 export const pages: IPages[] = [
+  {
+    href: '/code-snippets',
+    title: 'Snippets',
+    headline: 'Save Code Snippets',
+    description: 'Organize and store your valuable code snippets.',
+    Icon: CodeIcon,
+    new: true,
+  },
   {
     href: '/share-bin',
     title: 'Share',
@@ -17,6 +26,14 @@ export const pages: IPages[] = [
     description:
       'Instantly share code with a single click and generate a URL for others to view.',
     Icon: LinkIcon,
+    new: true,
+  },
+  {
+    href: '/json-formatter',
+    title: 'JSON',
+    headline: 'JSON Formatter',
+    description: 'Easily format and prettify JSON data.',
+    Icon: DataObjectIcon,
   },
   {
     href: '/flex-playGround',
@@ -25,13 +42,6 @@ export const pages: IPages[] = [
     description:
       'Experiment with different flexbox layouts and see the results in real-time.',
     Icon: ScreenshotMonitorIcon,
-  },
-  {
-    href: '/json-formatter',
-    title: 'JSON',
-    headline: 'JSON Formatter',
-    description: 'Easily format and prettify JSON data.',
-    Icon: FormatAlignLeftIcon,
   },
   {
     href: '/diff-checker',
@@ -49,7 +59,6 @@ export const pages: IPages[] = [
       'Manage and organize your personal notes with Firebase integration.',
     Icon: NotesIcon,
   },
-
   {
     href: '/api',
     title: 'API',
@@ -97,6 +106,7 @@ export interface IPages {
   headline: string;
   description: string;
   Icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>> & { muiName: string };
+  new?: boolean;
 }
 export const welcomeMessage = `Access popular tools quickly,
  Enhance your workflow. 
