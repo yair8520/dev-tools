@@ -1,15 +1,17 @@
 {
-  "name": "Dev Tools",
+  "name": "Frontend dev Tools",
   "short_name": "DevTools",
+  "description": "Access popular tools quickly,Enhance your workflow. Happy coding!",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": ".",
   "start_url": ".",
   "orientation": "portrait-primary",
+  "lang": "en",
   "shortcuts": [
     {
-      "name": "Open Notes",
+      "name": "Notes",
       "short_name": "Notes",
       "description": "Quickly takes notes",
       "url": "./notes",
@@ -21,10 +23,22 @@
       ]
     },
     {
-      "name": "Open Tasks",
-      "short_name": "Tasks",
-      "description": "Add tasks",
-      "url": "./todo",
+      "name": "Json-Formatter",
+      "short_name": "Json",
+      "description": "Json-Formatter",
+      "url": "./Json-Formatter",
+      "icons": [
+        {
+          "src": "icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Diff-checker",
+      "short_name": "Diff",
+      "description": "Diff-checker",
+      "url": "./Diff-checker",
       "icons": [
         {
           "src": "icons/icon-96.png",
@@ -72,6 +86,11 @@
     {
       "src": "icons/icon-256.png",
       "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
