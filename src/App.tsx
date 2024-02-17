@@ -14,13 +14,12 @@ import { NotesProvider } from './Context/NotesContext/NotesContext';
 import { SnippestContext } from './Context/SnippestContext';
 
 function App() {
-  const { isDark } = useContext(AppContext);
 
   return (
     <UserProvider>
       <TodoProvider>
         <NotesProvider>
-          <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+          <ThemeProvider theme={ darkTheme }>
             <ModalProvider>
               <SnippestContext>
                 <CssBaseline />

@@ -1,6 +1,7 @@
 .container {
-    height: 150vh;
+    /* height: 150vh; */
     animation: enter 0.3s ease-in;
+height: calc(100vh - 60px);
 
 }
 

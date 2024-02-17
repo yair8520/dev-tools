@@ -4,7 +4,7 @@
     flex-direction: column;
     padding-bottom: 20px;
     animation: enter 0.3s ease-in;
-    justify-content: center;
+    height: calc(100vh - 70px);
 }
 
 .separator {

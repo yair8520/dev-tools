@@ -2,9 +2,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  height: 100%;
+  min-height: 100vh;
   padding: 0 !important;
-  justify-content: center;
-  background: linear-gradient(to top right, #000000,#000000,#000000, #800080, #800080) !important;
+  background: linear-gradient(to top right, #000000,#000000,#000000, #000000,#000000, #800080) !important;
 
 }

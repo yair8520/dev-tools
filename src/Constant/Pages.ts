@@ -14,7 +14,7 @@ export const pages: IPages[] = [
   {
     href: '/code-snippets',
     title: 'Snippets',
-    headline: 'Save Code Snippets',
+    headline: 'Code Snippets',
     description: 'Organize and store your valuable code snippets.',
     Icon: CodeIcon,
     new: true,
