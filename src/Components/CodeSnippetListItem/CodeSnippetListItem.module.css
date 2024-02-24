@@ -9,7 +9,7 @@
     position: absolute;
     right: 0;
     top:1px;
-    clip-path: circle(65% at right 0);
+    clip-path: circle(65% at right 0) !important;
     transition: clip-path 1s; 
     background-color: var(--borderColor);
     border-radius: 15px 

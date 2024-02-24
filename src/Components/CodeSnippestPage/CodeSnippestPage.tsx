@@ -13,13 +13,19 @@ const CodeSnippestPage = () => {
   const [loading, setLoading] = useState(false);
 
   const { user } = useContext(UserContext);
-  const { setItems, selectedId } = useContext(Snippets);
+  const { setItems, selectedId, setSelectedId } = useContext(Snippets);
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
       getAllSnippets(user?.email)
         .then((res: TSnippiest) => {
-          setItems(res);
+          const keys = Object.keys(res);
+          if (keys.length > 0) {
+            const lastKey = keys[keys.length - 1];
+            const lastObject = res[lastKey];
+            setSelectedId(lastObject.id);
+            setItems(res);
+          }
         })
         .finally(() => setLoading(false));
       setAutoSave(true);

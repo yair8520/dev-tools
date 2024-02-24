@@ -23,7 +23,7 @@ export const CodeSnippetListItem = ({
       >
         <Text
           style={{ display: 'flex', flexGrow: 1, lineBreak: 'anywhere' }}
-          numb
+          
         >
           {snippet.title}
         </Text>
