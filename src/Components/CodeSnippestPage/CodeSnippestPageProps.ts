@@ -17,7 +17,7 @@ export const initialCode = `/**
 export const getNewSnippets = (id: string): TCodeSnippiest => {
   return {
     id,
-    timestamp: '',
+    timestamp: new Date().toISOString(),
     code: initialCode,
     title: 'Edit title...',
   };

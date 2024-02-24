@@ -20,7 +20,6 @@ export const Layout = ({ children, color = undefined }: LayoutProps) => {
           ? 'scale(0.635) translateX(-34%) translatey(-28.7%)'
           : 'none',
         transition: 'transform 0.8s cubic-bezier(.15, .2, .1, 1)',
-        padding: 0,
       }}
       className={styles.container}
     >

@@ -13,8 +13,8 @@ export const AppRouter = () => {
     <DrawerProvider>
       <Router>
         {modal ? <Modal /> : null}
-        <Layout>
           <Header />
+        <Layout>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               {routes.map((route, index) => (

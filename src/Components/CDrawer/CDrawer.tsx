@@ -5,8 +5,6 @@ import './CDrawer.css';
 import { Text } from '../Text';
 import { useMediaQuery } from '../../Hooks/useMediaQuery';
 import { AppContext } from '../../Context/ThemeContext/ThemeContext';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { CIconButton } from '../CIconButton';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { pages } from '../../Constant/Pages';
@@ -15,15 +13,13 @@ import { DrawerContext } from '../../Context/DrawerContext';
 import { googleLogOut, handleGoogleLogin } from '../../Helpers/FireBase/auth';
 import GoogleIcon from '@mui/icons-material/Google';
 export const CDrawer = () => {
-  const { isDark, setIsDark } = useContext(AppContext);
-  const isSmallScreen = useMediaQuery('(max-width: 940px)');
   const { user }: any = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState(user);
 
   useEffect(() => {
     setLoginInfo(user);
   }, [user]);
-
+  console.log(loginInfo?.photoURL);
   function onLogin() {
     handleGoogleLogin()
       .then((user) => {
@@ -61,7 +57,7 @@ export const CDrawer = () => {
                   <Text
                     style={{
                       marginTop: -10,
-                      color: !isDark && isSmallScreen ? 'black' : 'white',
+                      color: 'white',
                     }}
                     variant="subtitle1"
                   >

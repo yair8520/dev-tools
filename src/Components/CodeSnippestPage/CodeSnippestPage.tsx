@@ -9,15 +9,19 @@ import { UserContext } from '../../Context/UserContext';
 import { TSnippiest } from './CodeSnippestPageProps';
 
 const CodeSnippestPage = () => {
-  const { user } = useContext(UserContext);
   const [autoSave, setAutoSave] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const { user } = useContext(UserContext);
   const { setItems, selectedId } = useContext(Snippets);
   useEffect(() => {
     if (user?.email) {
-      getAllSnippets(user?.email).then((res: TSnippiest) => {
-        setItems(res);
-      });
+      setLoading(true);
+      getAllSnippets(user?.email)
+        .then((res: TSnippiest) => {
+          setItems(res);
+        })
+        .finally(() => setLoading(false));
       setAutoSave(true);
     }
   }, [user]);
@@ -28,6 +32,7 @@ const CodeSnippestPage = () => {
     <div className={styles.container}>
       <div className={styles.left}>
         <CodeSnippetsList
+          loading={loading}
           autoSave={autoSave}
           setAutoSave={setAutoSaveHandler}
         />

@@ -1,4 +1,5 @@
 export * from './useAxios';
+export * from './useDebouncedEffect';
 export * from './useExpandIndex';
 export * from './useFetch';
 export * from './useGoogleLogin';

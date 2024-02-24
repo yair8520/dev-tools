@@ -52,6 +52,7 @@ export const getAllSnippets = (email: string): Promise<TSnippiest> => {
       .then((doc: any) => {
         if (doc.exists) {
           const snippets = doc.data()?.snippets || {};
+          console.log(snippets)
           resolve(snippets);
         } else {
           const initialSections = {};
