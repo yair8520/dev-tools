@@ -4,7 +4,7 @@ import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai';
 import 'ace-builds/src-noconflict/ext-language_tools';
 import styles from './SnippestEditor.module.css';
-import { Paper } from '@mui/material';
+import { Paper, useMediaQuery } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { CIconButton } from '../CIconButton';
 import { handleCopy, handlePaste } from '../../Helpers/Clipboard';
@@ -26,6 +26,8 @@ export const SnippestEditor = ({ autoSave }: any) => {
     [item?.code, autoSave],
     2000
   );
+  const isSmallScreen = useMediaQuery('(max-width: 600px)');
+
   return (
     <>
       {item ? (
@@ -50,7 +52,7 @@ export const SnippestEditor = ({ autoSave }: any) => {
           <AceEditor
             className="reactAce"
             value={item.code}
-            focus={true}
+            focus={!isSmallScreen}
             onChange={(code) => handleCodeChange(item.id, code)}
             mode="javascript"
             theme="monokai"
